@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
 
     /**
      * The controller namespace for the application.
@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
-    // protected $namespace = 'App\\Http\\Controllers';
+    protected $namespace = 'App\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -37,16 +37,30 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
+        $this->mapWebRoutes();
+        $this->mapEccomerceRoutes();
+        $this->mapAdminRoutes();
+    }
 
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-        });
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+    }
+
+    protected function mapEccomerceRoutes()
+    {
+        Route::middleware(['web', 'auth','role:Comprador'])
+            ->namespace($this->namespace  . '\Ecommerce')
+            ->group(base_path('routes/ecommerce.php'));
+    }
+
+    protected function mapAdminRoutes()
+    {
+        Route::middleware(['web', 'auth_admin','role:Administrador'])
+            ->namespace($this->namespace . '\Admin')
+            ->group(base_path('routes/admin.php'));
     }
 
     /**

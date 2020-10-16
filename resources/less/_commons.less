@@ -1,0 +1,143 @@
+//============VARIABLES===================
+@black: #1a1a1a;
+@white: #FFFFFF;
+@gray: #6F6F6F;
+@light-gray: #F0F0F0;
+@primary: #B51F6B;
+@primary-light: #FBEFF5;
+@secondary: #6A1B8A;
+@green:green;
+@red: #DC3545;
+@yellow: #FFC300;
+@ultra-light-gray: #E6E5EA;
+//============COLORS===================
+.color {
+    &-black { color: @black; }
+    &-white { color: @white; }
+    &-gray { color: @gray; }
+    &-primary { color: @primary; }
+    &-primary-light { color: @primary-light; }
+    &-secondary { color: @secondary; }
+    &-green { color: @green; }
+    &-red { color: @red; }
+    &-yellow {color: @yellow;}
+}
+//============BACKGROUNDS===================
+.bg {
+    &-black { background-color: @black; }
+    &-white { background-color: @white; }
+    &-gray { background-color: @gray; }
+    &-light-gray { background-color: @light-gray; }
+    &-primary { background-color: @primary !important; }
+    &-primary-light { background-color: @primary-light; }
+    &-secondary { background-color: @secondary !important; }
+    &-green { background-color: @green; }
+    &-red { background-color: @red; }
+    &-ultra-light-gray { background-color: @ultra-light-gray; }
+}
+//============COMMONS===================
+body { font-family: 'Poppins', sans-serif; }
+.text-bold { font-weight: 700 !important; }
+.text-semi-bold { font-weight: 500 !important; }
+.text-thin { font-weight: 400 !important; }
+.cursor-pointer { cursor: pointer; }
+//============BUTTONS===================
+.btn {
+    border-radius: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    &-primary { background-color: @primary; border-color: @primary; color: @white;
+        &&:hover, &&:active {
+            border-color: @primary;
+            box-shadow: 0 0 0 0.1rem spin(@primary, 10%) !important;
+            background-color: darken(@primary, 10%) !important;
+        }
+    }
+    &-outline-primary { border-color: @primary; color: @white;
+        &&:hover, &&:active {
+            border-color: @primary;
+            box-shadow: 0 0 0 0.1rem spin(@primary, 10%) !important;
+            background-color: darken(@primary, 10%) !important;
+        }
+    }
+    &-primary-light { background-color: @primary-light; border-color: @primary-light;
+        &&:hover, &&:active {
+            border-color: @primary-light;
+            box-shadow: 0 0 0 0.1rem spin(@primary-light, 10%) !important;
+            background-color: darken(@primary-light, 10%) !important;
+        }
+    }
+    &-secondary { background-color: @secondary; border-color: @secondary; color: @white;
+        &&:hover, &&:active {
+            border-color: @secondary;
+            box-shadow: 0 0 0 0.1rem spin(@secondary, 10%) !important;
+            background-color: darken(@secondary, 10%) !important;
+        }
+    }
+    &-outline-secondary { border-color: @black; color: @secondary;
+        &&:hover, &&:active {
+            border-color: @black;
+            box-shadow: 0 0 0 0.1rem spin(@black, 10%) !important;
+            background-color: darken(@black, 10%) !important;
+        }
+    }
+    &-white { background-color: @white; border-color: @white;
+        &&:hover, &&:active {
+            border-color: @white;
+            box-shadow: 0 0 0 0.1rem spin(@white, 10%) !important;
+            background-color: darken(@white, 10%) !important;
+        }
+    }
+    &-gray { background-color: @gray; border-color: @gray;
+        &&:hover, &&:active {
+            border-color: @gray;
+            box-shadow: 0 0 0 0.1rem spin(@gray, 10%) !important;
+            background-color: darken(@gray, 10%) !important;
+        }
+    }
+}
+//============BORDERS===================
+
+.big-border-radius{
+    border-radius: 40px;
+}
+
+.bottom-border{
+    border-bottom: 5px solid @primary;
+}
+
+.bottom-border-thin{
+    border-bottom: 2px solid @primary;
+}
+
+.border-radius{
+    border-radius: 20px;
+}
+
+.border-radius-top-right{
+    border-top-right-radius: 20px;
+}
+
+.border-radius-top-left{
+    border-top-left-radius: 20px;
+}
+
+.border-black{
+    border: 2px solid @black;
+}
+
+.thin-border{
+    border: 1px solid @gray;
+}
+
+@media (max-width: 991px) {
+    .t-resp{
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+
