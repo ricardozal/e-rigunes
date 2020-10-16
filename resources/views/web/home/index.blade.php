@@ -1,3 +1,5 @@
+@extends('web.template.main')
+@section('content')
 hola {{Auth::check() ? Auth::user()->email : 'invitado'}}
 
 @if(Auth::check())
@@ -6,3 +8,4 @@ hola {{Auth::check() ? Auth::user()->email : 'invitado'}}
 @else
 <a href="{{route('login')}}">entrar</a>
 @endif
+@endsection

@@ -180,6 +180,16 @@ body {
   }
 }
 /********************************
+ ********   Footer   *************
+ ********************************/
+.footer {
+  height: 3rem;
+  text-align: center;
+  color: #B51F6B;
+  background-color: #FBEFF5;
+  align-items: center;
+}
+/********************************
  ********   Login   *************
  ********************************/
 .card-login {
@@ -193,16 +203,6 @@ body {
   .w-card-login {
     width: 100% !important;
   }
-}
-/********************************
- ********   Footer   *************
- ********************************/
-.footer {
-  height: 3rem;
-  text-align: center;
-  color: #B51F6B;
-  background-color: #FBEFF5;
-  align-items: center;
 }
 /********************************
  ********  Sidebar   *************
