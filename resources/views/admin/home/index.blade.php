@@ -1,3 +1,5 @@
-hola admin
-
-<a href="{{route('logout')}}">salir</a>
+@extends('admin.template.main')
+@section('extra_classes','d-flex justify-content-center align-items-center')
+@section('content')
+    <img src="{{asset('img/logos/rigunes_logo_pink.png')}}">
+@endsection

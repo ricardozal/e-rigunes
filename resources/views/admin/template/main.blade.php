@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{--    <link rel="shortcut icon" href="{{asset('')}}" />--}}
+    <link rel="shortcut icon" href="{{asset('img/logos/favicon_rigunes.png')}}" />
     <title>@yield('title', 'Rigunes Admin')</title>
     <!-- Style sheets -->
     @include('admin.template.global_css')
@@ -19,8 +19,8 @@
                 @include('admin.components.sidebar')
             </div>
             <div class="col-10 pt-3">
-                <div class="card h-100 border-radius">
-                    <div class="card-body">
+                <div class="card main-card">
+                    <div class="card-body @yield('extra_classes','')">
                         @yield('content')
                     </div>
                 </div>

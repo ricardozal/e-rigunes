@@ -31,3 +31,49 @@
     background-color: @primary-light;
     align-items: center;
 }
+
+/********************************
+ ********  Sidebar   *************
+ ********************************/
+
+.nav{
+    background: @primary;
+    min-height: 100%;
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    .nav-link{
+        color: @white;
+        text-decoration: none;
+        padding: 0;
+        margin-bottom: 3rem;
+        &.active{
+            span:first-child{
+                background-color: rgba(@white, .3);
+                border-top-right-radius: 2rem;
+                border-bottom-right-radius: 2rem;
+            }
+        }
+        span:first-child{
+            padding: 1rem 0;
+            padding-left: 1rem;
+            padding-right: 6px;
+        }
+        &:last-child{
+            margin-bottom: 0;
+            margin-top: auto;
+        }
+    }
+    .sidebar-text{
+        margin-left: 4px;
+    }
+}
+
+.main-card{
+    border-radius: 30px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    min-height: calc(100vh - 80px);
+}
