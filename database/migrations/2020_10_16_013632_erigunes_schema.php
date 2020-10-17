@@ -90,6 +90,7 @@ class ErigunesSchema extends Migration
             $table->string('expiration_year');
             $table->string('payment_method_key');
             $table->unsignedInteger('fk_id_buyer');
+            $table->timestamps();
 
             $table->foreign('fk_id_buyer')
                 ->references('id')
