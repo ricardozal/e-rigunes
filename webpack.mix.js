@@ -11,5 +11,5 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.less('resources/less/e-rigunes.less', 'public/css/e-rigunes.css');
+mix.less('resources/less/admin-rigunes.less', 'public/css/admin-rigunes.css');
