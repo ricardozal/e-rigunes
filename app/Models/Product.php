@@ -44,6 +44,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWeight($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWidth($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Variant $first_variant
  */
 class Product extends Model
 {
