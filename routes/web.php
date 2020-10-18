@@ -37,3 +37,11 @@ Route::get('/logout',
 Route::get('/admin/login',
     'Auth\LoginController@loginAdmin')
     ->name('login_admin');
+
+/**
+ *      Product Details
+ */
+
+Route::get('/product/{productId}/details',
+    'Web\ProductController@details')
+    ->name('web_product_details');
