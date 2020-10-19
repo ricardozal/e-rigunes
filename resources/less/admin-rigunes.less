@@ -1,6 +1,15 @@
 @import (less) "_commons.less";
 
 /********************************
+ ********   Colors   *************
+ ********************************/
+
+.text-color-primary{
+    color: @primary;
+}
+
+
+/********************************
  ********   Login   *************
  ********************************/
 
@@ -79,12 +88,12 @@
 
     .navbar-nav{
         .nav-link{
-            color: @color-white !important;
+            color: @white !important;
             padding: 0 !important;
             margin-bottom: 3rem !important;
             &.active{
                 span:first-child{
-                    background-color: rgba(@color-white, .3) !important;
+                    background-color: rgba(@white, .3) !important;
                     border-top-right-radius: 2rem !important;
                     border-bottom-right-radius: 2rem !important;
                 }
@@ -100,4 +109,10 @@
         }
     }
 
+}
+
+@media screen and (max-width: 991px) {
+    .logo-rigunes img{
+        content:url("/img/logos/rigunes_logo.png");
+    }
 }

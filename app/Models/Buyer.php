@@ -39,4 +39,13 @@ use Illuminate\Database\Eloquent\Model;
 class Buyer extends Model
 {
     protected $table = 'buyer';
+
+    protected $fillable = [
+        'name',
+        'father_last_name',
+        'mother_last_name',
+        'birthday',
+        'phone',
+        'customer_stripe_id'
+    ];
 }

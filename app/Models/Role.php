@@ -24,4 +24,19 @@ class Role extends Model
     const ADMIN = 2;
 
     protected $table = 'role';
+
+    public function users()
+    {
+        return $this->hasMany(
+            User::class,
+            'fk_id_role',
+            'id'
+        );
+    }
+
+
+    public static function asMap()
+    {
+        return self::pluck('name', 'id');
+    }
 }

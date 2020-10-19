@@ -26,7 +26,7 @@
                     <div class="col-md-2 p-0 d-none d-md-block">
                         @include('admin.components.sidebar')
                     </div>
-                    <div class="col-12 col-md-10 px-0 pb-5">
+                    <div class="col-12 col-md-10 px-0 pb-5" style="text-align: center">
                         @yield('content')
                     </div>
                 </div>
