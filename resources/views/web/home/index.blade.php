@@ -16,11 +16,10 @@
     <div class="row mx-0 mb-3">
         <div class="col-12 d-flex align-items-center"
              style="background-image: url('{{asset('img/header_shoes.png')}}');
-                 background-repeat: no-repeat;
                  background-size: cover;
                  height: 27vw !important;
                  ">
-            <a href="#contenido" id="btn-home" class="btn btn-primary mt-5 ml-md-5 px-3" style="border-radius: 10px">CONOCE MÁS&nbsp;&nbsp;&nbsp;<i class="fas fa-chevron-right"></i></a>
+            <a href="" id="btn-home" class="btn btn-primary mt-5 ml-md-5 px-3" style="border-radius: 10px">CONOCE MÁS&nbsp;&nbsp;&nbsp;</a>
         </div>
     </div>
 
