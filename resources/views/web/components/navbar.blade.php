@@ -11,10 +11,11 @@
         <i class="fas fa-search color-white"></i>
         <img class="ml-3 mr-3 color-white" src="{{asset('img/ic_line.png')}}" style="max-height: 5vh!important">
         <a class="mx-3 text-center "
-           href=""
+           href="{{route('ecommerce_account_profile_index')}}"
            id=""
            role=""
            data-toggle="">
+
             <i class="far fa-user color-white"></i></a>
         <i class="fas fa-shopping-bag color-white mr-4"></i>
 
@@ -64,4 +65,4 @@
         </ul>
     </div>
 </nav>
-<hr>
+

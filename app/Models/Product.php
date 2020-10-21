@@ -66,7 +66,8 @@ class Product extends Model
 
     protected $appends = [
         'rating_average',
-        'first_variant'
+        'first_variant',
+        ''
     ];
 
     public function variants()
