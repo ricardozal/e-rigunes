@@ -27,8 +27,8 @@
         <span class="sidebar-text">Compradores</span>
     </a>
 
-    <a class="nav-link {{$routeName == 'admin_buyer_index' ? 'active' : ''}}"
-       href="{{route('admin_buyer_index')}}">
+    <a class="nav-link {{$routeName == 'admin_provider_index' ? 'active' : ''}}"
+       href="{{route('admin_provider_index')}}">
     <span>
         <i class="fas fa-city"></i>
     </span>

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /**
- * App\Models\Provider
+ * App\Models\ProviderController
  *
  * @property int $id
  * @property string $name
