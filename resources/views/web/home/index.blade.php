@@ -1,11 +1,46 @@
 @extends('web.template.main')
-@section('content')
-hola {{Auth::check() ? Auth::user()->email : 'invitado'}}
 
-@if(Auth::check())
-<a href="{{route('ecommerce_account_profile_index')}}">mi cuenta</a>
-<a href="{{route('logout')}}">salir</a>
-@else
-<a href="{{route('login')}}">entrar</a>
-@endif
+@push('css')
+
+
+@endpush
+@section('content')
+    {{Auth::check() ? Auth::user()->email : 'invitado'}}
+
+    @if(Auth::check())
+        <a href="{{route('ecommerce_account_profile_index')}}">mi cuenta</a>
+        <a href="{{route('logout')}}">salir</a>
+    @else
+        <a href="{{route('login')}}">entrar</a>
+    @endif
+    <div class="container-fluid ">
+        <div class="row  align-items-center">
+            <div class="col-12 my-2">
+                <div class="text-center">
+                    <h2 class="font-family-2 color-gray-dark mt-5">Lo más Vendido</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row mx-md-5 my-5 justify-content-between">
+            @include('web.components.card')
+        </div>
+        <div class="row  text-center">
+            <div class="col-12">
+                <button id="btn-contact-send"
+                        class="btn btn-primary  text-bold color-white">
+                    Ver más
+                </button>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-12 my-2">
+                <div class="text-center">
+                    <h2 class="font-family-2 color-gray-dark mt-5">Botas otoño invierno</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @include('web.components.contact')
+
 @endsection
