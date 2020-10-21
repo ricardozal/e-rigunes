@@ -54,8 +54,8 @@
                         </div>
                         <div class="row my-4">
                             <div class="col-12">
-                                <h5 class="color-secondary">Precio público: ${{$product->first_variant != null ? '$'.number_format($product->first_variant->public_price,2) : 'No disponible'}}</h5>
-                                <h5 class="color-secondary">Precio distribuidor: ${{$product->first_variant != null ? '$'.number_format($product->first_variant->distributor_price,2) : 'No disponible'}}</h5>
+                                <h5 class="color-secondary">Precio público: {{$product->first_variant != null ? '$'.number_format($product->first_variant->public_price,2) : 'No disponible'}}</h5>
+                                <h5 class="color-secondary">Precio distribuidor: {{$product->first_variant != null ? '$'.number_format($product->first_variant->distributor_price,2) : 'No disponible'}}</h5>
                             </div>
                         </div>
                         <div class="row my-4">
