@@ -48,4 +48,11 @@ class Buyer extends Model
         'phone',
         'customer_stripe_id'
     ];
+
+    protected  $appends = ['FullName'];
+
+    public function getFullNameAttribute()
+    {
+        return $this->name.' '.$this->father_last_name.' '.$this->mother_last_name;
+    }
 }

@@ -17,6 +17,7 @@
                         <thead>
                         <tr>
                             <th>Nombre</th>
+                            <th>Correo electrónico</th>
                             <th>Fecha de nacimiento</th>
                             <th>Teléfono</th>
                             <th>Stripe id</th>
@@ -37,8 +38,8 @@
            value="{{route('admin_buyer_active',['buyerId' => 'FAKE_ID'])}}">
     <input id="inp-url-update" type="hidden"
            value="{{route('admin_buyer_update',['buyerId' => 'FAKE_ID'])}}">
-    <input id="inp-url-delete" type="hidden"
-           value="{{route('admin_buyer_delete',['buyerId' => 'FAKE_ID'])}}">
+    <input id="inp-url-address" type="hidden"
+           value="{{route('admin_buyer_updateAddress',['buyerId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Models\Buyer;
 use App\Http\Request\UpdateBuyerRequest;
@@ -32,12 +33,17 @@ class BuyerController extends Controller
         return view('admin.buyer.upsert',['buyer' => $buyer]);
     }
 
+
     public function updatePost(UpdateBuyerRequest $request, $buyerId)
     {
         $buyer = Buyer::find($buyerId);
 
         $buyer->fill($request->all());
 
+        if($request->input('password') != null)
+        {
+            $buyer->password = bcrypt($request->input('password'));
+        }
 
         if (!$buyer->save()) {
             return response()->json([
@@ -51,6 +57,15 @@ class BuyerController extends Controller
             'message' => 'Guardado correctamente'
         ]);
     }
+
+    public function updateAddress($buyerId){
+
+        $address = Address::all()
+            ->where('fk_id_buyer', $buyerId);
+
+        return view('admin.buyer.upsertAddress',['address' => $address]);
+    }
+
 
     public function active($buyerId)
     {

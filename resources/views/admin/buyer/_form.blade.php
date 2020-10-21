@@ -31,6 +31,26 @@
 <div class="row w-75">
     <div class="col-12">
         <div class="form-group focused">
+            <label for="email" class="focused form-label">Correo electrónico</label>
+            <input type="email" class="form-control" autocomplete="off" id="email" name="email" value="{{ isset($buyer) ? $buyer->email : null}}">
+            <span class="invalid-feedback">{{ $errors->first('email') }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="row w-75">
+    <div class="col-12">
+        <div class="form-group focused">
+            <label for="password" class="focused form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" value="">
+            <span class="invalid-feedback">{{ $errors->first('password') }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="row w-75">
+    <div class="col-12">
+        <div class="form-group focused">
             <label for="birthday"  class="focused form-label">Fecha de nacimiento</label>
             <input type="date" class="form-control" autocomplete="off" id="birthday" name="birthday" value="{{ isset($buyer) ? $buyer->birthday : null}}">
             <span class="invalid-feedback">{{ $errors->first('birthday') }}</span>

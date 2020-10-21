@@ -27,13 +27,13 @@ Route::post('/admin/buyers/{buyerId}/update',
     'BuyerController@updatePost')
     ->name('admin_buyer_update_post');
 
+Route::get('/admin/buyers/{buyerId}/updateAddress',
+    'BuyerController@updateAddress')
+    ->name('admin_buyer_updateAddress');
+
 Route::get('/admin/buyers/{buyerId}/active',
     'BuyerController@active')
     ->name('admin_buyer_active');
-
-Route::get('/admin/buyers/{buyerId}/delete',
-    'BuyerController@delete')
-    ->name('admin_buyer_delete');
 
 /***********************************
  * *******   User *************
@@ -70,3 +70,38 @@ Route::get('/admin/user/{userId}/active',
 Route::get('/admin/user/{userId}/delete',
     'UserController@delete')
     ->name('admin_user_delete');
+
+/***********************************
+ * *******   Providers *************
+ **********************************/
+Route::get('/admin/provider',
+    'ProviderController@index')
+    ->name('admin_provider_index');
+
+Route::get('/admin/provider-content',
+    'ProviderController@indexContent')
+    ->name('admin_provider_index_content');
+
+Route::get('/admin/provider/create',
+    'ProviderController@create')
+    ->name('admin_provider_create');
+
+Route::post('/admin/provider/create',
+    'ProviderController@createPost')
+    ->name('admin_provider_create_post');
+
+Route::get('/admin/provider/{userId}/update',
+    'ProviderController@update')
+    ->name('admin_provider_update');
+
+Route::post('/admin/provider/{userId}/update',
+    'ProviderController@updatePost')
+    ->name('admin_provider_update_post');
+
+Route::get('/admin/provider/{userId}/active',
+    'ProviderController@active')
+    ->name('admin_provider_active');
+
+Route::get('/admin/provider/{userId}/delete',
+    'ProviderController@delete')
+    ->name('admin_provider_delete');

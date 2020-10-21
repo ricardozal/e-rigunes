@@ -47,19 +47,14 @@ class UserSeeder extends Seeder
 
         for ($i=0;$i<5;$i++){
 
-            $userId = DB::table('user')->insertGetId([
-                'email' => 'buyer'.$i.'@rigunes.com.mx',
-                'password' => bcrypt('prueba'),
-                'fk_id_role' => 1,
-            ]);
-
             $buyerId = DB::table('buyer')->insertGetId([
                 'name' => $this->faker->firstNameFemale,
                 'father_last_name' => $this->faker->firstNameFemale,
                 'mother_last_name' => $this->faker->firstNameFemale,
+                'email' => 'buyer'.$i.'@rigunes.com.mx',
+                'password' => bcrypt('prueba'),
                 'birthday' => Carbon::parse('10/10/1997'),
-                'phone' => $this->faker->tollFreePhoneNumber,
-                'fk_id_user' => $userId,
+                'phone' => $this->faker->tollFreePhoneNumber
             ]);
 
             for ($j=1;$j<=5;$j++){

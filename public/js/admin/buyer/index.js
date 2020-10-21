@@ -5,7 +5,8 @@ $(document).ready(function () {
         "ajax": $('#inp-url-index-content').val(),
         "processing": true,
         "columns": [
-            { "data": "name" },
+            { "data": "FullName" },
+            { "data": "email" },
             { "data": "birthday" },
             { "data": "phone" },
             { "data": "customer_stripe_id" },
@@ -21,16 +22,16 @@ $(document).ready(function () {
                     var url = $inpUrlUpdate.val();
                     url = url.replace('FAKE_ID', data);
 
-                    var $inpUrlDelete = $('#inp-url-delete');
-                    if ($inpUrlDelete.length === 0) {
+                    var $inpUrlAddress = $('#inp-url-address');
+                    if ($inpUrlAddress.length === 0) {
                         return '';
                     }
 
-                    var url2 = $inpUrlDelete.val();
+                    var url2 = $inpUrlAddress.val();
                     url2 = url2.replace('FAKE_ID', data);
 
-                    return "<a href='"+url+"' title='Editar' data-toggle='tooltip' class='update-btn' style='color: #2a3d66'><span class='far fa-edit'></span></a>" +
-                        "&nbsp;&nbsp;&nbsp;<a href='"+url2+"' title='Eliminar' data-toggle='tooltip' class='delete-btn' style='color: #2a3d66'><span class='fas fa-trash'></span></a>";
+                    return "<a href='"+url+"' title='Editar información' data-toggle='tooltip' class='update-btn' style='color: #2a3d66'><span class='far fa-edit'></span></a>" +
+                        "&nbsp;&nbsp;&nbsp;<a href='"+url2+"' title='Listar direcciones' data-toggle='tooltip' class='address-btn' style='color: #2a3d66'><span class='far fa-address-card'></span></a>";
                 },
                 "targets": -1
             },
@@ -70,6 +71,18 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.update-btn', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        modalTools.renderView('modal-upsert', url, true,function () {
+            formTools.useAjaxOnSubmit('form-upsert', function () {
+                $('#modal-upsert').modal('hide');
+                table.ajax.reload();
+            });
+        });
+    });
+
+    $(document).on('click', '.address-btn', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
 

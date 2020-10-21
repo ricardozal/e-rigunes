@@ -22,9 +22,17 @@
     <a class="nav-link {{$routeName == 'admin_buyer_index' ? 'active' : ''}}"
        href="{{route('admin_buyer_index')}}">
     <span>
-        <i class="fas fa-user"></i>
+        <i class="fas fa-users"></i>
     </span>
         <span class="sidebar-text">Compradores</span>
+    </a>
+
+    <a class="nav-link {{$routeName == 'admin_buyer_index' ? 'active' : ''}}"
+       href="{{route('admin_buyer_index')}}">
+    <span>
+        <i class="fas fa-city"></i>
+    </span>
+        <span class="sidebar-text">Proveedores</span>
     </a>
 
     <a class="nav-link"
