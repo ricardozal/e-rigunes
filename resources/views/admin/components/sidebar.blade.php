@@ -35,6 +35,14 @@
         <span class="sidebar-text">Proveedores</span>
     </a>
 
+    <a class="nav-link {{$routeName == 'admin_products_index' ? 'active' : ''}}"
+       href="{{route('admin_products_index')}}">
+    <span>
+        <i class="fas fa-luggage-cart"></i>
+    </span>
+        <span class="sidebar-text">Productos</span>
+    </a>
+
     <a class="nav-link"
        href="{{route('logout')}}">
         <span>

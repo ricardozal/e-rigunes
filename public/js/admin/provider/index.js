@@ -58,7 +58,7 @@ $(document).ready(function () {
         "language": {
             "search": "Buscar: ",
             "zeroRecords": "No se encontró ningún registro.",
-            "info": "Total de usuarios: <strong>_TOTAL_</strong>",
+            "info": "Total de proveedores: <strong>_TOTAL_</strong>",
             infoEmpty: "Sin datos disponibles",
             emptyTable: "No se ha encontrado ningún registro.",
             processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i> ',
@@ -117,8 +117,8 @@ $(document).ready(function () {
                     {
                         table.ajax.reload();
                         Swal.fire(
-                            'Usuario eliminado!',
-                            'Ha eliminado un usuario.',
+                            'proveedor eliminado!',
+                            'Ha eliminado un proveedor.',
                             'success'
                         );
                     }
@@ -152,7 +152,7 @@ $(document).ready(function () {
         var $this = $(this);
 
         Swal.fire({
-            title: '¿Desea '+option+' al usuario?',
+            title: '¿Desea '+option+' al proveedor?',
             text: 'Podrá '+optionContra+' en cualquier momento',
             icon: 'warning',
             showCancelButton: true,
@@ -178,7 +178,7 @@ $(document).ready(function () {
                         {
                             Swal.fire(
                                 preValue ? 'Desactivado' : 'Activado',
-                                'El usuario fue '+(preValue ? 'desactivado' : 'activado')+'.',
+                                'El proveedor fue '+(preValue ? 'desactivado' : 'activado')+'.',
                                 'success'
                             );
                         }

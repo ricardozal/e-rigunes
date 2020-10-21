@@ -43,11 +43,11 @@
     <input id="inp-url-index-content" type="hidden"
            value="{{route('admin_provider_index_content')}}">
     <input id="inp-url-active" type="hidden"
-           value="{{route('admin_provider_active',['userId' => 'FAKE_ID'])}}">
+           value="{{route('admin_provider_active',['providerId' => 'FAKE_ID'])}}">
     <input id="inp-url-update" type="hidden"
-           value="{{route('admin_provider_update',['userId' => 'FAKE_ID'])}}">
+           value="{{route('admin_provider_update',['providerId' => 'FAKE_ID'])}}">
     <input id="inp-url-delete" type="hidden"
-           value="{{route('admin_provider_delete',['userId' => 'FAKE_ID'])}}">
+           value="{{route('admin_provider_delete',['providerId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

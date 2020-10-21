@@ -90,18 +90,53 @@ Route::post('/admin/provider/create',
     'ProviderController@createPost')
     ->name('admin_provider_create_post');
 
-Route::get('/admin/provider/{userId}/update',
+Route::get('/admin/provider/{providerId}/update',
     'ProviderController@update')
     ->name('admin_provider_update');
 
-Route::post('/admin/provider/{userId}/update',
+Route::post('/admin/provider/{providerId}/update',
     'ProviderController@updatePost')
     ->name('admin_provider_update_post');
 
-Route::get('/admin/provider/{userId}/active',
+Route::get('/admin/provider/{providerId}/active',
     'ProviderController@active')
     ->name('admin_provider_active');
 
-Route::get('/admin/provider/{userId}/delete',
+Route::get('/admin/provider/{providerId}/delete',
     'ProviderController@delete')
     ->name('admin_provider_delete');
+
+/***********************************
+ * *******   Products *************
+ **********************************/
+Route::get('/admin/products',
+    'ProductsController@index')
+    ->name('admin_products_index');
+
+Route::get('/admin/products-content',
+    'ProductsController@indexContent')
+    ->name('admin_products_index_content');
+
+Route::get('/admin/product/create',
+    'ProductsController@create')
+    ->name('admin_product_create');
+
+Route::post('/admin/product/create',
+    'ProductsController@createPost')
+    ->name('admin_product_create_post');
+
+Route::get('/admin/product/{productId}/update',
+    'ProductsController@update')
+    ->name('admin_product_update');
+
+Route::post('/admin/product/{productId}/update',
+    'ProductsController@updatePost')
+    ->name('admin_product_update_post');
+
+Route::get('/admin/product/{productId}/active',
+    'ProductsController@active')
+    ->name('admin_product_active');
+
+Route::get('/admin/product/{productId}/delete',
+    'ProductsController@delete')
+    ->name('admin_product_delete');
