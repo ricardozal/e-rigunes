@@ -14,22 +14,32 @@
 <body class="bg-primary-light" style="overflow-x: hidden">
 <div class="wrapper">
     <div class="container-fluid">
-        <div class="row m-0">
-            <div class="col-2 p-0">
-                @include('admin.components.sidebar')
-            </div>
-            <div class="col-10 pt-3">
-                <div class="card main-card">
-                    <div class="card-body @yield('extra_classes','')">
+
+        <div class="row m-2">
+            <div class="col-12">
+                <div class="row d-block d-md-none">
+                    <div class="col-12 p-0">
+                        @include('admin.components.navbar')
+                    </div>
+                </div>
+                <div class="row h-100">
+                    <div class="col-md-2 p-0 d-none d-md-block">
+                        @include('admin.components.sidebar')
+                    </div>
+                    <div class="col-12 col-md-10 px-0 pb-5" style="text-align: center">
                         @yield('content')
                     </div>
                 </div>
             </div>
+
         </div>
+
+        @include('admin.components.footer')
     </div>
+
+
 </div>
 
-@include('admin.components.footer')
 <!-- Javascript -->
 @include('admin.template.global_js')
 @stack('scripts')

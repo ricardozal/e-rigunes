@@ -10,13 +10,31 @@
             </a>
         </div>
     </div>
-    <a class="nav-link {{$routeName == 'admin_buyer_index' ? 'active' : ''}}"
-       href="{{route('admin_buyer_index')}}">
+
+    <a class="nav-link {{$routeName == 'admin_user_index' ? 'active' : ''}}"
+       href="{{route('admin_user_index')}}">
     <span>
         <i class="fas fa-user"></i>
     </span>
+        <span class="sidebar-text">Usuarios</span>
+    </a>
+
+    <a class="nav-link {{$routeName == 'admin_buyer_index' ? 'active' : ''}}"
+       href="{{route('admin_buyer_index')}}">
+    <span>
+        <i class="fas fa-users"></i>
+    </span>
         <span class="sidebar-text">Compradores</span>
     </a>
+
+    <a class="nav-link {{$routeName == 'admin_buyer_index' ? 'active' : ''}}"
+       href="{{route('admin_buyer_index')}}">
+    <span>
+        <i class="fas fa-city"></i>
+    </span>
+        <span class="sidebar-text">Proveedores</span>
+    </a>
+
     <a class="nav-link"
        href="{{route('logout')}}">
         <span>
@@ -24,4 +42,5 @@
         </span>
         <span class="sidebar-text">Cerrar sesión</span>
     </a>
+
 </nav>
