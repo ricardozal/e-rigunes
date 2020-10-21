@@ -17,10 +17,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
  */
 class Role extends Model
 {
-    const BUYER = 1;
     const ADMIN = 2;
 
     protected $table = 'role';

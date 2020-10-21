@@ -5,7 +5,7 @@ $(document).ready(function () {
         "ajax": $('#inp-url-index-content').val(),
         "processing": true,
         "columns": [
-            { "data": "FullName" },
+            { "data": "full_name" },
             { "data": "email" },
             { "data": "birthday" },
             { "data": "phone" },
