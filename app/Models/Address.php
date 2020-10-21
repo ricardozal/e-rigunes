@@ -33,6 +33,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Address whereZipCode($value)
  * @mixin \Eloquent
  * @property-read mixed $full_address
+ * @property string|null $country
+ * @property string $references
+ * @property int $active
+ * @property int $fk_id_buyer
+ * @method static \Illuminate\Database\Eloquent\Builder|Address whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Address whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Address whereFkIdBuyer($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Address whereReferences($value)
  */
 
 class Address extends Model
