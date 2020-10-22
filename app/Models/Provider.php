@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /**
- * App\Models\Provider
+ * App\Models\ProviderController
  *
  * @property int $id
  * @property string $name
@@ -54,5 +54,10 @@ class Provider extends Model
         'seller_phone',
         'seller_email',
     ];
+
+    public static function asMap()
+    {
+        return self::pluck('name', 'id');
+    }
 
 }
