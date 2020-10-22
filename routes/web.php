@@ -45,3 +45,12 @@ Route::get('/admin/login',
 Route::get('/product/{productId}/details',
     'Web\ProductController@details')
     ->name('web_product_details');
+
+/**
+ *      Product Category
+ */
+
+Route::get(
+    '/category/{categoryId}/product',
+    'Web\ProductController@categoryProduct'
+)->name('category_products');
