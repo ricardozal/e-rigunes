@@ -55,4 +55,9 @@ class Provider extends Model
         'seller_email',
     ];
 
+    public static function asMap()
+    {
+        return self::pluck('name', 'id');
+    }
+
 }

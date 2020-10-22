@@ -6,13 +6,14 @@ $(document).ready(function () {
         "ajax": $('#inp-url-index-content').val(),
         "processing": true,
         "columns": [
-            { "data": "name" },
-            { "data": "email" },
-            { "data": "phone" },
-            { "data": "business_name" },
-            { "data": "seller_name" },
-            { "data": "seller_phone" },
-            { "data": "seller_email" },
+            { "data": "product_name" },
+            { "data": "product_desc" },
+            { "data": "weight" },
+            { "data": "height" },
+            { "data": "width" },
+            { "data": "length" },
+            { "data": "provider_name" },
+            { "data": "category_name" },
             {
                 "data": "id",
                 render:function(data)
@@ -117,8 +118,8 @@ $(document).ready(function () {
                     {
                         table.ajax.reload();
                         Swal.fire(
-                            'proveedor eliminado!',
-                            'Ha eliminado un proveedor.',
+                            'producto eliminado!',
+                            'Ha eliminado un producto.',
                             'success'
                         );
                     }
@@ -139,7 +140,7 @@ $(document).ready(function () {
         var $this = $(this);
 
         Swal.fire({
-            title: '¿Desea '+option+' al proveedor?',
+            title: '¿Desea '+option+' el producto?',
             text: 'Podrá '+optionContra+' en cualquier momento',
             icon: 'warning',
             showCancelButton: true,
@@ -165,7 +166,7 @@ $(document).ready(function () {
                         {
                             Swal.fire(
                                 preValue ? 'Desactivado' : 'Activado',
-                                'El proveedor fue '+(preValue ? 'desactivado' : 'activado')+'.',
+                                'El producto fue '+(preValue ? 'desactivado' : 'activado')+'.',
                                 'success'
                             );
                         }

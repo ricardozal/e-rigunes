@@ -140,3 +140,14 @@ Route::get('/admin/product/{productId}/active',
 Route::get('/admin/product/{productId}/delete',
     'ProductsController@delete')
     ->name('admin_product_delete');
+
+/***********************************
+ * *******   Category *************
+ **********************************/
+Route::get('/admin/category',
+    'CategoryController@index')
+    ->name('admin_category_index');
+
+Route::get('/admin/category-content',
+    'CategoryController@indexContent')
+    ->name('admin_category_index_content');

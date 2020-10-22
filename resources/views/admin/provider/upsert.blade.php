@@ -2,7 +2,8 @@
     <h4 class="text-header mt-2">{{isset($provider) ? 'Modificar proveedor' : 'Agregar proveedor'}}</h4>
 </div>
 <div class="row">
-    <form id="form-upsert" action="{{isset($provider) ? route('admin_provider_update_post',['providerId' => $provider->id]) : route('admin_provider_create_post')}}"
+    <form id="form-upsert"
+          action="{{isset($provider) ? route('admin_provider_update_post',['providerId' => $provider->id]) : route('admin_provider_create_post')}}"
           class="d-flex flex-column align-items-center w-100"
           method="post">
         @csrf

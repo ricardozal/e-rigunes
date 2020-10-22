@@ -11,9 +11,14 @@
                 </div>
             </div>
             <div class="row my-4">
-                <div class="col-12 justify-content-end d-flex align-items-center">
+                <div class="col-6 justify-content-end d-flex align-items-center">
                     <a id="create-btn" class="btn btn-primary" href="{{route('admin_product_create')}}">
                         Agregar producto
+                    </a>
+                </div>
+                <div class="col-6 justify-content-end d-flex align-items-center">
+                    <a id="createCat-btn" class="btn btn-primary" href="{{route('admin_product_create')}}">
+                        Agregar Categoria
                     </a>
                 </div>
             </div>
@@ -29,6 +34,8 @@
                             <th>Altura</th>
                             <th>Ancho</th>
                             <th>Largo</th>
+                            <th>Proveedor</th>
+                            <th>Categoria</th>
                             <th>Opciones</th>
                             <th>Activar/Desactivar</th>
                         </tr>
@@ -40,13 +47,13 @@
     </div>
 
     <input id="inp-url-index-content" type="hidden"
-           value="{{route('admin_provider_index_content')}}">
+           value="{{route('admin_products_index_content')}}">
     <input id="inp-url-active" type="hidden"
-           value="{{route('admin_provider_active',['providerId' => 'FAKE_ID'])}}">
+           value="{{route('admin_product_active',['productId' => 'FAKE_ID'])}}">
     <input id="inp-url-update" type="hidden"
-           value="{{route('admin_provider_update',['providerId' => 'FAKE_ID'])}}">
+           value="{{route('admin_product_update',['productId' => 'FAKE_ID'])}}">
     <input id="inp-url-delete" type="hidden"
-           value="{{route('admin_provider_delete',['providerId' => 'FAKE_ID'])}}">
+           value="{{route('admin_product_delete',['productId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
