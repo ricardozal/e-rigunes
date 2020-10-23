@@ -55,7 +55,9 @@ class Buyer extends Model
         'customer_stripe_id'
     ];
 
-    protected  $appends = ['full_name'];
+    protected  $appends = [
+        'full_name'
+    ];
 
     public function getFullNameAttribute()
     {

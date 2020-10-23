@@ -48,16 +48,17 @@ class ErigunesSchema extends Migration
             $table->string('name');
             $table->string('father_last_name');
             $table->string('mother_last_name');
-            $table->string('email');
-            $table->string('password');
             $table->date('birthday');
             $table->string('phone');
             $table->string('customer_stripe_id')->nullable();
-            $table->rememberToken();
             $table->boolean('active')
                 ->default(true);
+            $table->unsignedInteger('fk_id_user');
             $table->timestamps();
 
+            $table->foreign('fk_id_user')
+                ->references('id')
+                ->on('user');
         });
 
         Schema::create('address', function (Blueprint $table) {
