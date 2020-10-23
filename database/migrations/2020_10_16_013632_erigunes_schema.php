@@ -128,6 +128,8 @@ class ErigunesSchema extends Migration
             $table->integer('height');
             $table->integer('width');
             $table->integer('length');
+            $table->decimal('public_price', 13, 2);
+            $table->decimal('distributor_price', 13, 2);
             $table->boolean('active')
                 ->default(true);
             $table->unsignedInteger('fk_id_provider');
@@ -147,8 +149,6 @@ class ErigunesSchema extends Migration
         Schema::create('variant', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sku');
-            $table->decimal('public_price', 13, 2);
-            $table->decimal('distributor_price', 13, 2);
             $table->boolean('active')
                 ->default(true);
             $table->unsignedInteger('fk_id_product');

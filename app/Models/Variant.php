@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $sku
- * @property string $public_price
- * @property string $distributor_price
  * @property int $active
  * @property int $fk_id_product
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -96,7 +94,7 @@ class Variant extends Model
 
     public function getClassificationProductAttribute(){
 
-        return $this->product->classification->name;
+        return $this->product->category->name;
     }
 
     public function variantImages()

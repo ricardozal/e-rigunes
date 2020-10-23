@@ -6,14 +6,14 @@ $(document).ready(function () {
         "ajax": $('#inp-url-index-content').val(),
         "processing": true,
         "columns": [
-            { "data": "product_name" },
+            { "data": "name" },
             { "data": "product_desc" },
             { "data": "weight" },
             { "data": "height" },
             { "data": "width" },
             { "data": "length" },
-            { "data": "provider_name" },
-            { "data": "category_name" },
+            { "data": "provider.name" },
+            { "data": "category.name" },
             {
                 "data": "id",
                 render:function(data)
@@ -59,7 +59,7 @@ $(document).ready(function () {
         "language": {
             "search": "Buscar: ",
             "zeroRecords": "No se encontró ningún registro.",
-            "info": "Total de proveedores: <strong>_TOTAL_</strong>",
+            "info": "Total de productos: <strong>_TOTAL_</strong>",
             infoEmpty: "Sin datos disponibles",
             emptyTable: "No se ha encontrado ningún registro.",
             processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i> ',
