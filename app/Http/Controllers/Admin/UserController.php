@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Request\UserRequest;
@@ -20,7 +21,8 @@ class UserController extends Controller
     public function indexContent(Request $request)
     {
 
-        $query = User::with(['role'])->get();
+        $query = User::with(['role'])
+            ->where('fk_id_role','!=', Role::BUYER)->get();
 
         return response()->json([
             'data' => $query

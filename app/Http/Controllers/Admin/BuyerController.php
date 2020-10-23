@@ -20,7 +20,7 @@ class BuyerController extends Controller
     public function indexContent(Request $request)
     {
 
-        $query = Buyer::all();
+        $query = Buyer::with('user')->get();
 
         return response()->json([
             'data' => $query

@@ -18,7 +18,6 @@ use Illuminate\Notifications\Notifiable;
  * @property int $fk_id_role
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Buyer|null $buyer
  * @property-read \App\Models\Role $role
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
