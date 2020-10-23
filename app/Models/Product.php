@@ -70,7 +70,6 @@ class Product extends Model
 
     protected $appends = [
         'rating_average',
-        'first_variant'
     ];
 
     public function variants()
@@ -113,12 +112,6 @@ class Product extends Model
     public function getRatingAverageAttribute(){
 
         return number_format($this->ratings()->average('rating'),1);
-
-    }
-
-    public function getFirstVariantAttribute(){
-
-        return $this->variants()->first();
 
     }
 }

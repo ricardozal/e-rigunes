@@ -7,7 +7,7 @@ $(document).ready(function () {
         "processing": true,
         "columns": [
             { "data": "name" },
-            { "data": "product_desc" },
+            { "data": "description" },
             { "data": "weight" },
             { "data": "height" },
             { "data": "width" },

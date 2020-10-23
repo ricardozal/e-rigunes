@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Buyer;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Http\Request\ProductsRequest;
 use App\Http\Request\UpdateProductsRequest;
+use Illuminate\Http\Request;
 
 
 class ProductsController extends Controller
@@ -20,7 +21,7 @@ class ProductsController extends Controller
 
     public function indexContent(Request $request)
     {
-        $query = Product::with(['provider'])->get();
+        $query = Product::with(['provider','category'])->get();
         return response()->json([
             'data' => $query
         ]);
