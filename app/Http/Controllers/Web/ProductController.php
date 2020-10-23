@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Web;
 
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,4 +24,21 @@ class ProductController extends Model
 
         return view('web.product.details',['product' => $product]);
     }
+
+
+    public function categoryProduct($categoryId)
+    {
+
+
+
+        $products = Product::find($categoryId);
+
+        $category = Category::find($categoryId);
+
+        return view('web.product.product_category',['products' => $products,'category'=>$category]);
+    }
+
+
+
+
 }

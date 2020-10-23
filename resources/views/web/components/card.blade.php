@@ -2,9 +2,8 @@
     /* @var $product Product*/use App\Models\Product;
 @endphp
 @foreach($products as $product)
-    <div class="card mb-3 border-0" style="-webkit-box-shadow: 2px 4px 5px -4px rgba(0,0,0,0.57);
-    -moz-box-shadow: 2px 4px 5px -4px rgba(0,0,0,0.57);
-    box-shadow: 2px 4px 5px -4px rgba(0,0,0,0.57);
+    <div class="card mb-3 border-0" style=" box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     border-radius: 12px;">
         <div class="card-body">
             <div class="row">
