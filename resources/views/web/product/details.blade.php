@@ -14,13 +14,13 @@
                     <div class="col-12 col-lg-6 text-center">
                         <div class="row">
                             <div class="col-12">
-                                <img class="variant-image" src="{{$product->first_variant->featured_image}}" alt="img" style="max-width: 70%; height: auto">
+                                <img class="variant-image" src="{{$product->variants[0]->featured_image}}" alt="img" style="max-width: 70%; height: auto">
                             </div>
                         </div>
                         <div class="row mt-5">
                             <div class="col-11 mx-auto">
                                 <div class="images-slider slider">
-                                    @forelse($product->first_variant->variantImages as $image)
+                                    @forelse($product->variants[0]->variantImages as $image)
                                         <div class="cursor-pointer btn-thumbnail"
                                              data-url="{{$image->absolute_image_url}}">
                                             <div class="variant-thumbnail mx-auto"
@@ -54,8 +54,8 @@
                         </div>
                         <div class="row my-4">
                             <div class="col-12">
-                                <h5 class="color-secondary">Precio público: {{$product->first_variant != null ? '$'.number_format($product->first_variant->public_price,2) : 'No disponible'}}</h5>
-                                <h5 class="color-secondary">Precio distribuidor: {{$product->first_variant != null ? '$'.number_format($product->first_variant->distributor_price,2) : 'No disponible'}}</h5>
+                                <h5 class="color-secondary">Precio público: {{'$'.number_format($product->public_price,2)}}</h5>
+                                <h5 class="color-secondary">Precio distribuidor: {{'$'.number_format($product->distributor_price,2)}}</h5>
                             </div>
                         </div>
                         <div class="row my-4">

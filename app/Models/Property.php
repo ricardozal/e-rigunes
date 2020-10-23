@@ -27,6 +27,9 @@ class Property extends Model
 
     protected $table = 'property';
 
+    const SIZE = 1;
+    const COLOR = 2;
+
     public $timestamps = false;
 
     protected $fillable = [

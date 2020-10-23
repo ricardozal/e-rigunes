@@ -5,14 +5,6 @@
 
 @endpush
 @section('content')
-{{--    {{Auth::check() ? Auth::user()->email : 'invitado'}}--}}
-
-{{--    @if(Auth::check())--}}
-{{--        <a href="{{route('ecommerce_account_profile_index')}}">mi cuenta</a>--}}
-{{--        <a href="{{route('logout')}}">salir</a>--}}
-{{--    @else--}}
-{{--        <a href="{{route('login')}}">entrar</a>--}}
-{{--    @endif--}}
     <div class="row mx-0 mb-3">
         <div class="col-12 d-flex align-items-center"
              style="background-image: url('{{asset('img/header_shoes.png')}}');
