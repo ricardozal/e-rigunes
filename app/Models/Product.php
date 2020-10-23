@@ -45,6 +45,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWidth($value)
  * @mixin \Eloquent
  * @property-read \App\Models\Variant $first_variant
+ * @property string $public_price
+ * @property string $distributor_price
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereDistributorPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product wherePublicPrice($value)
  */
 class Product extends Model
 {

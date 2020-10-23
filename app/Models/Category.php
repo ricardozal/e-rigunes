@@ -61,4 +61,9 @@ class Category extends Model
     {
         return asset($this->image_url);
     }
+
+    public static function asMap()
+    {
+        return self::pluck('name', 'id');
+    }
 }

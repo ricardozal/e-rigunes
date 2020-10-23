@@ -20,7 +20,8 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <table id="table-data" class="table table-striped table-bordered dt-responsive text-center" style="width:100%">
+                    <table id="table-data" class="table table-striped table-bordered dt-responsive text-center"
+                           style="width:100%">
                         <thead>
                         <tr>
                             <th>Correo electrónico</th>

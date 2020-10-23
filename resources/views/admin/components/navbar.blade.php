@@ -43,12 +43,22 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{$routeName == 'admin_buyer_index' ? 'active' : ''}}"
-                   href="{{route('admin_buyer_index')}}">
+                <a class="nav-link {{$routeName == 'admin_provider_index' ? 'active' : ''}}"
+                   href="{{route('admin_provider_index')}}">
                     <span>
                         <i class="fas fa-city"></i>
                     </span>
                     <span class="sidebar-text">Proveedores</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{$routeName == 'admin_products_index' ? 'active' : ''}}"
+                   href="{{route('admin_products_index')}}">
+                    <span>
+                        <i class="fas fa-luggage-cart"></i>
+                    </span>
+                    <span class="sidebar-text">Productos</span>
                 </a>
             </li>
         </ul>

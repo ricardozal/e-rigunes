@@ -22,9 +22,7 @@ class VariantFactory extends Factory
     public function definition()
     {
         return [
-            'sku' => $this->faker->randomNumber(5),
-            'public_price' => $this->faker->randomFloat(2,300,1000),
-            'distributor_price' => $this->faker->randomFloat(2,300,1000),
+            'sku' => $this->faker->randomNumber(5)
         ];
     }
 }

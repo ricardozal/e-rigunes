@@ -28,6 +28,8 @@ class ProductFactory extends Factory
             'height' => 15,
             'width' => 30,
             'length' => 20,
+            'public_price' => $this->faker->randomFloat(2,300,1000),
+            'distributor_price' => $this->faker->randomFloat(2,300,1000),
             'fk_id_provider' => $this->faker->randomElement(array(1,2,3,4,5)),
             'fk_id_category' => $this->faker->randomElement(array(1,2,3,4,5))
         ];
