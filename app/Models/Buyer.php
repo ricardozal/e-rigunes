@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Buyer wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Buyer whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
  */
 class Buyer extends Model
 {

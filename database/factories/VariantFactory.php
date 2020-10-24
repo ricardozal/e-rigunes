@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Color;
+use App\Models\Size;
 use App\Models\Variant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +24,9 @@ class VariantFactory extends Factory
     public function definition()
     {
         return [
-            'sku' => $this->faker->randomNumber(5)
+            'sku' => $this->faker->randomNumber(5),
+            'fk_id_color' => Color::inRandomOrder()->first()->id,
+            'fk_id_size' => Size::inRandomOrder()->first()->id,
         ];
     }
 }

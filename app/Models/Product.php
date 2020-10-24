@@ -114,4 +114,10 @@ class Product extends Model
         return number_format($this->ratings()->average('rating'),1);
 
     }
+
+
+//    public function getColorsAttribute()
+//    {
+//        return $this->variants()->groupBy('fk_id_color')->pl
+//    }
 }

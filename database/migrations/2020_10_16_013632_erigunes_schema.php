@@ -147,17 +147,38 @@ class ErigunesSchema extends Migration
 
         });
 
+        Schema::create('size', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('value');
+        });
+
+        Schema::create('color', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('value');
+        });
+
         Schema::create('variant', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sku');
             $table->boolean('active')
                 ->default(true);
             $table->unsignedInteger('fk_id_product');
+            $table->unsignedInteger('fk_id_size');
+            $table->unsignedInteger('fk_id_color');
             $table->timestamps();
 
             $table->foreign('fk_id_product')
                 ->references('id')
                 ->on('product');
+
+            $table->foreign('fk_id_size')
+                ->references('id')
+                ->on('size');
+
+            $table->foreign('fk_id_color')
+                ->references('id')
+                ->on('color');
         });
 
         Schema::create('variant_image', function (Blueprint $table) {
@@ -197,41 +218,6 @@ class ErigunesSchema extends Migration
             $table->foreign('fk_id_product')
                 ->references('id')
                 ->on('product');
-        });
-
-        Schema::create('property', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->boolean('active')
-                ->default(true);
-        });
-
-        Schema::create('property_value', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 1000);
-            $table->string('value', 1000);
-            $table->boolean('active')
-                ->default(true);
-            $table->unsignedInteger('fk_id_property');
-
-            $table->foreign('fk_id_property')
-                ->references('id')
-                ->on('property');
-        });
-
-
-        Schema::create('variant_property_value', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('fk_id_variant');
-            $table->unsignedInteger('fk_id_property_value');
-
-            $table->foreign('fk_id_property_value')
-                ->references('id')
-                ->on('property_value');
-
-            $table->foreign('fk_id_variant')
-                ->references('id')
-                ->on('variant');
         });
 
         Schema::create('payment_method', function(Blueprint $table){
@@ -487,13 +473,12 @@ class ErigunesSchema extends Migration
         Schema::dropIfExists('shipping_information');
         Schema::dropIfExists('promotion');
         Schema::dropIfExists('payment_method');
-        Schema::dropIfExists('variant_property_value');
-        Schema::dropIfExists('property_value');
-        Schema::dropIfExists('property');
         Schema::dropIfExists('rating');
         Schema::dropIfExists('favorite_product');
         Schema::dropIfExists('variant_image');
         Schema::dropIfExists('variant');
+        Schema::dropIfExists('color');
+        Schema::dropIfExists('size');
         Schema::dropIfExists('product');
         Schema::dropIfExists('category');
         Schema::dropIfExists('provider');

@@ -17,8 +17,8 @@ class ProductsSeeder extends Seeder
     public function run()
     {
 
-        $this->property();
-        $this->propertyValue();
+        $this->colors();
+        $this->sizes();
 
         if (env('APP_DEBUG')) {
             Category::factory()->count(5)->create();
@@ -32,9 +32,6 @@ class ProductsSeeder extends Seeder
             $variants = Variant::all();
 
             foreach ($variants as $variant){
-                $variant->propertyValues()->attach(PropertyValue::whereFkIdProperty(1)->inRandomOrder()->first()->id);
-                $variant->propertyValues()->attach(PropertyValue::whereFkIdProperty(2)->inRandomOrder()->first()->id);
-
                 for ($i=0;$i<3;$i++){
                     DB::table('variant_image')->insert([
                         'url' => 'https://picsum.photos/id/' . rand(200, 300) . '/800/800',
@@ -50,64 +47,84 @@ class ProductsSeeder extends Seeder
 
     }
 
-    public function property()
+    public function colors()
     {
-        DB::table('property')->insert([
+        DB::table('color')->insert([
             [
-                'name' => 'Talla',
-                'active' => true,
+                'name' => 'Negro',
+                'value' => '#000000',
             ],
             [
-                'name' => 'Color',
-                'active' => true,
+                'name' => 'Rojo',
+                'value' => '#FF3535',
+            ],
+            [
+                'name' => 'Azul',
+                'value' => '#166FE1'
+            ],
+            [
+                'name' => 'Café',
+                'value' => '#8A6A4B'
+            ],
+            [
+                'name' => 'Blanco',
+                'value' => '#FFFFFF'
+            ],
+            [
+                'name' => 'Gris',
+                'value' => '#A1A1A1'
+            ],
+            [
+                'name' => 'Verde',
+                'value' => '#4B8E2E'
             ]
         ]);
     }
 
-    public function propertyValue(){
-        DB::table('property_value')->insert([
+    public function sizes(){
+
+        DB::table('size')->insert([
             [
-                'name' => '23',
                 'value' => '23',
-                'active' => true,
-                'fk_id_property' => 1
             ],
             [
-                'params' => '24',
-                'value' => '24',
-                'active' => true,
-                'fk_id_property' => 1
+                'value' => '23.5',
             ],
             [
-                'params' => '25',
-                'value' => '25',
-                'active' => true,
-                'fk_id_property' => 1
+                'value' => '24'
             ],
             [
-                'params' => '26',
-                'value' => '26',
-                'active' => true,
-                'fk_id_property' => 1
+                'value' => '24.5'
             ],
             [
-                'params' => '27',
-                'value' => '27',
-                'active' => true,
-                'fk_id_property' => 1
+                'value' => '25'
             ],
             [
-                'params' => 'Negro',
-                'value' => '#000000',
-                'active' => true,
-                'fk_id_property' => 2
+                'value' => '25.5'
             ],
             [
-                'params' => 'Azul',
-                'value' => '#0000ff',
-                'active' => true,
-                'fk_id_property' => 2
+                'value' => '26'
+            ],
+            [
+                'value' => '26.5'
+            ],
+            [
+                'value' => '27'
+            ],
+            [
+                'value' => '27.5'
+            ],
+            [
+                'value' => '28'
+            ],
+            [
+                'value' => '28.5'
+            ],
+            [
+                'value' => '29'
             ]
         ]);
+
     }
+
 }
