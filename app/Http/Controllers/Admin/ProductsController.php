@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Buyer;
 use App\Models\Product;
-use App\Models\Provider;
-use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Http\Request\ProductsRequest;
 use App\Http\Request\UpdateProductsRequest;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 
 class ProductsController extends Controller
@@ -23,14 +21,7 @@ class ProductsController extends Controller
 
     public function indexContent(Request $request)
     {
-        $products = DB::table('product')
-            ->join('provider', 'provider.id', '=', 'product.fk_id_provider')
-            ->join('category', 'category.id', '=', 'product.fk_id_category')
-            ->select('product.name as product_name', 'product.description as product_desc', 'weight', 'height', 'width', 'length', 'provider.name as provider_name', 'category.name as category_name')
-            ->get();
-
-        $query = $products;
-
+        $query = Product::with(['provider','category'])->get();
         return response()->json([
             'data' => $query
         ]);
@@ -81,6 +72,36 @@ class ProductsController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Guardado correctamente'
+        ]);
+    }
+
+    public function active($productId)
+    {
+        $product = Product::find($productId);
+
+        $product->active = !$product->active;
+        if (!$product->save()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'no se puede modificar el estatus en este momento'
+            ]);
+        }
+        return response()->json([
+            'success' => true,
+        ]);
+    }
+
+    public function delete($productId)
+    {
+        $product = Product::find($productId);
+        if (!$product->delete()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'no se puede modificar el estatus en este momento'
+            ]);
+        }
+        return response()->json([
+            'success' => true,
         ]);
     }
 }

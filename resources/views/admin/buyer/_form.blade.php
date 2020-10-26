@@ -67,13 +67,3 @@
         </div>
     </div>
 </div>
-
-<div class="row w-75">
-    <div class="col-12">
-        <div class="form-group focused">
-            <label for="customer_stripe_id"  class="focused form-label">Stripe ID</label>
-            <input type="text" class="form-control" autocomplete="off" id="customer_stripe_id" name="customer_stripe_id" value="{{ isset($buyer) ? $buyer->customer_stripe_id : null}}">
-            <span class="invalid-feedback">{{ $errors->first('customer_stripe_id') }}</span>
-        </div>
-    </div>
-</div>

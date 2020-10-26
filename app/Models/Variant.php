@@ -6,25 +6,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 /**
  * App\Models\Variant
  *
  * @property int $id
  * @property string $sku
- * @property string $public_price
- * @property string $distributor_price
  * @property int $active
  * @property int $fk_id_product
+ * @property int $fk_id_size
+ * @property int $fk_id_color
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Color $color
  * @property-read mixed $classification_product
  * @property-read mixed $featured_image
  * @property-read mixed $is_active_product
  * @property-read mixed $product_name
- * @property-read mixed $properties_list
  * @property-read \App\Models\Product $product
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PropertyValue[] $propertyValues
- * @property-read int|null $property_values_count
+ * @property-read \App\Models\Size $size
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\VariantImage[] $variantImages
  * @property-read int|null $variant_images_count
  * @method static \Illuminate\Database\Eloquent\Builder|Variant newModelQuery()
@@ -32,10 +32,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Variant query()
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Variant whereDistributorPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Variant whereFkIdColor($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereFkIdProduct($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Variant whereFkIdSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Variant wherePublicPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereSku($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereUpdatedAt($value)
  * @mixin \Eloquent
@@ -59,7 +59,6 @@ class Variant extends Model
         'is_active_product',
         'featured_image',
         'classification_product',
-        'properties_list'
     ];
 
     public function getProductNameAttribute(){
@@ -70,24 +69,6 @@ class Variant extends Model
         return $this->product->active;
     }
 
-    public function getPropertiesListAttribute()
-    {
-        $propertyValues = $this->propertyValues;
-        $list = '';
-        $len = count($propertyValues);
-        $i = 0;
-        foreach ($propertyValues as $propertyValue)
-        {
-            $list .= $propertyValue->property->name.': '.$propertyValue->params;
-            if ($i != $len - 1) {
-                $list .= ', ';
-            }
-            $i++;
-        }
-
-        return $list;
-    }
-
     public function getFeaturedImageAttribute()
     {
         return VariantImage::where('fk_id_variant', $this->id)
@@ -96,7 +77,7 @@ class Variant extends Model
 
     public function getClassificationProductAttribute(){
 
-        return $this->product->classification->name;
+        return $this->product->category->name;
     }
 
     public function variantImages()
@@ -117,15 +98,22 @@ class Variant extends Model
         );
     }
 
-    public function propertyValues(){
-
-        return $this->belongsToMany(
-            PropertyValue::class,
-            'variant_property_value',
-            'fk_id_variant',
-            'fk_id_property_value'
+    public function color()
+    {
+        return $this->belongsTo(
+            Color::class,
+            'fk_id_color',
+            'id'
         );
+    }
 
+    public function size()
+    {
+        return $this->belongsTo(
+            Size::class,
+            'fk_id_size',
+            'id'
+        );
     }
 
 }

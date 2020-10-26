@@ -6,10 +6,9 @@ $(document).ready(function () {
         "processing": true,
         "columns": [
             { "data": "full_name" },
-            { "data": "email" },
+            { "data": "user.email" },
             { "data": "birthday" },
             { "data": "phone" },
-            { "data": "customer_stripe_id" },
             {
                 "data": "id",
                 render:function(data)

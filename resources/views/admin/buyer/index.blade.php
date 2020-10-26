@@ -20,7 +20,6 @@
                             <th>Correo electrónico</th>
                             <th>Fecha de nacimiento</th>
                             <th>Teléfono</th>
-                            <th>Stripe id</th>
                             <th>Opciones</th>
                             <th>Activar/Desactivar</th>
 
