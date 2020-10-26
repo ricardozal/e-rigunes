@@ -53,6 +53,16 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link {{$routeName == 'admin_category_index' ? 'active' : ''}}"
+                   href="{{route('admin_category_index')}}">
+                    <span>
+                        <i class="fas fa-book"></i>
+                    </span>
+                    <span class="sidebar-text">Categorias</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link {{$routeName == 'admin_products_index' ? 'active' : ''}}"
                    href="{{route('admin_products_index')}}">
                     <span>
