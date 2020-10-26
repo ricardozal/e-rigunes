@@ -18,6 +18,9 @@ class HomeController extends Controller
             'category'=>$category]);
     }
 
+public function question(){
+        return view('web.home.frequent_questions');
+}
 
 
 }
