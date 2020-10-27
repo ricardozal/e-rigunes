@@ -191,6 +191,21 @@ Route::get('/admin/purchase-content',
     'PurchaseController@indexContent')
     ->name('admin_purchase_index_content');
 
-Route::get('/admin/purchase-detail',
+Route::get('/admin/{purchaseId}/purchase-detail',
     'PurchaseController@detailPurchase')
     ->name('admin_purchase_detail');
+
+Route::get('/inventory/{purchaseId}/showTableDetails',
+    'PurchaseController@showTableDetails')
+    ->name('admin_purchase_showTableDetails');
+/***********************************
+ * *******   Contact messages *************
+ **********************************/
+
+Route::get('/admin/contact-messages',
+    'ContactMessagesController@index')
+    ->name('admin_contactMessages_index');
+
+Route::get('/admin/contact-messages-content',
+    'ContactMessagesController@indexContent')
+    ->name('admin_contactMessages_index_content');

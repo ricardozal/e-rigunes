@@ -6,23 +6,10 @@ $(document).ready(function () {
         "ajax": $('#inp-url-index-content').val(),
         "processing": true,
         "columns": [
-            {"data": "provider.name"},
-            {"data": "total_price"},
-            {
-                "data": "id",
-                render: function (data) {
-                    var $inpUrlDetail = $('#inp-url-detail');
-                    if ($inpUrlDetail.length === 0) {
-                        return '';
-                    }
-
-                    var url = $inpUrlDetail.val();
-                    url = url.replace('FAKE_ID', data);
-
-                    return "<a href='" + url + "' title='Detalles' data-toggle='tooltip' class='detail-btn' style='color: #2a3d66'><span class='fas fa-info-circle'></span></a>";
-                },
-                "targets": -1
-            },
+            {"data": "name"},
+            {"data": "phone"},
+            {"data": "email"},
+            {"data": "message"},
         ],
         "language": {
             "search": "Buscar: ",

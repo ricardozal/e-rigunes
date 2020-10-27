@@ -23,4 +23,13 @@ use Illuminate\Database\Eloquent\Model;
 class Color extends Model
 {
     protected $table = 'color';
+
+    public function variantsImage()
+    {
+        return $this->hasMany(
+            VariantImage::class,
+            'fk_id_color',
+            'id'
+        );
+    }
 }

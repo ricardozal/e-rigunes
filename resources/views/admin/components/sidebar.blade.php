@@ -67,6 +67,14 @@
         <span class="sidebar-text">Compras</span>
     </a>
 
+    <a class="nav-link {{$routeName == 'admin_contactMessages_index' ? 'active' : ''}}"
+       href="{{route('admin_contactMessages_index')}}">
+    <span>
+        <i class="fas fa-comment-dots"></i>
+    </span>
+        <span class="sidebar-text">Mensajes</span>
+    </a>
+
     <a class="nav-link"
        href="{{route('logout')}}">
         <span>

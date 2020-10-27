@@ -91,6 +91,16 @@
                     <span class="sidebar-text">Compras</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{$routeName == 'admin_contactMessages_index' ? 'active' : ''}}"
+                   href="{{route('admin_contactMessages_index')}}">
+                    <span>
+                        <i class="fas fa-comment-dots"></i>
+                    </span>
+                    <span class="sidebar-text">Mensajes</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

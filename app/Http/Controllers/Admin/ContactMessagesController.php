@@ -5,25 +5,23 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\Variant;
+use App\Models\DataContactWebsite;
 use Illuminate\Http\Request;
 
-class VariantController extends Controller
+
+class ContactMessagesController extends Controller
 {
     public function index()
     {
-        return view('admin.variant.index');
+        return view('admin.contactMessages.index');
     }
 
     public function indexContent(Request $request)
     {
-
-        $query = Variant::with(['product','size'])
-            ->get();
+        $query = DataContactWebsite::all();
 
         return response()->json([
             'data' => $query
         ]);
-
     }
 }
