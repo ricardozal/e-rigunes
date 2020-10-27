@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 /**
  * App\Models\Product
  *
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $height
  * @property int $width
  * @property int $length
+ * @property string $public_price
+ * @property string $distributor_price
  * @property int $active
  * @property int $fk_id_provider
  * @property int $fk_id_category
@@ -23,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Category $category
  * @property-read mixed $rating_average
+ * @property-read mixed $sizes
  * @property-read \App\Models\Provider $provider
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Rating[] $ratings
  * @property-read int|null $ratings_count
@@ -34,21 +38,18 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereDistributorPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereFkIdCategory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereFkIdProvider($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereHeight($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereLength($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product wherePublicPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWeight($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWidth($value)
  * @mixin \Eloquent
- * @property-read \App\Models\Variant $first_variant
- * @property string $public_price
- * @property string $distributor_price
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereDistributorPrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product wherePublicPrice($value)
  */
 class Product extends Model
 {
@@ -70,6 +71,8 @@ class Product extends Model
 
     protected $appends = [
         'rating_average',
+        'colors',
+        'sizes'
     ];
 
     public function variants()
@@ -118,6 +121,23 @@ class Product extends Model
 
 //    public function getColorsAttribute()
 //    {
-//        return $this->variants()->groupBy('fk_id_color')->pl
+//        $colorsId = $this->variants()
+//            ->select('fk_id_color')
+//            ->groupBy('fk_id_color')
+//            ->pluck('fk_id_color')
+//            ->toArray();;
+//
+//        return Color::whereIn('id',$colorsId)->get();
 //    }
+
+    public function getSizesAttribute()
+    {
+        $sizesId = $this->variants()
+            ->select('fk_id_size')
+            ->groupBy('fk_id_size')
+            ->pluck('fk_id_size')
+            ->toArray();;
+
+        return Size::whereIn('id',$sizesId)->get();
+    }
 }

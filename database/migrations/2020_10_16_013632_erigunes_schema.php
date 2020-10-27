@@ -165,7 +165,6 @@ class ErigunesSchema extends Migration
                 ->default(true);
             $table->unsignedInteger('fk_id_product');
             $table->unsignedInteger('fk_id_size');
-            $table->unsignedInteger('fk_id_color');
             $table->timestamps();
 
             $table->foreign('fk_id_product')
@@ -175,23 +174,32 @@ class ErigunesSchema extends Migration
             $table->foreign('fk_id_size')
                 ->references('id')
                 ->on('size');
-
-            $table->foreign('fk_id_color')
-                ->references('id')
-                ->on('color');
         });
 
-        Schema::create('variant_image', function (Blueprint $table) {
+        Schema::create('image', function (Blueprint $table) {
             $table->increments('id');
             $table->string('url', 1000);
             $table->boolean('featured')
                 ->default(false);
-            $table->integer('position');
+        });
+
+        Schema::create('variant_has_images', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('fk_id_color');
             $table->unsignedInteger('fk_id_variant');
+            $table->unsignedInteger('fk_id_image');
+
+            $table->foreign('fk_id_color')
+                ->references('id')
+                ->on('color');
 
             $table->foreign('fk_id_variant')
                 ->references('id')
                 ->on('variant');
+
+            $table->foreign('fk_id_image')
+                ->references('id')
+                ->on('image');
         });
 
         Schema::create('favorite_product', function (Blueprint $table) {
@@ -475,7 +483,8 @@ class ErigunesSchema extends Migration
         Schema::dropIfExists('payment_method');
         Schema::dropIfExists('rating');
         Schema::dropIfExists('favorite_product');
-        Schema::dropIfExists('variant_image');
+        Schema::dropIfExists('variant_has_images');
+        Schema::dropIfExists('image');
         Schema::dropIfExists('variant');
         Schema::dropIfExists('color');
         Schema::dropIfExists('size');

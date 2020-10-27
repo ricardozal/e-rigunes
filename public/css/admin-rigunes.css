@@ -147,6 +147,12 @@ body {
   box-shadow: 0 0 0 0.1rem #6f6f6f !important;
   background-color: #565656 !important;
 }
+.badge-primary {
+  background-color: #FBEFF5;
+  border-color: #FBEFF5;
+  color: #6F6F6F;
+  cursor: pointer;
+}
 .big-border-radius {
   border-radius: 40px;
 }

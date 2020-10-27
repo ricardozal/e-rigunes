@@ -25,7 +25,6 @@ class VariantFactory extends Factory
     {
         return [
             'sku' => $this->faker->randomNumber(5),
-            'fk_id_color' => Color::inRandomOrder()->first()->id,
             'fk_id_size' => Size::inRandomOrder()->first()->id,
         ];
     }
