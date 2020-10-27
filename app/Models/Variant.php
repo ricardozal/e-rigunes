@@ -116,4 +116,14 @@ class Variant extends Model
         );
     }
 
+    public function purchases()
+    {
+        return $this->belongsToMany(
+            Purchase::class,
+            'purchase_variants',
+            'fk_id_variant',
+            'fk_id_purchase'
+        )->withPivot(['quantity','purchase_price']);
+    }
+
 }

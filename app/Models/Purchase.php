@@ -37,6 +37,15 @@ class Purchase extends Model
             'purchase_variants',
             'fk_id_purchase',
             'fk_id_variant'
+        )->withPivot(['quantity','purchase_price']);
+    }
+
+    public function provider()
+    {
+        return $this->belongsTo(
+            Provider::class,
+            'fk_id_provider',
+            'id'
         );
     }
 }

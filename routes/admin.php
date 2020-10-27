@@ -102,9 +102,6 @@ Route::get('/admin/provider/{providerId}/active',
     'ProviderController@active')
     ->name('admin_provider_active');
 
-Route::get('/admin/provider/{providerId}/delete',
-    'ProviderController@delete')
-    ->name('admin_provider_delete');
 
 /***********************************
  * *******   Products *************
@@ -172,6 +169,28 @@ Route::get('/admin/category/{categoryId}/active',
     'CategoryController@active')
     ->name('admin_category_active');
 
-Route::get('/admin/category/{categoryId}/delete',
-    'CategoryController@delete')
-    ->name('admin_category_delete');
+/***********************************
+ * *******   Variants *************
+ **********************************/
+Route::get('/admin/variant',
+    'VariantController@index')
+    ->name('admin_variant_index');
+
+Route::get('/admin/variant-content',
+    'VariantController@indexContent')
+    ->name('admin_variant_index_content');
+
+/***********************************
+ * *******   Purchase *************
+ **********************************/
+Route::get('/admin/purchase',
+    'PurchaseController@index')
+    ->name('admin_purchase_index');
+
+Route::get('/admin/purchase-content',
+    'PurchaseController@indexContent')
+    ->name('admin_purchase_index_content');
+
+Route::get('/admin/purchase-detail',
+    'PurchaseController@detailPurchase')
+    ->name('admin_purchase_detail');

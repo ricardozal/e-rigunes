@@ -55,6 +55,15 @@ class Provider extends Model
         'seller_email',
     ];
 
+    public function purchase()
+    {
+        return $this->hasMany(
+            Purchase::class,
+            'fk_id_provider',
+            'id'
+        );
+    }
+
     public static function asMap()
     {
         return self::pluck('name', 'id');

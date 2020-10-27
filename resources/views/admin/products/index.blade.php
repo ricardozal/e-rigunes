@@ -49,8 +49,6 @@
            value="{{route('admin_product_active',['productId' => 'FAKE_ID'])}}">
     <input id="inp-url-update" type="hidden"
            value="{{route('admin_product_update',['productId' => 'FAKE_ID'])}}">
-    <input id="inp-url-delete" type="hidden"
-           value="{{route('admin_product_delete',['productId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
