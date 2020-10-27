@@ -5,6 +5,7 @@ namespace Database\Seeders;
 
 
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\PropertyValue;
 use App\Models\Provider;
@@ -33,10 +34,14 @@ class ProductsSeeder extends Seeder
 
             foreach ($variants as $variant){
                 for ($i=0;$i<3;$i++){
-                    DB::table('variant_image')->insert([
+                    $imageId = DB::table('image')->insertGetId([
                         'url' => 'https://picsum.photos/id/' . rand(200, 300) . '/800/800',
                         'featured' => $i == 0,
-                        'position' => ($i+1),
+                    ]);
+
+                    DB::table('variant_has_images')->insert([
+                        'fk_id_image' => $imageId,
+                        'fk_id_color' => Color::inRandomOrder()->first()->id,
                         'fk_id_variant' => $variant->id,
                     ]);
                 }

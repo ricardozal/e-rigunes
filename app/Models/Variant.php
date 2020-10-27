@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
+
 /**
  * App\Models\Variant
  *
@@ -15,24 +16,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $active
  * @property int $fk_id_product
  * @property int $fk_id_size
- * @property int $fk_id_color
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Color $color
  * @property-read mixed $classification_product
  * @property-read mixed $featured_image
  * @property-read mixed $is_active_product
  * @property-read mixed $product_name
  * @property-read \App\Models\Product $product
  * @property-read \App\Models\Size $size
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\VariantImage[] $variantImages
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Image[] $variantImages
  * @property-read int|null $variant_images_count
  * @method static \Illuminate\Database\Eloquent\Builder|Variant newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Variant newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Variant query()
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Variant whereFkIdColor($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereFkIdProduct($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereFkIdSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereId($value)
@@ -71,8 +69,7 @@ class Variant extends Model
 
     public function getFeaturedImageAttribute()
     {
-        return VariantImage::where('fk_id_variant', $this->id)
-            ->where('featured', 1)->first()->absolute_image_url;
+        return $this->variantImages()->where('featured', 1)->first()->absolute_image_url;
     }
 
     public function getClassificationProductAttribute(){
@@ -82,10 +79,11 @@ class Variant extends Model
 
     public function variantImages()
     {
-        return $this->hasMany(
-            VariantImage::class,
+        return $this->belongsToMany(
+            Image::class,
+            'variant_has_images',
             'fk_id_variant',
-            'id'
+            'fk_id_image'
         );
     }
 
@@ -94,15 +92,6 @@ class Variant extends Model
         return $this->belongsTo(
             Product::class,
             'fk_id_product',
-            'id'
-        );
-    }
-
-    public function color()
-    {
-        return $this->belongsTo(
-            Color::class,
-            'fk_id_color',
             'id'
         );
     }

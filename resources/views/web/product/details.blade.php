@@ -60,7 +60,7 @@
                         </div>
                         <div class="row my-4">
                             <div class="col-12">
-                                <span>Cantidad</span>
+                                <h5>Cantidad</h5>
                                 <div class="num-block skin-2">
                                     <div class="num-in">
                                         <span class="minus dis cursor-pointer"></span>
@@ -72,7 +72,29 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-
+                                <h5>Colores</h5>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="row">
+                                    @foreach($product->colors as $color)
+                                        <div class="col-2 text-center cursor-pointer {{$product->variants[0]->fk_id_color == $color->id ? 'selected-color' : ''}}">
+                                            <div class="mx-auto" style="background-color: {{$color->value}}; border: 1px solid gray; height: 20px; width: 20px; border-radius: 20px; margin: 0; padding: 0;"></div>
+                                            <span>{{$color->name}}</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <h5>Tallas</h5>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    @foreach($product->sizes as $size)
+                                        <div class="col-2 text-center">
+                                            <h4><span class="badge badge-primary  {{$product->variants[0]->fk_id_size == $size->id ? 'selected-size' : ''}}">{{$size->value}}</span></h4>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
