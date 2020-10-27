@@ -2,7 +2,7 @@
     <div class="col-4 my-2 h2 text-center">
         <a class="text-center mx-2" href="https://www.instagram.com/rigunes.mx/"
            target="_blank">
-            <i class="fab fa-instagram color-white d-none d-md-inline"></i></a>
+            <i class="fab fa-instagram color-white d-none d-md-inline" style="height: 5vw;"></i></a>
         <a class="text-center mx-2 " href="https://www.facebook.com/Rigunes" target="_blank">
             <i class="fab fa-facebook-f color-white d-none d-md-inline"></i>
         </a>
@@ -15,17 +15,18 @@
            id=""
            role=""
            data-toggle="">
+            <i class="far fa-user color-white"></i>
 
-            <i class="far fa-user color-white"></i></a>
+        </a>
         <i class="fas fa-shopping-bag color-white mr-4"></i>
-
     </div>
 </div>
 
 
 <div class="row mx-0">
-    <a class="mx-auto my-3" href=""><img src="{{asset('img/logos/rigunes_logo_pink.png')}}" style="height: 8vh!important;"
-                                    class="mx-auto mb-2"></a>
+    <a class="mx-auto my-3" href="{{route('web_home')}}"><img src="{{asset('img/logos/rigunes_logo_pink.png')}}"
+                                                              style="height: 12vh!important;"
+                                                              class="mx-auto mb-2"></a>
 </div>
 
 
@@ -37,19 +38,24 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item ">
-                <a class="nav-link" href="#">HOME <span class="sr-only"></span></a>
+                <a class="nav-link" href="{{route('web_home')}}">HOME <span class="sr-only"></span></a>
             </li>
             <li class="nav-item dropdown mx-5">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     CATEGORÍAS
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Caballero</a>
-                    <a class="dropdown-item" href="#">Dama</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Niños</a>
-                    <a class="dropdown-item" href="#">Niñas</a>
+                <div class="dropdown-menu" aria-labelledby="drop-down">
+                    {{--                    @foreach($category as $cat)--}}
+                    <a class="nav-link active-principal-2 dropdown-sub-classification color-gray-dark font-size-80 font-family-2 dropdown-item"
+                       href=""
+                       style=" padding: .25rem 1.5rem;"
+                       data-parent-classification="">
+                        {{--                            {{$cat->name}}--}}
+                        {{--                            <div style="background-image: url({{$cat->image_url}})"></div>--}}
+                    </a>
+
+                    {{--                    @endforeach--}}
                 </div>
             </li>
             <li class="nav-item mx-5">
@@ -60,7 +66,7 @@
                 <a class="nav-link " href="#">NOSOTROS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#">CONTACTO</a>
+                <a class="nav-link " href="{{route('contact_section')}}">CONTACTO</a>
             </li>
         </ul>
     </div>

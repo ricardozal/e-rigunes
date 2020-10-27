@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -31,7 +32,9 @@ class ProductController extends Model
 
 
 
-        $products = Product::find($categoryId);
+
+        $products = Product::where('active',true)
+            ->where('fk_id_category',$categoryId)->get();
 
         $category = Category::find($categoryId);
 

@@ -151,3 +151,27 @@ Route::get('/admin/category',
 Route::get('/admin/category-content',
     'CategoryController@indexContent')
     ->name('admin_category_index_content');
+
+Route::get('/admin/category/create',
+    'CategoryController@create')
+    ->name('admin_category_create');
+
+Route::post('/admin/category/create',
+    'CategoryController@createPost')
+    ->name('admin_category_create_post');
+
+Route::get('/admin/category/{categoryId}/update',
+    'CategoryController@update')
+    ->name('admin_category_update');
+
+Route::post('/admin/category/{categoryId}/update',
+    'CategoryController@updatePost')
+    ->name('admin_category_update_post');
+
+Route::get('/admin/category/{categoryId}/active',
+    'CategoryController@active')
+    ->name('admin_category_active');
+
+Route::get('/admin/category/{categoryId}/delete',
+    'CategoryController@delete')
+    ->name('admin_category_delete');

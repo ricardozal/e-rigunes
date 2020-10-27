@@ -8,14 +8,7 @@ $(document).ready(function () {
         "columns": [
             { "data": "name" },
             { "data": "description" },
-            { "data": "weight" },
-            { "data": "height" },
-            { "data": "width" },
-            { "data": "length" },
-            { "data": "public_price" },
-            { "data": "distributor_price" },
-            { "data": "provider.name" },
-            { "data": "category.name" },
+            { "data": "image_url" },
             {
                 "data": "id",
                 render:function(data)
@@ -61,7 +54,7 @@ $(document).ready(function () {
         "language": {
             "search": "Buscar: ",
             "zeroRecords": "No se encontró ningún registro.",
-            "info": "Total de productos: <strong>_TOTAL_</strong>",
+            "info": "Total de proveedores: <strong>_TOTAL_</strong>",
             infoEmpty: "Sin datos disponibles",
             emptyTable: "No se ha encontrado ningún registro.",
             processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i> ',
@@ -120,8 +113,8 @@ $(document).ready(function () {
                     {
                         table.ajax.reload();
                         Swal.fire(
-                            'producto eliminado!',
-                            'Ha eliminado un producto.',
+                            'Categoria eliminada!',
+                            'Ha eliminado una categoria.',
                             'success'
                         );
                     }
@@ -142,7 +135,7 @@ $(document).ready(function () {
         var $this = $(this);
 
         Swal.fire({
-            title: '¿Desea '+option+' el producto?',
+            title: '¿Desea '+option+' a la categoria?',
             text: 'Podrá '+optionContra+' en cualquier momento',
             icon: 'warning',
             showCancelButton: true,
@@ -168,7 +161,7 @@ $(document).ready(function () {
                         {
                             Swal.fire(
                                 preValue ? 'Desactivado' : 'Activado',
-                                'El producto fue '+(preValue ? 'desactivado' : 'activado')+'.',
+                                'La categoria fue '+(preValue ? 'desactivado' : 'activado')+'.',
                                 'success'
                             );
                         }

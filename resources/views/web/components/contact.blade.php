@@ -1,16 +1,17 @@
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{{asset("/commons/form_tools.js")}}"></script>
+    <script src="{{ asset('js/web/components/dataContact.js?v=1') }}"></script>
+@endpush
+
 <div class="row justify-content-center mx-0">
 
     <div class="col-md-10  mt-1  d-flex align-items-center justify-content-center" id="contact">
         <div class="card w-75 mb-5 mt-2 border-0" style="border-radius: 30px">
             <div class="card-body">
-                <form id="form-contact" action="" method="POST">
+                <form id="form-contact" action="{{route('contact_web')}}" method="POST">
                     @csrf
 
-                    <div class="row text-center">
-                        <div class="col-12 mb-5">
-                            <h2 class="color-gray-dark font-family-2">Contacto</h2>
-                        </div>
-                    </div>
 
                     <div class="row">
                         <div class="col-lg-6 col-sm-12">
@@ -38,7 +39,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <textarea class="form-control rounded-0" name="description" id="description" rows="3"
+                                <textarea class="form-control rounded-0" name="message" id="message" rows="3"
                                           placeholder="Mensaje"></textarea>
                             </div>
                         </div>

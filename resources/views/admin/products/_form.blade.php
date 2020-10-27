@@ -60,6 +60,26 @@
 
 <div class="row w-75">
     <div class="col-12">
+        <div class="form-group focused">
+            <label for="public_price"  class="focused form-label">Precio público</label>
+            <input type="number" class="form-control" autocomplete="off" id="public_price" name="public_price" value="{{ isset($product) ? $product->public_price : null}}">
+            <span class="invalid-feedback">{{ $errors->first('public_price') }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="row w-75">
+    <div class="col-12">
+        <div class="form-group focused">
+            <label for="distributor_price"  class="focused form-label">Precio distibuidor</label>
+            <input type="number" class="form-control" autocomplete="off" id="distributor_price" name="distributor_price" value="{{ isset($product) ? $product->distributor_price : null}}">
+            <span class="invalid-feedback">{{ $errors->first('distributor_price') }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="row w-75">
+    <div class="col-12">
         <div class="form-group form-select focused">
             <label for="fk_id_provider" class="focused form-label">Proveedor</label>
             <select class="form-control" id="fk_id_provider" name="fk_id_provider">

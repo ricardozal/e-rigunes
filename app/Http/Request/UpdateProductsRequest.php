@@ -26,6 +26,8 @@ class UpdateProductsRequest extends FormRequest
             'height' => 'required',
             'width' => 'required',
             'length' => 'required',
+            'public_price' => 'required',
+            'distributor_price' => 'required',
             'fk_id_provider' => 'required',
             'fk_id_category' => 'required'
         ];
@@ -40,6 +42,8 @@ class UpdateProductsRequest extends FormRequest
             'height' => 'Altura necesaria',
             'width' => 'Ancho necesario',
             'length' => 'Largo requerido',
+            'public_price' => 'Precio público necesarío',
+            'distributor_price' => 'Precio de distribuidor requerido',
             'fk_id_provider' => 'Seleccione un proveedor',
             'fk_id_category' => 'Seleccione una categoria'
         ];

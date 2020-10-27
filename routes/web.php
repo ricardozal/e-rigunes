@@ -54,3 +54,21 @@ Route::get(
     '/category/{categoryId}/product',
     'Web\ProductController@categoryProduct'
 )->name('category_products');
+
+/**
+ *      Contact
+ */
+Route::post('/contact',
+    'Web\ContactController@contactPost')
+    ->name('contact_web');
+
+Route::get(
+    '/contact-section',
+    'Web\ContactController@contact'
+)->name('contact_section');
+
+
+Route::get(
+    '/my-account/index',
+    'Web\UserController@personalData'
+)->name('account_index');
