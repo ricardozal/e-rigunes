@@ -107,11 +107,12 @@ class Variant extends Model
 
     public function color()
     {
-        return $this->belongsTo(
+        return $this->belongsToMany(
             Color::class,
-            'fk_id_color',
-            'id'
-        );
+            'variant_has_images',
+            'fk_id_variant',
+            'fk_id_color'
+        )->select(['color.id','color.name','color.value'])->groupBy('color.id');
     }
 
     public function purchases()

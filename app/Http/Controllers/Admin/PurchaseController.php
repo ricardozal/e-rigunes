@@ -42,8 +42,9 @@ class PurchaseController extends Controller
 
     public function showTableDetails($purchaseId)
     {
+        /** @var Purchase $purchaseVariants */
         $purchaseVariants = Purchase::find($purchaseId)->purchaseVariants()
-            ->with(['product','size'])->get();
+            ->with(['product','size','color'])->get();
 
         $query = $purchaseVariants;
 
