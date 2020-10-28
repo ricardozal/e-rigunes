@@ -45,6 +45,8 @@
 
     <input id="inp-url-index-content" type="hidden"
            value="{{route('admin_products_index_content')}}">
+    <input id="inp-url-variant" type="hidden"
+           value="{{route('admin_product_variants',['productId' => 'FAKE_ID'])}}">
     <input id="inp-url-active" type="hidden"
            value="{{route('admin_product_active',['productId' => 'FAKE_ID'])}}">
     <input id="inp-url-update" type="hidden"

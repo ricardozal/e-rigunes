@@ -71,7 +71,7 @@ class Product extends Model
 
     protected $appends = [
         'rating_average',
-        'colors',
+        //'colors',
         'sizes'
     ];
 

@@ -9,6 +9,8 @@ use App\Models\Buyer;
 use App\Models\Product;
 use App\Http\Request\ProductsRequest;
 use App\Http\Request\UpdateProductsRequest;
+use App\Models\Variant;
+use App\Models\VariantImage;
 use Illuminate\Http\Request;
 
 
@@ -103,5 +105,23 @@ class ProductsController extends Controller
         return response()->json([
             'success' => true,
         ]);
+    }
+
+    public  function variants($productId){
+        $product = Product::find($productId);
+        return view('admin.products.indexVariants',['product' => $product]);
+    }
+
+    public function variantsContent($productId){
+
+        $query = Variant::with(['product','size','color'])
+            ->where('fk_id_product', '=', $productId)
+            ->get();
+        dd($query);
+
+        return response()->json([
+            'data' => $query
+        ]);
+
     }
 }

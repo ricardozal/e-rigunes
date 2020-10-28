@@ -30,7 +30,7 @@
 
     <input id="inp-url-index-content" type="hidden"
            value="{{route('admin_purchase_index_content')}}">
-    <input id="inp-url-update" type="hidden"
+    <input id="inp-url-detail" type="hidden"
            value="{{route('admin_purchase_detail',['purchaseId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">

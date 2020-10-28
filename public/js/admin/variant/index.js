@@ -8,7 +8,7 @@ $(document).ready(function () {
         "columns": [
             {"data": "sku"},
             {"data": "product.name"},
-            {"data": "color.name"},
+            {"data": "color[0].name"},
             {"data": "size.value"},
             {
                 "data": "id",

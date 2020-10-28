@@ -138,6 +138,14 @@ Route::get('/admin/product/{productId}/delete',
     'ProductsController@delete')
     ->name('admin_product_delete');
 
+Route::get('/admin/product/{productId}/variants',
+    'ProductsController@variants')
+    ->name('admin_product_variants');
+
+Route::get('/admin/product/{productId}/variants-content',
+    'ProductsController@variantsContent')
+    ->name('admin_product_variants_content');
+
 /***********************************
  * *******   Category *************
  **********************************/
@@ -170,17 +178,6 @@ Route::get('/admin/category/{categoryId}/active',
     ->name('admin_category_active');
 
 /***********************************
- * *******   Variants *************
- **********************************/
-Route::get('/admin/variant',
-    'VariantController@index')
-    ->name('admin_variant_index');
-
-Route::get('/admin/variant-content',
-    'VariantController@indexContent')
-    ->name('admin_variant_index_content');
-
-/***********************************
  * *******   Purchase *************
  **********************************/
 Route::get('/admin/purchase',
@@ -191,6 +188,18 @@ Route::get('/admin/purchase-content',
     'PurchaseController@indexContent')
     ->name('admin_purchase_index_content');
 
-Route::get('/admin/purchase-detail',
+Route::get('/admin/{purchaseId}/purchase-detail',
     'PurchaseController@detailPurchase')
     ->name('admin_purchase_detail');
+
+/***********************************
+ * *******   Contact messages *************
+ **********************************/
+
+Route::get('/admin/contact-messages',
+    'ContactMessagesController@index')
+    ->name('admin_contactMessages_index');
+
+Route::get('/admin/contact-messages-content',
+    'ContactMessagesController@indexContent')
+    ->name('admin_contactMessages_index_content');

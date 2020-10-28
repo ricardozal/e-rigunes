@@ -105,6 +105,16 @@ class Variant extends Model
         );
     }
 
+    public function color()
+    {
+        return $this->belongsToMany(
+            Color::class,
+            'variant_has_images',
+            'fk_id_variant',
+            'fk_id_color'
+        )->select(['color.id','color.name','color.value'])->groupBy('color.id');
+    }
+
     public function purchases()
     {
         return $this->belongsToMany(

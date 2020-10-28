@@ -11,39 +11,15 @@ $(document).ready(function () {
             {
                 "data": "id",
                 render: function (data) {
-                    var $inpUrlUpdate = $('#inp-url-update');
-                    if ($inpUrlUpdate.length === 0) {
+                    var $inpUrlDetail = $('#inp-url-detail');
+                    if ($inpUrlDetail.length === 0) {
                         return '';
                     }
 
-                    var url = $inpUrlUpdate.val();
+                    var url = $inpUrlDetail.val();
                     url = url.replace('FAKE_ID', data);
 
-                    var $inpUrlDelete = $('#inp-url-delete');
-                    if ($inpUrlDelete.length === 0) {
-                        return '';
-                    }
-
-                    var url2 = $inpUrlDelete.val();
-                    url2 = url2.replace('FAKE_ID', data);
-
-                    return "<a href='" + url + "' title='Editar' data-toggle='tooltip' class='update-btn' style='color: #2a3d66'><span class='far fa-edit'></span></a>" +
-                        "&nbsp;&nbsp;&nbsp;<a href='" + url2 + "' title='Eliminar' data-toggle='tooltip' class='delete-btn' style='color: #2a3d66'><span class='fas fa-trash'></span></a>";
-                },
-                "targets": -1
-            },
-            {
-                "data": null,
-                render: function (data, type, row) {
-                    var $inpUrlShow = $('#inp-url-active');
-                    if ($inpUrlShow.length === 0) {
-                        return '';
-                    }
-
-                    var url = $inpUrlShow.val();
-                    url = url.replace('FAKE_ID', data.id);
-                    var active = data.active ? 'on' : 'off';
-                    return "<a href='" + url + "' class='active-btn' style='color: #2a3d66'><span class='fas fa-toggle-" + active + "''></span></a>";
+                    return "<a href='" + url + "' title='Detalles' data-toggle='tooltip' class='detail-btn' style='color: #2a3d66'><span class='fas fa-info-circle'></span></a>";
                 },
                 "targets": -1
             },
@@ -61,8 +37,20 @@ $(document).ready(function () {
                 "next": "Siguiente",
                 "previous": "Anterior"
             },
-            "lengthMenu": "Mostrar _MENU_ usuarios"
+            "lengthMenu": "Mostrar _MENU_ detalles"
         },
         "ordering": false
+    });
+
+    $(document).on('click', '.detail-btn', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        modalTools.renderView('modal-upsert', url, true,function () {
+            formTools.useAjaxOnSubmit('form-upsert', function () {
+                $('#modal-upsert').modal('hide');
+                table.ajax.reload();
+            });
+        });
     });
 });
