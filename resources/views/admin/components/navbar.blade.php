@@ -73,16 +73,6 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{$routeName == 'admin_variant_index' ? 'active' : ''}}"
-                   href="{{route('admin_variant_index')}}">
-                    <span>
-                        <i class="fas fa-palette"></i>
-                    </span>
-                    <span class="sidebar-text">Variantes</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
                 <a class="nav-link {{$routeName == 'admin_purchase_index' ? 'active' : ''}}"
                    href="{{route('admin_purchase_index')}}">
                     <span>

@@ -31,26 +31,17 @@ class PurchaseController extends Controller
 
     public function detailPurchase($purchaseId){
 
-        $purchase = Purchase::find($purchaseId);
+        //$purchase = Purchase::find($purchaseId);
         //$purchaseVariants = PurchaseVariants::where('fk_id_purchase', '=', $purchaseId)->get();
 
-            return view('admin.purchase.purchaseDetail',[
-                'purchase' => $purchase
-            ]);
-
-    }
-
-    public function showTableDetails($purchaseId)
-    {
         /** @var Purchase $purchaseVariants */
         $purchaseVariants = Purchase::find($purchaseId)->purchaseVariants()
             ->with(['product','size','color'])->get();
 
-        $query = $purchaseVariants;
+            return view('admin.purchase.purchaseDetail',[
+                'purchaseVariants' => $purchaseVariants
+            ]);
 
-        return response()->json([
-            'data' => $query
-        ]);
     }
 
 }
