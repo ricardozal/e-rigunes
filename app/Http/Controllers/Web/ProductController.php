@@ -29,15 +29,9 @@ class ProductController extends Model
 
     public function categoryProduct($categoryId)
     {
-
-
-
-
         $products = Product::where('active',true)
             ->where('fk_id_category',$categoryId)->get();
-
         $category = Category::find($categoryId);
-
         return view('web.product.product_category',['products' => $products,'category'=>$category]);
     }
 

@@ -1,3 +1,8 @@
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{{asset("/commons/form_tools.js")}}"></script>
+    <script src="{{ asset('js/web/components/subscriber.js?v=1') }}"></script>
+@endpush
 <hr >
 <div class="container-fluid ">
     <div id="footer-wrapper" class="text-center">
@@ -16,17 +21,23 @@
                             PREGUNTAS FRECUENTES </h6></a>
                     <a class="color-black" href=""><h6 style="font-size: medium; ">AVISO DE PRIVACIDAD</h6></a>
                 </div>
+
                 <div class=" col-12 col-lg-4 my-auto text-left">
+
                     <div class="row mx-0" >
+                        <form id="form-subscriber" action="" method="POST">
+                            @csrf
                         <p class="color-primary h2"><b>Suscribete</b></p>
+
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Email"
                                    aria-label="Recipient's username" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Enviar
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Enviar
                                 </button>
                             </div>
                         </div>
+                </form>
                     </div>
 
                     <div class="row mx-0 justify-content-around">

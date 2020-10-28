@@ -63,7 +63,7 @@
             </li>
 
             <li class="nav-item mx-5">
-                <a class="nav-link " href="#">NOSOTROS</a>
+                <a class="nav-link " href="{{route('ours_section')}}">NOSOTROS</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="{{route('contact_section')}}">CONTACTO</a>

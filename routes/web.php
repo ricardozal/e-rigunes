@@ -37,6 +37,15 @@ Route::get('/logout',
 Route::get('/admin/login',
     'Auth\LoginController@loginAdmin')
     ->name('login_admin');
+/**
+ *      Home
+ */
+
+Route::get(
+    '/ours-section',
+    'Web\HomeController@our'
+)->name('ours_section');
+
 
 /**
  *      Product Details
@@ -66,6 +75,8 @@ Route::get(
     '/contact-section',
     'Web\ContactController@contact'
 )->name('contact_section');
+
+
 
 
 Route::get(

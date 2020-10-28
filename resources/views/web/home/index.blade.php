@@ -19,23 +19,44 @@
     {{--    @else--}}
     {{--        <a href="{{route('login')}}">entrar</a>--}}
     {{--    @endif--}}
-    <div class="row mx-0 mb-3">
-        <div class="col-12 d-flex align-items-center"
-             style="background-image: url('{{asset('img/header_shoes.png')}}');
-                 background-size: cover;
-                 height: 50vh;
-                 ">
-            <div class="row px-md-5 mx-md-5">
-                <div class="col-12 px-md-5 mx-md-5">
-                    <p class="color-white h1"><b>ENVÍOS A TODO</b></p>
-                    <p class="color-white h1 text-right px-md-5"><i class="fas fa-shipping-fast color-white h1"></i> <b>MÉXICO</b>
-                    </p>
-                    <a href="" id="btn-home" class="btn btn-primary mt-5 mx-md-5 px-md-5" style="border-radius: 10px">CONOCE
-                        MÁS&nbsp;&nbsp;&nbsp;</a>
-                </div>
 
+
+
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li class="active" data-target="#carouselExampleIndicators" data-slide-to="0"></li>
+        </ol>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img class="d-block w-100 h-auto" src="{{asset('img/header_shoes.png')}}" alt="First slide">
+                <div class="carousel-caption ">
+                        <div class="row " style="padding-bottom: 7%;">
+                            <div class="col-12 text-justify">
+                                <h1 class="color-white "><b>ENVÍOS A TODO</b></h1>
+                                <h1 class="color-white  px-md-5"><i class="fas fa-shipping-fast color-white h1"></i> <b>MÉXICO</b>
+                                </h1>
+                            </div>
+                            <div class="col-12 text-justify">
+                                <a href="" id="btn-home" class="btn btn-primary mt-5 mx-md-5 px-md-5" style="border-radius: 10px">CONOCE
+                                    MÁS&nbsp;&nbsp;&nbsp;</a>
+
+                            </div>
+                        </div>
+                </div>
             </div>
+
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
     <div class="container-fluid">
         <div class="row align-items-center">
@@ -65,6 +86,10 @@
             </div>
             </div>
         </div>
+
+
+
+
         <div class="row  align-items-center">
             <div class="col-12 my-2">
                 <div class="text-center">
@@ -91,11 +116,12 @@
                 </button>
             </div>
         </div>
-    </div>
+
     <div class="row text-center">
         <div class="col-12 mb-5">
             <h2 class="color-gray-dark font-family-2"><b>Contacto</b></h2>
         </div>
+    </div>
     </div>
 
     @include('web.components.contact')

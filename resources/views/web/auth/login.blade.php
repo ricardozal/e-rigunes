@@ -54,11 +54,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="row text-center my-3">
-                                        <div class="col-12">
+                                    <div class="row  my-3">
+                                        <div class="col-6 text-right">
                                             <button type="submit" class="btn btn-primary">
                                                 Iniciar sesión
                                             </button>
+                                        </div>
+                                        <div class="col-6 ">
+                                            <a href="{{route('web_user_create')}}"  class="btn btn-outline-secondary"  >Crear cuenta
+                                            </a>
+
                                         </div>
                                     </div>
 
