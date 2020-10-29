@@ -57,10 +57,16 @@ class Variant extends Model
         'is_active_product',
         'featured_image',
         'classification_product',
+        'color_name'
     ];
 
     public function getProductNameAttribute(){
         return $this->product->name;
+    }
+
+    public function getColorNameAttribute()
+    {
+        return $this->color()->select(['color.id','color.name','color.value'])->groupBy('color.id')->first()->name;
     }
 
     public function getIsActiveProductAttribute(){
@@ -112,7 +118,7 @@ class Variant extends Model
             'variant_has_images',
             'fk_id_variant',
             'fk_id_color'
-        )->select(['color.id','color.name','color.value'])->groupBy('color.id');
+        );
     }
 
     public function purchases()

@@ -114,10 +114,10 @@ class ProductsController extends Controller
 
     public function variantsContent($productId){
 
-        $query = Variant::with(['product','size','color'])
+        $query = Variant::with(['product','size'])
             ->where('fk_id_product', '=', $productId)
             ->get();
-        dd($query);
+
 
         return response()->json([
             'data' => $query
