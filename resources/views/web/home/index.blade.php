@@ -65,6 +65,7 @@
                     <h2 class=" mt-5 color-black"><b>Categorias</b></h2>
                 </div>
             </div>
+
         </div>
         <div class="row">
             <div class="col-11 mx-auto ">
