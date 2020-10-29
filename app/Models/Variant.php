@@ -66,7 +66,7 @@ class Variant extends Model
 
     public function getColorNameAttribute()
     {
-        return $this->color()->select(['color.id','color.name','color.value'])->groupBy('color.id')->first()->name;
+        return $this->color()->select(['color.id','color.name','color.value'])->groupBy('color.id')->first();
     }
 
     public function getIsActiveProductAttribute(){

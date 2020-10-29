@@ -10,7 +10,7 @@ $(document).ready(function () {
             {"data": "product.description"},
             {"data": "sku"},
             {"data": "size.value"},
-            {"data": "color_name"},
+            {"data": "color_name.name"},
             {"data": "pivot.quantity"},
             {"data": "pivot.purchase_price"},
         ],

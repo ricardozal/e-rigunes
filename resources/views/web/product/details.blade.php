@@ -76,7 +76,7 @@
                             </div>
                             <div class="col-12 mb-4">
                                 <div class="row">
-                                    @foreach($product->colors as $color)
+                                    @foreach($product->variants as $variant)
                                         <div class="col-2 text-center cursor-pointer {{$product->variants[0]->fk_id_color == $color->id ? 'selected-color' : ''}}">
                                             <div class="mx-auto" style="background-color: {{$color->value}}; border: 1px solid gray; height: 20px; width: 20px; border-radius: 20px; margin: 0; padding: 0;"></div>
                                             <span>{{$color->name}}</span>
