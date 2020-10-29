@@ -13,8 +13,8 @@
             <div class="row">
                 <div class="col-12 text-center mb-2">
                     <a href="{{route('web_product_details',['productId'=>$product->id])}}">
-                        <img src="{{$product->first_variant->featured_image}}" class="img-fluid" >
-                        <img src="{{$product->variants[0]->featured_image}}" style="height: 25vh;">
+{{--                        <img src="{{$product->first_variant->featured_image}}" class="img-fluid" >--}}
+                        <img src="{{$product->variants[0]->featured_image}}" class="img-fluid">
                     </a>
                 </div>
             </div>
