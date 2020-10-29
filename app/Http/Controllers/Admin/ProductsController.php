@@ -113,15 +113,43 @@ class ProductsController extends Controller
     }
 
     public function variantsContent($productId){
-
         $query = Variant::with(['product','size','color'])
             ->where('fk_id_product', '=', $productId)
             ->get();
-        dd($query);
 
         return response()->json([
             'data' => $query
         ]);
+    }
 
+    public function variantCreate($productId){
+        $product = Product::find($productId);
+        //$variants = Variant::with(['product','size','color','variantImages'])
+        //    ->where('fk_id_product', '=', $productId)
+        //   ->get();
+
+        return view('admin.products.variantUpsert',[
+            'product' => $product,
+            //'variants' => $variants
+        ]);
+    }
+
+    public function variantCreatePost(Request $request)
+    {
+        $user = new User();
+        $user->fill($request->all());
+        $user->password = bcrypt($request->input('password'));
+
+        if (!$user->save()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No se pudo guardar al usuario'
+            ]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Guardado correctamente'
+        ]);
     }
 }

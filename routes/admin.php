@@ -138,6 +138,10 @@ Route::get('/admin/product/{productId}/delete',
     'ProductsController@delete')
     ->name('admin_product_delete');
 
+/***********************************
+ * *******   Variants products *************
+ **********************************/
+
 Route::get('/admin/product/{productId}/variants',
     'ProductsController@variants')
     ->name('admin_product_variants');
@@ -145,6 +149,22 @@ Route::get('/admin/product/{productId}/variants',
 Route::get('/admin/product/{productId}/variants-content',
     'ProductsController@variantsContent')
     ->name('admin_product_variants_content');
+
+Route::get('/admin/product/{productId}/variant-create',
+    'ProductsController@variantCreate')
+    ->name('admin_product_variants_create');
+
+Route::post('/admin/product/{productId}/variant-create',
+    'ProductsController@variantCreatePost')
+    ->name('admin_product_variants_create_post');
+
+Route::get('/admin/product/{variantId}/variant-update',
+    'ProductsController@variantUpdate')
+    ->name('admin_product_variants_update');
+
+Route::post('/admin/product/{variantId}/variant-update',
+    'ProductsController@variantUpdatePost')
+    ->name('admin_product_variants_update_post');
 
 /***********************************
  * *******   Category *************

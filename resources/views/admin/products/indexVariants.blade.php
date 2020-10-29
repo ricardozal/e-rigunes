@@ -12,7 +12,7 @@
             </div>
             <div class="row my-4">
                 <div class="col-12 justify-content-end d-flex align-items-center">
-                    <a id="create-btn" class="btn btn-primary" href="">
+                    <a id="create-btn" class="btn btn-primary" href="{{route('admin_product_variants_create',['productId' => $product->id])}}">
                         Agregar variante
                     </a>
                 </div>
@@ -42,7 +42,7 @@
     <input id="inp-url-active" type="hidden"
            value="{{route('admin_product_active',['productId' => 'FAKE_ID'])}}">
     <input id="inp-url-update" type="hidden"
-           value="{{route('admin_product_update',['productId' => 'FAKE_ID'])}}">
+           value="{{route('admin_product_active',['productId' => 'FAKE_ID'])}}">
     <input id="inp-url-delete" type="hidden"
            value="{{route('admin_product_delete',['productId' => 'FAKE_ID'])}}">
 
