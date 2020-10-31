@@ -75,6 +75,14 @@
         <span class="sidebar-text">Ventas</span>
     </a>
 
+    <a class="nav-link {{$routeName == 'admin_promotion_index' ? 'active' : ''}}"
+       href="{{route('admin_promotion_index')}}">
+    <span>
+        <i class="fas fa-percentage"></i>
+    </span>
+        <span class="sidebar-text">Promociones</span>
+    </a>
+
     <a class="nav-link"
        href="{{route('logout')}}">
         <span>

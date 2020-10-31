@@ -239,3 +239,35 @@ Route::get('/admin/contact-messages',
 Route::get('/admin/contact-messages-content',
     'ContactMessagesController@indexContent')
     ->name('admin_contactMessages_index_content');
+
+/***********************************
+ * *******  Promotions *************
+ **********************************/
+
+Route::get('/admin/promotion',
+    'PromotionController@index')
+    ->name('admin_promotion_index');
+
+Route::get('/admin/promotion-content',
+    'PromotionController@indexContent')
+    ->name('admin_promotion_index_content');
+
+Route::get('/admin/promotion/create',
+    'PromotionController@create')
+    ->name('admin_promotion_create');
+
+Route::post('/admin/promotion/create',
+    'PromotionController@createPost')
+    ->name('admin_promotion_create_post');
+
+Route::get('/admin/promotion/{promotionId}/update',
+    'PromotionController@update')
+    ->name('admin_promotion_update');
+
+Route::post('/admin/promotion/{promotionId}/update',
+    'PromotionController@updatePost')
+    ->name('admin_promotion_update_post');
+
+Route::get('/admin/promotion/{promotionId}/active',
+    'PromotionController@active')
+    ->name('admin_promotion_active');

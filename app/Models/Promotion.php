@@ -47,10 +47,11 @@ class Promotion extends Model
         'expiration_date',
         'coupon_code',
         'max_number_swaps',
+        'swaps',
         'is_percentage',
         'value',
         'min_amount',
-        'description',
+        'description'
     ];
 
     public static function validateExist($coupon)
