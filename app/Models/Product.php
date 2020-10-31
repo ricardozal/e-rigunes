@@ -66,7 +66,9 @@ class Product extends Model
         'width',
         'height',
         'length',
-        'weight'
+        'weight',
+        'public_price',
+        'distributor_price'
     ];
 
     protected $appends = [

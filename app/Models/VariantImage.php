@@ -14,11 +14,19 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $active
  * @property int $fk_id_product
  * @property int $fk_id_size
+ * @property int $fk_id_color
+ * @property int $fk_id_variant
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
 
 class VariantImage extends Model
 {
+    protected $table = 'variant_has_images';
 
+    protected $fillable = [
+        'fk_id_color',
+        'fk_id_variant',
+        'fk_id_image'
+    ];
 }

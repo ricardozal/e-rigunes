@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use BinaryCats\Sku\HasSku;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -41,6 +42,7 @@ use Illuminate\Database\Eloquent\Model;
 class Variant extends Model
 {
 
+    use HasSku;
     use HasFactory;
 
     protected $table = 'variant';
@@ -55,7 +57,7 @@ class Variant extends Model
     protected $appends = [
         'product_name',
         'is_active_product',
-        'featured_image',
+        //'featured_image',
         'classification_product',
         'color_name'
     ];
@@ -90,7 +92,7 @@ class Variant extends Model
             'variant_has_images',
             'fk_id_variant',
             'fk_id_image'
-        );
+        )->withPivot(['fk_id_image']);
     }
 
     public function product()
@@ -118,7 +120,7 @@ class Variant extends Model
             'variant_has_images',
             'fk_id_variant',
             'fk_id_color'
-        );
+        )->withPivot(['fk_id_color']);
     }
 
     public function purchases()

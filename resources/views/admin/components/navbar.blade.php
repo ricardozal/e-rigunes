@@ -91,6 +91,16 @@
                     <span class="sidebar-text">Mensajes</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{$routeName == 'admin_contactMessages_index' ? 'active' : ''}}"
+                   href="{{route('admin_contactMessages_index')}}">
+                    <span>
+                        <i class="fas fa-truck-loading"></i>
+                    </span>
+                    <span class="sidebar-text">Ventas</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

@@ -5,14 +5,13 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\Buyer;
 use App\Models\Product;
 use App\Http\Request\ProductsRequest;
 use App\Http\Request\UpdateProductsRequest;
 use App\Models\Variant;
 use App\Models\VariantImage;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -104,52 +103,6 @@ class ProductsController extends Controller
         }
         return response()->json([
             'success' => true,
-        ]);
-    }
-
-    public  function variants($productId){
-        $product = Product::find($productId);
-        return view('admin.products.indexVariants',['product' => $product]);
-    }
-
-    public function variantsContent($productId){
-        $query = Variant::with(['product','size','color'])
-            ->where('fk_id_product', '=', $productId)
-            ->get();
-
-        return response()->json([
-            'data' => $query
-        ]);
-    }
-
-    public function variantCreate($productId){
-        $product = Product::find($productId);
-        //$variants = Variant::with(['product','size','color','variantImages'])
-        //    ->where('fk_id_product', '=', $productId)
-        //   ->get();
-
-        return view('admin.products.variantUpsert',[
-            'product' => $product,
-            //'variants' => $variants
-        ]);
-    }
-
-    public function variantCreatePost(Request $request)
-    {
-        $user = new User();
-        $user->fill($request->all());
-        $user->password = bcrypt($request->input('password'));
-
-        if (!$user->save()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No se pudo guardar al usuario'
-            ]);
-        }
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Guardado correctamente'
         ]);
     }
 }

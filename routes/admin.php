@@ -143,28 +143,44 @@ Route::get('/admin/product/{productId}/delete',
  **********************************/
 
 Route::get('/admin/product/{productId}/variants',
-    'ProductsController@variants')
+    'VariantsController@variants')
     ->name('admin_product_variants');
 
 Route::get('/admin/product/{productId}/variants-content',
-    'ProductsController@variantsContent')
+    'VariantsController@variantsContent')
     ->name('admin_product_variants_content');
 
 Route::get('/admin/product/{productId}/variant-create',
-    'ProductsController@variantCreate')
+    'VariantsController@variantCreate')
     ->name('admin_product_variants_create');
 
 Route::post('/admin/product/{productId}/variant-create',
-    'ProductsController@variantCreatePost')
+    'VariantsController@variantCreatePost')
     ->name('admin_product_variants_create_post');
 
-Route::get('/admin/product/{variantId}/variant-update',
-    'ProductsController@variantUpdate')
-    ->name('admin_product_variants_update');
+Route::get('/admin/product/{variantId}/variant-active',
+    'VariantsController@variantActive')
+    ->name('admin_product_variants_active');
 
-Route::post('/admin/product/{variantId}/variant-update',
-    'ProductsController@variantUpdatePost')
-    ->name('admin_product_variants_update_post');
+/***********************************
+ * *******   variant has Image *************
+ **********************************/
+
+Route::get('/admin/product/{variantId}/variants-has-images',
+    'VariantHasImagesController@variantsHasImages')
+    ->name('admin_product_variants_images');
+
+Route::get('/admin/product/{variantId}/variants-has-images-content',
+    'VariantHasImagesController@variantsHasImagesContent')
+    ->name('admin_product_variants_images_content');
+
+Route::get('/admin/product/{variantId}/img-update',
+    'VariantHasImagesController@imgUpdate')
+    ->name('admin_product_variants_images_variantsHasImages');
+
+Route::post('/admin/product/{variantId}/img-update',
+    'VariantHasImagesController@imgUpdatePost')
+    ->name('admin_product_variants_images_variantsHasImages_post');
 
 /***********************************
  * *******   Category *************
