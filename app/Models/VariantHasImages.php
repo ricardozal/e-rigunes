@@ -26,4 +26,11 @@ class VariantHasImages extends Model
 {
     protected $table = 'variant_has_images';
     public $timestamps = false;
+
+    static function hasImage($imageId, $variantId){
+
+        return VariantHasImages::where('fk_id_image',$imageId)->where('fk_id_variant', $variantId)->first() != null;
+
+    }
+
 }

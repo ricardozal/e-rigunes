@@ -155,6 +155,128 @@ class VariantController extends Controller
         }
     }
 
+    public function update($variantId){
+
+        /** @var Variant $variant */
+        $variant = Variant::find($variantId);
+
+        /** @var Color $color */
+        $color = Color::find($variant->color_name->id);
+
+        $variants = $variant->product->variants->pluck('id')->toArray();
+
+        $variantImages = Image::whereHas('variantHasImages',function ($q) use ($variants, $color) {
+            $q->whereIn('fk_id_variant',$variants);
+            $q->where('fk_id_color', $color->id);
+        })->get();
+
+        return view('admin.variant.upsert', [
+            'variant' => $variant,
+            'variantImages' => $variantImages
+        ]);
+    }
+
+    public function updatePost(Request $request){
+
+        /** @var Variant $variant */
+        $variant = Variant::find($request->input('variantId'));
+
+        /** @var Color $color */
+        $color = $variant->color_name;
+
+        $first = $request->input('first');
+
+        if($request->file('file') == null && $request->input('image-selected') == null){
+            return response()->json([
+                'errors' => ['images' => ['No se seleccionaron imagenes'] ]
+            ],422);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            if($first != null){
+
+                VariantHasImages::whereFkIdVariant($variant->id)->delete();
+
+                if($request->input('image-selected') != null){
+
+                    foreach ($request->input('image-selected') as $imageId)
+                    {
+                        $variantHasImage = new VariantHasImages();
+                        $variantHasImage->fk_id_color = $color->id;
+                        $variantHasImage->fk_id_variant = $variant->id;
+                        $variantHasImage->fk_id_image = $imageId;
+                        $variantHasImage->saveOrFail();
+                    }
+                }
+
+                if($request->file('file') != null){
+
+                    $fileOk = $request->hasFile('file') &&
+                        $request->file('file')->isValid();
+
+                    if (!$fileOk){
+                        return response()->json([
+                            'errors' => ['images' => ['Alguna imagen es invalida'] ]
+                        ],422);
+                    }
+
+                    $url = UploadFiles::storeFile($request->file('file'),$variant->id,'shoes');
+
+                    $image = new Image();
+                    $image->url = $url;
+                    $image->featured = true;
+                    $image->saveOrFail();
+
+                    $variantHasImage = new VariantHasImages();
+                    $variantHasImage->fk_id_color = $color->id;
+                    $variantHasImage->fk_id_variant = $variant->id;
+                    $variantHasImage->fk_id_image = $image->id;
+                    $variantHasImage->saveOrFail();
+                }
+            } else {
+
+                $fileOk = $request->hasFile('file') &&
+                    $request->file('file')->isValid();
+
+                if (!$fileOk){
+                    return response()->json([
+                        'errors' => ['images' => ['Alguna imagen es invalida'] ]
+                    ],422);
+                }
+
+                /** @var Variant $variant */
+                $url = UploadFiles::storeFile($request->file('file'),$variant->id,'shoes');
+
+                $image = new Image();
+                $image->url = $url;
+                $image->featured = true;
+                $image->saveOrFail();
+
+                $variantHasImage = new VariantHasImages();
+                $variantHasImage->fk_id_color = $color->id;
+                $variantHasImage->fk_id_variant = $variant->id;
+                $variantHasImage->fk_id_image = $image->id;
+                $variantHasImage->saveOrFail();
+            }
+
+            DB::commit();
+            return response()->json([
+                'success' => true,
+                'message' => 'Guardado correctamente'
+            ]);
+        } catch (\Throwable $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
+
+    }
+
     public function active($variantId)
     {
         $variant = Variant::find($variantId);

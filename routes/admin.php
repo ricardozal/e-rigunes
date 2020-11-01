@@ -150,6 +150,14 @@ Route::get('/admin/product/{productId}/variant/create',
     'VariantController@create')
     ->name('admin_product_variants_create');
 
+Route::get('/admin/product/variant/{variantId}/update',
+    'VariantController@update')
+    ->name('admin_product_variants_update_images');
+
+Route::post('/admin/product/variant/{variantId}/update',
+    'VariantController@updatePost')
+    ->name('admin_product_variants_update_post');
+
 Route::post('/admin/product/variant/create',
     'VariantController@createPost')
     ->name('admin_product_variants_create_post');

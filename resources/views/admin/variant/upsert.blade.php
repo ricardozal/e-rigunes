@@ -1,7 +1,13 @@
 @extends('admin.template.main')
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.js"></script>
-    <script src="{{asset('js/admin/variant/upsert.js')}}"></script>
+
+    @if(isset($variant))
+        <script src="{{asset('js/admin/variant/update.js')}}"></script>
+    @else
+        <script src="{{asset('js/admin/variant/create.js')}}"></script>
+    @endif
+
 @endpush
 @push('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.css">
@@ -11,19 +17,19 @@
         <div class="col-12">
             <div class="row mb-4">
                 <div class="col-md-2 col-12">
-                    <a class="btn btn-primary" href="{{route('admin_product_variants',['productId' => $product->id])}}"><i class="fas fa-arrow-left"></i>&nbsp;Regresar</a>
+                    <a class="btn btn-primary" href="{{route('admin_product_variants',['productId' => isset($variant) ? $variant->product->id : $product->id])}}"><i class="fas fa-arrow-left"></i>&nbsp;Regresar</a>
                 </div>
                 <div class="col-12 col-md-10 justify-content-center d-flex align-items-center">
-                    <strong class="text-color-primary" style="font-size: 150%">Agregar variante de {{$product->name}}</strong>
+                    <strong class="text-color-primary" style="font-size: 150%">{{isset($variant) ? 'Imagenes de '.$variant->product->name : 'Agregar variante de '.$product->name}}</strong>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <div class="form-group form-select focused">
                         <label for="fk_id_size" class="focused form-label">Talla</label>
-                        <select class="form-control" id="fk_id_size" name="fk_id_size">
+                        <select class="form-control" id="fk_id_size" name="fk_id_size" {{isset($variant) ? 'disabled' : ''}}>
                             @foreach(\App\Models\Size::asMap() as $id => $value)
-                                <option value="{{$id}}">{{$value}}</option>
+                                <option value="{{$id}}" {{isset($variant) ? ($variant->size->id == $id ? 'selected' : '') : ''}}>{{$value}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -33,9 +39,9 @@
                 <div class="col-12">
                     <div class="form-group form-select focused">
                         <label for="fk_id_color" class="focused form-label">Color</label>
-                        <select class="form-control" id="fk_id_color" name="fk_id_color">
+                        <select class="form-control" id="fk_id_color" name="fk_id_color" {{isset($variant) ? 'disabled' : ''}}>
                             @foreach(\App\Models\Color::asMap() as $id => $name)
-                                <option value="{{$id}}">{{$name}}</option>
+                                <option value="{{$id}}" {{isset($variant) ? ($variant->color_name->id == $id ? 'selected' : '') : ''}}>{{$name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -49,6 +55,14 @@
             </div>
             <div class="row images-container">
                 <div class="col-12 images-list d-flex flex-wrap justify-content-center">
+                    @isset($variantImages)
+                        @foreach($variantImages as $image)
+                            <img src="{{$image->absolute_image_url}}" alt="Imagen" class="variant-image m-3 cursor-pointer {{\App\Models\VariantHasImages::hasImage($image->id,$variant->id) ? 'image-selected' : ''}}" data-id="{{$image->id}}">
+                            @if(\App\Models\VariantHasImages::hasImage($image->id,$variant->id))
+                                <input type="hidden" name="image-selected[]" value="{{$image->id}}">
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="row my-5">
@@ -61,7 +75,7 @@
                         <div class="row">
                             <div class="col-12 py-4">
                                 <div id="div-drop-zone" class="w-100 text-center"
-                                     data-url="{{route('admin_product_variants_create_post')}}">
+                                     data-url="{{isset($variant) ? route('admin_product_variants_update_post',['variantId' => $variant->id]) : route('admin_product_variants_create_post')}}">
                                     <div class="dz-message" style="cursor: pointer">
                                         <img src="{{asset('img/icons/ic_upload.png')}}"
                                              width="80px"
@@ -84,9 +98,17 @@
         </div>
     </div>
 
-    <input type="hidden" value="{{$product->id}}" id="product-id">
-    <input type="hidden" value="{{route('admin_variants_load_images',['productId' => $product->id])}}" id="inp-url-load-images">
-    <input type="hidden" value="{{route('admin_product_variants_create_post')}}" id="create-variant">
     <input type="hidden" value="{{csrf_token()}}" id="inp-url-token">
-    <input type="hidden" value="{{route('admin_product_variants',['productId' => $product->id])}}" id="variants-index">
+
+    @if(isset($variant))
+        <input type="hidden" value="{{$variant->id}}" id="variant-id">
+        <input type="hidden" value="{{route('admin_variants_load_images',['productId' => $variant->product->id])}}" id="inp-url-load-images">
+        <input type="hidden" value="{{route('admin_product_variants_update_post',['variantId' => $variant->id])}}" id="update-variant">
+        <input type="hidden" value="{{route('admin_product_variants',['productId' => $variant->product->id])}}" id="variants-index">
+    @else
+        <input type="hidden" value="{{$product->id}}" id="product-id">
+        <input type="hidden" value="{{route('admin_variants_load_images',['productId' => $product->id])}}" id="inp-url-load-images">
+        <input type="hidden" value="{{route('admin_product_variants_create_post')}}" id="create-variant">
+        <input type="hidden" value="{{route('admin_product_variants',['productId' => $product->id])}}" id="variants-index">
+    @endif
 @endsection

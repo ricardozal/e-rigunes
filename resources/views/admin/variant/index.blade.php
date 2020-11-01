@@ -44,4 +44,5 @@
            value="{{route('admin_product_variants_content',['productId' => $product->id])}}">
     <input id="inp-url-active" type="hidden"
            value="{{route('admin_product_variants_active',['variantId' => 'FAKE_ID'])}}">
+    <input type="hidden" value="{{route('admin_product_variants_update_images',['variantId' => 'FAKE_ID'])}}" id="inp-url-images">
 @endsection
