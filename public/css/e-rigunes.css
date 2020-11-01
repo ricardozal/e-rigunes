@@ -236,15 +236,9 @@ body {
   border: none;
   text-align: center;
 }
-.slick-prev:before {
-  color: black;
-}
-.slick-next:before {
-  color: black;
-}
 .slick-arrow:before {
-  color: #FFFFFF;
-  background-color: #6A1B8A;
+  color: blue;
+  background-color: blue;
 }
 .card-category:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);

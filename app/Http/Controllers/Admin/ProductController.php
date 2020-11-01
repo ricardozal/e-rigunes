@@ -9,11 +9,11 @@ use App\Models\Product;
 use App\Http\Request\ProductsRequest;
 use App\Http\Request\UpdateProductsRequest;
 use App\Models\Variant;
-use App\Models\VariantImage;
+use App\Models\VariantHasImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     public function index()
     {

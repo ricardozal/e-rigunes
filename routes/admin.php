@@ -107,80 +107,60 @@ Route::get('/admin/provider/{providerId}/active',
  * *******   Products *************
  **********************************/
 Route::get('/admin/products',
-    'ProductsController@index')
+    'ProductController@index')
     ->name('admin_products_index');
 
 Route::get('/admin/products-content',
-    'ProductsController@indexContent')
+    'ProductController@indexContent')
     ->name('admin_products_index_content');
 
 Route::get('/admin/product/create',
-    'ProductsController@create')
+    'ProductController@create')
     ->name('admin_product_create');
 
 Route::post('/admin/product/create',
-    'ProductsController@createPost')
+    'ProductController@createPost')
     ->name('admin_product_create_post');
 
 Route::get('/admin/product/{productId}/update',
-    'ProductsController@update')
+    'ProductController@update')
     ->name('admin_product_update');
 
 Route::post('/admin/product/{productId}/update',
-    'ProductsController@updatePost')
+    'ProductController@updatePost')
     ->name('admin_product_update_post');
 
 Route::get('/admin/product/{productId}/active',
-    'ProductsController@active')
+    'ProductController@active')
     ->name('admin_product_active');
 
-Route::get('/admin/product/{productId}/delete',
-    'ProductsController@delete')
-    ->name('admin_product_delete');
-
 /***********************************
- * *******   Variants products *************
+ * *******   Variants *************
  **********************************/
 
 Route::get('/admin/product/{productId}/variants',
-    'VariantsController@variants')
+    'VariantController@index')
     ->name('admin_product_variants');
 
 Route::get('/admin/product/{productId}/variants-content',
-    'VariantsController@variantsContent')
+    'VariantController@indexContent')
     ->name('admin_product_variants_content');
 
-Route::get('/admin/product/{productId}/variant-create',
-    'VariantsController@variantCreate')
+Route::get('/admin/product/{productId}/variant/create',
+    'VariantController@create')
     ->name('admin_product_variants_create');
 
-Route::post('/admin/product/{productId}/variant-create',
-    'VariantsController@variantCreatePost')
+Route::post('/admin/product/variant/create',
+    'VariantController@createPost')
     ->name('admin_product_variants_create_post');
 
-Route::get('/admin/product/{variantId}/variant-active',
-    'VariantsController@variantActive')
+Route::get('/admin/product/variant/{variantId}/active',
+    'VariantController@active')
     ->name('admin_product_variants_active');
 
-/***********************************
- * *******   variant has Image *************
- **********************************/
-
-Route::get('/admin/product/{variantId}/variants-has-images',
-    'VariantHasImagesController@variantsHasImages')
-    ->name('admin_product_variants_images');
-
-Route::get('/admin/product/{variantId}/variants-has-images-content',
-    'VariantHasImagesController@variantsHasImagesContent')
-    ->name('admin_product_variants_images_content');
-
-Route::get('/admin/product/{variantId}/img-update',
-    'VariantHasImagesController@imgUpdate')
-    ->name('admin_product_variants_images_variantsHasImages');
-
-Route::post('/admin/product/{variantId}/img-update',
-    'VariantHasImagesController@imgUpdatePost')
-    ->name('admin_product_variants_images_variantsHasImages_post');
+Route::get('/admin/product/{productId}/load-images',
+    'VariantController@loadImages')
+    ->name('admin_variants_load_images');
 
 /***********************************
  * *******   Category *************

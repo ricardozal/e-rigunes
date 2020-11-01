@@ -187,7 +187,7 @@ class ErigunesSchema extends Migration
             $table->increments('id');
             $table->unsignedInteger('fk_id_color');
             $table->unsignedInteger('fk_id_variant');
-            $table->unsignedInteger('fk_id_image')->nullable(true);
+            $table->unsignedInteger('fk_id_image');
 
             $table->foreign('fk_id_color')
                 ->references('id')

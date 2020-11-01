@@ -37,6 +37,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Provider whereSellerPhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Provider whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Purchase[] $purchase
+ * @property-read int|null $purchase_count
  */
 class Provider extends Model
 {

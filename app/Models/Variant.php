@@ -38,6 +38,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereSku($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Color[] $color
+ * @property-read int|null $color_count
+ * @property-read mixed $color_name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Purchase[] $purchases
+ * @property-read int|null $purchases_count
  */
 class Variant extends Model
 {
@@ -47,17 +52,10 @@ class Variant extends Model
 
     protected $table = 'variant';
 
-    protected $fillable = [
-        'sku',
-        'public_price',
-        'distributor_price',
-        'fk_id_product'
-    ];
-
     protected $appends = [
         'product_name',
         'is_active_product',
-        //'featured_image',
+        'featured_image',
         'classification_product',
         'color_name'
     ];
@@ -92,7 +90,7 @@ class Variant extends Model
             'variant_has_images',
             'fk_id_variant',
             'fk_id_image'
-        )->withPivot(['fk_id_image']);
+        );
     }
 
     public function product()
@@ -120,7 +118,7 @@ class Variant extends Model
             'variant_has_images',
             'fk_id_variant',
             'fk_id_color'
-        )->withPivot(['fk_id_color']);
+        );
     }
 
     public function purchases()

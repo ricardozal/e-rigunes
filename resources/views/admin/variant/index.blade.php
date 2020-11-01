@@ -6,8 +6,11 @@
     <div class="row mt-5 mx-0">
         <div class="col-12">
             <div class="row">
-                <div class="col-12 justify-content-center d-flex align-items-center">
-                    <strong class="text-color-primary" style="font-size: 150%">Variantes</strong>
+                <div class="col-md-2 col-12">
+                    <a class="btn btn-primary" href="{{route('admin_products_index')}}"><i class="fas fa-arrow-left"></i>&nbsp;Regresar</a>
+                </div>
+                <div class="col-12 col-md-10 justify-content-center d-flex align-items-center">
+                    <strong class="text-color-primary" style="font-size: 150%">Variantes de {{$product->name}}</strong>
                 </div>
             </div>
             <div class="row my-4">
@@ -41,16 +44,4 @@
            value="{{route('admin_product_variants_content',['productId' => $product->id])}}">
     <input id="inp-url-active" type="hidden"
            value="{{route('admin_product_variants_active',['variantId' => 'FAKE_ID'])}}">
-    <input id="inp-url-images" type="hidden"
-           value="{{route('admin_product_variants_images',['variantId' => 'FAKE_ID'])}}">
-
-    <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="body-content"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

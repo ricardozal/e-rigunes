@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $table = 'image';
+    public $timestamps = false;
 
     protected $appends = [
         'absolute_image_url'
@@ -32,5 +33,13 @@ class Image extends Model
     public function getAbsoluteImageUrlAttribute()
     {
         return asset($this->url);
+    }
+
+    public function variantHasImages(){
+        return $this->hasMany(
+            VariantHasImages::class,
+            'fk_id_image',
+            'id'
+        );
     }
 }

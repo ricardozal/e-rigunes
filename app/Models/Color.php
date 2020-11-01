@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Color whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Color whereValue($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\VariantHasImages[] $variantsImage
+ * @property-read int|null $variants_image_count
  */
 class Color extends Model
 {
@@ -27,7 +29,7 @@ class Color extends Model
     public function variantsImage()
     {
         return $this->hasMany(
-            VariantImage::class,
+            VariantHasImages::class,
             'fk_id_color',
             'id'
         );

@@ -37,7 +37,7 @@ $(document).ready(function () {
                     url2 = url2.replace('FAKE_ID', data);
 
                     return "<a href='"+url+"' title='Editar' data-toggle='tooltip' class='update-btn' style='color: #2a3d66'><span class='far fa-edit'></span></a>"+
-                        "&nbsp;&nbsp;&nbsp;<a href='"+url2+"' title='Agregar variante' data-toggle='tooltip' class='address-btn' style='color: #2a3d66'><span class='fas fa-palette'></span></a>";
+                        "&nbsp;&nbsp;&nbsp;<a href='"+url2+"' title='Variantes' data-toggle='tooltip' class='address-btn' style='color: #2a3d66'><span class='fas fa-palette'></span></a>";
                 },
                 "targets": -1
             },
