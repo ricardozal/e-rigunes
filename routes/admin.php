@@ -271,3 +271,19 @@ Route::post('/admin/promotion/{promotionId}/update',
 Route::get('/admin/promotion/{promotionId}/active',
     'PromotionController@active')
     ->name('admin_promotion_active');
+
+/***********************************
+ * *******  Payment_Method *************
+ **********************************/
+
+Route::get('/admin/payment_Method',
+    'PaymentMethodController@index')
+    ->name('admin_payment_method_index');
+
+Route::get('/admin/payment_Method-content',
+    'PaymentMethodController@indexContent')
+    ->name('admin_payment_method_index_content');
+
+Route::get('/admin/payment_Method/{paymentMethodId}/active',
+    'PaymentMethodController@active')
+    ->name('admin_payment_method_active');
