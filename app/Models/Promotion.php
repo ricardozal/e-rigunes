@@ -84,4 +84,13 @@ class Promotion extends Model
         $coupon->save();
     }
 
+    public function sales()
+    {
+        return $this->hasMany(
+            Sale::class,
+            'fk_id_promotion',
+            'id'
+        );
+    }
+
 }

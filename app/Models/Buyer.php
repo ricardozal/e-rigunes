@@ -64,6 +64,15 @@ class Buyer extends Model
         );
     }
 
+    public function sales()
+    {
+        return $this->hasMany(
+            Sale::class,
+            'fk_id_buyer',
+            'id'
+        );
+    }
+
     public function getFullNameAttribute()
     {
         return $this->name.' '.$this->father_last_name.' '.$this->mother_last_name;

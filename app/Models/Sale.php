@@ -51,4 +51,49 @@ class Sale extends Model
             'fk_id_variant'
         );
     }
+
+    public function promotion()
+    {
+        return $this->belongsTo(
+            Promotion::class,
+            'fk_id_promotion',
+            'id'
+        );
+    }
+
+    public function shipping_information()
+    {
+        return $this->belongsTo(
+            ShippingInformation::class,
+            'fk_id_shipping_information',
+            'id'
+        );
+    }
+
+    public function buyer()
+    {
+        return $this->belongsTo(
+            Buyer::class,
+            'fk_id_buyer',
+            'id'
+        );
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(
+            Address::class,
+            'fk_id_shipping_address',
+            'id'
+        );
+    }
+
+    public function payment_method()
+    {
+        return $this->belongsTo(
+            PaymentMethod::class,
+            'fk_id_payment_method',
+            'id'
+        );
+    }
 }

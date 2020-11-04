@@ -33,4 +33,13 @@ class PaymentMethod extends Model
     const PAYPAL = 1;
     const CARD = 2;
 
+    public function sales()
+    {
+        return $this->hasMany(
+            Sale::class,
+            'fk_id_payment_method',
+            'id'
+        );
+    }
+
 }

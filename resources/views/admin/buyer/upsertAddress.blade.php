@@ -2,7 +2,7 @@
     <div class="d-flex flex-column align-items-center mb-5">
         <h4 class="text-header mt-2 text-color-primary">Lista de direcciones</h4>
     </div>
-    <div class="row">
+    <div class="table-responsive">
         <table id="table-data" class="table table-striped table-bordered dt-responsive text-center"
                style="width:100%">
             <thead>

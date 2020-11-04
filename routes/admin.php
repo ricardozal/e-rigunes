@@ -275,3 +275,27 @@ Route::get('/admin/payment_Method-content',
 Route::get('/admin/payment_Method/{paymentMethodId}/active',
     'PaymentMethodController@active')
     ->name('admin_payment_method_active');
+
+/***********************************
+ * *******  Sales *************
+ **********************************/
+
+Route::get('/admin/sales',
+    'SalesController@index')
+    ->name('admin_sales_index');
+
+Route::get('/admin/sales-content',
+    'SalesController@indexContent')
+    ->name('admin_sales_index_content');
+
+Route::get('/admin/{salesId}/sales-Products',
+    'SalesController@productsVariants')
+    ->name('admin_sales_products_variants');
+
+Route::get('/admin/{salesId}/sales-Products-content',
+    'SalesController@productsVariantsContent')
+    ->name('admin_sales_products_variants_content');
+
+Route::get('/admin/{salesId}/sales-skydropx',
+    'SalesController@skydropx')
+    ->name('admin_sales_products_skydropx');

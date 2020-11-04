@@ -67,8 +67,8 @@
         <span class="sidebar-text">Mensajes</span>
     </a>
 
-    <a class="nav-link {{$routeName == 'admin_contactMessages_index' ? 'active' : ''}}"
-       href="{{route('admin_contactMessages_index')}}">
+    <a class="nav-link {{$routeName == 'admin_sales_index' ? 'active' : ''}}"
+       href="{{route('admin_sales_index')}}">
     <span>
         <i class="fas fa-truck-loading"></i>
     </span>
