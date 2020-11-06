@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,5 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(ProductsSeeder::class);
+        $this->call(PaymentMethodSeeder::class);
+        $this->call(PromotionSeeder::class);
+        $this->call(ShippingInformationSeeder::class);
+        $this->call(SalesSeeder::class);
     }
 }

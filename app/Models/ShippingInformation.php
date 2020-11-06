@@ -7,7 +7,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\ShippingInformation
+ * App\Models\ShippingInformationSeeder
  *
  * @property int $id
  * @property string $skydropx_id
@@ -29,8 +29,19 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|ShippingInformation whereSkydropxId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ShippingInformation whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
+ * @property-read int|null $sales_count
  */
 class ShippingInformation extends Model
 {
     protected $table = 'shipping_information';
+
+    public function sales()
+    {
+        return $this->hasMany(
+            Sale::class,
+            'fk_id_shipping_information',
+            'id'
+        );
+    }
 }

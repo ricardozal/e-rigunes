@@ -37,6 +37,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Sale whereTotalPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Sale whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Address $address
+ * @property-read \App\Models\Buyer $buyer
+ * @property-read \App\Models\PaymentMethod $payment_method
+ * @property-read \App\Models\Promotion|null $promotion
+ * @property-read \App\Models\ShippingInformation|null $shipping_information
  */
 class Sale extends Model
 {
@@ -49,6 +54,51 @@ class Sale extends Model
             'sale_variants',
             'fk_id_sale',
             'fk_id_variant'
+        );
+    }
+
+    public function promotion()
+    {
+        return $this->belongsTo(
+            Promotion::class,
+            'fk_id_promotion',
+            'id'
+        );
+    }
+
+    public function shipping_information()
+    {
+        return $this->belongsTo(
+            ShippingInformation::class,
+            'fk_id_shipping_information',
+            'id'
+        );
+    }
+
+    public function buyer()
+    {
+        return $this->belongsTo(
+            Buyer::class,
+            'fk_id_buyer',
+            'id'
+        );
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(
+            Address::class,
+            'fk_id_shipping_address',
+            'id'
+        );
+    }
+
+    public function payment_method()
+    {
+        return $this->belongsTo(
+            PaymentMethod::class,
+            'fk_id_payment_method',
+            'id'
         );
     }
 }

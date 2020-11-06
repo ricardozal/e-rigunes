@@ -41,6 +41,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereFkIdBuyer($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereReferences($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
+ * @property-read int|null $sales_count
  */
 
 class Address extends Model
@@ -50,4 +52,22 @@ class Address extends Model
     protected $fillable = [
         'street','zip_code','ext_num','int_num','colony','city','state','country'
     ];
+
+    protected  $appends = [
+        'full_address'
+    ];
+
+    public function sales()
+    {
+        return $this->hasMany(
+            Sale::class,
+            'fk_id_shipping_address',
+            'id'
+        );
+    }
+
+    public function getFullAddressAttribute()
+    {
+        return $this->street.', '.$this->ext_num.', '.$this->int_num.', '.$this->colony.', '.$this->zip_code.', '.$this->city.', '.$this->state.', '.$this->country.', '.$this->references;
+    }
 }
