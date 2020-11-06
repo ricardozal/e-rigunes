@@ -28,24 +28,38 @@ $(document).ready(function () {
 
     $(document).on('click', '#btn-process-queue', function () {
         if(myDropzone.files.length > 0){
-            myDropzone.processQueue();
+
+            if(myDropzone.files.length === 2) return;
+
+            saveWithoutNewImages(function (variantId) {
+                $('#new-id-variant').val(variantId);
+                myDropzone.processQueue();
+            });
         } else {
-            saveWithoutNewImages();
+
+            let count = 0;
+            $('.images-list').children('input').each(function () {
+                count++;
+            });
+
+            if(count > 0){
+                saveWithoutNewImages();
+            } else {
+                Swal.fire(
+                    'Atención',
+                    'No se seleccionaron imagenes',
+                    'info'
+                );
+            }
+
+
         }
 
     });
 
     myDropzone.on("sending", function(file, xhr, formData) {
-        filesNumber++;
+        formData.append("variantId", $('#new-id-variant').val());
         formData.append("color", $('#fk_id_color').val());
-        if(filesNumber === 1)
-        {
-            formData.append("size", $('#fk_id_size').val());
-            formData.append("productId", $('#product-id').val());
-            $('.images-list').children('input').each(function () {
-                formData.append($(this).attr('name'), $(this).val());
-            });
-        }
     });
 
     myDropzone.on('success', function (file, response) {
@@ -102,7 +116,7 @@ $(document).on('click', '.variant-image', function () {
 
 });
 
-function saveWithoutNewImages() {
+function saveWithoutNewImages(onImages) {
 
     let imageSelected = [];
     let url = $('#create-variant').val();
@@ -127,7 +141,11 @@ function saveWithoutNewImages() {
         },
         success: function (response) {
             if(response.success){
-                window.location.href = $('#variants-index').val();
+                if (onImages) {
+                    onImages(response.variant_id);
+                } else {
+                    window.location.href = $('#variants-index').val();
+                }
             }else {
                 Swal.fire(
                     'Atención',

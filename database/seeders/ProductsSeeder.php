@@ -11,6 +11,7 @@ use App\Models\PropertyValue;
 use App\Models\Provider;
 use App\Models\Size;
 use App\Models\Variant;
+use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -76,13 +77,15 @@ class ProductsSeeder extends Seeder
             $variantIdOne = DB::table('variant')->insertGetId([
                 'sku' => $this->faker->randomNumber(5),
                 'fk_id_size' => ProductsSeeder::TALLA_TRES,
-                'fk_id_product' => $productId
+                'fk_id_product' => $productId,
+                'created_at' => Carbon::now()
             ]);
 
             $variantIdTwo = DB::table('variant')->insertGetId([
                 'sku' => $this->faker->randomNumber(5),
                 'fk_id_size' => ProductsSeeder::TALLA_CINCO,
-                'fk_id_product' => $productId
+                'fk_id_product' => $productId,
+                'created_at' => Carbon::now()
             ]);
 
             for ($i=0;$i<3;$i++){
@@ -122,13 +125,15 @@ class ProductsSeeder extends Seeder
             $variantIdOne = DB::table('variant')->insertGetId([
                 'sku' => $this->faker->randomNumber(5),
                 'fk_id_size' => ProductsSeeder::TALLA_CINCO,
-                'fk_id_product' => $productId
+                'fk_id_product' => $productId,
+                'created_at' => Carbon::now()
             ]);
 
             $variantIdTwo = DB::table('variant')->insertGetId([
                 'sku' => $this->faker->randomNumber(5),
                 'fk_id_size' => ProductsSeeder::TALLA_SIETE,
-                'fk_id_product' => $productId
+                'fk_id_product' => $productId,
+                'created_at' => Carbon::now()
             ]);
 
             for ($i=0;$i<3;$i++){
@@ -153,13 +158,15 @@ class ProductsSeeder extends Seeder
             $variantIdThree = DB::table('variant')->insertGetId([
                 'sku' => $this->faker->randomNumber(5),
                 'fk_id_size' => ProductsSeeder::TALLA_SIETE_MEDIO,
-                'fk_id_product' => $productId
+                'fk_id_product' => $productId,
+                'created_at' => Carbon::now()
             ]);
 
             $variantIdFour = DB::table('variant')->insertGetId([
                 'sku' => $this->faker->randomNumber(5),
                 'fk_id_size' => ProductsSeeder::TALLA_SIETE,
-                'fk_id_product' => $productId
+                'fk_id_product' => $productId,
+                'created_at' => Carbon::now()
             ]);
 
             for ($i=0;$i<3;$i++){

@@ -170,6 +170,10 @@ Route::get('/admin/product/{productId}/load-images',
     'VariantController@loadImages')
     ->name('admin_variants_load_images');
 
+Route::post('/admin/product/variant/save-image',
+    'VariantController@saveImage')
+    ->name('admin_variants_save_image');
+
 /***********************************
  * *******   Category *************
  **********************************/

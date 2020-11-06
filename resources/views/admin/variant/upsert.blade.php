@@ -75,7 +75,7 @@
                         <div class="row">
                             <div class="col-12 py-4">
                                 <div id="div-drop-zone" class="w-100 text-center"
-                                     data-url="{{isset($variant) ? route('admin_product_variants_update_post',['variantId' => $variant->id]) : route('admin_product_variants_create_post')}}">
+                                     data-url="{{isset($variant) ? route('admin_product_variants_update_post',['variantId' => $variant->id]) : route('admin_variants_save_image')}}">
                                     <div class="dz-message" style="cursor: pointer">
                                         <img src="{{asset('img/icons/ic_upload.png')}}"
                                              width="80px"
@@ -110,5 +110,6 @@
         <input type="hidden" value="{{route('admin_variants_load_images',['productId' => $product->id])}}" id="inp-url-load-images">
         <input type="hidden" value="{{route('admin_product_variants_create_post')}}" id="create-variant">
         <input type="hidden" value="{{route('admin_product_variants',['productId' => $product->id])}}" id="variants-index">
+        <input type="hidden" value="" id="new-id-variant">
     @endif
 @endsection

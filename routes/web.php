@@ -55,6 +55,10 @@ Route::get('/product/{productId}/details',
     'Web\ProductController@details')
     ->name('web_product_details');
 
+Route::get('/product/{productId}/color/{colorId}/load-sizes',
+    'Web\ProductController@loadSizes')
+    ->name('web_load_sizes');
+
 /**
  *      Product Category
  */

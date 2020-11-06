@@ -53,24 +53,13 @@ class Variant extends Model
     protected $table = 'variant';
 
     protected $appends = [
-        'product_name',
-        'is_active_product',
         'featured_image',
-        'classification_product',
         'color_name'
     ];
-
-    public function getProductNameAttribute(){
-        return $this->product->name;
-    }
 
     public function getColorNameAttribute()
     {
         return $this->color()->select(['color.id','color.name','color.value'])->groupBy('color.id')->first();
-    }
-
-    public function getIsActiveProductAttribute(){
-        return $this->product->active;
     }
 
     public function getFeaturedImageAttribute()
@@ -78,9 +67,14 @@ class Variant extends Model
         return $this->variantImages()->where('featured', 1)->first()->absolute_image_url;
     }
 
-    public function getClassificationProductAttribute(){
+    public function variantHasImages(){
 
-        return $this->product->category->name;
+        return $this->hasMany(
+            VariantHasImages::class,
+            'fk_id_variant',
+            'id'
+        );
+
     }
 
     public function variantImages()

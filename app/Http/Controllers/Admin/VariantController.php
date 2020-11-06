@@ -54,91 +54,80 @@ class VariantController extends Controller
         try {
             DB::beginTransaction();
 
-            if($productId != null){
+            /** @var Product $product */
+            $product = Product::find($productId);
 
-                if($request->file('file') == null && $request->input('image-selected') == null){
+            foreach ($product->variants as $variant){
+                if($variant->color_name->id == $request->input('color') && $variant->size->id == $request->input('size')){
                     return response()->json([
-                        'errors' => ['images' => ['No se seleccionaron imagenes'] ]
+                        'errors' => ['images' => ['La talla y color seleccionado ya está resgitrado en el modelo '.$product->name] ]
                     ],422);
                 }
+            }
 
-                /** @var Product $product */
-                $product = Product::find($productId);
+            $variant = new Variant();
+            $variant->fk_id_size = $request->input('size');
+            $variant->fk_id_product = $product->id;
+            $variant->saveOrFail();
 
-                foreach ($product->variants as $variant){
-                    if($variant->color_name->id == $request->input('color') && $variant->size->id == $request->input('size')){
-                        return response()->json([
-                            'errors' => ['images' => ['La talla y color seleccionado ya está resgitrado en el modelo '.$product->name] ]
-                        ],422);
-                    }
-                }
-
-                $variant = new Variant();
-                $variant->fk_id_size = $request->input('size');
-                $variant->fk_id_product = $product->id;
-                $variant->saveOrFail();
-
-                if($request->input('image-selected') != null){
-                    foreach ($request->input('image-selected') as $imageId)
-                    {
-                        $variantHasImage = new VariantHasImages();
-                        $variantHasImage->fk_id_color = $request->input('color');
-                        $variantHasImage->fk_id_variant = $variant->id;
-                        $variantHasImage->fk_id_image = $imageId;
-                        $variantHasImage->saveOrFail();
-                    }
-                }
-
-                if($request->file('file') != null){
-
-                    $fileOk = $request->hasFile('file') &&
-                        $request->file('file')->isValid();
-
-                    if (!$fileOk){
-                        return response()->json([
-                            'errors' => ['images' => ['Alguna imagen es invalida'] ]
-                        ],422);
-                    }
-
-                    $url = UploadFiles::storeFile($request->file('file'),$variant->id,'shoes');
-
-                    $image = new Image();
-                    $image->url = $url;
-                    $image->featured = true;
-                    $image->saveOrFail();
-
+            if($request->input('image-selected') != null){
+                foreach ($request->input('image-selected') as $imageId)
+                {
                     $variantHasImage = new VariantHasImages();
                     $variantHasImage->fk_id_color = $request->input('color');
                     $variantHasImage->fk_id_variant = $variant->id;
-                    $variantHasImage->fk_id_image = $image->id;
+                    $variantHasImage->fk_id_image = $imageId;
                     $variantHasImage->saveOrFail();
                 }
-            } else {
-
-                $fileOk = $request->hasFile('file') &&
-                    $request->file('file')->isValid();
-
-                if (!$fileOk){
-                    return response()->json([
-                        'errors' => ['images' => ['Alguna imagen es invalida'] ]
-                    ],422);
-                }
-
-                /** @var Variant $variant */
-                $variant = Variant::orderBy('id','DESC')->first();
-                $url = UploadFiles::storeFile($request->file('file'),$variant->id,'shoes');
-
-                $image = new Image();
-                $image->url = $url;
-                $image->featured = true;
-                $image->saveOrFail();
-
-                $variantHasImage = new VariantHasImages();
-                $variantHasImage->fk_id_color = $request->input('color');
-                $variantHasImage->fk_id_variant = $variant->id;
-                $variantHasImage->fk_id_image = $image->id;
-                $variantHasImage->saveOrFail();
             }
+
+            DB::commit();
+            return response()->json([
+                'success' => true,
+                'message' => 'Guardado correctamente',
+                'variant_id' => $variant->id
+            ]);
+        } catch (\Throwable $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function saveImage(Request $request){
+        /** @var Variant $variant */
+        $variant = Variant::find($request->input('variantId'));
+
+        /** @var Color $color */
+        $color = Color::find($request->input('color'));
+
+        $fileOk = $request->hasFile('file') &&
+            $request->file('file')->isValid();
+
+        if (!$fileOk){
+            return response()->json([
+                'errors' => ['images' => ['Alguna imagen es invalida'] ]
+            ],422);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $url = UploadFiles::storeFile($request->file('file'),$variant->id,'shoes');
+
+            $image = new Image();
+            $image->url = $url;
+            $image->featured = true;
+            $image->saveOrFail();
+
+            $variantHasImage = new VariantHasImages();
+            $variantHasImage->fk_id_color = $color->id;
+            $variantHasImage->fk_id_variant = $variant->id;
+            $variantHasImage->fk_id_image = $image->id;
+            $variantHasImage->saveOrFail();
 
             DB::commit();
             return response()->json([
