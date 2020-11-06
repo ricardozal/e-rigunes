@@ -10,12 +10,18 @@
     <div class="col-4 my-2 d-flex justify-content-end h2">
         <i class="fas fa-search color-white"></i>
         <img class="ml-3 mr-3 color-white" src="{{asset('img/ic_line.png')}}" style="max-height: 5vh!important">
-        <a class="mx-3 text-center "
-           href="{{route('ecommerce_account_profile_index')}}"
-           id=""
-           role=""
-           data-toggle="">
+        <a class="mx-3 text-center {{ Auth::check() ? '' : '' }}"
+           href=" {{ Auth::check() ? '#' : route('login') }}"
+           id="{{Auth::check() ? 'userDropdown' : ''}}"
+           role="{{Auth::check() ? 'button' : ''}}"
+           data-toggle="{{Auth::check() ? 'dropdown' : ''}}">
             <i class="far fa-user color-white"></i>
+            @if(Auth::check())
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="{{route('ecommerce_account_profile_index')}}">Mi cuenta</a>
+                    <a class="dropdown-item" href="{{route('logout')}}">Cerrar sesión</a>
+                </div>
+            @endif
 
         </a>
         <i class="fas fa-shopping-bag color-white mr-4"></i>

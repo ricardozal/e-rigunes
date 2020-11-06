@@ -6,7 +6,7 @@
     <div class="card card-data mb-3">
         <div class="card-body">
             <li class="nav-item my-2">
-                <a class="nav-link " href=""><i class="far fa-user icon"></i>&nbsp;&nbsp;Datos personales</a>
+                <a class="nav-link " href="{{route('ecommerce_account_profile_index')}}"><i class="far fa-user icon"></i>&nbsp;&nbsp;Datos personales</a>
             </li>
         </div>
 

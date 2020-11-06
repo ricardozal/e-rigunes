@@ -75,6 +75,7 @@
                                 <h5>Colores</h5>
                             </div>
                             <div class="col-12 mb-4">
+                                054
                                 <div class="row">
                                     @foreach($product->colors as $color)
                                         <div class="col-2 text-center cursor-pointer {{$product->variants[0]->fk_id_color == $color->id ? 'selected-color' : ''}}">

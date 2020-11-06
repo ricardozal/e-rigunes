@@ -3,7 +3,7 @@
     <script src="{{asset("/commons/form_tools.js")}}"></script>
     <script src="{{ asset('js/web/components/subscriber.js?v=1') }}"></script>
 @endpush
-<hr >
+<hr>
 <div class="container-fluid ">
     <div id="footer-wrapper" class="text-center">
         <div id="footer">
@@ -19,16 +19,16 @@
                             CONTACTO</h6></a>
                     <a class="color-black" href=""><h6 style="font-size: medium">
                             PREGUNTAS FRECUENTES </h6></a>
-                    <a class="color-black" href=""><h6 style="font-size: medium; ">AVISO DE PRIVACIDAD</h6></a>
+                    <a class="color-black" href="{{route('terms_condition_section')}}"><h6 style="font-size: medium; ">TERMINOS Y CONDICIONES</h6></a>
                 </div>
 
                 <div class=" col-12 col-lg-4 my-auto text-left">
 
                     <div class="row mx-0" >
+
+                        <p class="color-primary h2"><b>Suscribete</b></p>
                         <form id="form-subscriber" action="" method="POST">
                             @csrf
-                        <p class="color-primary h2"><b>Suscribete</b></p>
-
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Email"
                                    aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -37,7 +37,8 @@
                                 </button>
                             </div>
                         </div>
-                </form>
+                        </form>
+
                     </div>
 
                     <div class="row mx-0 justify-content-around">

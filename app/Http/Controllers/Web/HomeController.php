@@ -26,5 +26,9 @@ public function question(){
         return view('web.home.ours');
     }
 
+    public function termCondition(){
+        return view('web.home.terms_conditions');
+    }
+
 
 }

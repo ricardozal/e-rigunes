@@ -64,6 +64,14 @@ class Buyer extends Model
         );
     }
 
+    public function addresses(){
+
+        return $this->hasMany(
+            Address::class,
+            'fk_id_buyer',
+            'id');
+    }
+
     public function getFullNameAttribute()
     {
         return $this->name.' '.$this->father_last_name.' '.$this->mother_last_name;

@@ -22,7 +22,7 @@ Route::get('/create-profile',
     'Web\UserController@create')
     ->name('web_user_create');
 
-Route::post('/create-profile',
+Route::post('/create-profile-post',
     'Web\UserController@createPost')
     ->name('web_user_create_post');
 
@@ -40,6 +40,16 @@ Route::get('/admin/login',
 /**
  *      Home
  */
+
+Route::get(
+    '/ours',
+    'Web\HomeController@our'
+)->name('ours_section');
+
+Route::get(
+    '/terms-condition',
+    'Web\HomeController@termCondition'
+)->name('terms_condition_section');
 
 Route::get(
     '/ours-section',
@@ -78,8 +88,3 @@ Route::get(
 
 
 
-
-Route::get(
-    '/my-account/index',
-    'Web\UserController@personalData'
-)->name('account_index');
