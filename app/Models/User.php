@@ -64,5 +64,18 @@ class User extends Authenticatable
         return $this->fk_id_role == Role::ADMIN;
     }
 
+    public function isBuyer()
+    {
+        return $this->fk_id_role == Role::BUYER;
+    }
 
+    public function buyer(){
+
+        return $this->hasOne(
+            Buyer::class,
+            'fk_id_user',
+            'id'
+        );
+
+    }
 }

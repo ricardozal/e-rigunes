@@ -97,12 +97,11 @@ function loadSizes(colorId) {
             $sizeContainer.append($loading);
         },
         success: function (response) {
-
+            console.log(response);
             const sizes = response.data;
             $sizeList.html('');
-
-            console.log(sizes);
-
+            $('.images-slider').slick('unslick');
+            $('.images-slider').html('');
             if(sizes.length > 0){
 
                 sizes.forEach(function (item) {
@@ -114,6 +113,58 @@ function loadSizes(colorId) {
 
                     $sizeList.append(sizeElement);
                 });
+
+            const images = sizes[0].variant_images;
+
+                images.forEach(function (item) {
+
+                    let element =
+                        $('<div class="cursor-pointer btn-thumbnail"' +
+                            'data-url="'+item.absolute_image_url+'">' +
+                            '<div class="variant-thumbnail mx-auto"' +
+                            'style="background-image: url('+item.absolute_image_url+'); background-size: contain;' +
+                            '   background-repeat: no-repeat;' +
+                            '   background-position: center center;' +
+                            '   border: 1px solid lightgray;' +
+                            '   border-radius: 16px;' +
+                            '   height: 128px;' +
+                            '   width: 128px;"></div>' +
+                            '</div>');
+
+                    $('.images-slider').append(element);
+                    $('.variant-image').attr('src', item.absolute_image_url);
+
+                });
+
+                $('.images-slider').slick({
+                    infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    responsive: [
+                        {
+                            breakpoint: 1240,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                            }
+                        },
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+
             } else {
                 const text = $('<span>', {html: "No hay tallas disponibles"});
                 $sizeList.append(text);

@@ -34,7 +34,7 @@ class ProductController extends Model
             ->whereHas('variantHasImages', function ($q) use ($colorId){
                 $q->where('fk_id_color', $colorId);
             })
-            ->with('size')
+            ->with(['size','variantImages'])
             ->get();
 
         return response()->json([
