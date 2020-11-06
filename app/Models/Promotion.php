@@ -37,6 +37,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Promotion whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Promotion whereValue($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
+ * @property-read int|null $sales_count
  */
 class Promotion extends Model
 {

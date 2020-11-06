@@ -37,6 +37,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Sale whereTotalPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Sale whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Address $address
+ * @property-read \App\Models\Buyer $buyer
+ * @property-read \App\Models\PaymentMethod $payment_method
+ * @property-read \App\Models\Promotion|null $promotion
+ * @property-read \App\Models\ShippingInformation|null $shipping_information
  */
 class Sale extends Model
 {

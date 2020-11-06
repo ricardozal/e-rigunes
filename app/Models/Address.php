@@ -41,6 +41,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereFkIdBuyer($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereReferences($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
+ * @property-read int|null $sales_count
  */
 
 class Address extends Model

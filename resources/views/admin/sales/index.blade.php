@@ -39,8 +39,8 @@
            value="{{route('admin_sales_index_content')}}">
     <input id="inp-url-products" type="hidden"
            value="{{route('admin_sales_products_variants',['salesId' => 'FAKE_ID'])}}">
-    <input id="inp-url-skydropx" type="hidden"
-           value="{{route('admin_sales_products_skydropx',['salesId' => 'FAKE_ID'])}}">
+    <input id="inp-url-skydropx-create-shipment" type="hidden"
+           value="{{route('admin_sales_products_skydropx_create_shipment',['salesId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

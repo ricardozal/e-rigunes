@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|ShippingInformation whereSkydropxId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ShippingInformation whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
+ * @property-read int|null $sales_count
  */
 class ShippingInformation extends Model
 {

@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Image whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Image whereUrl($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\VariantHasImages[] $variantHasImages
+ * @property-read int|null $variant_has_images_count
  */
 class Image extends Model
 {

@@ -39,6 +39,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Buyer whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
+ * @property-read int|null $sales_count
  */
 class Buyer extends Model
 {
@@ -70,6 +72,14 @@ class Buyer extends Model
             Sale::class,
             'fk_id_buyer',
             'id'
+        );
+    }
+
+    public function address(){
+        return $this->hasMany(
+          Address::class,
+          'fk_id_buyer',
+          'id'
         );
     }
 
