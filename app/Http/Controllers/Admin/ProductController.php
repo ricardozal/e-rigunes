@@ -5,16 +5,15 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\Buyer;
 use App\Models\Product;
 use App\Http\Request\ProductsRequest;
 use App\Http\Request\UpdateProductsRequest;
 use App\Models\Variant;
-use App\Models\VariantImage;
+use App\Models\VariantHasImages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     public function index()
     {
@@ -105,23 +104,5 @@ class ProductsController extends Controller
         return response()->json([
             'success' => true,
         ]);
-    }
-
-    public  function variants($productId){
-        $product = Product::find($productId);
-        return view('admin.products.indexVariants',['product' => $product]);
-    }
-
-    public function variantsContent($productId){
-
-        $query = Variant::with(['product','size','color'])
-            ->where('fk_id_product', '=', $productId)
-            ->get();
-        dd($query);
-
-        return response()->json([
-            'data' => $query
-        ]);
-
     }
 }

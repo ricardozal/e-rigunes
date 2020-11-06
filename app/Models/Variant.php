@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use BinaryCats\Sku\HasSku;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -37,34 +38,28 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereSku($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Variant whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Color[] $color
+ * @property-read int|null $color_count
+ * @property-read mixed $color_name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Purchase[] $purchases
+ * @property-read int|null $purchases_count
  */
 class Variant extends Model
 {
 
+    use HasSku;
     use HasFactory;
 
     protected $table = 'variant';
 
-    protected $fillable = [
-        'sku',
-        'public_price',
-        'distributor_price',
-        'fk_id_product'
-    ];
-
     protected $appends = [
-        'product_name',
-        'is_active_product',
         'featured_image',
-        'classification_product',
+        'color_name'
     ];
 
-    public function getProductNameAttribute(){
-        return $this->product->name;
-    }
-
-    public function getIsActiveProductAttribute(){
-        return $this->product->active;
+    public function getColorNameAttribute()
+    {
+        return $this->color()->select(['color.id','color.name','color.value'])->groupBy('color.id')->first();
     }
 
     public function getFeaturedImageAttribute()
@@ -72,9 +67,14 @@ class Variant extends Model
         return $this->variantImages()->where('featured', 1)->first()->absolute_image_url;
     }
 
-    public function getClassificationProductAttribute(){
+    public function variantHasImages(){
 
-        return $this->product->category->name;
+        return $this->hasMany(
+            VariantHasImages::class,
+            'fk_id_variant',
+            'id'
+        );
+
     }
 
     public function variantImages()
@@ -112,7 +112,7 @@ class Variant extends Model
             'variant_has_images',
             'fk_id_variant',
             'fk_id_color'
-        )->select(['color.id','color.name','color.value'])->groupBy('color.id');
+        );
     }
 
     public function purchases()

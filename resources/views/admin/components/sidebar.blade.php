@@ -67,6 +67,30 @@
         <span class="sidebar-text">Mensajes</span>
     </a>
 
+    <a class="nav-link {{$routeName == 'admin_sales_index' ? 'active' : ''}}"
+       href="{{route('admin_sales_index')}}">
+    <span>
+        <i class="fas fa-truck-loading"></i>
+    </span>
+        <span class="sidebar-text">Ventas</span>
+    </a>
+
+    <a class="nav-link {{$routeName == 'admin_promotion_index' ? 'active' : ''}}"
+       href="{{route('admin_promotion_index')}}">
+    <span>
+        <i class="fas fa-percentage"></i>
+    </span>
+        <span class="sidebar-text">Promociones</span>
+    </a>
+
+    <a class="nav-link {{$routeName == 'admin_payment_method_index' ? 'active' : ''}}"
+       href="{{route('admin_payment_method_index')}}">
+    <span>
+        <i class="fas fa-money-check-alt"></i>
+    </span>
+        <span class="sidebar-text">Métodos de pago</span>
+    </a>
+
     <a class="nav-link"
        href="{{route('logout')}}">
         <span>

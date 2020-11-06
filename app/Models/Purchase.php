@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Purchase whereTotalPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Purchase whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Provider $provider
  */
 class Purchase extends Model
 {

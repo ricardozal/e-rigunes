@@ -107,44 +107,72 @@ Route::get('/admin/provider/{providerId}/active',
  * *******   Products *************
  **********************************/
 Route::get('/admin/products',
-    'ProductsController@index')
+    'ProductController@index')
     ->name('admin_products_index');
 
 Route::get('/admin/products-content',
-    'ProductsController@indexContent')
+    'ProductController@indexContent')
     ->name('admin_products_index_content');
 
 Route::get('/admin/product/create',
-    'ProductsController@create')
+    'ProductController@create')
     ->name('admin_product_create');
 
 Route::post('/admin/product/create',
-    'ProductsController@createPost')
+    'ProductController@createPost')
     ->name('admin_product_create_post');
 
 Route::get('/admin/product/{productId}/update',
-    'ProductsController@update')
+    'ProductController@update')
     ->name('admin_product_update');
 
 Route::post('/admin/product/{productId}/update',
-    'ProductsController@updatePost')
+    'ProductController@updatePost')
     ->name('admin_product_update_post');
 
 Route::get('/admin/product/{productId}/active',
-    'ProductsController@active')
+    'ProductController@active')
     ->name('admin_product_active');
 
-Route::get('/admin/product/{productId}/delete',
-    'ProductsController@delete')
-    ->name('admin_product_delete');
+/***********************************
+ * *******   Variants *************
+ **********************************/
 
 Route::get('/admin/product/{productId}/variants',
-    'ProductsController@variants')
+    'VariantController@index')
     ->name('admin_product_variants');
 
 Route::get('/admin/product/{productId}/variants-content',
-    'ProductsController@variantsContent')
+    'VariantController@indexContent')
     ->name('admin_product_variants_content');
+
+Route::get('/admin/product/{productId}/variant/create',
+    'VariantController@create')
+    ->name('admin_product_variants_create');
+
+Route::get('/admin/product/variant/{variantId}/update',
+    'VariantController@update')
+    ->name('admin_product_variants_update_images');
+
+Route::post('/admin/product/variant/{variantId}/update',
+    'VariantController@updatePost')
+    ->name('admin_product_variants_update_post');
+
+Route::post('/admin/product/variant/create',
+    'VariantController@createPost')
+    ->name('admin_product_variants_create_post');
+
+Route::get('/admin/product/variant/{variantId}/active',
+    'VariantController@active')
+    ->name('admin_product_variants_active');
+
+Route::get('/admin/product/{productId}/load-images',
+    'VariantController@loadImages')
+    ->name('admin_variants_load_images');
+
+Route::post('/admin/product/variant/save-image',
+    'VariantController@saveImage')
+    ->name('admin_variants_save_image');
 
 /***********************************
  * *******   Category *************
@@ -203,3 +231,83 @@ Route::get('/admin/contact-messages',
 Route::get('/admin/contact-messages-content',
     'ContactMessagesController@indexContent')
     ->name('admin_contactMessages_index_content');
+
+/***********************************
+ * *******  Promotions *************
+ **********************************/
+
+Route::get('/admin/promotion',
+    'PromotionController@index')
+    ->name('admin_promotion_index');
+
+Route::get('/admin/promotion-content',
+    'PromotionController@indexContent')
+    ->name('admin_promotion_index_content');
+
+Route::get('/admin/promotion/create',
+    'PromotionController@create')
+    ->name('admin_promotion_create');
+
+Route::post('/admin/promotion/create',
+    'PromotionController@createPost')
+    ->name('admin_promotion_create_post');
+
+Route::get('/admin/promotion/{promotionId}/update',
+    'PromotionController@update')
+    ->name('admin_promotion_update');
+
+Route::post('/admin/promotion/{promotionId}/update',
+    'PromotionController@updatePost')
+    ->name('admin_promotion_update_post');
+
+Route::get('/admin/promotion/{promotionId}/active',
+    'PromotionController@active')
+    ->name('admin_promotion_active');
+
+/***********************************
+ * *******  Payment_Method *************
+ **********************************/
+
+Route::get('/admin/payment_Method',
+    'PaymentMethodController@index')
+    ->name('admin_payment_method_index');
+
+Route::get('/admin/payment_Method-content',
+    'PaymentMethodController@indexContent')
+    ->name('admin_payment_method_index_content');
+
+Route::get('/admin/payment_Method/{paymentMethodId}/active',
+    'PaymentMethodController@active')
+    ->name('admin_payment_method_active');
+
+/***********************************
+ * *******  Sales *************
+ **********************************/
+
+Route::get('/admin/sales',
+    'SalesController@index')
+    ->name('admin_sales_index');
+
+Route::get('/admin/sales/sales-content',
+    'SalesController@indexContent')
+    ->name('admin_sales_index_content');
+
+Route::get('/admin/sales/{salesId}/sales-Products',
+    'SalesController@productsVariants')
+    ->name('admin_sales_products_variants');
+
+Route::get('/admin/sales/{salesId}/sales-Products-content',
+    'SalesController@productsVariantsContent')
+    ->name('admin_sales_products_variants_content');
+
+/***********************************
+ * *******  Skydropx *************
+ **********************************/
+Route::get('/admin/sales/sales-skydropx-get-shipments',
+    'SkydropxController@skydropxGetShipments')
+    ->name('admin_sales_products_skydropx_get_shipments');
+
+Route::get('/admin/sales/{salesId}/createShipment',
+    'SkydropxController@createShipment')
+    ->name('admin_sales_products_skydropx_create_shipment');
+

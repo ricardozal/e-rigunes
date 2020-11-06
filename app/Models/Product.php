@@ -66,12 +66,14 @@ class Product extends Model
         'width',
         'height',
         'length',
-        'weight'
+        'weight',
+        'public_price',
+        'distributor_price'
     ];
 
     protected $appends = [
         'rating_average',
-        //'colors',
+        'colors',
         'sizes'
     ];
 
@@ -119,16 +121,18 @@ class Product extends Model
     }
 
 
-//    public function getColorsAttribute()
-//    {
-//        $colorsId = $this->variants()
-//            ->select('fk_id_color')
-//            ->groupBy('fk_id_color')
-//            ->pluck('fk_id_color')
-//            ->toArray();;
-//
-//        return Color::whereIn('id',$colorsId)->get();
-//    }
+    public function getColorsAttribute()
+    {
+        $variants = $this->variants;
+        $colorsId = [];
+
+        foreach ($variants as $variant){
+            $colorsId[] = $variant->color_name->id;
+        }
+
+        return Color::whereIn('id',$colorsId)->get();
+
+    }
 
     public function getSizesAttribute()
     {

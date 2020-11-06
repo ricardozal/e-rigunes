@@ -32,7 +32,7 @@
                             <td>{{$purchaseVariants->product->description}}</td>
                             <td>{{$purchaseVariants->sku}}</td>
                             <td>{{$purchaseVariants->size->value}}</td>
-                            <td>{{$purchaseVariants->color[0]->name}}</td>
+                            <td>{{$purchaseVariants->color_name->name}}</td>
                             <td>{{$purchaseVariants->pivot->quantity}}</td>
                             <td>{{$purchaseVariants->pivot->purchase_price}}</td>
                         </tr>

@@ -37,6 +37,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Promotion whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Promotion whereValue($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
+ * @property-read int|null $sales_count
  */
 class Promotion extends Model
 {
@@ -47,10 +49,11 @@ class Promotion extends Model
         'expiration_date',
         'coupon_code',
         'max_number_swaps',
+        'swaps',
         'is_percentage',
         'value',
         'min_amount',
-        'description',
+        'description'
     ];
 
     public static function validateExist($coupon)
@@ -81,6 +84,15 @@ class Promotion extends Model
         $coupon = Promotion::whereCouponCode($coupon)->first();
         $coupon->swaps = $coupon->swaps * 1 + 1;
         $coupon->save();
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(
+            Sale::class,
+            'fk_id_promotion',
+            'id'
+        );
     }
 
 }

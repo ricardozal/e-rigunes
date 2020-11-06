@@ -75,10 +75,9 @@
                                 <h5>Colores</h5>
                             </div>
                             <div class="col-12 mb-4">
-                                054
-                                <div class="row">
+                                <div class="row colors-container">
                                     @foreach($product->colors as $color)
-                                        <div class="col-2 text-center cursor-pointer {{$product->variants[0]->fk_id_color == $color->id ? 'selected-color' : ''}}">
+                                        <div class="col-2 text-center color-item cursor-pointer {{$product->variants[0]->color_name->id == $color->id ? 'selected-color' : ''}}" data-id="{{$color->id}}">
                                             <div class="mx-auto" style="background-color: {{$color->value}}; border: 1px solid gray; height: 20px; width: 20px; border-radius: 20px; margin: 0; padding: 0;"></div>
                                             <span>{{$color->name}}</span>
                                         </div>
@@ -88,13 +87,8 @@
                             <div class="col-12">
                                 <h5>Tallas</h5>
                             </div>
-                            <div class="col-12">
-                                <div class="row">
-                                    @foreach($product->sizes as $size)
-                                        <div class="col-2 text-center">
-                                            <h4><span class="badge badge-primary  {{$product->variants[0]->fk_id_size == $size->id ? 'selected-size' : ''}}">{{$size->value}}</span></h4>
-                                        </div>
-                                    @endforeach
+                            <div class="col-12 size-container">
+                                <div class="row size-list">
                                 </div>
                             </div>
                         </div>
@@ -103,4 +97,6 @@
             </div>
         </div>
     </div>
+
+    <input type="hidden" value="{{route('web_load_sizes', ['productId' => $product->id, 'colorId' => 'FAKE_ID'])}}" id="inp-url-load-sizes">
 @endsection

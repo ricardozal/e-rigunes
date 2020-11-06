@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PaymentMethod whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
+ * @property-read int|null $sales_count
  */
 class PaymentMethod extends Model
 {
@@ -32,5 +34,14 @@ class PaymentMethod extends Model
 
     const PAYPAL = 1;
     const CARD = 2;
+
+    public function sales()
+    {
+        return $this->hasMany(
+            Sale::class,
+            'fk_id_payment_method',
+            'id'
+        );
+    }
 
 }

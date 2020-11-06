@@ -240,9 +240,9 @@ class ErigunesSchema extends Migration
             $table->increments('id');
             $table->date('expiration_date');
             $table->string('coupon_code')->unique()->nullable();
-            $table->integer('max_number_swaps');
+            $table->integer('max_number_swaps')->nullable();
             $table->integer('swaps')->default(0);
-            $table->boolean('is_percentage');
+            $table->boolean('is_percentage')->default(0);
             $table->decimal('value',13,2);
             $table->decimal('min_amount',13,2)->nullable();
             $table->string('description')->nullable();
@@ -266,7 +266,7 @@ class ErigunesSchema extends Migration
             $table->decimal('total_price',13,2);
             $table->decimal('discounts',13,2)->nullable();
             $table->boolean('billing')->default(false);
-            $table->unsignedInteger('fk_id_promotion');
+            $table->unsignedInteger('fk_id_promotion')->nullable();
             $table->unsignedInteger('fk_id_shipping_information')->nullable();
             $table->unsignedInteger('fk_id_buyer');
             $table->unsignedInteger('fk_id_shipping_address');

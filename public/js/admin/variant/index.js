@@ -8,29 +8,20 @@ $(document).ready(function () {
         "columns": [
             {"data": "sku"},
             {"data": "product.name"},
-            {"data": "color[0].name"},
             {"data": "size.value"},
+            {"data": "color_name.name"},
             {
                 "data": "id",
                 render: function (data) {
-                    var $inpUrlUpdate = $('#inp-url-update');
-                    if ($inpUrlUpdate.length === 0) {
+                    var $inpUrlImages = $('#inp-url-images');
+                    if ($inpUrlImages.length === 0) {
                         return '';
                     }
 
-                    var url = $inpUrlUpdate.val();
+                    var url = $inpUrlImages.val();
                     url = url.replace('FAKE_ID', data);
 
-                    var $inpUrlDelete = $('#inp-url-delete');
-                    if ($inpUrlDelete.length === 0) {
-                        return '';
-                    }
-
-                    var url2 = $inpUrlDelete.val();
-                    url2 = url2.replace('FAKE_ID', data);
-
-                    return "<a href='" + url + "' title='Editar' data-toggle='tooltip' class='update-btn' style='color: #2a3d66'><span class='far fa-edit'></span></a>" +
-                        "&nbsp;&nbsp;&nbsp;<a href='" + url2 + "' title='Eliminar' data-toggle='tooltip' class='delete-btn' style='color: #2a3d66'><span class='fas fa-trash'></span></a>";
+                    return "<a href='" + url + "' title='Imagenes' data-toggle='tooltip' class='update-btn' style='color: #2a3d66'><span class='fas fa-image'></span></a>";
                 },
                 "targets": -1
             },
@@ -66,5 +57,64 @@ $(document).ready(function () {
             "lengthMenu": "Mostrar _MENU_ usuarios"
         },
         "ordering": false
+    });
+
+    $(document).on('click', '.active-btn', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        var option = $(this).children().hasClass('fa-toggle-on') ? 'desactivar' : 'activar';
+        var optionContra = !$(this).children().hasClass('fa-toggle-on') ? 'desactivar' : 'activar';
+        var preValue = $(this).children().hasClass('fa-toggle-on');
+        var $this = $(this);
+
+        Swal.fire({
+            title: '¿Desea '+option+' a la variante?',
+            text: 'Podrá '+optionContra+' en cualquier momento',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: option,
+            calcelButtonText: 'cancelar'
+        }).then((result) => {
+            if (result.value) {
+
+                $.ajax({
+                    url: url,
+                    beforeSend: function(){
+                        $this.children().removeClass('fa-toggle-on');
+                        $this.children().removeClass('fa-toggle-off');
+                        $this.children().removeClass('fas');
+                        $this.children().addClass('fa');
+                        $this.children().addClass('fa-spinner');
+                        $this.children().addClass('fa-spin');
+                    },
+                    success: function (response) {
+                        if(response.success)
+                        {
+                            Swal.fire(
+                                preValue ? 'Desactivado' : 'Activado',
+                                'La variante fue '+(preValue ? 'desactivada' : 'activada')+'.',
+                                'success'
+                            );
+                        }
+                    },
+                    complete: function () {
+                        $this.children().removeClass('fa');
+                        $this.children().removeClass('fa-spinner');
+                        $this.children().removeClass('fa-spin');
+                        if (preValue){
+                            $this.children().addClass('fas');
+                            $this.children().addClass('fa-toggle-off');
+                        } else{
+                            $this.children().addClass('fas');
+                            $this.children().addClass('fa-toggle-on');
+                        }
+                    }
+                });
+
+            }
+        })
     });
 });

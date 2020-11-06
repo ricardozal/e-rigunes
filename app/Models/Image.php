@@ -20,10 +20,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Image whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Image whereUrl($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\VariantHasImages[] $variantHasImages
+ * @property-read int|null $variant_has_images_count
  */
 class Image extends Model
 {
     protected $table = 'image';
+    public $timestamps = false;
 
     protected $appends = [
         'absolute_image_url'
@@ -32,5 +35,13 @@ class Image extends Model
     public function getAbsoluteImageUrlAttribute()
     {
         return asset($this->url);
+    }
+
+    public function variantHasImages(){
+        return $this->hasMany(
+            VariantHasImages::class,
+            'fk_id_image',
+            'id'
+        );
     }
 }
