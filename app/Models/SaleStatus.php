@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|SaleStatus whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SaleStatus whereName($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SaleHistory[] $saleStatus
+ * @property-read int|null $sale_status_count
  */
 class SaleStatus extends Model
 {
@@ -25,4 +27,13 @@ class SaleStatus extends Model
     const ORDERED = 1;
     const SHIPPED = 2;
     const DELIVERED = 3;
+
+
+    public function saleStatus(){
+        return $this->hasMany(
+            SaleHistory::class,
+            'fk_id_sale_status',
+            'id'
+        );
+    }
 }

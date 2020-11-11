@@ -19,8 +19,17 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|RefundImages whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RefundImages whereUrlImage($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Refund $refund
  */
 class RefundImages extends Model
 {
     protected $table = 'refund_images';
+
+    public function refund(){
+        return $this->belongsTo(
+            Refund::class,
+            'fk_id_refund',
+            'id'
+        );
+    }
 }

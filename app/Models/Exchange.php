@@ -35,8 +35,43 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Exchange whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Exchange whereWarranty($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Address|null $address
+ * @property-read \App\Models\Buyer $buyer
+ * @property-read \App\Models\ShippingInformation|null $shippingInfo
  */
 class Exchange extends Model
 {
     protected $table = 'exchange';
+
+    public function address(){
+        return $this->belongsTo(
+            Address::class,
+            'fk_id_exchange_address',
+            'id'
+        );
+    }
+
+    public function shippingInfo(){
+        return $this->belongsTo(
+            ShippingInformation::class,
+            'fk_id_shipping_info',
+            'id'
+        );
+    }
+
+    public function buyer(){
+        return $this->belongsTo(
+            Buyer::class,
+            'fk_id_buyer',
+            'id'
+        );
+    }
+
+    public function exchangeStatus(){
+        return $this->belongsTo(
+            ExchangeStatus::class,
+            'fk_id_exchange_status',
+            'id'
+        );
+    }
 }

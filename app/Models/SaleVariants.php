@@ -27,4 +27,5 @@ use Illuminate\Database\Eloquent\Model;
 class SaleVariants extends Model
 {
     protected $table = 'sale_variants';
+
 }

@@ -42,6 +42,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\PaymentMethod $payment_method
  * @property-read \App\Models\Promotion|null $promotion
  * @property-read \App\Models\ShippingInformation|null $shipping_information
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SaleStatus[] $saleStatus
+ * @property-read int|null $sale_status_count
  */
 class Sale extends Model
 {
@@ -54,6 +56,16 @@ class Sale extends Model
             'sale_variants',
             'fk_id_sale',
             'fk_id_variant'
+        );
+    }
+
+    public function saleStatus()
+    {
+        return $this->belongsToMany(
+            SaleStatus::class,
+            'sale_history',
+            'fk_id_sale',
+            'fk_id_sale_status'
         );
     }
 

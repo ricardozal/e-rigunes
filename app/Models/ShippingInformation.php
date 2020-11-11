@@ -31,6 +31,10 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
  * @property-read int|null $sales_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Refund[] $refund
+ * @property-read int|null $refund_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Exchange[] $exchange
+ * @property-read int|null $exchange_count
  */
 class ShippingInformation extends Model
 {
@@ -41,6 +45,22 @@ class ShippingInformation extends Model
         return $this->hasMany(
             Sale::class,
             'fk_id_shipping_information',
+            'id'
+        );
+    }
+
+    public function refund(){
+        return $this->hasMany(
+            Refund::class,
+            'fk_id_shipping_info',
+            'id'
+        );
+    }
+
+    public function exchange(){
+        return $this->hasMany(
+            Exchange::class,
+            'fk_id_shipping_info',
             'id'
         );
     }

@@ -21,4 +21,13 @@ use Illuminate\Database\Eloquent\Model;
 class ExchangeStatus extends Model
 {
     protected $table = 'exchange_status';
+
+    public function exchange()
+    {
+        return $this->hasMany(
+            Exchange::class,
+            'fk_id_exchange_status',
+            'id'
+        );
+    }
 }
