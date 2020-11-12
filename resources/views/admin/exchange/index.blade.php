@@ -19,7 +19,7 @@
                         <tr>
                             <th>Comprador</th>
                             <th>Razón</th>
-                            <th>Cantidad</th>
+                            <th>Garantia</th>
                             <th>Dirección de recolección</th>
                             <th>información envío</th>
                             <th>producto</th>

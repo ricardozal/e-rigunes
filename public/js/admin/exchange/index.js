@@ -16,7 +16,7 @@ $(document).ready(function () {
             {"data": "address.full_address"},
             {"data": "shipping_info.guide_number"},
             {"data": "shipping_info.guide_number"},
-            {"data": "refund_status.name"},
+            {"data": "exchange_status.name"},
         ],
         "language": {
             "search": "Buscar: ",

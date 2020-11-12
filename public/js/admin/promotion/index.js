@@ -8,11 +8,25 @@ $(document).ready(function () {
         "columns": [
             {"data": "expiration_date"},
             {"data": "coupon_code"},
-            {"data": "max_number_swaps"},
+            {
+                "data": "max_number_swaps",
+                render: function (data) {
+                    return !data ? 'No hay límite de canjes' : 'número de canjes máx. ' + data;
+                }
+            },
             {"data": "swaps"},
-            {"data": "is_percentage"},
+            {
+                "data": "is_percentage",
+                render: function (data) {
+                    return data > 0 ? 'Promoción con porcentaje %' : 'Promoción con valor $';
+                }
+            },
             {"data": "value"},
-            {"data": "min_amount"},
+            {"data": "min_amount",
+                render: function (data) {
+                    return !data ? 'No hay monto mínimo' : 'Monto mínimo $' + data;
+                }
+            },
             {"data": "description"},
             {
                 "data": "id",
@@ -68,7 +82,7 @@ $(document).ready(function () {
         e.preventDefault();
         var url = $(this).attr('href');
 
-        modalTools.renderView('modal-upsert', url, true,function () {
+        modalTools.renderView('modal-upsert', url, true, function () {
             formTools.useAjaxOnSubmit('form-upsert', function () {
                 $('#modal-upsert').modal('hide');
                 table.ajax.reload();
@@ -80,7 +94,7 @@ $(document).ready(function () {
         e.preventDefault();
         var url = $(this).attr('href');
 
-        modalTools.renderView('modal-upsert', url, true,function () {
+        modalTools.renderView('modal-upsert', url, true, function () {
             formTools.useAjaxOnSubmit('form-upsert', function () {
                 $('#modal-upsert').modal('hide');
                 table.ajax.reload();
@@ -99,8 +113,8 @@ $(document).ready(function () {
         var $this = $(this);
 
         Swal.fire({
-            title: '¿Desea '+option+' la promoción?',
-            text: 'Podrá '+optionContra+' en cualquier momento',
+            title: '¿Desea ' + option + ' la promoción?',
+            text: 'Podrá ' + optionContra + ' en cualquier momento',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -112,7 +126,7 @@ $(document).ready(function () {
 
                 $.ajax({
                     url: url,
-                    beforeSend: function(){
+                    beforeSend: function () {
                         $this.children().removeClass('fa-toggle-on');
                         $this.children().removeClass('fa-toggle-off');
                         $this.children().removeClass('fas');
@@ -121,11 +135,10 @@ $(document).ready(function () {
                         $this.children().addClass('fa-spin');
                     },
                     success: function (response) {
-                        if(response.success)
-                        {
+                        if (response.success) {
                             Swal.fire(
                                 preValue ? 'Desactivado' : 'Activado',
-                                'La promoción fue '+(preValue ? 'desactivado' : 'activado')+'.',
+                                'La promoción fue ' + (preValue ? 'desactivado' : 'activado') + '.',
                                 'success'
                             );
                         }
@@ -134,10 +147,10 @@ $(document).ready(function () {
                         $this.children().removeClass('fa');
                         $this.children().removeClass('fa-spinner');
                         $this.children().removeClass('fa-spin');
-                        if (preValue){
+                        if (preValue) {
                             $this.children().addClass('fas');
                             $this.children().addClass('fa-toggle-off');
-                        } else{
+                        } else {
                             $this.children().addClass('fas');
                             $this.children().addClass('fa-toggle-on');
                         }
