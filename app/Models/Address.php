@@ -50,7 +50,7 @@ class Address extends Model
     protected $table = 'address';
 
     protected $fillable = [
-        'street','zip_code','ext_num','int_num','colony','city','state','country'
+        'street','zip_code','ext_num','int_num','colony','city','state','country','references'
     ];
 
     protected  $appends = [

@@ -17,10 +17,7 @@
                         <p class="text-bold">CORREO</p>
                         <p class="">{{$buyer->user->email}}</p>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <p class="text-bold">CONTRASEÑA</p>
-                        <p class="">{{$buyer->user->password}}</p>
-                    </div>
+
                     <div class="col-12 col-md-4">
                         <p class="text-bold">NOMBRE</p>
                         <p class="">{{$buyer->name}}</p>
@@ -54,7 +51,7 @@
                     </div>
                     <div class="col-2 pt-md-3">
                         <a class="d-inline-flex ml-3" href="{{route('ecommerce_account_address_create')}}">
-                            <i class="fas fa-plus-circle " style="font-size: 1.8rem;"> </i>
+                            <i class="fas fa-plus-circle color-primary" style="font-size: 1.8rem;"> </i>
                         </a>
                     </div>
                 </div>

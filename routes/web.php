@@ -90,5 +90,3 @@ Route::get(
     'Web\ContactController@contact'
 )->name('contact_section');
 
-
-

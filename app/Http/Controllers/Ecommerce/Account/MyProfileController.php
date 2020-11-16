@@ -22,19 +22,19 @@ class MyProfileController extends Controller
     }
 
     public function updateIndex(){
-        $user = Buyer::find(Auth::user()->id);
+        $buyer = Buyer::find(Auth::user()->id);
 
         return view('ecommerce.account.personal_data.update',[
-            'user' => $user
+            'buyer' => $buyer
         ]);
     }
 
     public function updateUserPost(UpdateBuyerRequest $request){
+
         try{
             \DB::beginTransaction();
 
             $user = User::find(Auth::user()->id);
-
             $user->email = $request->get('email');
 
             if($request->input('password') != null)
@@ -51,7 +51,7 @@ class MyProfileController extends Controller
             \DB::commit();
             return response()->json([
                 'success' => true,
-                'message' => 'Se cambio con exito'
+                'message' => 'Proceso completado'
             ]);
         } catch (\Throwable $e) {
             \DB::rollBack();
@@ -61,5 +61,6 @@ class MyProfileController extends Controller
                 'error' => $e
             ]);
         }
+
     }
 }

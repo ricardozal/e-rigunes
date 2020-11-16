@@ -31,7 +31,8 @@ class UpdateBuyerRequest extends FormRequest
     {
         return [
 
-            'email.required' => 'El correo del usuario es requerido.'
+            'email.required' => 'El correo del usuario es requerido.',
+            'phone.required'=>"Telefono requerido"
         ];
     }
 }

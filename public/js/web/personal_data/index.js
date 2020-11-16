@@ -6,7 +6,7 @@ $(document).ready(function () {
 
         var $loading = formTools._makeLoading();
         var $addressesContainer = $('#my-addresses');
-        var addresses = [];
+        var address = [];
         var url = $('#inp-url-content').val();
 
         $.ajax({
@@ -19,18 +19,18 @@ $(document).ready(function () {
             success: function (response) {
                 $addressesContainer.html('');
 
-                addresses = response.addresses;
+                address = response.addresses;
 
-                if (addresses.length !== 0) {
-                    for (var i = 0; i < addresses.length; i++) {
-                        var active = addresses[i].pivot.active ? 'on' : 'off';
+                if (address.length !== 0) {
+                    for (var i = 0; i < address.length; i++) {
+                        var active = address[i].active ? 'on' : 'off';
                         var $inpUrlUpdate = $('#inp-url-update');
                         if ($inpUrlUpdate.length === 0) {
                             return '';
                         }
 
                         var updateUrl = $inpUrlUpdate.val();
-                        updateUrl = updateUrl.replace('FAKE_ID', addresses[i].id);
+                        updateUrl = updateUrl.replace('FAKE_ID', address[i].id);
 
                         var $inpUrlActive = $('#inp-url-active');
                         if ($inpUrlActive.length === 0) {
@@ -38,14 +38,14 @@ $(document).ready(function () {
                         }
 
                         var activeUrl = $inpUrlActive.val();
-                        activeUrl = activeUrl.replace('FAKE_ID', addresses[i].id);
+                        activeUrl = activeUrl.replace('FAKE_ID', address[i].id);
 
                         var activeClass = $('.active-check');
 
                         $addressesContainer.append('<div class="row w-50 w-auto mx-md-auto my-5">\n' +
-                            '                    <div class="col-12 col-md-1"><i class="active-check cursor-pointer fas fa-toggle-' + active + ' "style="color: #84A07F;" data-url="'+activeUrl+'"></i></div>\n' +
-                            '                    <div class="col-12 col-md-10 font-family-2">' + addresses[i].full_address + '</div>\n' +
-                            '                    <div class="col-12 col-md-1"><a href="' + updateUrl + '"><i class="far fa-edit "style="color: #84A07F;"></i></a></div>\n' +
+                            '                    <div class="col-12 col-md-1"><i class="active-check color-primary cursor-pointer fas fa-toggle-' + active + ' " data-url="'+activeUrl+'"></i></div>\n' +
+                            '                    <div class="col-12 col-md-10 font-family-2">' + address[i].full_address + '</div>\n' +
+                            '                    <div class="col-12 col-md-1"><a href="' + updateUrl + '"><i class="far fa-edit color-primary"></i></a></div>\n' +
                             '                </div>');
 
                     }
@@ -67,11 +67,6 @@ $(document).ready(function () {
         });
     }
 
-    // activeClass.addEventListener('click',function (){
-    //     if (){
-    //
-    //     }
-    // });
 
     $(document).on('click','.active-check',function (){
         var url = $(this).data('url');
