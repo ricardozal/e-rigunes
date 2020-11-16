@@ -41,6 +41,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $sales
  * @property-read int|null $sales_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Address[] $address
+ * @property-read int|null $address_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Refund[] $refund
+ * @property-read int|null $refund_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Exchange[] $exchange
+ * @property-read int|null $exchange_count
  */
 class Buyer extends Model
 {
@@ -80,6 +86,22 @@ class Buyer extends Model
           Address::class,
           'fk_id_buyer',
           'id'
+        );
+    }
+
+    public function refund(){
+        return $this->hasMany(
+            Refund::class,
+            'fk_id_buyer',
+            'id'
+        );
+    }
+
+    public function exchange(){
+        return $this->hasMany(
+            Exchange::class,
+            'fk_id_buyer',
+            'id'
         );
     }
 

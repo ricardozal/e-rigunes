@@ -288,7 +288,7 @@ Route::get('/admin/sales',
     'SalesController@index')
     ->name('admin_sales_index');
 
-Route::get('/admin/sales/sales-content',
+Route::get('/admin/sales-content',
     'SalesController@indexContent')
     ->name('admin_sales_index_content');
 
@@ -311,3 +311,26 @@ Route::get('/admin/sales/{salesId}/createShipment',
     'SkydropxController@createShipment')
     ->name('admin_sales_products_skydropx_create_shipment');
 
+/***********************************
+ * *******  Refund *************
+ **********************************/
+
+Route::get('/admin/refund',
+    'RefundController@index')
+    ->name('admin_refund_index');
+
+Route::get('/admin/refund-content',
+    'RefundController@indexContent')
+    ->name('admin_refund_index_content');
+
+/***********************************
+ * *******  exchange *************
+ **********************************/
+
+Route::get('/admin/exchange',
+    'ExchangeController@index')
+    ->name('admin_exchange_index');
+
+Route::get('/admin/exchange-content',
+    'ExchangeController@indexContent')
+    ->name('admin_exchange_index_content');

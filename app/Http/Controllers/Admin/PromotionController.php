@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Request\PromotionRequest;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class PromotionController extends Controller
         return view('admin.promotion.upsert');
     }
 
-    public function createPost(Request $request)
+    public function createPost(PromotionRequest $request)
     {
         $promotion = new Promotion();
         $promotion->fill($request->all());
@@ -66,7 +67,7 @@ class PromotionController extends Controller
         return view('admin.promotion.upsert',['promotion' => $promotion]);
     }
 
-    public function updatePost(Request $request, $promotionId)
+    public function updatePost(PromotionRequest $request, $promotionId)
     {
         $promotion = Promotion::find($promotionId);
 

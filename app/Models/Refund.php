@@ -33,8 +33,75 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Refund whereReason($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Refund whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Address|null $address
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RefundImages[] $refundImages
+ * @property-read int|null $refund_images_count
+ * @property-read \App\Models\RefundStatus $refundStatus
+ * @property-read \App\Models\ShippingInformation|null $shippingInfo
+ * @property-read \App\Models\Buyer $buyer
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Variant[] $saleVariants
+ * @property-read int|null $sale_variants_count
  */
 class Refund extends Model
 {
     protected $table = 'refund';
+
+    public function refundStatus(){
+        return $this->belongsTo(
+            RefundStatus::class,
+            'fk_id_refund_status',
+            'id'
+        );
+    }
+
+    public function refundImages(){
+        return $this->hasMany(
+            RefundImages::class,
+            'fk_id_refund',
+            'id'
+        );
+    }
+
+    public function shippingInfo(){
+        return $this->belongsTo(
+            ShippingInformation::class,
+            'fk_id_shipping_info',
+            'id'
+        );
+    }
+
+    public function address(){
+        return $this->belongsTo(
+            Address::class,
+            'fk_id_refund_address',
+            'id'
+        );
+    }
+
+    public function buyer(){
+        return $this->belongsTo(
+            Buyer::class,
+            'fk_id_buyer',
+            'id'
+        );
+    }
+
+    /*public function saleVariants()
+    {
+        return $this->belongsTo(
+            SaleVariants::class,
+            'fk_id_sale_variant'
+        );
+    }*/
+
+    public function saleVariants()
+    {
+        return $this->belongsToMany(
+            Variant::class,
+            'sale_variants',
+            'fk_id_sale',
+            'fk_id_variant'
+        );
+    }
+
 }

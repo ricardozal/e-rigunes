@@ -91,6 +91,22 @@
         <span class="sidebar-text">Métodos de pago</span>
     </a>
 
+    <a class="nav-link {{$routeName == 'admin_refund_index' ? 'active' : ''}}"
+       href="{{route('admin_refund_index')}}">
+    <span>
+        <i class="fas fa-window-close"></i>
+    </span>
+        <span class="sidebar-text">Reembolsos</span>
+    </a>
+
+    <a class="nav-link {{$routeName == 'admin_exchange_index' ? 'active' : ''}}"
+       href="{{route('admin_exchange_index')}}">
+    <span>
+        <i class="fas fa-sync-alt"></i>
+    </span>
+        <span class="sidebar-text">Cambio de productos</span>
+    </a>
+
     <a class="nav-link"
        href="{{route('logout')}}">
         <span>

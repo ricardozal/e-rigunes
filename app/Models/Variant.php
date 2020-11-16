@@ -8,7 +8,6 @@ use BinaryCats\Sku\HasSku;
 use Illuminate\Database\Eloquent\Model;
 
 
-
 /**
  * App\Models\Variant
  *
@@ -43,6 +42,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read mixed $color_name
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Purchase[] $purchases
  * @property-read int|null $purchases_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\VariantHasImages[] $variantHasImages
+ * @property-read int|null $variant_has_images_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Refund[] $refunds
+ * @property-read int|null $refunds_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $saleVariants
+ * @property-read int|null $sale_variants_count
  */
 class Variant extends Model
 {
@@ -54,12 +59,12 @@ class Variant extends Model
 
     protected $appends = [
         'featured_image',
-        'color_name'
+        'color_name',
     ];
 
     public function getColorNameAttribute()
     {
-        return $this->color()->select(['color.id','color.name','color.value'])->groupBy('color.id')->first();
+        return $this->color()->select(['color.id', 'color.name', 'color.value'])->groupBy('color.id')->first();
     }
 
     public function getFeaturedImageAttribute()
@@ -67,7 +72,8 @@ class Variant extends Model
         return $this->variantImages()->where('featured', 1)->first()->absolute_image_url;
     }
 
-    public function variantHasImages(){
+    public function variantHasImages()
+    {
 
         return $this->hasMany(
             VariantHasImages::class,
@@ -122,7 +128,17 @@ class Variant extends Model
             'purchase_variants',
             'fk_id_variant',
             'fk_id_purchase'
-        )->withPivot(['quantity','purchase_price']);
+        )->withPivot(['quantity', 'purchase_price']);
+    }
+
+    public function saleVariants()
+    {
+        return $this->belongsToMany(
+            Sale::class,
+            'sale_variants',
+            'fk_id_sale',
+            'fk_id_variant'
+        );
     }
 
 }

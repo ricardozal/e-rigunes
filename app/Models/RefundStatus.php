@@ -17,8 +17,19 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|RefundStatus whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RefundStatus whereName($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Refund[] $refund
+ * @property-read int|null $refund_count
  */
 class RefundStatus extends Model
 {
     protected $table = 'refund_status';
+
+    public function refund()
+    {
+        return $this->hasMany(
+            Refund::class,
+            'fk_id_refund_status',
+            'id'
+        );
+    }
 }
