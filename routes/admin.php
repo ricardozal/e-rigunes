@@ -323,6 +323,10 @@ Route::get('/admin/refund-content',
     'RefundController@indexContent')
     ->name('admin_refund_index_content');
 
+Route::get('/admin/refund/{refundId}/refund-variant',
+    'RefundController@refundVariant')
+    ->name('admin_refund_variant');
+
 /***********************************
  * *******  exchange *************
  **********************************/
@@ -334,3 +338,11 @@ Route::get('/admin/exchange',
 Route::get('/admin/exchange-content',
     'ExchangeController@indexContent')
     ->name('admin_exchange_index_content');
+
+Route::get('/admin/exchange/{exchangeId}/exchange-saleVariant',
+    'ExchangeController@exchangeSaleVariant')
+    ->name('admin_exchange_sale_variant');
+
+Route::get('/admin/exchange/{exchangeId}/exchange-variant',
+    'ExchangeController@exchangeVariant')
+    ->name('admin_exchange_variant');

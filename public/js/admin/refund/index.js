@@ -10,7 +10,23 @@ $(document).ready(function () {
             {"data": "quantity"},
             {"data": "address.full_address"},
             {"data": "shipping_info.guide_number"},
-            {"data": "sale_variants.quantity"},
+            {
+                "data": "id",
+                render:function(data)
+                {
+                    var $inpUrlVariant = $('#inp-url-variant');
+                    if ($inpUrlVariant.length === 0) {
+                        return '';
+                    }
+
+                    var url = $inpUrlVariant.val();
+                    url = url.replace('FAKE_ID', data);
+
+
+                    return "<a href='"+url+"' title='Productos' data-toggle='tooltip' class='variant-btn' style='color: #2a3d66'><span class='fab fa-product-hunt'></span></a>";
+                },
+                "targets": -1
+            },
             {"data": "refund_status.name"},
         ],
         "language": {
@@ -29,5 +45,17 @@ $(document).ready(function () {
             "lengthMenu": "Mostrar _MENU_ usuarios"
         },
         "ordering": false
+    });
+
+    $(document).on('click', '.variant-btn', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        modalTools.renderView('modal-upsert', url, true,function () {
+            formTools.useAjaxOnSubmit('form-upsert', function () {
+                $('#modal-upsert').modal('hide');
+                table.ajax.reload();
+            });
+        });
     });
 });

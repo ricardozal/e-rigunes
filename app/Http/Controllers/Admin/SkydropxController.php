@@ -83,14 +83,11 @@ class SkydropxController extends Controller
 
         $options = [];
 
-
         foreach ($getShipments['included'] as $shipment){
             if($shipment['type'] == 'rates'){
                 $options[] = $shipment;
             }
         }
-
-        dd($options);
 
         $attributesParcel = [];
         $total_pricing = [];
@@ -105,5 +102,8 @@ class SkydropxController extends Controller
 
         $minPrice = min($total_pricing);
         $id_parcel = "";
+
+        dd($id_parcel);
+
     }
 }
