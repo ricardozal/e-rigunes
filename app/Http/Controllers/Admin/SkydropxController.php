@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sale;
+use App\Models\ShippingInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -90,7 +91,12 @@ class SkydropxController extends Controller
         }
 
         $attributesParcel = [];
+        $idsParcel = [];
         $total_pricing = [];
+
+        foreach ($options as $item){
+            $idsParcel[] = $item['id'];
+        }
 
         foreach ($options as $option){
             $attributesParcel[] = $option['attributes'];
@@ -101,9 +107,34 @@ class SkydropxController extends Controller
         }
 
         $minPrice = min($total_pricing);
-        $id_parcel = "";
+        $parcel = [];
 
-        dd($id_parcel);
+        for($i=0; $i<count($idsParcel); $i++){
+                $id = $idsParcel[$i];
+                $total = $total_pricing[$i];
+                $parcel[]=[
+                    'id'=> $id,
+                    'total_pricing' => $total
+                ];
+        }
+
+        foreach ($parcel as $item){
+            if($item['total_pricing'] == $minPrice){
+                $id = (integer)$item['id'];
+
+                $response = Http::withHeaders([
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Token token=' . env('API_TOKEN')
+                ])
+                    ->post('https://api-demo.skydropx.com/v1/labels', [
+                        'rate_id' => $id,
+                        'label_format' => 'pdf'
+                    ]);
+
+                $guia = $response->json();
+                dd($guia);
+            }
+        }
 
     }
 }
