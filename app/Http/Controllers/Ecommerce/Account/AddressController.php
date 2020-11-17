@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\AddressRequest;
 use App\Models\Address;
 use App\Models\Buyer;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -21,9 +22,10 @@ class AddressController extends Controller
     public function getAddresses()
     {
 
-        $user = Buyer::find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
 
-        $addresses = $user->addresses;
+        $addresses = $user->buyer->address;
+
 
         return response()->json([
             'addresses' => $addresses
@@ -35,14 +37,14 @@ class AddressController extends Controller
         try {
             \DB::beginTransaction();
 
-            $user =Buyer::find(Auth::user()->id);
+            $buyer = Buyer::find(Auth::user()->id);
             $address = new Address();
             $address->fill($request->all());
+            $address->fk_id_buyer =$buyer->id;
             $address->saveOrFail();
 
 
 
-            $user->saveOrFail();
 
             \DB::commit();
             return response()->json([
@@ -61,7 +63,7 @@ class AddressController extends Controller
 
         $address = Address::find($addressId);
 
-        return view('web.sections.account.datauser.upsert_address',[
+        return view('ecommerce.account.personal_data.upsert_address',[
             'address' => $address
         ]);
 
@@ -87,16 +89,16 @@ class AddressController extends Controller
 
     public function selectAddressActive($addressId){
 
-        $user = Buyer::find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
 
-        $addresses = $user->addresses;
+        $addresses = $user->buyer->addresses;
 
-        foreach ($addresses as $address){
-            $user->addresses()->updateExistingPivot($address->id,['active' => false]);
-
-        }
-
-        $user->addresses()->updateExistingPivot($addressId,['active' => true]);
+//        foreach ($addresses as $address){
+//            $user->addresses($address)->id,['active' => false];
+//
+//        }
+//
+//        $user->addresses()->updateExistingPivot($addressId,['active' => true]);
 
 
 

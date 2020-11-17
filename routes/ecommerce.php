@@ -14,26 +14,26 @@ Route::post('/my-account/update/post',
     'Account\MyProfileController@updateUserPost')
     ->name('ecommerce_account_user_update_post');
 
-Route::get('/my-account/addresses',
+Route::get('/addresses',
     'Account\AddressController@getAddresses')
     ->name('ecommerce_account_address_content');
 
-Route::get('/my-account/address/create',
+Route::get('/address/create',
     'Account\AddressController@createAddress')
     ->name('ecommerce_account_address_create');
 
-Route::post('/my-account/address/create',
+Route::post('/address/create-post',
     'Account\AddressController@createAddressPost')
     ->name('ecommerce_account_address_create_post');
 
-Route::get('/my-account/address/{addressId}/update',
+Route::get('/address/{addressId}/update',
     'Account\AddressController@updateAddress')
     ->name('ecommerce_account_address_update');
 
-Route::post('/my-account/address/{addressId}/update',
+Route::post('/address/{addressId}/update-post',
     'Account\AddressController@updateAddressPost')
     ->name('ecommerce_account_address_update_post');
 
-Route::get('/my-account/address/{addressId}/active',
+Route::get('/address/{addressId}/active',
     'Account\AddressController@selectAddressActive')
     ->name('ecommerce_account_address_select_active');
