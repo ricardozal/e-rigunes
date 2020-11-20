@@ -90,49 +90,64 @@ class SkydropxController extends Controller
             }
         }
 
-        $attributesParcel = [];
-        $idsParcel = [];
-        $total_pricing = [];
+        $shipmentInfo = [];
+        $amounts = [];
 
-        foreach ($options as $item){
-            $idsParcel[] = $item['id'];
-        }
+        /** @var ShippingInformation $shipmentInformation */
+        $shippingInfo = new ShippingInformation();
 
-        foreach ($options as $option){
-            $attributesParcel[] = $option['attributes'];
-        }
-
-        foreach ($attributesParcel as $totalPrice){
-            $total_pricing[] = $totalPrice['total_pricing'];
-        }
-
-        $minPrice = min($total_pricing);
-        $parcel = [];
-
-        for($i=0; $i<count($idsParcel); $i++){
-                $id = $idsParcel[$i];
-                $total = $total_pricing[$i];
-                $parcel[]=[
-                    'id'=> $id,
-                    'total_pricing' => $total
+        foreach ($options as $option) {
+            $amounts []= $option['attributes']['total_pricing'];
+                $shipmentInfo[] = [
+                    'skydropx_id' => $option['id'],
+                    'shipping_price' => $option['attributes']['total_pricing'],
+                    'parcel_company' => $option['attributes']['provider'],
+                    'delivery_date' => $option['attributes']['days'],
                 ];
+                //dd($option['attributes']['total_pricing']);
         }
 
-        foreach ($parcel as $item){
-            if($item['total_pricing'] == $minPrice){
-                $id = (integer)$item['id'];
+        $amountMin = min($amounts);
+
+        foreach ($shipmentInfo as $item){
+            //dd(array_keys($item));
+            if($amountMin == $item['shipping_price']){
+                $days = $item['delivery_date'];
+                $currentDate = date('Y-m-d');
+
+                $shippingInfo->skydropx_id = $item['skydropx_id'];
+                $shippingInfo->shipping_price = $item['shipping_price'];
+                $shippingInfo->parcel_company = $item['parcel_company'];
+                $shippingInfo->delivery_date = date('Y-m-d', strtotime($currentDate.'+'.$days.'days'));
+
 
                 $response = Http::withHeaders([
                     'Content-Type' => 'application/json',
                     'Authorization' => 'Token token=' . env('API_TOKEN')
                 ])
                     ->post('https://api-demo.skydropx.com/v1/labels', [
-                        'rate_id' => $id,
+                        'rate_id' => (integer)$item['skydropx_id'],
                         'label_format' => 'pdf'
                     ]);
 
-                $guia = $response->json();
-                dd($guia);
+                $label = $response->json();
+                $shippingInfo->guide_number = $label['data']['attributes']['tracking_number'];
+                $shippingInfo->save();
+
+                $sale->fk_id_shipping_information = $shippingInfo->id;
+                $sale->save();
+
+                if (!$shippingInfo->save()) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'No se pudo guardar la categoría'
+                    ]);
+                }
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Guardado correctamente'
+                ]);
             }
         }
 

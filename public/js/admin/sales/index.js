@@ -64,7 +64,7 @@ $(document).ready(function () {
 
                     var ret = "<a href='" + url + "' title='Solicitar envío' data-toggle='tooltip' class='shipping-btn' style='color: #2a3d66'><span class='fas fa-shipping-fast'></span></a>";
                     var check = "<span title='Envío realizado' data-toggle='tooltip' style='color: #2a3d66'><i class='fas fa-check'></i></span>";
-                    return ret;
+                    return !data.fk_id_shipping_information ? ret:check;
                 },
                 "targets": -1
             },
