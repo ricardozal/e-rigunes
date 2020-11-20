@@ -39,6 +39,8 @@
            value="{{route('admin_exchange_sale_variant',['exchangeId' => 'FAKE_ID'])}}">
     <input id="inp-url-exchangeVariant" type="hidden"
            value="{{route('admin_exchange_variant',['exchangeId' => 'FAKE_ID'])}}">
+    <input id="inp-url-status" type="hidden"
+           value="{{route('admin_exchange_status',['exchangeId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

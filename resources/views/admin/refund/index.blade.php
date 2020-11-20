@@ -36,6 +36,8 @@
            value="{{route('admin_refund_index_content')}}">
     <input id="inp-url-variant" type="hidden"
            value="{{route('admin_refund_variant',['refundId' => 'FAKE_ID'])}}">
+    <input id="inp-url-status" type="hidden"
+           value="{{route('admin_refund_status',['refundId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

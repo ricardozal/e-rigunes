@@ -27,7 +27,23 @@ $(document).ready(function () {
                 },
                 "targets": -1
             },
-            {"data": "refund_status.name"},
+            {
+                "data": "id",
+                render:function(data)
+                {
+                    var $inpUrlStatus = $('#inp-url-status');
+                    if ($inpUrlStatus.length === 0) {
+                        return '';
+                    }
+
+                    var url = $inpUrlStatus.val();
+                    url = url.replace('FAKE_ID', data);
+
+
+                    return "<a href='"+url+"' title='Estatus del reembolso' data-toggle='tooltip' class='status-btn' style='color: #2a3d66'><span class='fas fa-align-justify'></span></a>";
+                },
+                "targets": -1
+            },
         ],
         "language": {
             "search": "Buscar: ",
@@ -48,6 +64,18 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.variant-btn', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        modalTools.renderView('modal-upsert', url, true,function () {
+            formTools.useAjaxOnSubmit('form-upsert', function () {
+                $('#modal-upsert').modal('hide');
+                table.ajax.reload();
+            });
+        });
+    });
+
+    $(document).on('click', '.status-btn', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
 

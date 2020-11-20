@@ -327,6 +327,14 @@ Route::get('/admin/refund/{refundId}/refund-variant',
     'RefundController@refundVariant')
     ->name('admin_refund_variant');
 
+Route::get('/admin/refund/{refundId}/status',
+    'RefundController@status')
+    ->name('admin_refund_status');
+
+Route::post('/admin/refund/{refundId}/status',
+    'RefundController@statusPost')
+    ->name('admin_refund_status_post');
+
 /***********************************
  * *******  exchange *************
  **********************************/
@@ -346,3 +354,11 @@ Route::get('/admin/exchange/{exchangeId}/exchange-saleVariant',
 Route::get('/admin/exchange/{exchangeId}/exchange-variant',
     'ExchangeController@exchangeVariant')
     ->name('admin_exchange_variant');
+
+Route::get('/admin/exchange/{exchangeId}/status',
+    'ExchangeController@status')
+    ->name('admin_exchange_status');
+
+Route::post('/admin/exchange/{exchangeId}/status',
+    'ExchangeController@statusPost')
+    ->name('admin_exchange_status_post');
