@@ -88,13 +88,12 @@ $(document).on('click', '#btn-add-variant', function () {
     $this.html('<i class="fas fa-spinner fa-spin"></i>&nbsp;Agregando...');
 
     var quantity = $('#quantity').val();
-    var colorId = $('.selected-color').attr('data-id');
-    var sizeId = $('.selected-size').attr('data-id');
+    var variantId = $('.selected-size').attr('data-id');
     var token = $('#token').val();
 
     var url = $('#inp-url-add-variant').val();
 
-    if (typeof colorId === 'undefined' || typeof sizeId === 'undefined') {
+    if (typeof variantId === 'undefined') {
         Swal.fire({
             icon: 'info',
             title: 'Atención',
@@ -110,8 +109,7 @@ $(document).on('click', '#btn-add-variant', function () {
             method: 'POST',
             data: {
                 quantity: quantity,
-                colorId: colorId,
-                sizeId: sizeId,
+                variantId: variantId,
                 "_token": token
             },
             success: function (response) {
@@ -169,7 +167,6 @@ function loadSizes(colorId) {
             $sizeContainer.append($loading);
         },
         success: function (response) {
-            console.log(response);
             const sizes = response.data;
             $sizeList.html('');
             $('.images-slider').slick('unslick');
@@ -180,7 +177,7 @@ function loadSizes(colorId) {
 
                     let sizeElement =
                         $('<div class="col-2 text-center">' +
-                            '   <h4><span class="badge badge-primary" data-id="'+item.size.id+'">'+item.size.value+'</span></h4>' +
+                            '   <h4><span class="badge badge-primary" data-id="'+item.id+'">'+item.size.value+'</span></h4>' +
                            '</div>');
 
                     $sizeList.append(sizeElement);

@@ -24,22 +24,9 @@ class OrderController extends Controller
     {
 
         $quantity = $request->input("quantity", 1);
-        $colorId = $request->input("colorId", 1);
-        $sizeId = $request->input("sizeId", 1);
+        $variantId = $request->input("variantId", 1);
         $order = OrderService::getCurrentOrder();
-        $variant = Variant::whereFkIdSize($sizeId)
-                          ->whereHas('color', function ($q) use($colorId){
-                              $q->where('color.id',$colorId);
-                          })->with(['product','size'])->get();
-
-        dd($variant);
-
-        if ($variant == null) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Error al encontrar el modelo del calzado.'
-            ]);
-        }
+        $variant = Variant::whereId($variantId)->with(['product','size'])->first();
 
         $orderHasVariants = $order["order_has_variant"] ?? [];
         $existVariant = false;

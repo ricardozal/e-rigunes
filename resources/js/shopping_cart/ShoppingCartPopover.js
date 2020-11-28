@@ -88,7 +88,8 @@ class ShoppingCartPopover extends React.Component{
             <React.Fragment key={'variant-'+key }>
                 <div className="variant-row">
                     <div className="variant-img">
-                        {orderVariant.variant.featured_image !== null ? <img src={orderVariant.variant.featured_image}  alt=""/> : 'Acutalmente el producto no cuenta con imagen'}
+                        <div style={{backgroundImage: "url(" + orderVariant.variant.featured_image + ")"}} className="square-image">
+                        </div>
                     </div>
                     <div className="variant-desc">
                         <span className="text-semi-bold">{orderVariant.variant.product.name}</span>

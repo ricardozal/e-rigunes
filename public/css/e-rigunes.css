@@ -429,15 +429,9 @@ body {
 }
 .shopping-cart-popover .pop-cart-body .variant-row .variant-img {
   flex: 1;
-  border-radius: 5px;
-  border: 1px solid #1a1a1a;
   text-align: center;
   height: 100%;
   padding: 3px;
-}
-.shopping-cart-popover .pop-cart-body .variant-row .variant-img img {
-  width: 100%;
-  height: auto;
 }
 .shopping-cart-popover .pop-cart-body .variant-row .variant-desc {
   text-align: center;
@@ -448,4 +442,15 @@ body {
   text-align: right;
   color: #B51F6B;
   font-size: 1.2rem;
+}
+.square-image {
+  float: left;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  margin: 1.66%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 14px;
 }

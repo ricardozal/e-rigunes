@@ -30668,14 +30668,13 @@ var ItemVariant = function ItemVariant(_ref) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row my-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-6 col-lg-3 d-flex justify-content-center align-items-center border-black border-radius"
-  }, orderVariant.variant.featured_image !== null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "col-6 col-lg-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      width: '50%',
-      height: "auto"
+      backgroundImage: "url(" + orderVariant.variant.featured_image + ")"
     },
-    src: orderVariant.variant.featured_image
-  }) : 'Acutalmente el producto no cuenta con imagen'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "square-image"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-6 col-lg-4 d-flex flex-column justify-content-center align-items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "text-thin"
@@ -30692,7 +30691,7 @@ var ItemVariant = function ItemVariant(_ref) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: orderVariant.variant.rating_average == 5 ? 'fas fa-star color-yellow' : 'far fa-star color-yellow'
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, orderVariant.variant.rating_average)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "color-gray small"
+    className: "color-gray"
   }, "Color: ", orderVariant.variant.color_name.name, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Talla: ", orderVariant.variant.size.value)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-6 col-lg-2 mt-2 mt-lg-0 d-flex justify-content-center align-items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -31194,15 +31193,13 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "row my-4"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "col-4 border-radius border-black"
-        }, orderVariant.variant.featured_image !== null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: orderVariant.variant.featured_image,
+          className: "col-4"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
-            width: "100%",
-            height: "auto"
+            backgroundImage: "url(" + orderVariant.variant.featured_image + ")"
           },
-          alt: ""
-        }) : 'Acutalmente el producto no cuenta con imagen'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "square-image"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-5 d-flex flex-column justify-content-center align-items-center"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "text-semi-bold"
@@ -31475,10 +31472,12 @@ var ShoppingCartPopover = /*#__PURE__*/function (_React$Component) {
           className: "variant-row"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "variant-img"
-        }, orderVariant.variant.featured_image !== null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: orderVariant.variant.featured_image,
-          alt: ""
-        }) : 'Acutalmente el producto no cuenta con imagen'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          style: {
+            backgroundImage: "url(" + orderVariant.variant.featured_image + ")"
+          },
+          className: "square-image"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "variant-desc"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "text-semi-bold"

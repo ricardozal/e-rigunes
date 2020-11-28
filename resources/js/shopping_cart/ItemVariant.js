@@ -5,8 +5,9 @@ const ItemVariant = ({orderVariant, updateVariant}) => {
 
     return <React.Fragment>
         <div className="row my-3">
-            <div className="col-6 col-lg-3 d-flex justify-content-center align-items-center border-black border-radius">
-                {orderVariant.variant.featured_image !== null ? <img style={{width:'50%', height: "auto"}} src={orderVariant.variant.featured_image}/> : 'Acutalmente el producto no cuenta con imagen'}
+            <div className="col-6 col-lg-3">
+                <div style={{backgroundImage: "url(" + orderVariant.variant.featured_image + ")"}} className="square-image">
+                </div>
             </div>
             <div className="col-6 col-lg-4 d-flex flex-column justify-content-center align-items-center">
                 <h3 className="text-thin">{orderVariant.variant.product.name}</h3>
@@ -18,7 +19,7 @@ const ItemVariant = ({orderVariant, updateVariant}) => {
                     <i className={(orderVariant.variant.rating_average == 5) ? 'fas fa-star color-yellow' : 'far fa-star color-yellow'}></i>
                     <span>{orderVariant.variant.rating_average}</span>
                 </p>
-                <p className="color-gray small">
+                <p className="color-gray">
                     Color: {orderVariant.variant.color_name.name} <br/>
                     Talla: {orderVariant.variant.size.value}
                 </p>

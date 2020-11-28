@@ -210,8 +210,9 @@ class ShoppingCart extends React.Component {
         return variants.map((orderVariant, key) =>
             <React.Fragment key={'variant-'+key }>
                 <div className="row my-4">
-                    <div className="col-4 border-radius border-black">
-                        {orderVariant.variant.featured_image !== null ? <img src={orderVariant.variant.featured_image} style={{width:"100%", height: "auto"}} alt=""/> : 'Acutalmente el producto no cuenta con imagen'}
+                    <div className="col-4">
+                        <div style={{backgroundImage: "url(" + orderVariant.variant.featured_image + ")"}} className="square-image">
+                        </div>
                     </div>
                     <div className="col-5 d-flex flex-column justify-content-center align-items-center">
                         <span className="text-semi-bold">{orderVariant.variant.product.name}</span>
