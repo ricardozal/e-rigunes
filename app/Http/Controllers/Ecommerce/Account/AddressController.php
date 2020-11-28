@@ -37,7 +37,7 @@ class AddressController extends Controller
         try {
             \DB::beginTransaction();
 
-            $buyer = Buyer::find(Auth::user()->id);
+            $buyer = Buyer::find(Auth::user()->buyer->id);
             $address = new Address();
             $address->fill($request->all());
             $address->fk_id_buyer =$buyer->id;

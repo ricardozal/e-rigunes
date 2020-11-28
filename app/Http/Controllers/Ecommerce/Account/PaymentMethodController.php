@@ -19,7 +19,7 @@ class PaymentMethodController extends Controller
     public function getCards(){
 
         /** @var User $user */
-        $user = User::find(Auth::user()->buyer->id);
+        $user = User::find(Auth::user()->id);
 
         $creditCards = $user->buyer->creditCards;
 
@@ -39,7 +39,7 @@ class PaymentMethodController extends Controller
     public function createPost(Request $request){
 
         Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
-        $buyer = Buyer::whereFkIdUser(Auth::user()->buyer->id)->first();
+        $buyer = Buyer::whereFkIdUser(Auth::user()->id)->first();
         $creditCard = new CreditCard();
         $paymentMethod = null;
         try{
@@ -78,7 +78,7 @@ class PaymentMethodController extends Controller
     {
         Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
-        $buyer = Buyer::whereFkIdUser(Auth::user()->buyer->id)->first();
+        $buyer = Buyer::whereFkIdUser(Auth::user()->id)->first();
 
         try{
             if($buyer->customer_stripe_id == null){
