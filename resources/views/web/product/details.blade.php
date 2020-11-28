@@ -64,7 +64,7 @@
                                 <div class="num-block skin-2">
                                     <div class="num-in">
                                         <span class="minus dis cursor-pointer"></span>
-                                        <input type="text" class="in-num" value="1" readonly="">
+                                        <input id="quantity" type="text" class="in-num" value="1" readonly="">
                                         <span class="plus cursor-pointer"></span>
                                     </div>
                                 </div>
@@ -92,6 +92,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button id="btn-add-variant" class="btn btn-primary">
+                                    <i class="fas fa-cart-plus"></i>&nbsp;Agregar al carrito
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,4 +106,6 @@
     </div>
 
     <input type="hidden" value="{{route('web_load_sizes', ['productId' => $product->id, 'colorId' => 'FAKE_ID'])}}" id="inp-url-load-sizes">
+    <input type="hidden" id="token" value="{{csrf_token()}}">
+    <input type="hidden" id="inp-url-add-variant" value="{{route('web_add_variant')}}">
 @endsection

@@ -113,4 +113,36 @@ class Sale extends Model
             'id'
         );
     }
+
+    public static function computeTotal(Sale $order)
+    {
+
+        $orderHasVariants = $order["order_has_variant"] ?? [];
+        $total = 0;
+
+        foreach ($orderHasVariants as $index => $orderHasVariant) {
+            $total += $orderHasVariant["price"];
+        }
+
+        if ($order->discounts !== null && $order->discounts > 0) {
+            /* @var $coupon Promotion */
+            $coupon = $order["coupon"];
+
+            if ($coupon->is_percentage) {
+                $order->discounts = $total * ($coupon->value / 100);
+                $total = $total * (1 - ($coupon->value / 100));
+            } else {
+                $total = $total - $coupon->value;
+            }
+
+        } else {
+            $order->discounts = 0;
+        }
+
+        $total += $order["shipping_price"];
+
+        $order->total_price = $total;
+        return $order;
+    }
+
 }

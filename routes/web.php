@@ -90,3 +90,10 @@ Route::get(
     'Web\ContactController@contact'
 )->name('contact_section');
 
+/**
+ *      Shopping Cart
+ */
+Route::post(
+    '/shopping-cart/add-variant',
+    'Web\OrderController@addVariant'
+)->name('web_add_variant');
