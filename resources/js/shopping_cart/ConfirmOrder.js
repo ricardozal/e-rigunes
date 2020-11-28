@@ -379,7 +379,6 @@ class ConfirmOrder extends React.Component{
                 content.push(<div key={'payment-method-' + index} className="text-center mx-5 cursor-pointer" onClick={() => {
                         this.selectPaymentMethod(paymentMethod.id)
                     }}>
-                        <img src={paymentMethod.absolute_icon_url} style={{width: "80px", height:"60px"}} alt=""/><br/>
                         <span className="color-primary">{paymentMethod.name}</span>
                     </div>
                 );

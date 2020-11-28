@@ -59219,14 +59219,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
             onClick: function onClick() {
               _this8.selectPaymentMethod(paymentMethod.id);
             }
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: paymentMethod.absolute_icon_url,
-            style: {
-              width: "80px",
-              height: "60px"
-            },
-            alt: ""
-          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "color-primary"
           }, paymentMethod.name)));
         });

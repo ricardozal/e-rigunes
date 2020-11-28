@@ -61,3 +61,9 @@ Route::post('/my-account/payment-method/create',
 Route::get('/my-account/payment-method/intent',
     'Account\PaymentMethodController@getStripeSetupIntent')
     ->name('ecommerce_account_payment_methods_generate_intent');
+
+/****Orders*/
+
+Route::get('/order/{orderId}/resume',
+    'Account\OrderController@orderResume')
+    ->name('ecommerce_show_last_order');

@@ -56,7 +56,7 @@ class Sale extends Model
             'sale_variants',
             'fk_id_sale',
             'fk_id_variant'
-        );
+        )->withPivot(['quantity','sale_price']);
     }
 
     public function saleStatus()
@@ -143,6 +143,28 @@ class Sale extends Model
 
         $order->total_price = $total;
         return $order;
+    }
+
+
+    public static function similarProducts($orderId){
+
+        /** @var Sale $order */
+        $order = Sale::find($orderId);
+        $saleVariants = $order->saleVariants;
+
+        $categoryIds = [];
+        $variantIds = [];
+
+        foreach ($saleVariants as $variant){
+            $categoryIds[] = $variant->product->category->id;
+            $variantIds[] = $variant->id;
+        }
+
+        return Variant::whereActive(true)->
+        whereHas('product.category', function ($q) use ($categoryIds){
+            $q->whereIn('category.id', $categoryIds);
+        })->whereNotIn('id', $variantIds)->limit(3)->get();
+
     }
 
 }

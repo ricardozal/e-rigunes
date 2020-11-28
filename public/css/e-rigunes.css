@@ -454,3 +454,11 @@ body {
   background-size: cover;
   border-radius: 14px;
 }
+.card-address {
+  border: 1px solid #6B6A6A;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.card-selected {
+  background-color: #FBEFF5;
+}

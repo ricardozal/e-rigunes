@@ -10,11 +10,11 @@ class PaymentMethodSeeder extends Seeder
     public function run()
     {
         DB::table('payment_method')->insert([
-            'name'=>'PAYPAL'
+            'name'=>'PayPal'
         ]);
 
         DB::table('payment_method')->insert([
-            'name'=>'CARD'
+            'name'=>'Tarjeta de credito/débito'
         ]);
     }
 }
