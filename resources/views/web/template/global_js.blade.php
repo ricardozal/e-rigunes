@@ -17,3 +17,18 @@
 
 {{-- Modal Tools --}}
 <script src="{{ asset('commons/modal_tools.js') }}"></script>
+
+<script id="js-shopping_cart"
+        src="{{asset("js/shopping_cart/shopping_cart.js?v=1")}}"
+        data-token="{{csrf_token()}}"
+        data-is-user="{{Auth::user()}}"
+        data-url-get-order="{{route('web_get_order')}}"
+        data-url-go-to-shopping-cart="{{route("web_shopping_cart")}}"
+        data-url-update-variant="{{route("web_update_variant")}}"
+        data-url-attach-coupon="{{route("web_attach_coupon")}}"
+        data-url-delete-coupon="{{route("web_delete_coupon")}}"
+        data-url-login="{{route("login")}}"
+        data-url-complete-order="{{route('ecommerce_complete_order')}}"
+        data-url-update-current-step="{{route("web_update_current_step")}}"
+        data-url-shop="{{route('web_home')}}"
+></script>

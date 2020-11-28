@@ -37,3 +37,9 @@ Route::post('/address/{addressId}/update-post',
 Route::get('/address/{addressId}/active',
     'Account\AddressController@selectAddressActive')
     ->name('ecommerce_account_address_select_active');
+
+/****Shopping Cart*/
+Route::post(
+    '/shopping-cart/complete-order',
+    'ShoppingCartController@completeOrder'
+)->name('ecommerce_complete_order');

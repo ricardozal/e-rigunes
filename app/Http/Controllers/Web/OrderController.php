@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Promotion;
 use App\Models\Sale;
 use App\Models\Variant;
 use App\Services\OrderService;
@@ -13,6 +14,12 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+
+    public function shoppingCart()
+    {
+        return view('web.order.shopping_cart');
+    }
+
     public function addVariant(Request $request)
     {
 
@@ -23,7 +30,9 @@ class OrderController extends Controller
         $variant = Variant::whereFkIdSize($sizeId)
                           ->whereHas('color', function ($q) use($colorId){
                               $q->where('color.id',$colorId);
-                          })->first();
+                          })->with(['product','size'])->get();
+
+        dd($variant);
 
         if ($variant == null) {
             return response()->json([
@@ -61,4 +70,119 @@ class OrderController extends Controller
             'order' => OrderService::getCurrentOrder()
         ]);
     }
+
+    public function getCurrentOrder()
+    {
+        $order = OrderService::getCurrentOrder();
+        return response()->json($order);
+    }
+
+    public function updateVariant(Request $request)
+    {
+        $quantity = $request->input("quantity", 1);
+        $variantId = $request->input("variantId", 1);
+
+        $order = OrderService::getCurrentOrder();
+        /** @var Variant $variant */
+        $variant = Variant::find($variantId);
+
+        $orderHasVariants = $order["order_has_variant"] ?? [];
+
+        foreach ($orderHasVariants as $index => $orderHasVariant) {
+            if ($orderHasVariant["variant"]->id == $variantId) {
+                $orderHasVariant["quantity"] = $quantity;
+                $orderHasVariant["price"] = $orderHasVariant["quantity"] * 1 * $variant->product->distributor_price;
+                if ($quantity * 1 === 0) {
+                    array_splice($orderHasVariants, $index, 1);
+                } else {
+                    $orderHasVariants[$index] = $orderHasVariant;
+                }
+            }
+        }
+
+
+        $order["order_has_variant"] = $orderHasVariants;
+        OrderService::saveOrder(Sale::computeTotal($order));
+
+        return response()->json([
+            'success' => true,
+            'data' => $order
+        ]);
+    }
+
+    public function attachCoupon(Request $request)
+    {
+        $coupon_code = $request->input("coupon", null);
+
+        /** @var Promotion $coupon */
+        $coupon = Promotion::validateExist($coupon_code);
+
+        if ($coupon == null) {
+            return response()->json([
+                'success' => false,
+                "message" => "Ingrese un cupón válido"
+            ]);
+        }
+
+        if (!$coupon->expirationIsValid()) {
+            return response()->json([
+                'success' => false,
+                "message" => "Lo sentimos el cupón ya no es válido"
+            ]);
+        }
+
+        if (!$coupon->isActive()) {
+            return response()->json([
+                'success' => false,
+                "message" => "Lo sentimos el cupón ya no es válido"
+            ]);
+        }
+
+        if (!$coupon->usagesIsValid()) {
+            return response()->json([
+                'success' => false,
+                "message" => "Lo sentimos el cupón ya no es válido"
+            ]);
+        }
+
+        $order = OrderService::getCurrentOrder();
+        $order["coupon"] = $coupon;
+        $order->discounts = $coupon->value;
+        $order->coupon_code = $coupon->coupon_code;
+        OrderService::saveOrder(Sale::computeTotal($order));
+
+        return response()->json([
+            'success' => true,
+            "data" => $order
+        ]);
+    }
+
+    public function deleteCoupon()
+    {
+        $order = OrderService::getCurrentOrder();
+        $order->coupon_code = null;
+        $order->discounts = 0;
+        OrderService::saveOrder(Sale::computeTotal($order));
+
+        return response()->json([
+            'success' => true,
+            "data" => $order
+        ]);
+    }
+
+    public function updateCurrentStep(Request $request){
+
+        $step = $request->input('step');
+
+        $order = OrderService::getCurrentOrder();
+        $order["current_step"] = $step;
+        OrderService::saveOrder(Sale::computeTotal($order));
+
+        return response()->json([
+            'success' => true,
+            "data" => $order
+        ]);
+
+    }
+
 }

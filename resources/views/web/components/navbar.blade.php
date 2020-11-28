@@ -24,7 +24,7 @@
             @endif
 
         </a>
-        <i class="fas fa-shopping-bag color-white mr-4"></i>
+        <a href="#" class="mr-4 btn-cart"><i class="fas fa-shopping-bag color-white"></i></a>
     </div>
 </div>
 
@@ -77,4 +77,13 @@
         </ul>
     </div>
 </nav>
+
+<div id="shopping-popover" class="shopping-cart-popover" style="display: none">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="">
+            </div>
+        </div>
+    </div>
+</div>
 
