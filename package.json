@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "node": "^14.13.1",
+        "paypal-checkout": "^4.0.318",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
         "rsuite": "^4.2.1"

@@ -11,14 +11,6 @@
         </div>
 
     </div>
-    <div class="card card-data mb-3">
-        <div class="card-body">
-
-            <li class="nav-item my-2">
-                <a class="nav-link " href=""><i class="fas fa-money-check"></i>&nbsp;&nbsp;Método de pago</a>
-            </li>
-        </div>
-    </div>
 
     <div class="card card-data mb-3">
         <div class="card-body">

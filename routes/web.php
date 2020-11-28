@@ -126,3 +126,10 @@ Route::post(
     '/shopping-cart/update-current-step',
     'Web\OrderController@updateCurrentStep'
 )->name('web_update_current_step');
+
+/****Payment Methods*/
+
+Route::get(
+    '/shopping-cart/payment-methods',
+    'Web\OrderController@getPaymentMethods'
+)->name('web_payment_methods');

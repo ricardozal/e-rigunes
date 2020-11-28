@@ -64,6 +64,25 @@
 
 
             </div>
+            <div class="col-12">
+                <span class="color-black bottom-border">Métodos de pago</span>&nbsp;&nbsp;&nbsp;
+                <a href="{{route('ecommerce_account_payment_method_create')}}" class="btn btn-primary-light btn-sm">Agregar</a>
+            </div>
+            <div class="col-12 my-5 px-5">
+                @forelse($buyer->creditCards as $card)
+                    <div class="row my-5 justify-content-center">
+                        <div class="col-12 col-lg-1"><i class="fas fa-credit-card color-primary"></i></div>
+                        <div class="col-12 col-lg-7">
+                            <strong class="color-primary">Tarjeta de crédito/débito</strong>
+                            <br>{{$card->card_number}}&nbsp;&nbsp;&nbsp;{{$card->expiration_month.'/'.$card->expiration_year}}
+                            <br>Propietario: {{$card->cardholder}}
+                        </div>
+                        <div class="col-12"><hr></div>
+                    </div>
+                @empty
+                    <div class="w-100 text-center"><h5>No se ha registrado ningún método de pago</h5></div>
+                @endforelse
+            </div>
         </div>
 
     </section>

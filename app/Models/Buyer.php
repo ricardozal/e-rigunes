@@ -47,6 +47,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $refund_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Exchange[] $exchange
  * @property-read int|null $exchange_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CreditCard[] $creditCards
+ * @property-read int|null $credit_cards_count
  */
 class Buyer extends Model
 {
@@ -100,6 +102,15 @@ class Buyer extends Model
     public function exchange(){
         return $this->hasMany(
             Exchange::class,
+            'fk_id_buyer',
+            'id'
+        );
+    }
+
+    public function creditCards(){
+
+        return $this->hasMany(
+            CreditCard::class,
             'fk_id_buyer',
             'id'
         );

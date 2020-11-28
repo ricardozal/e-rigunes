@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\PaymentMethod;
 use App\Models\Promotion;
 use App\Models\Sale;
 use App\Models\Variant;
@@ -168,6 +169,16 @@ class OrderController extends Controller
         return response()->json([
             'success' => true,
             "data" => $order
+        ]);
+
+    }
+
+    public function getPaymentMethods(){
+
+        $paymentMethods = PaymentMethod::whereActive(true)->get();
+
+        return response()->json([
+            'paymentMethods' => $paymentMethods
         ]);
 
     }

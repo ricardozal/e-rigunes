@@ -31,4 +31,12 @@
         data-url-complete-order="{{route('ecommerce_complete_order')}}"
         data-url-update-current-step="{{route("web_update_current_step")}}"
         data-url-shop="{{route('web_home')}}"
+        data-url-address-create="{{route('ecommerce_account_address_create')}}"
+        data-url-card-create="{{route('ecommerce_account_payment_method_create')}}"
+        data-url-addresses="{{route('ecommerce_account_address_content')}}"
+        data-url-payment-methods="{{route('web_payment_methods')}}"
+        data-url-cards="{{route('ecommerce_account_get_cards')}}"
+        data-env-paypal="{{env('APP_DEBUG') ? 'sandbox' : 'production'}}"
+        data-sandbox-paypal-id="{{env('APP_DEBUG') ? env('PAYPAL_CLIENT_ID') : '--'}}"
+        data-production-paypal-id="{{env('APP_DEBUG') ? '--' : env('PAYPAL_CLIENT_ID')}}"
 ></script>

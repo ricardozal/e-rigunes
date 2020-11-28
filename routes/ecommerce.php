@@ -43,3 +43,21 @@ Route::post(
     '/shopping-cart/complete-order',
     'ShoppingCartController@completeOrder'
 )->name('ecommerce_complete_order');
+
+/** Payment Method */
+
+Route::get('/my-account/get-cards',
+    'Account\PaymentMethodController@getCards')
+    ->name('ecommerce_account_get_cards');
+
+Route::get('/my-account/payment-method/create',
+    'Account\PaymentMethodController@createCard')
+    ->name('ecommerce_account_payment_method_create');
+
+Route::post('/my-account/payment-method/create',
+    'Account\PaymentMethodController@createPost')
+    ->name('ecommerce_account_payment_methods_create_post');
+
+Route::get('/my-account/payment-method/intent',
+    'Account\PaymentMethodController@getStripeSetupIntent')
+    ->name('ecommerce_account_payment_methods_generate_intent');
