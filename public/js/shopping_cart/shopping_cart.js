@@ -58874,7 +58874,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
         var currentItem = {
           sku: item.variant.sku === null ? 'Sin SKU' : item.variant.sku,
           name: item.variant.product.name,
-          price: _this3.numberFormatPaypal(item.variant.price / parseInt(item.quantity)),
+          price: _this3.numberFormatPaypal(item.variant.product.distributor_price / parseInt(item.quantity)),
           quantity: parseInt(item.quantity),
           currency: 'MXN'
         };
