@@ -67,3 +67,11 @@ Route::get('/my-account/payment-method/intent',
 Route::get('/order/{orderId}/resume',
     'Account\OrderController@orderResume')
     ->name('ecommerce_show_last_order');
+
+Route::get('/order/history',
+    'Account\OrderController@orderHistory')
+    ->name('ecommerce_account_orders_index');
+
+Route::get('/order/{orderId}/details',
+    'Account\OrderController@orderDetails')
+    ->name('ecommerce_show_details_order');

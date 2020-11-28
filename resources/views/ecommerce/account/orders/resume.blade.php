@@ -9,7 +9,7 @@
         <div class="row m-0">
             <div class="col-12 p-0">
                 <div class="row my-3 mr-lg-3 mx-1 ml-lg-5">
-                    <div class="col-12 col-lg-8">
+                    <div class="col-12">
                         <div class="card border-radius">
                             <div class="card-body">
                                 <div class="row">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 mt-3 mt-lg-0">
+                    <div class="col-12 mt-3">
                         <div class="card border-radius">
                             <div class="card-body">
                                 <div class="row">
@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="col-12 d-flex flex-wrap justify-content-center">
                                         @forelse(\App\Models\Sale::similarProducts($order->id) as $variant)
-                                            <div class="card card-sale mb-3 mx-2 border-0" >
+                                            <div class="card card-sale mb-3 mx-2 border-0" style="width: 20rem">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-12 ">
