@@ -90,3 +90,46 @@ Route::get(
     'Web\ContactController@contact'
 )->name('contact_section');
 
+/**
+ *      Shopping Cart
+ */
+Route::get('/shopping-cart',
+    'Web\OrderController@shoppingCart')
+    ->name('web_shopping_cart');
+
+Route::post(
+    '/shopping-cart/add-variant',
+    'Web\OrderController@addVariant'
+)->name('web_add_variant');
+
+Route::get(
+    '/shopping-cart/get-order',
+    'Web\OrderController@getCurrentOrder'
+)->name('web_get_order');
+
+Route::post(
+    '/shopping-cart/update-variant',
+    'Web\OrderController@updateVariant'
+)->name('web_update_variant');
+
+Route::post(
+    '/shopping-cart/attach-coupon',
+    'Web\OrderController@attachCoupon'
+)->name('web_attach_coupon');
+
+Route::get(
+    '/shopping-cart/delete-coupon',
+    'Web\OrderController@deleteCoupon'
+)->name('web_delete_coupon');
+
+Route::post(
+    '/shopping-cart/update-current-step',
+    'Web\OrderController@updateCurrentStep'
+)->name('web_update_current_step');
+
+/****Payment Methods*/
+
+Route::get(
+    '/shopping-cart/payment-methods',
+    'Web\OrderController@getPaymentMethods'
+)->name('web_payment_methods');

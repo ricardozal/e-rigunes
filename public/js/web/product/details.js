@@ -76,6 +76,76 @@ $(document).on('click', '.color-item', function () {
     $(this).addClass('selected-color');
 });
 
+$(document).on('click', '.badge', function () {
+    $('.badge').removeClass('selected-size');
+    $(this).addClass('selected-size');
+});
+
+$(document).on('click', '#btn-add-variant', function () {
+
+    var $this = $(this);
+    $this.attr('disabled', 'disabled');
+    $this.html('<i class="fas fa-spinner fa-spin"></i>&nbsp;Agregando...');
+
+    var quantity = $('#quantity').val();
+    var variantId = $('.selected-size').attr('data-id');
+    var token = $('#token').val();
+
+    var url = $('#inp-url-add-variant').val();
+
+    if (typeof variantId === 'undefined') {
+        Swal.fire({
+            icon: 'info',
+            title: 'Atención',
+            text: 'Debes seleccionar el color y la talla del zapato',
+        });
+
+        $this.removeAttr('disabled');
+        $this.html('<i class="fas fa-cart-plus"></i>&nbsp;Agregar al carrito');
+    } else {
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: {
+                quantity: quantity,
+                variantId: variantId,
+                "_token": token
+            },
+            success: function (response) {
+
+                if (response.success){
+                    Swal.fire(
+                        'Producto agregado',
+                        'El producto se agrego correctamente a tu carrito de compras',
+                        'success'
+                    );
+                } else {
+                    Swal.fire(
+                        'Atención',
+                        response.message,
+                        'info'
+                    );
+                }
+
+            },
+            error: function () {
+                Swal.fire(
+                    'Atención',
+                    'Algo salió mal, intente más tarde',
+                    'error'
+                );
+            },
+            complete: function () {
+                $this.removeAttr('disabled');
+                $this.html('<i class="fas fa-cart-plus"></i>&nbsp;Agregar al carrito');
+            }
+        });
+
+    }
+
+});
+
 function loadSizes(colorId) {
 
     var $inpUrlSize = $('#inp-url-load-sizes');
@@ -97,7 +167,6 @@ function loadSizes(colorId) {
             $sizeContainer.append($loading);
         },
         success: function (response) {
-            console.log(response);
             const sizes = response.data;
             $sizeList.html('');
             $('.images-slider').slick('unslick');
@@ -108,7 +177,7 @@ function loadSizes(colorId) {
 
                     let sizeElement =
                         $('<div class="col-2 text-center">' +
-                            '   <h4><span class="badge badge-primary">'+item.size.value+'</span></h4>' +
+                            '   <h4><span class="badge badge-primary" data-id="'+item.id+'">'+item.size.value+'</span></h4>' +
                            '</div>');
 
                     $sizeList.append(sizeElement);
