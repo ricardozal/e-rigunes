@@ -362,3 +362,23 @@ Route::get('/admin/exchange/{exchangeId}/status',
 Route::post('/admin/exchange/{exchangeId}/status',
     'ExchangeController@statusPost')
     ->name('admin_exchange_status_post');
+
+/***********************************
+ * *******  dashboard *************
+ **********************************/
+
+Route::get('/admin/dashboardBuyer',
+    'DashboardController@buyer')
+    ->name('admin_dashboard_buyer');
+
+Route::get('/admin/dashboardEntry',
+    'DashboardController@entry')
+    ->name('admin_dashboard_entry');
+
+Route::get('/admin/dashboardExpenses',
+    'DashboardController@expenses')
+    ->name('admin_dashboard_expenses');
+
+Route::get('/admin/dashboardChartSales',
+    'DashboardController@chartSales')
+    ->name('admin_dashboard_chart_sales');
