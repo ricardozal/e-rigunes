@@ -31,7 +31,7 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-5">
                             <div class="form-group">
                                 <input type="text" name="phone" id="phone" class="form-control mb-4"
-                                       placeholder="Telefono" value="{{ isset($buyer) ? $buyer->phone: null,}}">
+                                       placeholder="Telefono" value="{{ isset($buyer) ? $buyer->phone:     null,}}">
                             </div>
                         </div>
 

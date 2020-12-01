@@ -21,7 +21,7 @@
     {{--        @endif--}}
     <div class="container-fluid">
     <div class="row">
-        <div class="col-7 ">
+        <div class="col-12 text-center ">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -52,20 +52,7 @@
 
         </div>
 
-        <div class="col-5">
-            <div class="row">
-                <div class="col-12">
-                    Rigunes
-                </div>
-                <div class="col-12">
-                    <h1>¡Emprende un nuevo negocio con nostros!</h1>
-                    <h3>Es la oportunidad perfecta  para obtener ganancias de verdad y administres tu tiempo ofreciendo nuestro calzado
-                    </h3>
-                    <butto class="btn btn-primary">Más información</butto>
-                </div>
 
-            </div>
-        </div>
     </div>
 
 
