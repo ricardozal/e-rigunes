@@ -48,6 +48,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $refunds_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sale[] $saleVariants
  * @property-read int|null $sale_variants_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Exchange[] $exchange
+ * @property-read int|null $exchange_count
  */
 class Variant extends Model
 {
@@ -138,6 +140,15 @@ class Variant extends Model
             'sale_variants',
             'fk_id_sale',
             'fk_id_variant'
+        );
+    }
+
+    public function exchange()
+    {
+        return $this->hasMany(
+            Exchange::class,
+            'fk_id_exchange_variant',
+            'id'
         );
     }
 

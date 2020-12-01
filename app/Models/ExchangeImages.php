@@ -19,8 +19,17 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|ExchangeImages whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ExchangeImages whereUrlImage($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Exchange $exchange
  */
 class ExchangeImages extends Model
 {
     protected $table = 'exchange_images';
+
+    public function exchange(){
+        return $this->belongsTo(
+            Exchange::class,
+            'fk_id_exchange',
+            'id'
+        );
+    }
 }

@@ -56,7 +56,7 @@ class Sale extends Model
             'sale_variants',
             'fk_id_sale',
             'fk_id_variant'
-        );
+        )->withPivot(['quantity','sale_price']);
     }
 
     public function saleStatus()
@@ -113,4 +113,58 @@ class Sale extends Model
             'id'
         );
     }
+
+    public static function computeTotal(Sale $order)
+    {
+
+        $orderHasVariants = $order["order_has_variant"] ?? [];
+        $total = 0;
+
+        foreach ($orderHasVariants as $index => $orderHasVariant) {
+            $total += $orderHasVariant["price"];
+        }
+
+        if ($order->discounts !== null && $order->discounts > 0) {
+            /* @var $coupon Promotion */
+            $coupon = $order["coupon"];
+
+            if ($coupon->is_percentage) {
+                $order->discounts = $total * ($coupon->value / 100);
+                $total = $total * (1 - ($coupon->value / 100));
+            } else {
+                $total = $total - $coupon->value;
+            }
+
+        } else {
+            $order->discounts = 0;
+        }
+
+        $total += $order["shipping_price"];
+
+        $order->total_price = $total;
+        return $order;
+    }
+
+
+    public static function similarProducts($orderId){
+
+        /** @var Sale $order */
+        $order = Sale::find($orderId);
+        $saleVariants = $order->saleVariants;
+
+        $categoryIds = [];
+        $variantIds = [];
+
+        foreach ($saleVariants as $variant){
+            $categoryIds[] = $variant->product->category->id;
+            $variantIds[] = $variant->id;
+        }
+
+        return Variant::whereActive(true)->
+        whereHas('product.category', function ($q) use ($categoryIds){
+            $q->whereIn('category.id', $categoryIds);
+        })->whereNotIn('id', $variantIds)->limit(3)->get();
+
+    }
+
 }

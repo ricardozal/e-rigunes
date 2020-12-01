@@ -86,14 +86,6 @@ class Refund extends Model
         );
     }
 
-    /*public function saleVariants()
-    {
-        return $this->belongsTo(
-            SaleVariants::class,
-            'fk_id_sale_variant'
-        );
-    }*/
-
     public function saleVariants()
     {
         return $this->belongsToMany(

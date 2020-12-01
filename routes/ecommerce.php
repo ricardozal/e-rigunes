@@ -37,3 +37,41 @@ Route::post('/address/{addressId}/update-post',
 Route::get('/address/{addressId}/active',
     'Account\AddressController@selectAddressActive')
     ->name('ecommerce_account_address_select_active');
+
+/****Shopping Cart*/
+Route::post(
+    '/shopping-cart/complete-order',
+    'ShoppingCartController@completeOrder'
+)->name('ecommerce_complete_order');
+
+/** Payment Method */
+
+Route::get('/my-account/get-cards',
+    'Account\PaymentMethodController@getCards')
+    ->name('ecommerce_account_get_cards');
+
+Route::get('/my-account/payment-method/create',
+    'Account\PaymentMethodController@createCard')
+    ->name('ecommerce_account_payment_method_create');
+
+Route::post('/my-account/payment-method/create',
+    'Account\PaymentMethodController@createPost')
+    ->name('ecommerce_account_payment_methods_create_post');
+
+Route::get('/my-account/payment-method/intent',
+    'Account\PaymentMethodController@getStripeSetupIntent')
+    ->name('ecommerce_account_payment_methods_generate_intent');
+
+/****Orders*/
+
+Route::get('/order/{orderId}/resume',
+    'Account\OrderController@orderResume')
+    ->name('ecommerce_show_last_order');
+
+Route::get('/order/history',
+    'Account\OrderController@orderHistory')
+    ->name('ecommerce_account_orders_index');
+
+Route::get('/order/{orderId}/details',
+    'Account\OrderController@orderDetails')
+    ->name('ecommerce_show_details_order');

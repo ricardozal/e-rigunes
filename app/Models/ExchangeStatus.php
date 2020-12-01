@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|ExchangeStatus whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ExchangeStatus whereName($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Exchange[] $exchange
+ * @property-read int|null $exchange_count
  */
 class ExchangeStatus extends Model
 {
@@ -29,5 +31,10 @@ class ExchangeStatus extends Model
             'fk_id_exchange_status',
             'id'
         );
+    }
+
+    public static function asMap()
+    {
+        return self::pluck('name', 'id');
     }
 }

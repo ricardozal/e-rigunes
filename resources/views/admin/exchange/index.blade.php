@@ -22,7 +22,8 @@
                             <th>Garantia</th>
                             <th>Dirección de recolección</th>
                             <th>información envío</th>
-                            <th>producto</th>
+                            <th>producto de cambio</th>
+                            <th>producto a cambiar</th>
                             <th>Status</th>
                         </tr>
                         </thead>
@@ -34,5 +35,21 @@
 
     <input id="inp-url-index-content" type="hidden"
            value="{{route('admin_exchange_index_content')}}">
+    <input id="inp-url-exchangeSaleVariant" type="hidden"
+           value="{{route('admin_exchange_sale_variant',['exchangeId' => 'FAKE_ID'])}}">
+    <input id="inp-url-exchangeVariant" type="hidden"
+           value="{{route('admin_exchange_variant',['exchangeId' => 'FAKE_ID'])}}">
+    <input id="inp-url-status" type="hidden"
+           value="{{route('admin_exchange_status',['exchangeId' => 'FAKE_ID'])}}">
+
+    <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="body-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection

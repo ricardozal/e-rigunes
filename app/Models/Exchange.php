@@ -38,6 +38,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Address|null $address
  * @property-read \App\Models\Buyer $buyer
  * @property-read \App\Models\ShippingInformation|null $shippingInfo
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ExchangeImages[] $exchangeImages
+ * @property-read int|null $exchange_images_count
+ * @property-read \App\Models\ExchangeStatus $exchangeStatus
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Variant[] $saleVariants
+ * @property-read int|null $sale_variants_count
+ * @property-read \App\Models\Variant $variant
  */
 class Exchange extends Model
 {
@@ -71,6 +77,32 @@ class Exchange extends Model
         return $this->belongsTo(
             ExchangeStatus::class,
             'fk_id_exchange_status',
+            'id'
+        );
+    }
+
+    public function exchangeImages(){
+        return $this->hasMany(
+            ExchangeImages::class,
+            'fk_id_exchange',
+            'id'
+        );
+    }
+
+    public function saleVariants()
+    {
+        return $this->belongsToMany(
+            Variant::class,
+            'sale_variants',
+            'fk_id_sale',
+            'fk_id_variant'
+        );
+    }
+
+    public function variant(){
+        return $this->belongsTo(
+            Variant::class,
+            'fk_id_exchange_variant',
             'id'
         );
     }

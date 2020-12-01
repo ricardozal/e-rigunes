@@ -17,12 +17,12 @@ class MyProfileController extends Controller
 {
     public function index(){
 
-            $buyer = Buyer::find(Auth::user()->id);
+            $buyer = Buyer::find(Auth::user()->buyer->id);
             return view('ecommerce.account.personal_data.index',['buyer'=>$buyer]);
     }
 
     public function updateIndex(){
-        $buyer = Buyer::find(Auth::user()->id);
+        $buyer = Buyer::find(Auth::user()->buyer->id);
 
         return view('ecommerce.account.personal_data.update',[
             'buyer' => $buyer

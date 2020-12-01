@@ -323,6 +323,18 @@ Route::get('/admin/refund-content',
     'RefundController@indexContent')
     ->name('admin_refund_index_content');
 
+Route::get('/admin/refund/{refundId}/refund-variant',
+    'RefundController@refundVariant')
+    ->name('admin_refund_variant');
+
+Route::get('/admin/refund/{refundId}/status',
+    'RefundController@status')
+    ->name('admin_refund_status');
+
+Route::post('/admin/refund/{refundId}/status',
+    'RefundController@statusPost')
+    ->name('admin_refund_status_post');
+
 /***********************************
  * *******  exchange *************
  **********************************/
@@ -334,3 +346,39 @@ Route::get('/admin/exchange',
 Route::get('/admin/exchange-content',
     'ExchangeController@indexContent')
     ->name('admin_exchange_index_content');
+
+Route::get('/admin/exchange/{exchangeId}/exchange-saleVariant',
+    'ExchangeController@exchangeSaleVariant')
+    ->name('admin_exchange_sale_variant');
+
+Route::get('/admin/exchange/{exchangeId}/exchange-variant',
+    'ExchangeController@exchangeVariant')
+    ->name('admin_exchange_variant');
+
+Route::get('/admin/exchange/{exchangeId}/status',
+    'ExchangeController@status')
+    ->name('admin_exchange_status');
+
+Route::post('/admin/exchange/{exchangeId}/status',
+    'ExchangeController@statusPost')
+    ->name('admin_exchange_status_post');
+
+/***********************************
+ * *******  dashboard *************
+ **********************************/
+
+Route::get('/admin/dashboardBuyer',
+    'DashboardController@buyer')
+    ->name('admin_dashboard_buyer');
+
+Route::get('/admin/dashboardEntry',
+    'DashboardController@entry')
+    ->name('admin_dashboard_entry');
+
+Route::get('/admin/dashboardExpenses',
+    'DashboardController@expenses')
+    ->name('admin_dashboard_expenses');
+
+Route::get('/admin/dashboardChartSales',
+    'DashboardController@chartSales')
+    ->name('admin_dashboard_chart_sales');

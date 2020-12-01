@@ -32,4 +32,9 @@ class RefundStatus extends Model
             'id'
         );
     }
+
+    public static function asMap()
+    {
+        return self::pluck('name', 'id');
+    }
 }

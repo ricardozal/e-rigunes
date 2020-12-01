@@ -3,7 +3,6 @@
     <script src="{{asset("/commons/form_tools.js")}}"></script>
     <script src="{{ asset('js/web/components/subscriber.js?v=1') }}"></script>
 @endpush
-<hr>
 <div class="container-fluid ">
     <div id="footer-wrapper" class="text-center">
         <div id="footer">
