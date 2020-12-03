@@ -70,6 +70,7 @@ class ProductsSeeder extends Seeder
                 'length' => 20,
                 'public_price' => 600,
                 'distributor_price' => 500,
+                'rigunes_price' => 400,
                 'fk_id_provider' => $this->faker->randomElement(array(1,2,3,4,5)),
                 'fk_id_category' => $damaId
             ]);
@@ -118,6 +119,7 @@ class ProductsSeeder extends Seeder
                 'length' => 20,
                 'public_price' => 800,
                 'distributor_price' => 600,
+                'rigunes_price' => 500,
                 'fk_id_provider' => $this->faker->randomElement(array(1,2,3,4,5)),
                 'fk_id_category' => $caballeroId
             ]);

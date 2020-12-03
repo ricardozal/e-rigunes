@@ -31,6 +31,7 @@
                             <th>Largo</th>
                             <th>Precio público</th>
                             <th>Precio distribuidor</th>
+                            <th>Precio Rigunes</th>
                             <th>Proveedor</th>
                             <th>Categoria</th>
                             <th>Opciones</th>

@@ -26,6 +26,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Purchase whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Models\Provider $provider
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PurchaseStatus[] $purchaseStatus
+ * @property-read int|null $purchase_status_count
+ * @property int $fk_id_purchase_status
+ * @property-read \App\Models\PurchaseStatus $status
+ * @method static \Illuminate\Database\Eloquent\Builder|Purchase whereFkIdPurchaseStatus($value)
  */
 class Purchase extends Model
 {
@@ -46,6 +51,15 @@ class Purchase extends Model
         return $this->belongsTo(
             Provider::class,
             'fk_id_provider',
+            'id'
+        );
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(
+            PurchaseStatus::class,
+            'fk_id_purchase_status',
             'id'
         );
     }

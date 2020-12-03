@@ -14,6 +14,7 @@ $(document).ready(function () {
             { "data": "length" },
             { "data": "public_price" },
             { "data": "distributor_price" },
+            { "data": "rigunes_price" },
             { "data": "provider.name" },
             { "data": "category.name" },
             {

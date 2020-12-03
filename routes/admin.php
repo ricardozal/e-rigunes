@@ -220,6 +220,10 @@ Route::get('/admin/{purchaseId}/purchase-detail',
     'PurchaseController@detailPurchase')
     ->name('admin_purchase_detail');
 
+Route::get('/admin/{purchaseId}/purchase-deliver',
+    'PurchaseController@deliverPurchase')
+    ->name('admin_purchase_deliver');
+
 /***********************************
  * *******   Contact messages *************
  **********************************/
