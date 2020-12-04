@@ -131,6 +131,7 @@ class ErigunesSchema extends Migration
             $table->integer('length');
             $table->decimal('public_price', 13, 2);
             $table->decimal('distributor_price', 13, 2);
+            $table->decimal('rigunes_price', 13, 2);
             $table->boolean('active')
                 ->default(true);
             $table->unsignedInteger('fk_id_provider');
@@ -329,15 +330,25 @@ class ErigunesSchema extends Migration
                 ->on('sale');
         });
 
+        Schema::create('purchase_status', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('name');
+        });
+
         Schema::create('purchase', function(Blueprint $table){
             $table->increments('id');
             $table->decimal('total_price',13,2);
             $table->unsignedInteger('fk_id_provider');
+            $table->unsignedInteger('fk_id_purchase_status');
             $table->timestamps();
 
             $table->foreign('fk_id_provider')
                 ->references('id')
                 ->on('provider');
+
+            $table->foreign('fk_id_purchase_status')
+                ->references('id')
+                ->on('purchase_status');
         });
 
         Schema::create('purchase_variants', function(Blueprint $table){

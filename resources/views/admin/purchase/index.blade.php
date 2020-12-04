@@ -20,6 +20,8 @@
                             <th>Proveedor</th>
                             <th>Precio total</th>
                             <th>Detalles</th>
+                            <th>Status</th>
+                            <th>Entregar pedido</th>
                         </tr>
                         </thead>
                     </table>
@@ -32,6 +34,8 @@
            value="{{route('admin_purchase_index_content')}}">
     <input id="inp-url-detail" type="hidden"
            value="{{route('admin_purchase_detail',['purchaseId' => 'FAKE_ID'])}}">
+    <input id="inp-url-deliver" type="hidden"
+           value="{{route('admin_purchase_deliver',['purchaseId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

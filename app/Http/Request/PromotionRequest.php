@@ -18,7 +18,6 @@ class PromotionRequest extends FormRequest
         return [
             'expiration_date' => 'required',
             'coupon_code' => 'required',
-            'swaps' => 'required',
             'value' => 'required',
         ];
     }
@@ -28,7 +27,6 @@ class PromotionRequest extends FormRequest
         return [
             'expiration_date.required' => 'Fecha de expiración necesaria',
             'coupon_code.required' => 'Código de cúpon requerido',
-            'swaps.required' => 'Número de cambios requerido',
             'value.required' => 'Valor de la promoción necesario'
         ];
     }

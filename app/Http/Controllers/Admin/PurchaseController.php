@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Purchase;
+use App\Models\PurchaseStatus;
 use App\Models\PurchaseVariants;
 use App\Models\Variant;
 use Illuminate\Http\Request;
@@ -20,7 +21,9 @@ class PurchaseController extends Controller
 
     public function indexContent(Request $request)
     {
-        $query = Purchase::with('provider')
+        /** @var Purchase $purchase */
+
+        $query = Purchase::with('provider', 'status')
             ->get();
 
         return response()->json([
@@ -29,10 +32,26 @@ class PurchaseController extends Controller
 
     }
 
-    public function detailPurchase($purchaseId){
+    public function deliverPurchase($purchaseId){
 
-        //$purchase = Purchase::find($purchaseId);
-        //$purchaseVariants = PurchaseVariants::where('fk_id_purchase', '=', $purchaseId)->get();
+        /** @var Purchase $purchase */
+        $purchase = Purchase::find($purchaseId);
+        $purchase->fk_id_purchase_status = PurchaseStatus::DELIVERED;
+
+        if(!$purchase->save()){
+            return response()->json([
+                'success' => false,
+                'error' => 'Error al cambiar de estado'
+            ]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Proceso completado'
+        ]);
+    }
+
+    public function detailPurchase($purchaseId){
 
         /** @var Purchase $purchaseVariants */
         $purchaseVariants = Purchase::find($purchaseId)->purchaseVariants()
