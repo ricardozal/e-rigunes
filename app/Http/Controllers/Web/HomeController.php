@@ -12,10 +12,11 @@ class HomeController extends Controller
     public function home() {
 
         $products = Product::whereActive(true)->orderBy('created_at','ASC')->limit(10)->get();
+        $product = Product::inRandomOrder()->where('active', true)->limit(10)->get();
 
         $category = Category::whereActive(true)->get();
         return view('web.home.index',['products'=>$products,
-            'category'=>$category]);
+            'category'=>$category,'product'=>$product]);
     }
 
 public function question(){

@@ -6,53 +6,54 @@
 
     <div class="container-fluid">
         <div class="row mt-3">
-            <div class="col-12 col-md-6 text-center">
-                <img src="{{asset('img/trabajo.jpg')}}" class="rounded-pill" style="height: auto; max-width: 30%">
-{{--                <div style="background-image: url({{$category->image_url}})"></div>--}}
-            </div>
-            <div class=" col-12 col-md-6 my-auto">
-                <h1>{{$category->name}}</h1>
+
+            <div class=" col-12 text-center my-auto">
+                <h1 class="color-red">{{$category->name}}</h1>
 
 
             </div>
         </div>
+        <div class="row mx-0">
 
-
-
-        <div class="row mx-1 my-5 justify-content-around">
-
-
-            @foreach($products as $product)
-
-                <div class="card card-sale mb-3 border-0" >
-                    <div class="card-body">
-                        <div class="row">
+            @foreach($products as $prod)
+                <div class="col-12 col-sm-6 col-md-6 mb-4 col-lg-3 ">
+                    <div class="card border-0 card-category">
+                        <a href="{{route('web_product_details',['productId'=>$prod->id])}}">
+                            <div
+                                style="background-image: url('{{$prod->variants[0]->featured_image}}');
+                                    height: 40vh;
+                                    width: 100%;
+                                    background-size: cover;
+                                    background-repeat: no-repeat;
+                                    background-position: center center ;">
+                            </div>
+                        </a>
+                        <div class="row align-items-center">
                             <div class="col-12">
-                                <p>{{$product->name}}</p>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-12 text-center mb-2">
-                                <a href="{{route('web_product_details',['productId'=>$product->id])}}">
-{{--                                    <img src="{{$product->first_variant->featured_image}}" style="height: 25vh;">--}}
-                                    <img src="{{$product->variants[0]->featured_image}}" style="height: 25vh;">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-9">
-                                ${{number_format($product->distributor_price,2)}}
-                            </div>
-                            <div class="col-3">
-                                <i class="fas fa-shopping-bag color-primary h3"></i>
+                                    <p
+                                        class="mt-1  text-center text-bold ">
+                                        {{$prod->name}}
+                                    </p>
+                                    <div class="row mx-0">
+                                        <div class="col-6 offset-3">
+                                            <p class="my-0 text-center color-red ">
+                                                ${{number_format($prod->distributor_price,2)}}
+                                            </p>
+                                        </div>
+                                        <div class="col-12 text-right mb-2">
+                                            <a href="{{route('web_product_details',['productId'=>$prod->id])}}">
+                                                <img src="{{asset('img/icons/ic_car_gary.png')}}"
+                                                     style="height: 1.5rem;">
+                                            </a>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-
         </div>
+
     </div>
 
 
