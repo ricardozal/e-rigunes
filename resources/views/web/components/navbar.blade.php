@@ -8,7 +8,7 @@
         </a>
     </div>
     <div class="col-4 my-2 d-flex justify-content-end h2">
-        <i class="fas fa-search color-white"></i>
+        <a href="{{route('search_products')}}"><i class="fas fa-search color-white"></i></a>
         <img class="ml-3 mr-3 color-white" src="{{asset('img/ic_line.png')}}" style="max-height: 5vh!important">
         <a class="mx-3 text-center {{ Auth::check() ? '' : '' }}"
            href=" {{ Auth::check() ? '#' : route('login') }}"

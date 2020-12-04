@@ -56,6 +56,15 @@ Route::get(
     'Web\HomeController@our'
 )->name('ours_section');
 
+Route::get(
+    '/search-products',
+    'Web\HomeController@search'
+)->name('search_products');
+
+Route::get(
+    '/product/search',
+    'Web\HomeController@searchProducts'
+)->name("web_search_product");
 
 /**
  *      Product Details
