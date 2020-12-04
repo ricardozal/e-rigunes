@@ -80,6 +80,16 @@
 
 <div class="row w-75">
     <div class="col-12">
+        <div class="form-group focused">
+            <label for="rigunes_price"  class="focused form-label">Precio Rigunes</label>
+            <input type="number" class="form-control" autocomplete="off" id="rigunes_price" name="rigunes_price" value="{{ isset($product) ? $product->rigunes_price : null}}">
+            <span class="invalid-feedback">{{ $errors->first('rigunes_price') }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="row w-75">
+    <div class="col-12">
         <div class="form-group form-select focused">
             <label for="fk_id_provider" class="focused form-label">Proveedor</label>
             <select class="form-control" id="fk_id_provider" name="fk_id_provider">

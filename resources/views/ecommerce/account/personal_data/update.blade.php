@@ -25,7 +25,7 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-5">
                             <div class="form-group">
                                 <input type="password" name="password" id="password"
-                                       class="form-control mb-4" placeholder="Contraseña" value="{{ isset($buyer) ? $buyer->user->password: null,}}">
+                                       class="form-control mb-4" placeholder="Contraseña" value="">
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-5">

@@ -236,10 +236,6 @@ body {
   border: none;
   text-align: center;
 }
-.slick-arrow:before {
-  color: blue;
-  background-color: blue;
-}
 .card-category:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
@@ -461,4 +457,22 @@ body {
 }
 .card-selected {
   background-color: #FBEFF5;
+}
+.margin-bottom {
+  margin-bottom: 30vh;
+  text-align: center;
+}
+/*******************************************/
+/* Autocomplete*/
+.autocomplete-suggestions {
+  background: #F7F7FC;
+  padding: 4px;
+}
+.autocomplete-suggestions .autocomplete-suggestion {
+  cursor: pointer;
+  padding: 8px;
+}
+.autocomplete-suggestions .autocomplete-suggestion:hover {
+  background: #B51F6B;
+  color: #FFFFFF;
 }

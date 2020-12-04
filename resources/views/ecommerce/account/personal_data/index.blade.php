@@ -11,32 +11,20 @@
     <section class="container account-content-border h-100 py-4">
         <div class="row">
             <div class="col-12 px-5">
-                <p class="text-center ">Datos cliente</p>
+                <h3 class="text-center bottom-border mb-3">Datos cliente</h3>
                 <div class="row align-items-center">
                     <div class="col-12 col-md-4">
-                        <p class="text-bold">CORREO</p>
+                        <p class="text-bold">Nombre completo</p>
+                        <p class="">{{$buyer->full_name}}</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p class="text-bold">Correo electrónico</p>
                         <p class="">{{$buyer->user->email}}</p>
                     </div>
-
                     <div class="col-12 col-md-4">
-                        <p class="text-bold">NOMBRE</p>
-                        <p class="">{{$buyer->name}}</p>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <p class="text-bold">APELLIDO PATERNO</p>
-                        <p class="">{{$buyer->father_last_name}}</p>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <p class="text-bold">APELLIDO MATERNO</p>
-                        <p class="">{{$buyer->mother_last_name}}</p>
-                    </div>
-
-                    <div class="col-12 col-md-4">
-                        <p class="text-bold">TELEFONO</p>
+                        <p class="text-bold">Telefono</p>
                         <p class="">{{$buyer->phone}}</p>
                     </div>
-
-
                 </div>
                 <div class="text-center pb-4">
                     <a class="btn btn-primary font-family-2 mt-3 without-border font-size-nav color-white "
@@ -46,13 +34,11 @@
 
             <div class="col-12 pb-5 px-5">
                 <div class="row">
-                    <div class="col-8 col-md-3 offset-md-4">
-                        <p class="text-center font-family-2 text-bold  py-md-4">Direcciones</p>
+                    <div class="col-12">
+                        <h3 class="text-center bottom-border mb-3">Direcciones</h3>
                     </div>
-                    <div class="col-2 pt-md-3">
-                        <a class="d-inline-flex ml-3" href="{{route('ecommerce_account_address_create')}}">
-                            <i class="fas fa-plus-circle color-primary" style="font-size: 1.8rem;"> </i>
-                        </a>
+                    <div class="col-12">
+                        <a href="{{route('ecommerce_account_address_create')}}" class="btn btn-primary-light btn-sm">Agregar</a>
                     </div>
                 </div>
 
@@ -61,11 +47,11 @@
 
                     </div>
                 </div>
-
-
             </div>
             <div class="col-12">
-                <span class="color-black bottom-border">Métodos de pago</span>&nbsp;&nbsp;&nbsp;
+                <h3 class="text-center bottom-border mb-3">Métodos de pago</h3>
+            </div>
+            <div class="col-12">
                 <a href="{{route('ecommerce_account_payment_method_create')}}" class="btn btn-primary-light btn-sm">Agregar</a>
             </div>
             <div class="col-12 my-5 px-5">

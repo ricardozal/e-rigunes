@@ -40,11 +40,8 @@ $(document).ready(function () {
                         var activeUrl = $inpUrlActive.val();
                         activeUrl = activeUrl.replace('FAKE_ID', address[i].id);
 
-                        var activeClass = $('.active-check');
-
                         $addressesContainer.append('<div class="row w-50 w-auto mx-md-auto my-5">\n' +
-                            '                    <div class="col-12 col-md-1"><i class="active-check color-primary cursor-pointer fas fa-toggle-' + active + ' " data-url="'+activeUrl+'"></i></div>\n' +
-                            '                    <div class="col-12 col-md-10 font-family-2">' + address[i].full_address + '</div>\n' +
+                            '                    <div class="col-12 col-md-11 font-family-2">' + address[i].full_address + '</div>\n' +
                             '                    <div class="col-12 col-md-1"><a href="' + updateUrl + '"><i class="far fa-edit color-primary"></i></a></div>\n' +
                             '                </div>');
 

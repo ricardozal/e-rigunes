@@ -30,21 +30,11 @@
 
 <div class="row w-75">
     <div class="col-12">
-        <div class="form-group focused">
-            <label for="swaps"  class="focused form-label">Cambios</label>
-            <input type="number" class="form-control" autocomplete="off" id="swaps" name="swaps" value="{{ isset($promotion) ? $promotion->swaps : null}}">
-            <span class="invalid-feedback">{{ $errors->first('swaps') }}</span>
-        </div>
-    </div>
-</div>
-
-<div class="row w-75">
-    <div class="col-12">
         <div class="form-group form-select focused">
-            <label for="is_percentage" class="focused form-label">is percentage</label>
+            <label for="is_percentage" class="focused form-label">Valor de la promoción</label>
             <select class="form-control" id="is_percentage" name="is_percentage">
-                <option value="1">True</option>
-                <option value="0">False</option>
+                <option value="1">Por porcentaje</option>
+                <option value="0">Por valor</option>
             </select>
         </div>
     </div>

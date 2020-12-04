@@ -1,5 +1,5 @@
 <div class="row justify-content-between container-fluid mx-0" style="background-color: #B51F6B;">
-    <div class="col-4 my-2 h3 text-center">
+    <div class="col-4 my-2 h2 text-center">
         <a class="text-center mx-2" href="https://www.instagram.com/rigunes.mx/"
            target="_blank">
             <i class="fab fa-instagram color-white d-none d-md-inline" style="height: 5vw;"></i></a>
@@ -7,8 +7,8 @@
             <i class="fab fa-facebook-f color-white d-none d-md-inline"></i>
         </a>
     </div>
-    <div class="col-4 my-2 d-flex justify-content-end h3">
-        <i class="fas fa-search color-white"></i>
+    <div class="col-4 my-2 d-flex justify-content-end h2">
+        <a href="{{route('search_products')}}"><i class="fas fa-search color-white"></i></a>
         <img class="ml-3 mr-3 color-white" src="{{asset('img/ic_line.png')}}" style="max-height: 5vh!important">
         <a class="mx-3 text-center {{ Auth::check() ? '' : '' }}"
            href=" {{ Auth::check() ? '#' : route('login') }}"
