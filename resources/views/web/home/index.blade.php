@@ -67,7 +67,7 @@
                             <div class="card card-category border-0">
                                 <div class="car-body">
                                     <a href="{{route('category_products',['categoryId'=>$cat->id])}}">
-                                        <img src="{{asset('img/dama.png')}}" class="img-fluid">
+                                        <img src="{{$cat->image_url}}" class="img-fluid" style="object-fit: cover">
                                     </a>
                                     <div class="col-12 text-center">
                                         <p>{{$cat->name}}</p>

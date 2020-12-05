@@ -69,7 +69,8 @@ class Product extends Model
         'length',
         'weight',
         'public_price',
-        'distributor_price'
+        'distributor_price',
+        'rigunes_price'
     ];
 
     protected $appends = [

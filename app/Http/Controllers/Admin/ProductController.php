@@ -37,15 +37,6 @@ class ProductController extends Controller
         $product = new Product();
         $product->fill($request->all());
 
-        $priceRigunes = $request->input('rigunes_price');
-        $priceStripe = ($priceRigunes * 0.036) + 3;
-        $priceSkyDropx = 180;
-        $iva = $priceRigunes * 0.16;
-
-        $priceTotal = $priceRigunes + $priceStripe + $priceSkyDropx + $iva;
-
-        $pricePublic = $priceTotal;
-
         if (!$product->save()) {
             return response()->json([
                 'success' => false,

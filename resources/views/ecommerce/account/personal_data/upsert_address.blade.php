@@ -14,7 +14,7 @@
                     @csrf
                     <div class="row align-items-center">
                         <div class="col-12 col-md-4">
-                            <p class="font-family-2 color-gray-dark text-bold mb-0">CAllE</p>
+                            <p class="font-family-2 color-gray-dark text-bold mb-0">CALLE</p>
 
                                 <div class="form-group">
                                     <input type="text" name="street" id="street" class="form-control mb-4"
@@ -60,13 +60,9 @@
                                        value="{{ isset($address) ? $address->city: null,}}"  >
                             </div>
                         </div>
+
                         <div class="col-12 col-md-4">
-
-
-
-
-
-                            <p class="font-family-2 color-gray-dark text-bold mb-0">CIUDAD</p>
+                            <p class="font-family-2 color-gray-dark text-bold mb-0">Estado</p>
 
                             <div class="form-group">
                                 <input type="text" name="state" id="state" class="form-control mb-4"
@@ -74,10 +70,6 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
-
-
-
-
 
                             <p class="font-family-2 color-gray-dark text-bold mb-0">PAIS</p>
 
