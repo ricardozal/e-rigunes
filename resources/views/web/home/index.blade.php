@@ -117,7 +117,7 @@
             </div>
 
             <div class="col-12 mt-3 text-center ">
-                <button class="btn btn-primary">Registrate</button>
+                <a href="{{route('web_user_create')}}" class="btn btn-primary">Registrate</a>
 
             </div>
 
