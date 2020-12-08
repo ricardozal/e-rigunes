@@ -23,10 +23,6 @@ class ContactController extends Controller
 
             $message = new DataContactWebsite();
             $message->fill($request->all());
-            $message->name = $request->name;
-            $message->phone = $request->phone;
-            $message->email = $request->email;
-            $message->message = $request->message;
             $message->saveOrFail();
 
 

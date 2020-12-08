@@ -16,7 +16,6 @@
 
     <div class="container-fluid">
         <div class="row  justify-content-center">
-
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -32,8 +31,6 @@
                         <img class="d-block " src="{{asset('img/carousels/Rigunes.png')}}" alt="First slide" style="
                          height: 38vw;">
                     </div>
-
-
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -44,21 +41,14 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-
-
         </div>
-
-
         <div class="row align-items-center">
             <div class="col-12 my-2">
                 <div class="text-center">
                     <h1 class=" mt-5 color-red"><b>CATEGORIAS</b></h1>
                 </div>
             </div>
-
         </div>
-
-
         <div class="row">
             <div class="col-11 mx-auto ">
                 <div class="responsive">
@@ -67,7 +57,7 @@
                             <div class="card card-category border-0">
                                 <div class="car-body">
                                     <a href="{{route('category_products',['categoryId'=>$cat->id])}}">
-                                        <img src="{{$cat->image_url}}" class="img-fluid" style="object-fit: cover">
+                                        <img src="{{asset('img/dama.png')}}" class="img-fluid">
                                     </a>
                                     <div class="col-12 text-center">
                                         <p>{{$cat->name}}</p>
@@ -103,13 +93,8 @@
                 </div>
             </div>
         </div>
-
-
         <div class="row mx-5">
-
             <div class="col-12 p-5">
-
-
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -118,7 +103,8 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block " src="{{asset('img/carousels/carousel1.png')}}" alt="First slide" style="     background-repeat: no-repeat;
+                            <img class="d-block " src="{{asset('img/carousels/carousel1.png')}}" alt="First slide"
+                                 style="     background-repeat: no-repeat;
                          background-size: cover;
                          height: 38vw;
                            ">
@@ -139,10 +125,7 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-
-
             </div>
-
         </div>
         {{--        <div class="row  text-center">--}}
         {{--            <div class="col-12">--}}
@@ -152,8 +135,6 @@
         {{--                </button>--}}
         {{--            </div>--}}
         {{--        </div>--}}
-
-
         <div class="row my-5">
             <div class="col-12  text-center">
                 <h2>Conviertete en un distribuidor</h2>
@@ -177,18 +158,13 @@
             <div class="col-12 text-center mb-5">
                 <button class="btn btn-primary">Ver más</button>
             </div>
-
         </div>
-
         <div class="row">
             <div class="col-12 text-center">
                 <h1>NUESTROS PRODUCTOS </h1>
-
             </div>
-
         </div>
         <div class="row mx-0">
-
             @foreach($product as $prod)
                 <div class="col-12 col-sm-6 col-md-6 mb-4 col-lg-3 ">
                     <div class="card border-0 card-category">
@@ -206,8 +182,7 @@
                             <div class="col-12">
                                 <a class="w-100" style="text-decoration: none; color: black!important;"
                                    href="">
-                                    <p
-                                        class="mt-1  text-center text-bold ">
+                                    <p class="mt-1  text-center text-bold ">
                                         {{$prod->name}}
                                     </p>
                                     <div class="row mx-0">
