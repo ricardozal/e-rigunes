@@ -5,11 +5,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center">
-                <h2>NOSOTROS</h2>
+                <h2 class="color-red">NOSOTROS</h2>
             </div>
             <div class="col-12 text-center">
 
-                <h3 class="font-weight-medium text-dark mb-5">Somos una empresa 100% mexicana que distribuye
+                <h3 class="color-green mb-5">Somos una empresa 100% mexicana que distribuye
                     <br>
                     calzado a todo el territorio nacional.
                 </h3>

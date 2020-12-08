@@ -18,8 +18,11 @@
             <i class="far fa-user color-white"></i>
             @if(Auth::check())
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="{{route('ecommerce_account_profile_index')}}">Mi cuenta</a>
-                    <a class="dropdown-item" href="{{route('logout')}}">Cerrar sesión</a>
+
+                    <a class="dropdown-item" href="{{route('ecommerce_account_profile_index')}}"><i
+                            class="far fa-user color-green"></i> Mi cuenta</a>
+                    <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt color-red"></i>
+                        Cerrar sesión</a>
                 </div>
             @endif
 
@@ -30,9 +33,10 @@
 
 
 <div class="row mx-0">
-    <a class="mx-auto my-3" href="{{route('web_home')}}"><img src="{{asset('img/logos/rigunes_logo_pink.png')}}"
-                                                              style="height: 12vh!important;"
-                                                              class="mx-auto mb-2"></a>
+    <a class="mx-auto my-3" href="{{route('web_home')}}">
+        <img src="{{asset('img/logos/rigunes_logo_pink.png')}}"
+             style="height: 12vh!important;"
+             class="mx-auto mb-2"></a>
 </div>
 
 
@@ -52,16 +56,16 @@
                     CATEGORÍAS
                 </a>
                 <div class="dropdown-menu" aria-labelledby="drop-down">
-                    {{--                    @foreach($category as $cat)--}}
-                    <a class="nav-link active-principal-2 dropdown-sub-classification color-gray-dark font-size-80 font-family-2 dropdown-item"
-                       href=""
-                       style=" padding: .25rem 1.5rem;"
-                       data-parent-classification="">
-                        {{--                            {{$cat->name}}--}}
-                        {{--                            <div style="background-image: url({{$cat->image_url}})"></div>--}}
-                    </a>
 
-                    {{--                    @endforeach--}}
+                        <a class="nav-link active-principal-2 dropdown-sub-classification color-gray-dark font-size-80 font-family-2 dropdown-item"
+                           href=""
+                           style=" padding: .25rem 1.5rem;"
+                           data-parent-classification="">
+
+
+                        </a>
+
+
                 </div>
             </li>
             <li class="nav-item mx-5">

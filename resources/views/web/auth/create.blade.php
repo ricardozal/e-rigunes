@@ -13,7 +13,7 @@
                     <div class="card-body p-0">
                         <div class="row m-0">
                             <div class="col-12 text-center my-3">
-                                <h1 class="color-primary">Iniciar sesión</h1>
+                                <h1 class="color-primary">CREAR CUENTA</h1>
                             </div>
                             <div class="col-12">
                                 <form id="form-create-profile" action="{{route('web_user_create_post')}}" method="POST">
@@ -32,9 +32,6 @@
                                                        class="form-control mb-4" placeholder="Contraseña">
                                             </div>
                                         </div>
-
-
-
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-5">
                                             <div class="form-group">
                                                 <input type="text" name="name" id="name" class="form-control mb-4"
@@ -55,30 +52,23 @@
                                                        class="form-control mb-4" placeholder="Apellido Materno">
                                             </div>
                                         </div>
-
-
-                                    </div>
-
-
-                                    <div class="row mt-2 justify-content-center">
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-5 text-center">
                                             <div class="form-group">
                                                 <input type="date" name="birthday" id="birthday"
                                                        class="form-control mb-4" placeholder="Cumpleaños">
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-5">
+                                    </div>
+                                    <div class="row mt-2 justify-content-center">
+
+                                        <div class="col-10">
                                             <div class="form-group">
                                                 <input type="text" name="phone" id="phone" class="form-control mb-4"
                                                        placeholder="Telefono">
                                             </div>
                                         </div>
-
-
-
-
                                     </div>
-                                    <div class="row mt-5">
+                                    <div class="row my-5">
                                         <div class="col-12 text-center">
                                             <button class="btn btn-primary">Crear cuenta</button>
                                         </div>

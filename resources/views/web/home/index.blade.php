@@ -42,10 +42,11 @@
                 </a>
             </div>
         </div>
+
         <div class="row align-items-center">
-            <div class="col-12 my-2">
+            <div class="col-12 my-5">
                 <div class="text-center">
-                    <h1 class=" mt-5 color-red"><b>CATEGORIAS</b></h1>
+                    <h1 class=" color-red">CATEGORIAS</h1>
                 </div>
             </div>
         </div>
@@ -57,11 +58,12 @@
                             <div class="card card-category border-0">
                                 <div class="car-body">
                                     <a href="{{route('category_products',['categoryId'=>$cat->id])}}">
-                                        <img src="{{asset('img/dama.png')}}" class="img-fluid">
-                                    </a>
+                                        <img src="{{$cat->image_url}}" class="img-fluid" style="object-fit: cover">
+
                                     <div class="col-12 text-center">
                                         <p>{{$cat->name}}</p>
                                     </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +84,7 @@
         <div class="row  align-items-center">
             <div class="col-12 my-2">
                 <div class="text-center">
-                    <h2 class="font-family-2 color-gray-dark mt-5"><b>Lo más nuevo</b></h2>
+                    <h2 class="font-family-2 color-red mt-5">LO MÁS NUEVO</h2>
                 </div>
             </div>
         </div>
@@ -92,6 +94,33 @@
                     @include('web.components.card',['products'=>$products])
                 </div>
             </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-12  text-center">
+                <h1 class="color-red">CONVIERTETE EN UN DISTRIBUIDOR</h1>
+            </div>
+        </div>
+        <div class="row mx-5 px-5">
+            <div class="col-6col col-md-4 text-center">
+
+                <i class="fas fa-shoe-prints color-green h1"></i>
+                <h6 class="text-center pt-2">Variedad en modelos</h6>
+            </div>
+
+            <div class="col-6 col-md-4 text-center">
+                <i class="fas fa-hand-holding-usd color-green h1"></i>
+                <h6 class="text-center pt-2">Precios accesibles </h6>
+            </div>
+            <div class="col-6 col-md-4 text-center">
+                <i class="fas fa-shipping-fast h1 color-green"></i>
+                <h6 class="text-center pt-2">Envió a toda la republica</h6>
+            </div>
+
+            <div class="col-12 mt-3 text-center ">
+                <button class="btn btn-primary">Registrate</button>
+
+            </div>
+
         </div>
         <div class="row mx-5">
             <div class="col-12 p-5">
@@ -127,41 +156,11 @@
                 </div>
             </div>
         </div>
-        {{--        <div class="row  text-center">--}}
-        {{--            <div class="col-12">--}}
-        {{--                <button id="btn-contact-send"--}}
-        {{--                        class="btn btn-primary  text-bold color-white">--}}
-        {{--                    Ver más--}}
-        {{--                </button>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-        <div class="row my-5">
-            <div class="col-12  text-center">
-                <h2>Conviertete en un distribuidor</h2>
-            </div>
-        </div>
-        <div class="row mx-5 px-5">
-            <div class="col-6 col-md-4 text-center">
 
-                <i class="fas fa-shoe-prints color-green h1"></i>
-                <h6 class="text-center pt-3">Variedad en modelos</h6>
-            </div>
 
-            <div class="col-6 col-md-4 text-center">
-                <i class="fas fa-hand-holding-usd color-green h1"></i>
-                <h6 class="text-center pt-2">Precios accesibles </h6>
-            </div>
-            <div class="col-6 col-md-4 text-center">
-                <i class="fas fa-balance-scale color-green h1"></i>
-                <h6 class="text-center pt-4"></h6>
-            </div>
-            <div class="col-12 text-center mb-5">
-                <button class="btn btn-primary">Ver más</button>
-            </div>
-        </div>
         <div class="row">
-            <div class="col-12 text-center">
-                <h1>NUESTROS PRODUCTOS </h1>
+            <div class="col-12 text-center my-5">
+                <h1 class="color-red">NUESTROS PRODUCTOS </h1>
             </div>
         </div>
         <div class="row mx-0">
@@ -205,9 +204,11 @@
                 </div>
             @endforeach
         </div>
+
+
         <div class="row text-center">
-            <div class="col-12 mb-5">
-                <h2 class="color-gray-dark font-family-2"><b>Contacto</b></h2>
+            <div class="col-12 mb-2 mt-5">
+                <h2 class="color-gray ">Contacto</h2>
             </div>
         </div>
 

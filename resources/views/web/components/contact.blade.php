@@ -5,22 +5,17 @@
 @endpush
 
 <div class="row justify-content-center mx-0">
-
     <div class="col-md-10  mt-1  d-flex align-items-center justify-content-center" id="contact">
         <div class="card w-75 mb-5 mt-2 border-0" style="border-radius: 30px">
             <div class="card-body">
                 <form id="form-contact" action="{{route('contact_web')}}" method="POST">
                     @csrf
-
-
                     <div class="row">
                         <div class="col-lg-6 col-sm-12">
                             <div class="form-group">
                                 <input type="text" name="name" id="name" class="form-control mb-4" placeholder="Nombre">
                             </div>
                         </div>
-
-
                         <div class="col-lg-6 col-sm-12">
                             <div class="form-group">
                                 <input type="number" name="phone" id="phone" class="form-control mb-4"

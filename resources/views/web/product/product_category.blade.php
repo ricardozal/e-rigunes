@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container-fluid">
-        <div class="row mt-3">
+        <div class="row my-3">
 
             <div class=" col-12 text-center my-auto">
                 <h1 class="color-red">{{$category->name}}</h1>
@@ -30,23 +30,23 @@
                         </a>
                         <div class="row align-items-center">
                             <div class="col-12">
-                                    <p
-                                        class="mt-1  text-center text-bold ">
-                                        {{$prod->name}}
-                                    </p>
-                                    <div class="row mx-0">
-                                        <div class="col-6 offset-3">
-                                            <p class="my-0 text-center color-red ">
-                                                ${{number_format($prod->distributor_price,2)}}
-                                            </p>
-                                        </div>
-                                        <div class="col-12 text-right mb-2">
-                                            <a href="{{route('web_product_details',['productId'=>$prod->id])}}">
-                                                <img src="{{asset('img/icons/ic_car_gary.png')}}"
-                                                     style="height: 1.5rem;">
-                                            </a>
-                                        </div>
+                                <p
+                                    class="mt-1  text-center text-bold ">
+                                    {{$prod->name}}
+                                </p>
+                                <div class="row mx-0">
+                                    <div class="col-6 offset-3">
+                                        <p class="my-0 text-center color-red ">
+                                            ${{number_format($prod->distributor_price,2)}}
+                                        </p>
                                     </div>
+                                    <div class="col-12 text-right mb-2">
+                                        <a href="{{route('web_product_details',['productId'=>$prod->id])}}">
+                                            <img src="{{asset('img/icons/ic_car_gary.png')}}"
+                                                 style="height: 1.5rem;">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -4,11 +4,13 @@
     <script src="{{ asset('js/web/components/subscriber.js?v=1') }}"></script>
 @endpush
 <div class="container-fluid ">
+    <hr class="color-gray ">
     <div id="footer-wrapper" class="text-center">
         <div id="footer">
             <div class="row align-items-center mx-0 justify-content-center p-md-5">
                 <div class="col-lg-4  my-auto text-left">
-                    <h6 style="font-size: medium;">MI CUENTA</h6>
+                    <a href="{{route('ecommerce_account_profile_index')}}">
+                    <h6 style="font-size: medium;">MI CUENTA</h6></a>
                     <h6 style="font-size: medium;">MIS PEDIDOS</h6>
                     <h6 style="font-size: medium;">CARRITO DE COMPRAS</h6>
                 </div>
