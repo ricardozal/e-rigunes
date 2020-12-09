@@ -9,6 +9,26 @@ class PurchaseSeeder extends Seeder
 {
     public function run()
     {
+
+        $this->status();
+
+        if (env('APP_DEBUG')) {
+            DB::table('purchase')->insertGetId([
+                'total_price'=> 1100,
+                'fk_id_provider' => 1,
+                'fk_id_purchase_status' => 1
+            ]);
+
+            DB::table('purchase_variants')->insertGetId([
+                'quantity' => 2,
+                'purchase_price'=> 1100,
+                'fk_id_variant' => 1,
+                'fk_id_purchase' => 1
+            ]);
+        }
+    }
+
+    public function status() {
         DB::table('purchase_status')->insert([
             'name'=>'Pedido'
         ]);
@@ -20,18 +40,6 @@ class PurchaseSeeder extends Seeder
         DB::table('purchase_status')->insert([
             'name'=>'Entregado'
         ]);
-
-        DB::table('purchase')->insertGetId([
-            'total_price'=> 1100,
-            'fk_id_provider' => 1,
-            'fk_id_purchase_status' => 1
-        ]);
-
-        DB::table('purchase_variants')->insertGetId([
-            'quantity' => 2,
-            'purchase_price'=> 1100,
-            'fk_id_variant' => 1,
-            'fk_id_purchase' => 1
-        ]);
     }
+
 }

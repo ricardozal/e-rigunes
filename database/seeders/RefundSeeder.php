@@ -10,6 +10,31 @@ class RefundSeeder extends Seeder
 {
     public function run()
     {
+        $this->status();
+
+        if (env('APP_DEBUG')) {
+            $refundIdOne = DB::table('refund')->insertGetId([
+                'reason' => 'Reembolso de prueba',
+                'quantity' => 1,
+                'fk_id_refund_address' => 1,
+                'fk_id_shipping_info' => 1,
+                'fk_id_sale_variant' => 1,
+                'fk_id_buyer' => 1,
+                'fk_id_refund_status' => 1,
+                'created_at' => Carbon::now()
+            ]);
+
+            for ($i=0;$i<3;$i++){
+                DB::table('refund_images')->insertGetId([
+                    'url_image' => 'https://picsum.photos/id/' . rand(200, 300) . '/800/800',
+                    'fk_id_refund' => $refundIdOne
+                ]);
+            }
+        }
+
+    }
+
+    public function status() {
         DB::table('refund_status')->insert([
             'name'=>'Solicitado'
         ]);
@@ -25,23 +50,6 @@ class RefundSeeder extends Seeder
         DB::table('refund_status')->insert([
             'name'=>'Terminado'
         ]);
-
-        $refundIdOne = DB::table('refund')->insertGetId([
-            'reason' => 'Reembolso de prueba',
-            'quantity' => 1,
-            'fk_id_refund_address' => 1,
-            'fk_id_shipping_info' => 1,
-            'fk_id_sale_variant' => 1,
-            'fk_id_buyer' => 1,
-            'fk_id_refund_status' => 1,
-            'created_at' => Carbon::now()
-        ]);
-
-        for ($i=0;$i<3;$i++){
-            DB::table('refund_images')->insertGetId([
-                'url_image' => 'https://picsum.photos/id/' . rand(200, 300) . '/800/800',
-                'fk_id_refund' => $refundIdOne
-            ]);
-        }
     }
+
 }

@@ -130,7 +130,6 @@ class ErigunesSchema extends Migration
             $table->integer('width');
             $table->integer('length');
             $table->decimal('public_price', 13, 2);
-            $table->decimal('distributor_price', 13, 2);
             $table->decimal('rigunes_price', 13, 2);
             $table->boolean('active')
                 ->default(true);
@@ -484,6 +483,7 @@ class ErigunesSchema extends Migration
         Schema::dropIfExists('refund');
         Schema::dropIfExists('refund_status');
         Schema::dropIfExists('purchase_variants');
+        Schema::dropIfExists('purchase_status');
         Schema::dropIfExists('purchase');
         Schema::dropIfExists('sale_history');
         Schema::dropIfExists('sale_status');
