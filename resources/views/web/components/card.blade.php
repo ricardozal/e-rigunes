@@ -22,7 +22,7 @@
                 <div class="row mx-0">
                     <div class="col-12 text-center">
                         <p class="my-0 text-center color-red ">
-                            ${{number_format($product->distributor_price,2)}}
+                            ${{number_format($product->public_price,2)}}
                         </p>
                     </div>
                     <div class="col-12 offset-10 mb-2">

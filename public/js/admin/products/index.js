@@ -13,7 +13,6 @@ $(document).ready(function () {
             { "data": "width" },
             { "data": "length" },
             { "data": "public_price" },
-            { "data": "distributor_price" },
             { "data": "rigunes_price" },
             { "data": "provider.name" },
             { "data": "category.name" },

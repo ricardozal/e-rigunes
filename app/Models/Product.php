@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $width
  * @property int $length
  * @property string $public_price
- * @property string $distributor_price
  * @property int $active
  * @property int $fk_id_provider
  * @property int $fk_id_category
@@ -69,7 +68,6 @@ class Product extends Model
         'length',
         'weight',
         'public_price',
-        'distributor_price',
         'rigunes_price'
     ];
 

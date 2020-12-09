@@ -71,16 +71,6 @@
 <div class="row w-75">
     <div class="col-12">
         <div class="form-group focused">
-            <label for="distributor_price"  class="focused form-label">Precio distibuidor</label>
-            <input type="number" class="form-control" autocomplete="off" id="distributor_price" name="distributor_price" value="{{ isset($product) ? $product->distributor_price : null}}">
-            <span class="invalid-feedback">{{ $errors->first('distributor_price') }}</span>
-        </div>
-    </div>
-</div>
-
-<div class="row w-75">
-    <div class="col-12">
-        <div class="form-group focused">
             <label for="rigunes_price"  class="focused form-label">Precio Rigunes</label>
             <input type="number" class="form-control" autocomplete="off" id="rigunes_price" name="rigunes_price" value="{{ isset($product) ? $product->rigunes_price : null}}">
             <span class="invalid-feedback">{{ $errors->first('rigunes_price') }}</span>

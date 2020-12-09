@@ -35,7 +35,7 @@ class OrderController extends Controller
         foreach ($orderHasVariants as $index => $orderHasVariant) {
             if ($orderHasVariant["variant"]->id == $variant->id) {
                 $orderHasVariant["quantity"] = $orderHasVariant["quantity"] * 1 + $quantity;
-                $orderHasVariant["price"] = $orderHasVariant["quantity"] * 1 * $variant->product->distributor_price;
+                $orderHasVariant["price"] = $orderHasVariant["quantity"] * 1 * $variant->product->public_price;
                 $orderHasVariants[$index] = $orderHasVariant;
                 $existVariant = true;
             }
@@ -44,7 +44,7 @@ class OrderController extends Controller
         if (!$existVariant) {
             $orderHasVariants[] = [
                 'quantity' => $quantity,
-                'price' => $quantity * $variant->product->distributor_price,
+                'price' => $quantity * $variant->product->public_price,
                 'variant' => $variant
             ];
         }
@@ -79,7 +79,7 @@ class OrderController extends Controller
         foreach ($orderHasVariants as $index => $orderHasVariant) {
             if ($orderHasVariant["variant"]->id == $variantId) {
                 $orderHasVariant["quantity"] = $quantity;
-                $orderHasVariant["price"] = $orderHasVariant["quantity"] * 1 * $variant->product->distributor_price;
+                $orderHasVariant["price"] = $orderHasVariant["quantity"] * 1 * $variant->product->public_price;
                 if ($quantity * 1 === 0) {
                     array_splice($orderHasVariants, $index, 1);
                 } else {

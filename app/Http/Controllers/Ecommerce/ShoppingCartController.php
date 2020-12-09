@@ -191,7 +191,7 @@ class ShoppingCartController extends Controller
 
             $saleVariant = new SaleVariants();
             $saleVariant->quantity = $quantity;
-            $saleVariant->sale_price = $variant->product->distributor_price;
+            $saleVariant->sale_price = $variant->product->public_price;
             $saleVariant->fk_id_variant = $variant->id;
             $saleVariant->fk_id_sale = $saleId;
             $saleVariant->saveOrFail();

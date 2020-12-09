@@ -85,7 +85,7 @@ class ConfirmOrder extends React.Component{
             var currentItem = {
                 sku: item.variant.sku === null ? 'Sin SKU' : item.variant.sku,
                 name: item.variant.product.name,
-                price: this.numberFormatPaypal(item.variant.product.distributor_price/parseInt(item.quantity)),
+                price: this.numberFormatPaypal(item.variant.product.public_price/parseInt(item.quantity)),
                 quantity: parseInt(item.quantity),
                 currency: 'MXN'
             };

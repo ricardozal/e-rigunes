@@ -54,8 +54,7 @@
                         </div>
                         <div class="row my-4">
                             <div class="col-12">
-                                <h5 class="color-secondary">Precio público: {{'$'.number_format($product->public_price,2)}}</h5>
-                                <h5 class="color-secondary">Precio distribuidor: {{'$'.number_format($product->distributor_price,2)}}</h5>
+                                <h5 class="color-secondary">Precio: {{'$'.number_format($product->public_price,2)}}</h5>
                             </div>
                         </div>
                         <div class="row my-4">

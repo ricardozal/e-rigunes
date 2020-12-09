@@ -23,7 +23,6 @@ class ProductsRequest extends FormRequest
             'width' => 'required',
             'length' => 'required',
             'public_price' => 'required',
-            'distributor_price' => 'required',
             'rigunes_price' => 'required',
             'fk_id_provider' => 'required',
             'fk_id_category' => 'required'
@@ -40,7 +39,6 @@ class ProductsRequest extends FormRequest
             'width' => 'Ancho necesario',
             'length' => 'Largo requerido',
             'public_price' => 'Precio público necesarío',
-            'distributor_price' => 'Precio de distribuidor requerido',
             'rigunes_price' => 'Precio de rigunes requerido',
             'fk_id_provider' => 'Seleccione un proveedor',
             'fk_id_category' => 'Seleccione una categoria'

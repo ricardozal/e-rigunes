@@ -17,7 +17,7 @@
                 </div>
                 <div class="row">
                     <div class="col-9">
-                        ${{number_format($product->distributor_price,2)}}
+                        ${{number_format($product->public_price,2)}}
                     </div>
                     <div class="col-3">
                         <i class="fas fa-shopping-bag color-primary h3"></i>
