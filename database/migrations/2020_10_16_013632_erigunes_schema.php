@@ -483,8 +483,8 @@ class ErigunesSchema extends Migration
         Schema::dropIfExists('refund');
         Schema::dropIfExists('refund_status');
         Schema::dropIfExists('purchase_variants');
-        Schema::dropIfExists('purchase_status');
         Schema::dropIfExists('purchase');
+        Schema::dropIfExists('purchase_status');
         Schema::dropIfExists('sale_history');
         Schema::dropIfExists('sale_status');
         Schema::dropIfExists('sale_variants');
