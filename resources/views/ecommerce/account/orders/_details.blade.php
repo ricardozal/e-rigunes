@@ -56,7 +56,7 @@
     <hr>
 </div>
 <div class="col-12 text-right">
-    <span class="color-primary">Envío: {{'$'.number_format(100,2)}}</span><br>
+    <span class="color-primary">Envío: {{'$'.number_format($order->shipping_information->shipping_price,2)}}</span><br>
 </div>
 <div class="col-12 text-right">
     <br>
