@@ -50,6 +50,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWidth($value)
  * @mixin \Eloquent
  * @property-read mixed $colors
+ * @property string $rigunes_price
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereRigunesPrice($value)
  */
 class Product extends Model
 {

@@ -13,6 +13,7 @@ use App\Models\Promotion;
 use App\Models\Sale;
 use App\Models\SaleStatus;
 use App\Models\SaleVariants;
+use App\Models\ShippingInformation;
 use App\Models\Variant;
 use App\Services\OrderService;
 use App\Services\Skydropx;
@@ -150,6 +151,15 @@ class ShoppingCartController extends Controller
 
                 $sale->saveOrFail();
                 $sale->saleStatus()->attach(SaleStatus::ORDERED);
+                $sale->saveOrFail();
+
+                $shippingInformation = new ShippingInformation();
+                $shippingInformation->skydropx_id = $order["shipping_id"];
+                $shippingInformation->rate_id = $order["rate_id"];
+                $shippingInformation->shipping_price = $order["shipping_price"];
+                $shippingInformation->saveOrFail();
+
+                $sale->fk_id_shipping_information = $shippingInformation->id;
                 $sale->saveOrFail();
 
                 if($orderHasVariants != null ){

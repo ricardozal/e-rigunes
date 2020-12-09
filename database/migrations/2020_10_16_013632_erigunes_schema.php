@@ -254,10 +254,11 @@ class ErigunesSchema extends Migration
         Schema::create('shipping_information', function (Blueprint $table){
             $table->increments('id');
             $table->string('skydropx_id');
+            $table->string('rate_id');
             $table->decimal('shipping_price',13,2);
-            $table->string('parcel_company');
-            $table->date('delivery_date');
-            $table->string('guide_number');
+            $table->string('parcel_company')->nullable();
+            $table->date('delivery_date')->nullable();
+            $table->string('guide_number')->nullable();
             $table->timestamps();
         });
 
