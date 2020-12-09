@@ -15,6 +15,7 @@ use App\Models\SaleStatus;
 use App\Models\SaleVariants;
 use App\Models\Variant;
 use App\Services\OrderService;
+use App\Services\Skydropx;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -25,6 +26,21 @@ use Exception;
 
 class ShoppingCartController extends Controller
 {
+
+    public function getShippingPrice(Request $request) {
+
+        $addressId = $request->input('address_id');
+        $buyer = Buyer::whereFkIdUser(Auth::user()->id)->first();
+
+        $order = Skydropx::getShipment($addressId, $buyer->id);
+
+        return response()->json([
+            'success' => true,
+            "data" => $order
+        ]);
+
+    }
+
     public function completeOrder(Request $request){
 
         $paymentMethod = $request->get('payment_method');

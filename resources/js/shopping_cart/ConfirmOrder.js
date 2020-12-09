@@ -85,7 +85,7 @@ class ConfirmOrder extends React.Component{
             var currentItem = {
                 sku: item.variant.sku === null ? 'Sin SKU' : item.variant.sku,
                 name: item.variant.product.name,
-                price: this.numberFormatPaypal(item.variant.product.public_price/parseInt(item.quantity)),
+                price: item.variant.product.public_price,
                 quantity: parseInt(item.quantity),
                 currency: 'MXN'
             };
@@ -98,7 +98,7 @@ class ConfirmOrder extends React.Component{
             customer: "Comprador de Rigunes",
             total: this.numberFormatPaypal(this.props.order.total_price),
             subtotal: this.numberFormatPaypal(this.props.order.total_price-this.props.order.shipping_price),
-            shipping_price: this.numberFormatPaypal(this.props.order.shipping_price),
+            shipping_price: this.props.order.shipping_price,
             items: currentItems
         };
 
@@ -349,7 +349,17 @@ class ConfirmOrder extends React.Component{
                 content.push(<div key={'address-' + index}
                                   className={address.id === this.state.addressId ? 'row my-5 card-address card-selected' : 'row my-5 card-address'}
                                   onClick={() => {
-                                      this.selectAddress(address.id)
+
+                                      Swal.fire({
+                                          title: 'Por favor, espere...',
+                                          allowEscapeKey: false,
+                                          allowOutsideClick: false
+                                      });
+                                      Swal.showLoading();
+                                      this.props.getShippingPrice(address.id, () => {
+                                          this.selectAddress(address.id);
+                                          Swal.close();
+                                      });
                                   }}>
                     <div className="col-12 p-4">
                         {address.full_address}

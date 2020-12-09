@@ -58867,14 +58867,12 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "makeOrderForPaypal",
     value: function makeOrderForPaypal() {
-      var _this3 = this;
-
       var currentItems = [];
       this.props.order.order_has_variant.forEach(function (item, index) {
         var currentItem = {
           sku: item.variant.sku === null ? 'Sin SKU' : item.variant.sku,
           name: item.variant.product.name,
-          price: _this3.numberFormatPaypal(item.variant.product.public_price / parseInt(item.quantity)),
+          price: item.variant.product.public_price,
           quantity: parseInt(item.quantity),
           currency: 'MXN'
         };
@@ -58884,7 +58882,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
         customer: "Comprador de Rigunes",
         total: this.numberFormatPaypal(this.props.order.total_price),
         subtotal: this.numberFormatPaypal(this.props.order.total_price - this.props.order.shipping_price),
-        shipping_price: this.numberFormatPaypal(this.props.order.shipping_price),
+        shipping_price: this.props.order.shipping_price,
         items: currentItems
       };
       this.setState({
@@ -58933,7 +58931,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       if (this.state.isLoading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -59043,7 +59041,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
         className: "col-12 text-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          _this4.props.onReturn();
+          _this3.props.onReturn();
         },
         className: 'btn btn-primary mt-3 '
       }, "EDITAR"))))))));
@@ -59078,7 +59076,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "paymentMethodSelected",
     value: function paymentMethodSelected() {
-      var _this5 = this;
+      var _this4 = this;
 
       switch (this.state.paymentMethodSelected) {
         case 0:
@@ -59116,7 +59114,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
             className: "col-12 text-center"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             onClick: function onClick() {
-              _this5.nextStep();
+              _this4.nextStep();
             },
             className: 'btn btn-primary mt-3 '
           }, "PAGAR")));
@@ -59140,7 +59138,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "displayCards",
     value: function displayCards() {
-      var _this6 = this;
+      var _this5 = this;
 
       var cards = this.state.cards;
       var content = [];
@@ -59149,9 +59147,9 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
         cards.forEach(function (card, index) {
           content.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: 'card-' + index,
-            className: card.id === _this6.state.cardSelected ? 'row my-5 card-address card-selected' : 'row my-5 card-address',
+            className: card.id === _this5.state.cardSelected ? 'row my-5 card-address card-selected' : 'row my-5 card-address',
             onClick: function onClick() {
-              _this6.selectCard(card.id);
+              _this5.selectCard(card.id);
             }
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "col-8 mx-auto p-2"
@@ -59173,7 +59171,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "displayAddresses",
     value: function displayAddresses() {
-      var _this7 = this;
+      var _this6 = this;
 
       var addresses = this.state.addresses;
       var content = [];
@@ -59182,9 +59180,20 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
         addresses.forEach(function (address, index) {
           content.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: 'address-' + index,
-            className: address.id === _this7.state.addressId ? 'row my-5 card-address card-selected' : 'row my-5 card-address',
+            className: address.id === _this6.state.addressId ? 'row my-5 card-address card-selected' : 'row my-5 card-address',
             onClick: function onClick() {
-              _this7.selectAddress(address.id);
+              Swal.fire({
+                title: 'Por favor, espere...',
+                allowEscapeKey: false,
+                allowOutsideClick: false
+              });
+              Swal.showLoading();
+
+              _this6.props.getShippingPrice(address.id, function () {
+                _this6.selectAddress(address.id);
+
+                Swal.close();
+              });
             }
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "col-12 p-4"
@@ -59206,7 +59215,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "displayPaymentMethods",
     value: function displayPaymentMethods() {
-      var _this8 = this;
+      var _this7 = this;
 
       var paymentMethods = this.state.paymentMethods;
       var content = [];
@@ -59217,7 +59226,7 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
             key: 'payment-method-' + index,
             className: "text-center mx-5 cursor-pointer",
             onClick: function onClick() {
-              _this8.selectPaymentMethod(paymentMethod.id);
+              _this7.selectPaymentMethod(paymentMethod.id);
             }
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "color-primary"
@@ -59720,12 +59729,14 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
     _this.urlDeleteCoupon = script.dataset.urlDeleteCoupon;
     _this.urlUpdateCurrentStep = script.dataset.urlUpdateCurrentStep;
     _this.urlCompleteOrder = script.dataset.urlCompleteOrder;
+    _this.urlGetShippingPrice = script.dataset.urlGetShippingPrice;
     _this.updateVariant = _this.updateVariant.bind(_assertThisInitialized(_this));
     _this.onBuy = _this.onBuy.bind(_assertThisInitialized(_this));
     _this.onReturn = _this.onReturn.bind(_assertThisInitialized(_this));
     _this.onDisplayResume = _this.onDisplayResume.bind(_assertThisInitialized(_this));
     _this.attachDiscount = _this.attachDiscount.bind(_assertThisInitialized(_this));
     _this.deleteDiscount = _this.deleteDiscount.bind(_assertThisInitialized(_this));
+    _this.getShippingPrice = _this.getShippingPrice.bind(_assertThisInitialized(_this));
     _this.state = {
       isLoading: true,
       order: undefined,
@@ -59818,6 +59829,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
                 order: this.state.order,
                 onBuy: this.onBuy,
                 onReturn: this.onReturn,
+                getShippingPrice: this.getShippingPrice,
                 onDisplayResume: this.onDisplayResume
               });
               break;
@@ -59902,6 +59914,36 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
       })["catch"](function (response) {});
     }
   }, {
+    key: "getShippingPrice",
+    value: function getShippingPrice(id, onSuccess) {
+      var _this6 = this;
+
+      var data = {
+        address_id: id
+      };
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlGetShippingPrice, data).then(function (response) {
+        if (response.data.success) {
+          _this6.setState({
+            order: response.data.data
+          });
+
+          onSuccess();
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Atención',
+            text: 'Algo salió mal'
+          });
+        }
+      })["catch"](function (err) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Atención',
+          text: err
+        });
+      });
+    }
+  }, {
     key: "onDisplayResume",
     value: function onDisplayResume() {
       var variants = this.state.order.order_has_variant;
@@ -59952,7 +59994,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "onReturn",
     value: function onReturn() {
-      var _this6 = this;
+      var _this7 = this;
 
       var data = {
         step: 1
@@ -59962,7 +60004,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
       });
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlUpdateCurrentStep, data).then(function (response) {
         if (response.status === 200) {
-          _this6.setState({
+          _this7.setState({
             current_step: response.data.data.current_step,
             isLoading: false
           });
@@ -59974,7 +60016,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "onBuy",
     value: function onBuy(step, addressId, cardId, paymentMethodId) {
-      var _this7 = this;
+      var _this8 = this;
 
       if (!this.isAuthenticate) {
         location.replace(this.urlLogin);
@@ -59989,7 +60031,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
             payment_method: paymentMethodId
           };
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlCompleteOrder, data).then(function (response) {
-            _this7.setState({
+            _this8.setState({
               isLoading: false
             });
 
@@ -60011,7 +60053,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
               });
             }
           })["catch"](function (err) {
-            _this7.setState({
+            _this8.setState({
               isLoading: false
             });
 
@@ -60030,7 +60072,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
           });
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlUpdateCurrentStep, _data).then(function (response) {
             if (response.status === 200) {
-              _this7.setState({
+              _this8.setState({
                 current_step: response.data.data.current_step,
                 isLoading: false
               });

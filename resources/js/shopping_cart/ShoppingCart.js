@@ -19,6 +19,7 @@ class ShoppingCart extends React.Component {
         this.urlDeleteCoupon = script.dataset.urlDeleteCoupon;
         this.urlUpdateCurrentStep = script.dataset.urlUpdateCurrentStep;
         this.urlCompleteOrder = script.dataset.urlCompleteOrder;
+        this.urlGetShippingPrice = script.dataset.urlGetShippingPrice;
 
         this.updateVariant = this.updateVariant.bind(this);
         this.onBuy = this.onBuy.bind(this);
@@ -26,6 +27,7 @@ class ShoppingCart extends React.Component {
         this.onDisplayResume = this.onDisplayResume.bind(this);
         this.attachDiscount = this.attachDiscount.bind(this);
         this.deleteDiscount = this.deleteDiscount.bind(this);
+        this.getShippingPrice = this.getShippingPrice.bind(this);
 
         this.state = {
             isLoading: true,
@@ -118,6 +120,7 @@ class ShoppingCart extends React.Component {
                         content = <ConfirmOrder order={this.state.order}
                                                 onBuy={this.onBuy}
                                                 onReturn={this.onReturn}
+                                                getShippingPrice={this.getShippingPrice}
                                                 onDisplayResume={this.onDisplayResume}
                         />;
                         break;
@@ -202,6 +205,33 @@ class ShoppingCart extends React.Component {
             }).catch(response => {
 
         })
+    }
+
+    getShippingPrice(id, onSuccess) {
+        let data ={address_id: id};
+        axios.post(this.urlGetShippingPrice, data)
+            .then(response => {
+                if (response.data.success) {
+                    this.setState({
+                        order: response.data.data
+                    });
+                    onSuccess();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Atención',
+                        text: 'Algo salió mal',
+                    });
+                }
+
+            })
+            .catch(err => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Atención',
+                    text: err,
+                });
+            });
     }
 
     onDisplayResume(){

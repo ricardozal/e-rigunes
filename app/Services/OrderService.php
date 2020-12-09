@@ -19,7 +19,9 @@ class OrderService
             $order = new Sale();
             $order["current_step"] = 1;
             $order["order_has_variant"] = [];
-            $order["shipping_price"] = 100;
+            $order["shipping_price"] = 0;
+            $order["shipping_id"] = '';
+            $order["rate_id"] = '';
             OrderService::saveOrder($order);
         }
 

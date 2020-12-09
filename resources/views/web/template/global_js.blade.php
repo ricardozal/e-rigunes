@@ -19,7 +19,7 @@
 <script src="{{ asset('commons/modal_tools.js') }}"></script>
 
 <script id="js-shopping_cart"
-        src="{{asset("js/shopping_cart/shopping_cart.js?v=1")}}"
+        src="{{asset("js/shopping_cart/shopping_cart.js?v=2")}}"
         data-token="{{csrf_token()}}"
         data-is-user="{{Auth::user()}}"
         data-url-get-order="{{route('web_get_order')}}"
@@ -39,4 +39,5 @@
         data-env-paypal="{{env('APP_DEBUG') ? 'sandbox' : 'production'}}"
         data-sandbox-paypal-id="{{env('APP_DEBUG') ? env('PAYPAL_CLIENT_ID') : '--'}}"
         data-production-paypal-id="{{env('APP_DEBUG') ? '--' : env('PAYPAL_CLIENT_ID')}}"
+        data-url-get-shipping-price="{{route('ecommerce_get_shipping_price')}}"
 ></script>

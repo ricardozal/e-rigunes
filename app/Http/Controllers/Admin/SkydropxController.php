@@ -18,9 +18,8 @@ class SkydropxController extends Controller
     {
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
-            'Authorization' => 'Token token=' . env('API_TOKEN')
-        ])
-            ->get('https://api-demo.skydropx.com/v1/shipments');
+            'Authorization' => 'Token token=' . env('SKYDROPX_API_TOKEN')
+        ])->get(env('SKYDROPX_URL').'/v1/shipments');
 
         $getShipments = $response->json();
 
@@ -48,9 +47,8 @@ class SkydropxController extends Controller
 
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
-            'Authorization' => 'Token token=' . env('API_TOKEN')
-        ])
-            ->post('https://api-demo.skydropx.com/v1/shipments', [
+            'Authorization' => 'Token token=' . env('SKYDROPX_API_TOKEN')
+        ])->post(env('SKYDROPX_URL').'/v1/shipments', [
                 'address_from' => [
                     'province' => 'Estado de México',
                     'city' => 'San Mateo Atenco',
@@ -123,9 +121,9 @@ class SkydropxController extends Controller
 
                 $response = Http::withHeaders([
                     'Content-Type' => 'application/json',
-                    'Authorization' => 'Token token=' . env('API_TOKEN')
+                    'Authorization' => 'Token token=' . env('SKYDROPX_API_TOKEN')
                 ])
-                    ->post('https://api-demo.skydropx.com/v1/labels', [
+                    ->post(env('SKYDROPX_URL').'/v1/labels', [
                         'rate_id' => (integer)$item['skydropx_id'],
                         'label_format' => 'pdf'
                     ]);

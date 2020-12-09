@@ -44,6 +44,10 @@ Route::post(
     'ShoppingCartController@completeOrder'
 )->name('ecommerce_complete_order');
 
+Route::post('/order/get-shipping-price',
+    'ShoppingCartController@getShippingPrice')
+    ->name('ecommerce_get_shipping_price');
+
 /** Payment Method */
 
 Route::get('/my-account/get-cards',
