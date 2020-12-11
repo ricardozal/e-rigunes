@@ -29,7 +29,6 @@
                             <th>Altura</th>
                             <th>Ancho</th>
                             <th>Largo</th>
-                            <th>Precio público</th>
                             <th>Precio Rigunes</th>
                             <th>Proveedor</th>
                             <th>Categoria</th>

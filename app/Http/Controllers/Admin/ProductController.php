@@ -34,8 +34,15 @@ class ProductController extends Controller
 
     public function createPost(ProductsRequest $request)
     {
+        /** @var Product $product */
         $product = new Product();
         $product->fill($request->all());
+
+        $rigunesPrice = $request->input('rigunes_price');
+        $iva = $rigunesPrice * .16;
+        $cost = 35;
+
+        $product->public_price = $rigunesPrice + $iva + $cost;
 
         if (!$product->save()) {
             return response()->json([

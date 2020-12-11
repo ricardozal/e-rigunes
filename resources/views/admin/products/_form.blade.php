@@ -12,7 +12,7 @@
     <div class="col-12">
         <div class="form-group focused">
             <label for="description"  class="focused form-label">Descripción</label>
-            <input type="text" class="form-control" autocomplete="off" id="description" name="description" value="{{ isset($product) ? $product->description : null}}">
+            <textarea rows="3" class="form-control" autocomplete="off" id="description" name="description">{{ isset($product) ? $product->description : null}}</textarea>
             <span class="invalid-feedback">{{ $errors->first('description') }}</span>
         </div>
     </div>
@@ -21,8 +21,8 @@
 <div class="row w-75">
     <div class="col-12">
         <div class="form-group focused">
-            <label for="weight"  class="focused form-label">Peso</label>
-            <input type="number" class="form-control" autocomplete="off" id="weight" name="weight" value="{{ isset($product) ? $product->weight : null}}">
+            <label for="weight"  class="focused form-label">Peso Kg</label>
+            <input placeholder="Kg" type="number" class="form-control" autocomplete="off" id="weight" name="weight" value="{{ isset($product) ? $product->weight : null}}">
             <span class="invalid-feedback">{{ $errors->first('weight') }}</span>
         </div>
     </div>
@@ -31,8 +31,8 @@
 <div class="row w-75">
     <div class="col-12">
         <div class="form-group focused">
-            <label for="height"  class="focused form-label">Altura</label>
-            <input type="number" class="form-control" autocomplete="off" id="height" name="height" value="{{ isset($product) ? $product->height : null}}">
+            <label for="height"  class="focused form-label">Altura cm</label>
+            <input placeholder="cm" type="number" class="form-control" autocomplete="off" id="height" name="height" value="{{ isset($product) ? $product->height : null}}">
             <span class="invalid-feedback">{{ $errors->first('height') }}</span>
         </div>
     </div>
@@ -41,8 +41,8 @@
 <div class="row w-75">
     <div class="col-12">
         <div class="form-group focused">
-            <label for="width"  class="focused form-label">Ancho</label>
-            <input type="number" class="form-control" autocomplete="off" id="width" name="width" value="{{ isset($product) ? $product->width : null}}">
+            <label for="width"  class="focused form-label">Ancho cm</label>
+            <input placeholder="cm" type="number" class="form-control" autocomplete="off" id="width" name="width" value="{{ isset($product) ? $product->width : null}}">
             <span class="invalid-feedback">{{ $errors->first('width') }}</span>
         </div>
     </div>
@@ -51,19 +51,9 @@
 <div class="row w-75">
     <div class="col-12">
         <div class="form-group focused">
-            <label for="length"  class="focused form-label">Largo</label>
-            <input type="number" class="form-control" autocomplete="off" id="length" name="length" value="{{ isset($product) ? $product->length : null}}">
+            <label for="length"  class="focused form-label">Largo cm</label>
+            <input placeholder="cm" type="number" class="form-control" autocomplete="off" id="length" name="length" value="{{ isset($product) ? $product->length : null}}">
             <span class="invalid-feedback">{{ $errors->first('length') }}</span>
-        </div>
-    </div>
-</div>
-
-<div class="row w-75">
-    <div class="col-12">
-        <div class="form-group focused">
-            <label for="public_price"  class="focused form-label">Precio público</label>
-            <input type="number" class="form-control" autocomplete="off" id="public_price" name="public_price" value="{{ isset($product) ? $product->public_price : null}}">
-            <span class="invalid-feedback">{{ $errors->first('public_price') }}</span>
         </div>
     </div>
 </div>

@@ -12,7 +12,6 @@ $(document).ready(function () {
             { "data": "height" },
             { "data": "width" },
             { "data": "length" },
-            { "data": "public_price" },
             { "data": "rigunes_price" },
             { "data": "provider.name" },
             { "data": "category.name" },
@@ -71,7 +70,7 @@ $(document).ready(function () {
                 "next": "Siguiente",
                 "previous": "Anterior"
             },
-            "lengthMenu": "Mostrar _MENU_ usuarios"
+            "lengthMenu": "Mostrar _MENU_ productos"
         },
         "ordering": false
     });

@@ -25,7 +25,6 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Descripción</th>
-                            <th>Url de imagen</th>
                             <th>Opciones</th>
                             <th>Activar/Desactivar</th>
                         </tr>

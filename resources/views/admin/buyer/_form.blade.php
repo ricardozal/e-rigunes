@@ -32,7 +32,7 @@
     <div class="col-12">
         <div class="form-group focused">
             <label for="email" class="focused form-label">Correo electrónico</label>
-            <input type="email" class="form-control" autocomplete="off" id="email" name="email" value="{{ isset($buyer) ? $buyer->email : null}}">
+            <input type="email" class="form-control" autocomplete="off" id="email" name="email" value="{{ isset($buyer) ? $buyer->user->email : null}}">
             <span class="invalid-feedback">{{ $errors->first('email') }}</span>
         </div>
     </div>

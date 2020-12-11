@@ -20,16 +20,7 @@ $(document).ready(function () {
                     var url = $inpUrlUpdate.val();
                     url = url.replace('FAKE_ID', data);
 
-                    var $inpUrlDelete = $('#inp-url-delete');
-                    if ($inpUrlDelete.length === 0) {
-                        return '';
-                    }
-
-                    var url2 = $inpUrlDelete.val();
-                    url2 = url2.replace('FAKE_ID', data);
-
-                    return "<a href='"+url+"' title='Editar' data-toggle='tooltip' class='update-btn' style='color: #2a3d66'><span class='far fa-edit'></span></a>" +
-                        "&nbsp;&nbsp;&nbsp;<a href='"+url2+"' title='Eliminar' data-toggle='tooltip' class='delete-btn' style='color: #2a3d66'><span class='fas fa-trash'></span></a>";
+                    return "<a href='"+url+"' title='Editar' data-toggle='tooltip' class='update-btn' style='color: #2a3d66'><span class='far fa-edit'></span></a>";
                 },
                 "targets": -1
             },

@@ -64,7 +64,7 @@
     <div class="col-12">
         <div class="form-group focused">
             <label for="description"  class="focused form-label">Descrición</label>
-            <input type="text" class="form-control" autocomplete="off" id="description" name="description" value="{{ isset($promotion) ? $promotion->description : null}}">
+            <textarea rows="3" class="form-control" autocomplete="off" id="description" name="description">{{ isset($promotion) ? $promotion->description : null}}</textarea>
             <span class="invalid-feedback">{{ $errors->first('description') }}</span>
         </div>
     </div>
