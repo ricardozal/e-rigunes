@@ -42,6 +42,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <h1 class="color-primary">{{$product->name}}</h1>
+                                <p class="color-gray text-justify">{{$product->description}}</p>
                                 <p class="color-gray">
                                     <i class="{{($product->rating_average >= 1) ? 'fas' : 'far'}} fa-star fa-lg color-yellow"></i>
                                     <i class="{{($product->rating_average >= 2) ? 'fas' : 'far'}} fa-star fa-lg color-yellow"></i>
