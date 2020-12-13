@@ -59306,14 +59306,20 @@ var ItemVariant = function ItemVariant(_ref) {
     className: "color-gray"
   }, "Color: ", orderVariant.variant.color_name.name, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Talla: ", orderVariant.variant.size.value)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-6 col-lg-2 mt-2 mt-lg-0 d-flex justify-content-center align-items-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Cantidad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "form-control",
     type: "number",
     onChange: function onChange(event) {
-      updateVariant(event.target.value, orderVariant.variant);
+      if (event.target.value === '') {
+        updateVariant(0, orderVariant.variant);
+      } else {
+        updateVariant(event.target.value, orderVariant.variant);
+      }
     },
     value: orderVariant.quantity
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-6 col-lg-2 mt-2 mt-lg-0 d-flex justify-content-center align-items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "color-primary text-thin"

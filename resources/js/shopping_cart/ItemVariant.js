@@ -25,12 +25,19 @@ const ItemVariant = ({orderVariant, updateVariant}) => {
                 </p>
             </div>
             <div className="col-6 col-lg-2 mt-2 mt-lg-0 d-flex justify-content-center align-items-center">
-                <input className={"form-control"}
-                       type="number"
-                       onChange={event => {
-                           updateVariant(event.target.value, orderVariant.variant)
-                       }}
-                       value={orderVariant.quantity}/>
+                <div className="form-group">
+                    <label>Cantidad</label>
+                    <input className={"form-control"}
+                           type="number"
+                           onChange={event => {
+                               if (event.target.value === ''){
+                                   updateVariant(0, orderVariant.variant)
+                               } else {
+                                   updateVariant(event.target.value, orderVariant.variant)
+                               }
+                           }}
+                           value={orderVariant.quantity}/>
+                </div>
             </div>
             <div className="col-6 col-lg-2 mt-2 mt-lg-0 d-flex justify-content-center align-items-center">
                 <h4 className="color-primary text-thin">{TextFormatter.asMoney(orderVariant.price)}</h4>

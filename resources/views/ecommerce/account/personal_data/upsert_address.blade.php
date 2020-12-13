@@ -120,5 +120,7 @@
         </div>
 
     </div>
-    <input type="hidden" value="{{route('ecommerce_account_profile_index')}}" id="inp-url-personal-data">
+    <input type="hidden"
+           value="{{$fromCart ? route('web_shopping_cart') : route('ecommerce_account_profile_index')}}"
+           id="inp-url-personal-data">
 @endsection
