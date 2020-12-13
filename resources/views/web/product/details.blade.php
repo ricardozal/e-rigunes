@@ -4,7 +4,7 @@
 @extends('web.template.main')
 @push('scripts')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
-    <script src="{{asset('/js/web/product/details.js')}}"></script>
+    <script src="{{asset('/js/web/product/details.js?v=2')}}"></script>
 @endpush
 @section('content')
     <div class="container-fluid p-0">

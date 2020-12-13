@@ -19,7 +19,7 @@
 <script src="{{ asset('commons/modal_tools.js') }}"></script>
 
 <script id="js-shopping_cart"
-        src="{{asset("js/shopping_cart/shopping_cart.js?v=2")}}"
+        src="{{asset("js/shopping_cart/shopping_cart.js?v=3")}}"
         data-token="{{csrf_token()}}"
         data-is-user="{{Auth::user()}}"
         data-url-get-order="{{route('web_get_order')}}"

@@ -31,13 +31,22 @@ class ShoppingCartPopover extends React.Component{
         })
     }
 
+    componentWillUnmount() {
+        this.setState = (state,callback)=>{
+            return;
+        };
+    }
+
     handleClick() {
-        unmountComponentAtNode(document.getElementById("shopping-popover"));
+        let el = document.getElementById("shopping-popover");
+        el.classList.remove('d-block');
+        unmountComponentAtNode(el);
     }
 
     render() {
         const header = <div className="pop-cart-header">
             <i className="fas fa-shopping-cart"></i> &nbsp; <h5 className="text-thin">Mi carrito</h5>
+            <i className="btn-cart fas fa-times-circle ml-auto cursor-pointer" onClick={this.handleClick}></i>
         </div>;
 
         if (this.state.isLoading) {

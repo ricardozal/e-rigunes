@@ -60170,9 +60170,18 @@ var ShoppingCartPopover = /*#__PURE__*/function (_React$Component) {
       })["catch"](function (response) {});
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.setState = function (state, callback) {
+        return;
+      };
+    }
+  }, {
     key: "handleClick",
     value: function handleClick() {
-      Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["unmountComponentAtNode"])(document.getElementById("shopping-popover"));
+      var el = document.getElementById("shopping-popover");
+      el.classList.remove('d-block');
+      Object(react_dom__WEBPACK_IMPORTED_MODULE_2__["unmountComponentAtNode"])(el);
     }
   }, {
     key: "render",
@@ -60183,7 +60192,10 @@ var ShoppingCartPopover = /*#__PURE__*/function (_React$Component) {
         className: "fas fa-shopping-cart"
       }), " \xA0 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "text-thin"
-      }, "Mi carrito"));
+      }, "Mi carrito"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "btn-cart fas fa-times-circle ml-auto cursor-pointer",
+        onClick: this.handleClick
+      }));
 
       if (this.state.isLoading) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, header, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -60301,11 +60313,62 @@ $(document).ready(function () {
   var rootNode = document.getElementById("pop-cart");
   var rootShoppingCartPopover = document.getElementById("shopping-popover");
   var isShopping = document.getElementById("inp-shopping-cart");
-  var showedCart = false;
   initShoppingView(); //React
 
   $(".btn-cart").on("click", function (e) {
     makeShoppingCartPopover();
+  });
+  $("#btn-add-variant").on("click", function (e) {
+    var $this = document.getElementById("btn-add-variant");
+    $this.setAttribute('disabled', 'disabled');
+    $this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp;Agregando...';
+    var quantity = $('#quantity').val();
+    var variantId = $('.selected-size').attr('data-id');
+    var token = $('#token').val();
+    var url = $('#inp-url-add-variant').val();
+
+    if (typeof variantId === 'undefined') {
+      Swal.fire({
+        icon: 'info',
+        title: 'Atención',
+        text: 'Debes seleccionar el color y la talla del zapato'
+      });
+      $this.removeAttribute('disabled');
+      $this.innerHTML = '<i class="fas fa-cart-plus"></i>&nbsp;Agregar al carrito';
+    } else {
+      $.ajax({
+        url: url,
+        method: 'POST',
+        data: {
+          quantity: quantity,
+          variantId: variantId,
+          "_token": token
+        },
+        success: function success(response) {
+          if (response.success) {
+            Swal.fire({
+              title: 'Producto agregado',
+              text: "El producto se agrego correctamente a tu carrito de compras",
+              icon: 'success',
+              showCancelButton: false,
+              allowEscapeKey: false,
+              allowOutsideClick: false
+            }).then(function (result) {
+              makeShoppingCartPopover();
+            });
+          } else {
+            Swal.fire('Atención', response.message, 'info');
+          }
+        },
+        error: function error() {
+          Swal.fire('Atención', 'Algo salió mal, intente más tarde', 'error');
+        },
+        complete: function complete() {
+          $this.removeAttribute('disabled');
+          $this.innerHTML = '<i class="fas fa-cart-plus"></i>&nbsp;Agregar al carrito';
+        }
+      });
+    }
   });
 
   function initShoppingView() {
@@ -60322,11 +60385,9 @@ $(document).ready(function () {
     var divCard = $('#shopping-popover');
     react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.unmountComponentAtNode(rootShoppingCartPopover);
 
-    if (showedCart) {
+    if (divCard.hasClass("d-block")) {
       divCard.removeClass("d-block");
-      showedCart = false;
     } else {
-      showedCart = true;
       divCard.addClass("d-block");
       react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ShoppingCartPopover__WEBPACK_IMPORTED_MODULE_3__["default"], null), rootShoppingCartPopover);
     }
