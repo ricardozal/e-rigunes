@@ -201,6 +201,10 @@ Route::post('/admin/category/{categoryId}/update',
     'CategoryController@updatePost')
     ->name('admin_category_update_post');
 
+Route::get('/admin/category/{categoryId}/image',
+    'CategoryController@image')
+    ->name('admin_category_image');
+
 Route::get('/admin/category/{categoryId}/active',
     'CategoryController@active')
     ->name('admin_category_active');
@@ -386,3 +390,25 @@ Route::get('/admin/dashboardExpenses',
 Route::get('/admin/dashboardChartSales',
     'DashboardController@chartSales')
     ->name('admin_dashboard_chart_sales');
+
+/***********************************
+ * *******  features *************
+ **********************************/
+
+/*********  colors **************/
+Route::get('/admin/featuresColor/create',
+    'FeaturesController@createColor')
+    ->name('admin_Features_createColor');
+
+Route::post('/admin/featuresColor/create',
+    'FeaturesController@createColorPost')
+    ->name('admin_Features_createColor_post');
+
+/*********  sizes **************/
+Route::get('/admin/featuresSize/create',
+    'FeaturesController@createSize')
+    ->name('admin_Features_createSize');
+
+Route::post('/admin/featuresSize/create',
+    'FeaturesController@createSizePost')
+    ->name('admin_Features_createSize_post');

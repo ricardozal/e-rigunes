@@ -41,6 +41,8 @@
            value="{{route('admin_category_active',['categoryId' => 'FAKE_ID'])}}">
     <input id="inp-url-update" type="hidden"
            value="{{route('admin_category_update',['categoryId' => 'FAKE_ID'])}}">
+    <input id="inp-url-image" type="hidden"
+           value="{{route('admin_category_image',['categoryId' => 'FAKE_ID'])}}">
 
     <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">

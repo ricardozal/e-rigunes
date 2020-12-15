@@ -2,6 +2,8 @@
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.js"></script>
 
+    <script src="{{asset('js/admin/variant/indexFeatures.js')}}"></script>
+
     @if(isset($variant))
         <script src="{{asset('js/admin/variant/update.js')}}"></script>
     @else
@@ -34,6 +36,11 @@
                         </select>
                     </div>
                 </div>
+                <div class="col-12 justify-content-end d-flex align-items-center">
+                    <a id="create-btn" class="btn btn-primary" href="{{route('admin_Features_createSize')}}">
+                        Agregar Talla
+                    </a>
+                </div>
             </div>
             <div class="row">
                 <div class="col-12">
@@ -45,6 +52,12 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+
+                <div class="col-12 justify-content-end d-flex align-items-center">
+                    <a id="create-btn" class="btn btn-primary" href="{{route('admin_Features_createColor')}}">
+                        Agregar Color
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -112,4 +125,14 @@
         <input type="hidden" value="{{route('admin_product_variants',['productId' => $product->id])}}" id="variants-index">
         <input type="hidden" value="" id="new-id-variant">
     @endif
+
+    <div id='modal-upsert' class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="body-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

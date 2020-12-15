@@ -18,12 +18,21 @@
     </div>
 </div>
 
+@isset($category)
+    <div class="w-75 text-center">
+        <span>Elige una imagen si deseas cambiarla</span>
+    </div>
+@endif
+
 <div class="row w-75">
     <div class="col-12">
-        <div class="form-group focused">
-            <label for="image_url"  class="focused form-label">Imagen URL</label>
-            <input type="text" class="form-control" autocomplete="off" id="image_url" name="image_url" value="{{ isset($category) ? $category->image_url : null}}">
-            <span class="invalid-feedback">{{ $errors->first('image_url') }}</span>
+        <div class="form-group">
+            <input id="inp-image" name="file" type="file" class="custom-file-input">
+            <label class="inp-file-msg">Imagen</label>
+            <label id="lbl-image" class="custom-file-label focused  {{ $errors->has('file') ? ' is-invalid' : '' }}"
+                   for="inp-image">
+            </label>
+            <span class="invalid-feedback">{{ $errors->first('file') }}</span>
         </div>
     </div>
 </div>
