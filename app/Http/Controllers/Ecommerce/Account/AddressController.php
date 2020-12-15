@@ -8,14 +8,19 @@ use App\Http\Request\AddressRequest;
 use App\Models\Address;
 use App\Models\Buyer;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
 class AddressController extends Controller
 {
-    public function createAddress(){
+    public function createAddress(Request $request){
 
-        return view('ecommerce.account.personal_data.upsert_address');
+        $fCart = $request->get('cart');
+
+        return view('ecommerce.account.personal_data.upsert_address',[
+            'fromCart' => ($fCart != null)
+        ]);
 
     }
 

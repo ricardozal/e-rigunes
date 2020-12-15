@@ -2,16 +2,11 @@
     /* @var $buyer Buyer*/use App\Models\Buyer;
 @endphp
 @extends('ecommerce.account.template.main')
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="{{asset("/commons/form_tools.js")}}"></script>
-    <script src="{{asset('js/web/personal_data/index.js')}}"></script>
-@endpush
 @section('content-account')
-    <section class="container account-content-border h-100 py-4">
+    <div class="container account-content-border h-100 py-4">
         <div class="row">
             <div class="col-12 px-5">
-                <h3 class="text-center bottom-border mb-3">Datos cliente</h3>
+                <h3 class="text-center bottom-border mb-3">Datos de la cuenta</h3>
                 <div class="row align-items-center">
                     <div class="col-12 col-md-4">
                         <p class="text-bold">Nombre completo</p>
@@ -43,8 +38,15 @@
                 </div>
 
                 <div class="row">
-                    <div class="col" id="my-addresses">
-
+                    <div class="col-12">
+                        @forelse($buyer->address as $address)
+                            <div class="row w-50 w-auto mx-md-auto my-5">
+                                <div class="col-12 col-md-11 font-family-2">{{$address->full_address}}</div>
+                                <div class="col-12 col-md-1"><a href="{{route('ecommerce_account_address_update', ['addressId' => $address->id])}}"><i class="far fa-edit color-primary"></i></a></div>
+                            </div>
+                        @empty
+                            <h3>Sin direcciones</h3>
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -71,13 +73,6 @@
             </div>
         </div>
 
-    </section>
-
-    <input type="hidden" id="inp-url-content" value="{{route('ecommerce_account_address_content')}}">
-    <input type="hidden" id="inp-url-update"
-           value="{{route('ecommerce_account_address_update', ['addressId' => 'FAKE_ID'])}}">
-    <input type="hidden" id="inp-url-active"
-           value="{{route('ecommerce_account_address_select_active', ['addressId' => 'FAKE_ID'])}}">
-
+    </div>
 
 @endsection
