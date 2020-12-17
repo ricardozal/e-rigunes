@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Request\CategoryRequest;
 use App\Http\Request\UpdateCategoryRequest;
 use App\Models\Category;
+use App\Services\UploadFiles;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -35,6 +36,12 @@ class CategoryController extends Controller
         $category = new Category();
         $category->fill($request->all());
 
+        $image = $request->file('file');
+        if ($image != null) {
+            $url = UploadFiles::storeFile($image, $category->id, 'category');
+            $category->image_url = $url;
+        }
+
         if (!$category->save()) {
             return response()->json([
                 'success' => false,
@@ -60,6 +67,11 @@ class CategoryController extends Controller
 
         $category->fill($request->all());
 
+        $image = $request->file('file');
+        if ($image != null) {
+            $url = UploadFiles::storeFile($image, $category->id, 'category');
+            $category->image_url = $url;
+        }
 
         if (!$category->save()) {
             return response()->json([
@@ -72,6 +84,11 @@ class CategoryController extends Controller
             'success' => true,
             'message' => 'Guardado correctamente'
         ]);
+    }
+
+    public function image($categoryId){
+        $category = Category::find($categoryId);
+        return view('admin.category.image',['category' => $category]);
     }
 
     public function active($categoryId)

@@ -68,7 +68,7 @@ class Provider extends Model
 
     public static function asMap()
     {
-        return self::pluck('name', 'id');
+        return self::whereActive(true)->pluck('business_name', 'id');
     }
 
 }

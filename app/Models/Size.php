@@ -5,6 +5,8 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Self_;
 
 /**
  * App\Models\Size
@@ -22,8 +24,14 @@ class Size extends Model
 {
     protected $table = 'size';
 
+    protected $fillable = [
+        'value'
+    ];
+
+    public $timestamps = false;
+
     public static function asMap()
     {
-        return self::pluck('value', 'id');
+        return self::query()->orderBy('value')->pluck('value', 'id');
     }
 }

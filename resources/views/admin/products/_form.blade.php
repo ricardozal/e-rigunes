@@ -73,8 +73,8 @@
         <div class="form-group form-select focused">
             <label for="fk_id_provider" class="focused form-label">Proveedor</label>
             <select class="form-control" id="fk_id_provider" name="fk_id_provider">
-                @foreach(\App\Models\Provider::asMap() as $id => $name)
-                    <option value="{{$id}}" {{isset($product) ? ($product->fk_id_provider == $id ? 'selected' : '') : ''}}>{{$name}}</option>
+                @foreach(\App\Models\Provider::asMap() as $id => $business_name)
+                    <option value="{{$id}}" {{isset($product) ? ($product->fk_id_provider == $id ? 'selected' : '') : ''}}>{{$business_name}}</option>
                 @endforeach
             </select>
         </div>

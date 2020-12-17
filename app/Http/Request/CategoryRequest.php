@@ -17,8 +17,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'required',
-            'image_url' => 'required'
+            'description' => 'required'
         ];
     }
 
@@ -26,8 +25,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name.required' => 'Nombre necesario',
-            'description.required' => 'Descripción de categoría necesaria',
-            'image_url.required' => 'URL de imagen necesaria'
+            'description.required' => 'Descripción de categoría necesaria'
         ];
     }
 }
