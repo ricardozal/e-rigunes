@@ -358,6 +358,7 @@ class ConfirmOrder extends React.Component{
                                       Swal.showLoading();
                                       this.props.getShippingPrice(address.id, () => {
                                           this.selectAddress(address.id);
+                                          this.makeOrderForPaypal();
                                           Swal.close();
                                       });
                                   }}>

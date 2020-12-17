@@ -42,7 +42,7 @@ Route::get('/admin/login',
  */
 
 Route::get(
-    '/ours',
+    '/about-us',
     'Web\HomeController@our'
 )->name('ours_section');
 
@@ -50,11 +50,6 @@ Route::get(
     '/terms-condition',
     'Web\HomeController@termCondition'
 )->name('terms_condition_section');
-
-Route::get(
-    '/ours-section',
-    'Web\HomeController@our'
-)->name('ours_section');
 
 Route::get(
     '/search-products',

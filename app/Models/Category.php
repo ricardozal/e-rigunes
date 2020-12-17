@@ -66,4 +66,9 @@ class Category extends Model
     {
         return self::pluck('name', 'id');
     }
+
+    public static function getActiveCategories() {
+        return self::whereActive(true)->get();
+    }
+
 }

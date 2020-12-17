@@ -4,6 +4,7 @@
 @extends('web.template.main')
 @push('scripts')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+    <script src="{{asset('commons/lib/zoomerang.js')}}"></script>
     <script src="{{asset('/js/web/product/details.js?v=2')}}"></script>
 @endpush
 @section('content')
@@ -14,7 +15,7 @@
                     <div class="col-12 col-lg-6 text-center">
                         <div class="row">
                             <div class="col-12">
-                                <img class="variant-image" src="{{$product->variants[0]->featured_image}}" alt="img" style="max-width: 70%; height: auto">
+                                <img class="variant-image zoom" src="{{$product->variants[0]->featured_image}}" alt="img" style="max-width: 70%; height: auto">
                             </div>
                         </div>
                         <div class="row mt-5">

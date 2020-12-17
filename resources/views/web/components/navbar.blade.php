@@ -48,7 +48,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item ">
-                <a class="nav-link" href="{{route('web_home')}}">HOME <span class="sr-only"></span></a>
+                <a class="nav-link" href="{{route('web_home')}}">INICIO <span class="sr-only"></span></a>
             </li>
             <li class="nav-item dropdown mx-5">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -56,22 +56,14 @@
                     CATEGORÍAS
                 </a>
                 <div class="dropdown-menu" aria-labelledby="drop-down">
-
-                        <a class="nav-link active-principal-2 dropdown-sub-classification color-gray-dark font-size-80 font-family-2 dropdown-item"
-                           href=""
-                           style=" padding: .25rem 1.5rem;"
-                           data-parent-classification="">
-
-
+                    @foreach(\App\Models\Category::getActiveCategories() as $item)
+                        <a class="nav-link dropdown-item"
+                           href="{{route('category_products',['categoryId'=>$item->id])}}">
+                            {{$item->name}}
                         </a>
-
-
+                    @endforeach
                 </div>
             </li>
-            <li class="nav-item mx-5">
-                <a class="nav-link" href="#">CATÁLOGOS</a>
-            </li>
-
             <li class="nav-item mx-5">
                 <a class="nav-link " href="{{route('ours_section')}}">NOSOTROS</a>
             </li>

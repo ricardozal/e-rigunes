@@ -120,6 +120,12 @@ class Sale extends Model
         $orderHasVariants = $order["order_has_variant"] ?? [];
         $total = 0;
 
+        if(count($orderHasVariants) < 1) {
+            $order["shipping_price"] = 0;
+            $order["shipping_id"] = '';
+            $order["rate_id"] = '';
+        }
+
         foreach ($orderHasVariants as $index => $orderHasVariant) {
             $total += $orderHasVariant["price"];
         }

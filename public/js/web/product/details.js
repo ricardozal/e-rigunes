@@ -1,4 +1,27 @@
 $(document).ready(function() {
+
+    Zoomerang.config({
+
+        // transition duration
+        transitionDuration: '.4s',
+
+        // easing function
+        transitionTimingFunction: 'cubic-bezier(.4,0,0,1)',
+
+        // background color
+        bgColor: '#fff',
+
+        // opacity
+        bgOpacity: 1,
+
+        // max width
+        maxWidth: 300,
+
+        // max height
+        maxHeight: 300
+
+    }).listen('.zoom');
+
     $('.num-in span').click(function () {
         var $input = $(this).parents('.num-block').find('input.in-num');
         if($(this).hasClass('minus')) {

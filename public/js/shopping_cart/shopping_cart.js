@@ -59192,6 +59192,8 @@ var ConfirmOrder = /*#__PURE__*/function (_React$Component) {
               _this6.props.getShippingPrice(address.id, function () {
                 _this6.selectAddress(address.id);
 
+                _this6.makeOrderForPaypal();
+
                 Swal.close();
               });
             }
