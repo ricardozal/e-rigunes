@@ -1,27 +1,5 @@
 $(document).ready(function() {
 
-    Zoomerang.config({
-
-        // transition duration
-        transitionDuration: '.4s',
-
-        // easing function
-        transitionTimingFunction: 'cubic-bezier(.4,0,0,1)',
-
-        // background color
-        bgColor: '#fff',
-
-        // opacity
-        bgOpacity: 1,
-
-        // max width
-        maxWidth: 300,
-
-        // max height
-        maxHeight: 300
-
-    }).listen('.zoom');
-
     $('.num-in span').click(function () {
         var $input = $(this).parents('.num-block').find('input.in-num');
         if($(this).hasClass('minus')) {
@@ -85,7 +63,7 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.btn-thumbnail', function () {
-    $('.variant-image').attr('src', $(this).data('url'));
+    $('.variant-image').css("background-image", "url("+$(this).data('url')+")");
 });
 
 $(document).on('click', '.color-item', function () {
@@ -128,6 +106,7 @@ function loadSizes(colorId) {
             const sizes = response.data;
             $sizeList.html('');
             $('.images-slider').slick('unslick');
+            $('.main-image-container').show();
             $('.images-slider').html('');
             if(sizes.length > 0){
 
@@ -149,7 +128,7 @@ function loadSizes(colorId) {
                         $('<div class="cursor-pointer btn-thumbnail"' +
                             'data-url="'+item.absolute_image_url+'">' +
                             '<div class="variant-thumbnail mx-auto"' +
-                            'style="background-image: url('+item.absolute_image_url+'); background-size: contain;' +
+                            'style="background-image: url('+item.absolute_image_url+'); background-size: cover;' +
                             '   background-repeat: no-repeat;' +
                             '   background-position: center center;' +
                             '   border: 1px solid lightgray;' +
@@ -195,6 +174,10 @@ function loadSizes(colorId) {
             } else {
                 const text = $('<span>', {html: "No hay tallas disponibles"});
                 $sizeList.append(text);
+
+                $('.images-slider').html('No disponible');
+                $('.main-image-container').hide();
+
             }
 
         },
