@@ -20,8 +20,9 @@ class CreateUserRequest extends FormRequest
             'father_last_name' => 'required',
             'mother_last_name' => 'required',
             'email' => ['required', 'email', 'unique:user'],
-            'password' => 'required',
-            'phone' => 'required'
+            'password' => 'required|confirmed',
+            'phone' => 'required',
+            'birthday' => 'required'
         ];
     }
 
@@ -34,7 +35,9 @@ class CreateUserRequest extends FormRequest
             'email.unique' => 'El correo ya está registrado',
             'email.email' => 'Ingrese un correo electrónico',
             'password.required' => 'Contraseña necesaria',
-            'phone.required' => 'Debe ingresar un número de teléfono'
+            'password.confirmed' => 'Las contraseñas deben coincidir',
+            'phone.required' => 'Debe ingresar un número de teléfono',
+            'birthday.required' => 'Debe ingresar la fecha de nacimiento'
         ];
     }
 }

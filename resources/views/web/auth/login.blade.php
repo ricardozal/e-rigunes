@@ -20,7 +20,7 @@
                                         <div class="col-12 col-sm-12 col-md-6 mx-auto">
                                             <input id="email"
                                                    type="email"
-                                                   class="form-control @error('email') is-invalid @enderror"
+                                                   class="form-control @error('email-login') is-invalid @enderror"
                                                    name="email-login"
                                                    value="{{ old('email') }}"
                                                    required
@@ -28,10 +28,10 @@
                                                    autofocus
                                                    placeholder="Correo electrónico">
 
-                                            @error('email')
+                                            @error('email-login')
                                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
                                     </div>

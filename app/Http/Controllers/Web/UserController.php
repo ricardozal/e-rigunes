@@ -43,17 +43,23 @@ class UserController extends Controller
             $buyer->saveOrFail();
 
             \DB::commit();
-            return response()->json([
-                'success' => true,
-                'message' => 'Success'
-            ]);
+
+            $dataLogin = [
+                'email' => $user->email,
+                'password' => $request->input('password'),
+                'active' => 1
+            ];
+
+            $remember = false;
+            if (\Auth::attempt($dataLogin, $remember)) {
+                return redirect(route('web_home'));
+            }
+
         } catch (\Throwable $e) {
             \DB::rollBack();
-            return response()->json([
-                'success' => false,
-                'message' => 'Error ',
-                'error' => $e
-            ]);
+            return redirect()->route('web_user_create')->withErrors([
+                'error-general' => 'Algo salió mal, inténtalo más tarde.'
+            ])->withInput($request->all());
         }
     }
 
