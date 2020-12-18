@@ -57,6 +57,11 @@ Route::get(
 )->name('ours_section');
 
 Route::get(
+    '/frequent-question',
+    'Web\HomeController@question'
+)->name('frequent_question');
+
+Route::get(
     '/search-products',
     'Web\HomeController@search'
 )->name('search_products');

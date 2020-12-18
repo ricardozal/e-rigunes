@@ -1,47 +1,25 @@
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="{{asset("/commons/form_tools.js")}}"></script>
-    <script src="{{ asset('js/web/components/subscriber.js?v=1') }}"></script>
-@endpush
 <div class="container-fluid ">
     <hr class="color-gray ">
     <div id="footer-wrapper" class="text-center">
         <div id="footer">
             <div class="row align-items-center mx-0 justify-content-center p-md-5">
                 <div class="col-lg-4  my-auto text-left">
-                    <a href="{{route('ecommerce_account_profile_index')}}">
+                    <a class="color-black" href="{{route('ecommerce_account_profile_index')}}">
                     <h6 style="font-size: medium;">MI CUENTA</h6></a>
-                    <h6 style="font-size: medium;">MIS PEDIDOS</h6>
-                    <h6 style="font-size: medium;">CARRITO DE COMPRAS</h6>
+                    <a class="color-black" href="{{route('ecommerce_account_orders_index')}}">
+                    <h6 style="font-size: medium;">MIS PEDIDOS</h6></a>
+                    <a href="#" class=" btn-cart color-black"> <h6 style="font-size: medium;">CARRITO DE COMPRAS</h6></a>
                 </div>
                 <div class=" col-lg-4 my-auto text-left">
-                    <a class="color-black" href=""><h6 style="font-size: medium">BLOG</h6></a>
-                    <a class="color-black" href=""><h6 style="font-size: medium">
+
+                    <a class="color-black" href="{{route('contact_web')}}"><h6 style="font-size: medium">
                             CONTACTO</h6></a>
-                    <a class="color-black" href=""><h6 style="font-size: medium">
+                    <a class="color-black" href="{{route('frequent_question')}}"><h6 style="font-size: medium">
                             PREGUNTAS FRECUENTES </h6></a>
                     <a class="color-black" href="{{route('terms_condition_section')}}"><h6 style="font-size: medium; ">TERMINOS Y CONDICIONES</h6></a>
                 </div>
 
                 <div class=" col-12 col-lg-4 my-auto text-left">
-
-                    <div class="row mx-0" >
-
-                        <p class="color-primary h2"><b>Suscribete</b></p>
-                        <form id="form-subscriber" action="" method="POST">
-                            @csrf
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Email"
-                                   aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Enviar
-                                </button>
-                            </div>
-                        </div>
-                        </form>
-
-                    </div>
-
                     <div class="row mx-0 justify-content-around">
                         <i class="fab fa-cc-paypal h1"></i>
                         <i class="fab fa-cc-visa h1"></i>
@@ -59,7 +37,7 @@
                        target="_blank">
                         <i class="fab fa-facebook-f color-white"></i>
                     </a>
-                    <a class="text-center mx-2 without-text-decoration" href="" target="_blank">
+                    <a class="text-center mx-2 without-text-decoration" href="https://wa.me/527228593599/?text=Me%20Interesa%20ser%20un%20distribuidor%20de%20calzado%20¿Podrías ayudarme?" target="_blank">
                         <i class="fab fa-whatsapp color-white"></i>
                     </a>
                 </div>

@@ -4,8 +4,8 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 ">
-                <h2>Preguntas frecuentes</h2>
+            <div class="col-12 text-center">
+                <h2 class="color-primary">Preguntas frecuentes</h2>
             </div>
         </div>
     </div>
