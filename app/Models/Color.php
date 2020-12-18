@@ -26,6 +26,13 @@ class Color extends Model
 {
     protected $table = 'color';
 
+    protected $fillable = [
+        'name',
+        'value'
+    ];
+
+    public $timestamps = false;
+
     public function variantsImage()
     {
         return $this->hasMany(
@@ -37,6 +44,6 @@ class Color extends Model
 
     public static function asMap()
     {
-        return self::pluck('name', 'id');
+        return self::query()->orderBy('name')->pluck('name', 'id');
     }
 }

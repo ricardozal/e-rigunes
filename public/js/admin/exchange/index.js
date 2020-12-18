@@ -70,7 +70,7 @@ $(document).ready(function () {
         "language": {
             "search": "Buscar: ",
             "zeroRecords": "No se encontró ningún registro.",
-            "info": "Total de compradores: <strong>_TOTAL_</strong>",
+            "info": "Total de cambios: <strong>_TOTAL_</strong>",
             infoEmpty: "Sin datos disponibles",
             emptyTable: "No se ha encontrado ningún registro.",
             processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i> ',
@@ -80,7 +80,7 @@ $(document).ready(function () {
                 "next": "Siguiente",
                 "previous": "Anterior"
             },
-            "lengthMenu": "Mostrar _MENU_ usuarios"
+            "lengthMenu": "Mostrar _MENU_ cambios"
         },
         "ordering": false
     });

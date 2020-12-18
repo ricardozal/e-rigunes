@@ -28,9 +28,9 @@
                                     Guardar tarjeta
                                 </button>&nbsp;&nbsp;
                                 @if($fromCart)
-                                    <a href="{{route('web_shopping_cart')}}" class="btn btn-outline-primary">Regresar al carrito</a>
+                                    <a href="{{route('web_shopping_cart')}}" class="btn btn-outline-secondary">Regresar al carrito</a>
                                 @else
-                                    <a href="{{route('ecommerce_account_profile_index')}}" class="btn btn-outline-primary">Cancelar</a>
+                                    <a href="{{route('ecommerce_account_profile_index')}}" class="btn btn-outline-secondary">Cancelar</a>
                                 @endif
                             </div>
                         </form>

@@ -29,15 +29,19 @@
 </div>
 
 <div class="row w-75">
-    <div class="col-12">
-        <div class="form-group form-select focused">
-            <label for="is_percentage" class="focused form-label">Valor de la promoción</label>
-            <select class="form-control" id="is_percentage" name="is_percentage">
-                <option value="1">Por porcentaje</option>
-                <option value="0">Por valor</option>
-            </select>
+    <div class="col-12 pb-4">
+        <label class="focused form-label">Valor de la promoción</label>
+        <br>
+        <div class="form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" id="is_percentageF" name="is_percentage" value="0">
+            <label class="form-check-label" for="is_percentageF">Por valor</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" id="is_percentageT" name="is_percentage" value="1">
+            <label class="form-check-label" for="is_percentageT">Por porcentaje</label>
         </div>
     </div>
+
 </div>
 
 <div class="row w-75">
@@ -64,7 +68,7 @@
     <div class="col-12">
         <div class="form-group focused">
             <label for="description"  class="focused form-label">Descrición</label>
-            <input type="text" class="form-control" autocomplete="off" id="description" name="description" value="{{ isset($promotion) ? $promotion->description : null}}">
+            <textarea rows="3" class="form-control" autocomplete="off" id="description" name="description">{{ isset($promotion) ? $promotion->description : null}}</textarea>
             <span class="invalid-feedback">{{ $errors->first('description') }}</span>
         </div>
     </div>

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $('.num-in span').click(function () {
         var $input = $(this).parents('.num-block').find('input.in-num');
         if($(this).hasClass('minus')) {
@@ -62,7 +63,7 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.btn-thumbnail', function () {
-    $('.variant-image').attr('src', $(this).data('url'));
+    $('.variant-image').css("background-image", "url("+$(this).data('url')+")");
 });
 
 $(document).on('click', '.color-item', function () {
@@ -79,71 +80,6 @@ $(document).on('click', '.color-item', function () {
 $(document).on('click', '.badge', function () {
     $('.badge').removeClass('selected-size');
     $(this).addClass('selected-size');
-});
-
-$(document).on('click', '#btn-add-variant', function () {
-
-    var $this = $(this);
-    $this.attr('disabled', 'disabled');
-    $this.html('<i class="fas fa-spinner fa-spin"></i>&nbsp;Agregando...');
-
-    var quantity = $('#quantity').val();
-    var variantId = $('.selected-size').attr('data-id');
-    var token = $('#token').val();
-
-    var url = $('#inp-url-add-variant').val();
-
-    if (typeof variantId === 'undefined') {
-        Swal.fire({
-            icon: 'info',
-            title: 'Atención',
-            text: 'Debes seleccionar el color y la talla del zapato',
-        });
-
-        $this.removeAttr('disabled');
-        $this.html('<i class="fas fa-cart-plus"></i>&nbsp;Agregar al carrito');
-    } else {
-
-        $.ajax({
-            url: url,
-            method: 'POST',
-            data: {
-                quantity: quantity,
-                variantId: variantId,
-                "_token": token
-            },
-            success: function (response) {
-
-                if (response.success){
-                    Swal.fire(
-                        'Producto agregado',
-                        'El producto se agrego correctamente a tu carrito de compras',
-                        'success'
-                    );
-                } else {
-                    Swal.fire(
-                        'Atención',
-                        response.message,
-                        'info'
-                    );
-                }
-
-            },
-            error: function () {
-                Swal.fire(
-                    'Atención',
-                    'Algo salió mal, intente más tarde',
-                    'error'
-                );
-            },
-            complete: function () {
-                $this.removeAttr('disabled');
-                $this.html('<i class="fas fa-cart-plus"></i>&nbsp;Agregar al carrito');
-            }
-        });
-
-    }
-
 });
 
 function loadSizes(colorId) {
@@ -170,6 +106,7 @@ function loadSizes(colorId) {
             const sizes = response.data;
             $sizeList.html('');
             $('.images-slider').slick('unslick');
+            $('.main-image-container').show();
             $('.images-slider').html('');
             if(sizes.length > 0){
 
@@ -191,7 +128,7 @@ function loadSizes(colorId) {
                         $('<div class="cursor-pointer btn-thumbnail"' +
                             'data-url="'+item.absolute_image_url+'">' +
                             '<div class="variant-thumbnail mx-auto"' +
-                            'style="background-image: url('+item.absolute_image_url+'); background-size: contain;' +
+                            'style="background-image: url('+item.absolute_image_url+'); background-size: cover;' +
                             '   background-repeat: no-repeat;' +
                             '   background-position: center center;' +
                             '   border: 1px solid lightgray;' +
@@ -237,6 +174,10 @@ function loadSizes(colorId) {
             } else {
                 const text = $('<span>', {html: "No hay tallas disponibles"});
                 $sizeList.append(text);
+
+                $('.images-slider').html('No disponible');
+                $('.main-image-container').hide();
+
             }
 
         },

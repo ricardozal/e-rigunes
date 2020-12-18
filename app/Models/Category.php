@@ -64,6 +64,11 @@ class Category extends Model
 
     public static function asMap()
     {
-        return self::pluck('name', 'id');
+        return self::whereActive(true)->pluck('name', 'id');
     }
+
+    public static function getActiveCategories() {
+        return self::whereActive(true)->get();
+    }
+
 }

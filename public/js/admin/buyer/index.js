@@ -64,7 +64,7 @@ $(document).ready(function () {
                 "next": "Siguiente",
                 "previous": "Anterior"
             },
-            "lengthMenu": "Mostrar _MENU_ usuarios"
+            "lengthMenu": "Mostrar _MENU_ compradores"
         },
         "ordering": false
     });

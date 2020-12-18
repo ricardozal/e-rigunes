@@ -62,6 +62,7 @@ class OrderController extends Controller
     public function getCurrentOrder()
     {
         $order = OrderService::getCurrentOrder();
+        OrderService::saveOrder(Sale::computeTotal($order));
         return response()->json($order);
     }
 

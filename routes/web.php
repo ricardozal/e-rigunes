@@ -42,7 +42,7 @@ Route::get('/admin/login',
  */
 
 Route::get(
-    '/ours',
+    '/about-us',
     'Web\HomeController@our'
 )->name('ours_section');
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-12 text-center my-5">
                 <h2 class="color-primary">Aviso de privacidad </h2>
@@ -11,7 +11,7 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 text-justify">
                 <p class="color-gray">Rigunes tiene la necesidad de ofrecerte la seguridad y calidez que tú te mereces, por tal motivo nos hemos dado a la tarea de establecer normativas y reglas que,
                     como usuario al participar y utilizar este servicio, constituirá la aceptación de este acuerdo.</p>
 
