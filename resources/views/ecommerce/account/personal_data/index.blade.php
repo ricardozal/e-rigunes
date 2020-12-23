@@ -2,6 +2,9 @@
     /* @var $buyer Buyer*/use App\Models\Buyer;
 @endphp
 @extends('ecommerce.account.template.main')
+@push('scripts')
+    <script src="{{asset('js/ecommerce/account/payment_methods/delete.js')}}"></script>
+@endpush
 @section('content-account')
     <div class="container account-content-border h-100 py-4">
         <div class="row">
@@ -58,13 +61,14 @@
             </div>
             <div class="col-12 my-5 px-5">
                 @forelse($buyer->creditCards as $card)
-                    <div class="row my-5 justify-content-center">
-                        <div class="col-12 col-lg-1"><i class="fas fa-credit-card color-primary"></i></div>
-                        <div class="col-12 col-lg-7">
+                    <div class="row my-5">
+                        <div class="col-12 col-lg-3 d-flex justify-content-center"><i class="fas fa-credit-card color-primary"></i></div>
+                        <div class="col-12 col-lg-6">
                             <strong class="color-primary">Tarjeta de crédito/débito</strong>
                             <br>{{$card->card_number}}&nbsp;&nbsp;&nbsp;{{$card->expiration_month.'/'.$card->expiration_year}}
                             <br>Propietario: {{$card->cardholder}}
                         </div>
+                        <div class="col-12 col-lg-3"><i class="fas fa-trash-alt color-primary cursor-pointer" data-id="{{$card->id}}"></i></div>
                         <div class="col-12"><hr></div>
                     </div>
                 @empty
@@ -74,5 +78,7 @@
         </div>
 
     </div>
+
+    <input type="hidden" id="inp-url-delete" value="{{route('ecommerce_account_payment_methods_delete_post',['cartId' => 'FAKE_ID'])}}">
 
 @endsection

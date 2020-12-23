@@ -31,9 +31,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|CreditCard whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CreditCard whereUpdatedAt($value)
+ * @property-read \App\Models\Buyer $buyer
  */
 class CreditCard extends Model
 {
     protected $table = 'credit_card';
+
+    public function buyer() {
+        return $this->belongsTo(
+            Buyer::class,
+            'fk_id_buyer',
+            'id'
+        );
+    }
 
 }

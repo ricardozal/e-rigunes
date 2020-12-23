@@ -74,6 +74,46 @@ class PaymentMethodController extends Controller
 
     }
 
+    public function deletePost($cartId) {
+
+        $stripe = new \Stripe\StripeClient(
+            env('STRIPE_SECRET_KEY')
+        );
+
+        try {
+
+            /** @var CreditCard $creditCard */
+            $creditCard = CreditCard::find($cartId);
+
+            $stripe->customers->deleteSource(
+                $creditCard->buyer->customer_stripe_id,
+                $creditCard->payment_method_key,
+                []
+            );
+
+            \DB::beginTransaction();
+            $creditCard->delete();
+            \DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Eliminado correctamente'
+            ]);
+        } catch (ApiErrorException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ],500);
+        } catch (\Throwable $e) {
+            \DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ],500);
+        }
+
+    }
+
     public function getStripeSetupIntent()
     {
         Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
