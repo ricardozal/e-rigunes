@@ -26,6 +26,8 @@
                 <p class="color-gray">Rigunes declara que los productos que se ofrecen en nuestra plataforma no son de nuestra propiedad, sino directamente de los proveedores de calzado, siendo así estos pueden estar sujetos a normas de propiedad intelectual.</p>
                 <p class="color-gray">Rigunes se reserva todos los derechos no expresamente otorgados bajo el presente documento.</p>
                 <p class="color-gray">Todos los procesos, código, diseño, animaciones, imágenes, fotos y contenido son propiedad de BIGTECHSOLUTIONS S.A.S. de C.V.</p>
+
+
                 <p class="color-primary"><b>Política de compra</b></p>
 
                 <p class="color-gray">En Rigunes queremos que disfrutes tanto de hacer compras como de vender el calzado que te ofrecemos, así que elaboramos cuidadosamente las aplicaciones que ocuparas en tu día a día para que le saques el máximo provecho a tu tiempo y esfuerzo. A continuación, te presentamos la política de compra siguiendo el flujo de las actividades que tendrás que realizar para hacer una compra, seguido de las indicaciones y exclusiones en caso de querer hacer un cambio de producto, una garantía respecto al calzado y si lo deseas un reembolso.</p>
@@ -47,24 +49,20 @@
                 <p class="color-gray">En caso de no contar con la entrega en el plazo de las fechas aproximadas, deberá comunicarse directamente a contacto@rigunes.com.mx, para verificar el estatus de su entrega. El cliente no podrá reclamar ningún tipo de interés a la empresa.</p>
                 <p class="color-primary"><b>Promociones y descuentos</b></p>
                 <p class="color-gray">Las promociones, descuentos y ofertas serán de valides si aún se encuentran publicadas en el sitio. Estas serán sujetas a condiciones, restricciones al tiempo que tengan de vigencia o cantidad de productos, mismas que serán sujetas a cambios sin ningún previo aviso.</p>
-                <p class="color-primary"><b>Cambio de producto</b></p>
-                <p class="color-gray">Rigunes ofrece la posibilidad de realizar el cambio del producto únicamente si es por talla y color, no se podrá realizar el cambio por otro modelo ya que como lo mencionamos antes en este documento Rigunes tiene más de un proveedor de calzado.</p>
-                <p class="color-gray">El cambio se realizará a través de la plataforma del usuario, siguiendo los pasos correspondientes que se publicaran en el sitio.</p>
-                <p class="color-gray">Rigunes se deslinda de cualquier responsabilidad si el cambio de producto no aplica por los términos y condiciones del distribuidor, de cualquier manera, se notificará ya sea en la cuenta de usuario o al correo electrónico que el cliente haya registrado.</p>
+
                 <p class="color-primary"><b>Garantia del producto</b></p>
                 <p class="color-gray">Nuestro producto es elaborado de manera tradicional e incluso artesanalmente, por lo que, en algunos casos, el calzado puede diferir al de la foto publicada en nuestro sitio. Rigunes realiza un gran proceso de verificación y calidad para garantizar que el usuario reciba el producto sin ningún detalle.</p>
-                <p class="color-gray">Por tal motivo la garantía solo podrá ser aplicada si el calzado cuenta con algún defecto de fabricación y deberá ser notificada inmediatamente al correo contacto@rigunes.com.mx donde será verificado su caso en particular.
+                <p class="color-gray">Por tal motivo la garantía solo podrá ser aplicada si el calzado cuenta con algún defecto de fabricación (No aplica para defectos estéticos, solo que directamente afecten el uso del calzado) y deberá ser notificada inmediatamente al correo contacto@rigunes.com.mx donde será verificado su caso en particular.
 
                 </p>
-
 
                 <p class="color-gray" >Posteriormente se le darán a conocer los pasos a seguir según el tipo de garantía que aplique a su producto.</p>
                 <p class="color-gray" >Rigunes se esfuerza a lo máximo por sus clientes, por tal motivo le recomendamos a nuestros clientes seguir el proceso de garantía al pie de la letra, ya que de otra forma quedara exento a aplicar la garantía.</p>
                 <p class="color-gray">Cabe mencionar que, si el producto ya ha sido abierto, usado, maltratado o cambiado, este será excluido de cualquier garantía o reembolso.</p>
 
-                <p class="color-gray">Cabe mencionar que, si el producto ya ha sido abierto, usado, maltratado o cambiado, este será excluido de cualquier garantía o reembolso.</p>
 
-                <p class="color-gray">Rigunes ofrece la oportunidad de reembolzar el dinero que has invertido en nuestros productos en caso de que no estés completamente satisfecho con el servicio.</p>
+                <p class="color-primary"><b>Reembolso por producto</b></p>
+                <p class="color-gray">Rigunes ofrece la oportunidad de reembolzar el dinero que has invertido en nuestros productos en caso de que no estés completamente satisfecho con el servicio.  (Cualquier petición será evaluada por nuestros asesores, que determinaran el estatus de su reembolso, el cual puede proceder o no)</p>
                 <p class="color-gray">Una vez que hayas solicitado el reembolso nosotros te enviaremos a tu correo electrónico los pasos a seguir para realizar este procedimiento o puedes comunicarte al siguiente correo: contacto@rigunes.com.mx.</p>
                 <p class="color-gray">Cabe mencionar que, si el producto ya ha sido abierto, usado, maltratado o cambiado, este será excluido de cualquier garantía o reembolso.</p>
                 <p class="color-gray">El reembolso al que será acreedor el usuario insatisfecho con el producto será deducido únicamente al precio del producto, no se hará la devolución por cualquier pago de envío u otros gastos.</p>
