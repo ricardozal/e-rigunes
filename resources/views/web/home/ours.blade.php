@@ -44,16 +44,6 @@
                     con toda la seguridad y confianza para que llegue hasta tu domicilio.
                 </p>
             </div>
-            <div class="col-12 col-lg-6 text-center">
-                <img src="{{asset('img/icons/cambio.png')}}" class="img-fluid" alt="imagen">
-                <h5 class="text-dark mb-3 mt-4 font-weight-medium">
-                    Cambio de productos
-                </h5>
-                <p class="text-justify">
-                    Te ofrecemos la oportunidad de realizar cambio de modelos, colores y tallas.
-                    Entérate de los pasos a seguir y de las exclusiones en el siguiente enlace.
-                </p>
-            </div>
             <div class="col-12 text-center">
                 <img src="{{asset('img/icons/family.png')}}" class="img-fluid" alt="imagen">
                 <h5 class="text-dark mb-3 mt-4 font-weight-medium">
