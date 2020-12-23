@@ -50,7 +50,8 @@ class ProductController extends Model
         $category = Category::find($categoryId);
         $products = Product::whereActive(true)
             ->where('fk_id_category',$categoryId)
-            ->paginate(8);
+            ->paginate(2);
+
 
         return view('web.product.product_category',[
             'products' => $products,
