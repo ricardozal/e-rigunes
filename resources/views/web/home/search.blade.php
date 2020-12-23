@@ -15,9 +15,10 @@
                 <button id="btn-search" class="btn btn-primary">Buscar</button>
             </div>
         </div>
-        <div class="row product-container my-5">
+        <div class="product-container my-5">
             @include('web.home._search_results',['products' => $products])
         </div>
+
     </div>
 
 @endsection

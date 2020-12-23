@@ -9,7 +9,8 @@ use App\Models\Product;
 use App\Models\Variant;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 /**
  * App\Http\Controllers\Web\ProductController
  *
@@ -46,10 +47,15 @@ class ProductController extends Model
 
     public function categoryProduct($categoryId)
     {
-        $products = Product::where('active',true)
-            ->where('fk_id_category',$categoryId)->get();
         $category = Category::find($categoryId);
-        return view('web.product.product_category',['products' => $products,'category'=>$category]);
+        $products = Product::whereActive(true)
+            ->where('fk_id_category',$categoryId)
+            ->paginate(8);
+
+        return view('web.product.product_category',[
+            'products' => $products,
+            'category'=>$category]);
+
     }
 
 

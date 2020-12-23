@@ -1,9 +1,9 @@
 <div class="row justify-content-between container-fluid mx-0" style="background-color: #B51F6B;">
     <div class="col-4 my-2 h2 text-center">
         <a class="text-center mx-2" href="https://www.instagram.com/rigunes.mx/"
-           target="_blank">
+           >
             <i class="fab fa-instagram color-white d-none d-md-inline" style="height: 5vw;"></i></a>
-        <a class="text-center mx-2 " href="https://www.facebook.com/Rigunes" target="_blank">
+        <a class="text-center mx-2 " href="https://www.facebook.com/Rigunes" >
             <i class="fab fa-facebook-f color-white d-none d-md-inline"></i>
         </a>
     </div>

@@ -1,5 +1,5 @@
 @php
-    /* @var $product Product*/use App\Models\Product;
+    /* @var $products Product*/use App\Models\Product;
 @endphp
 @extends('web.template.main')
 @section('content')
@@ -58,5 +58,7 @@
 
 
 
-
+    <div class="col-12 d-flex justify-content-center">
+        {{ $products->links() }}
+    </div>
 @endsection
