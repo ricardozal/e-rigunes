@@ -59605,7 +59605,12 @@ var Products = /*#__PURE__*/function (_React$Component) {
           _this2.props.onBuy(2, 0, 0, 0);
         },
         className: 'btn btn-primary mt-3 '
-      }, "COMPRAR"))))))));
+      }, "COMPRAR"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          _this2.props.onBuy(0, 0, 0, 0);
+        },
+        className: 'btn btn-secondary mt-3'
+      }, "COMPRAR COMO INVITADO"))))))));
     }
   }, {
     key: "displayVariants",
@@ -60026,7 +60031,9 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
     value: function onBuy(step, addressId, cardId, paymentMethodId) {
       var _this8 = this;
 
-      if (!this.isAuthenticate) {
+      if (!this.isAuthenticate && step === 0) {
+        console.log("prueba");
+      } else if (!this.isAuthenticate && step !== 0) {
         location.replace(this.urlLogin);
       } else {
         if (addressId !== 0 && paymentMethodId !== 0) {
