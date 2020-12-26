@@ -297,7 +297,10 @@ class ShoppingCart extends React.Component {
     }
 
     onBuy(step, addressId, cardId, paymentMethodId){
-        if(!this.isAuthenticate){
+
+        if(!this.isAuthenticate && step === 0){
+            console.log("prueba");
+        } else if(!this.isAuthenticate && step !== 0){
             location.replace(this.urlLogin)
         }else{
             if(addressId !== 0 && paymentMethodId !== 0){
