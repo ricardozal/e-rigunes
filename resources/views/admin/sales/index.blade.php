@@ -1,6 +1,6 @@
 @extends('admin.template.main')
 @push('scripts')
-    <script src="{{asset('js/admin/sales/index.js')}}"></script>
+    <script src="{{asset('js/admin/sales/index.js?v=2')}}"></script>
 @endpush
 @section('content')
     <div class="row mt-5 mx-0">
@@ -20,10 +20,7 @@
                             <th>Comprador</th>
                             <th>Dirección de envío</th>
                             <th>Método de pago</th>
-                            <th>Descuento</th>
                             <th>Precio total</th>
-                            <th>Factura</th>
-                            <th>Promoción</th>
                             <th>Información de envío</th>
                             <th>Productos</th>
                             <th>Skydropx</th>

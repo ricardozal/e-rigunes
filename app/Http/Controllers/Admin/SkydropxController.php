@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Sale;
 use App\Models\ShippingInformation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -28,125 +29,74 @@ class SkydropxController extends Controller
 
     public function createShipment($salesId)
     {
-        /** @var Sale $sale */
-        $sale = Sale::find($salesId);
-        $variants = $sale->saleVariants;
+        try {
+            \DB::beginTransaction();
 
-        $parcels = [];
+            /** @var Sale $sale */
+            $sale = Sale::find($salesId);
 
-        foreach ($variants as $variant) {
-            $parcels[] = [
-                'weight' => $variant->product->weight,
-                'distance_unit' => 'CM',
-                'mass_unit' => 'KG',
-                'height' => $variant->product->height,
-                'width' => $variant->product->width,
-                'length' => $variant->product->length
-            ];
-        }
+            $rateId = $sale->shipping_information->rate_id;
+            $shipmentId = $sale->shipping_information->skydropx_id;
 
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Authorization' => 'Token token=' . env('SKYDROPX_API_TOKEN')
-        ])->post(env('SKYDROPX_URL').'/v1/shipments', [
-                'address_from' => [
-                    'province' => 'Estado de México',
-                    'city' => 'San Mateo Atenco',
-                    'name' => 'Nestor Jacobo',
-                    'zip' => '52104',
-                    'country' => 'MX',
-                    'address1' => 'Venustiano Carranza, San Miguel',
-                    'company' => 'Rigunes',
-                    'address2' => 'Avenida independencia',
-                    'phone' => '7228593599',
-                    'email' => 'contacto@rigunes.com.mx'
-                ],
-                'parcels' => $parcels,
-                'address_to' => [
-                    'province' => $sale->address->state,
-                    'city' => $sale->address->city,
-                    'name' => $sale->buyer->full_name,
-                    'zip' => $sale->address->zip_code,
-                    'country' => 'MX',
-                    'address1' => $sale->address->street,
-                    'company' => '-',
-                    'address2' => '-',
-                    'phone' => $sale->buyer->phone,
-                    'email' => $sale->buyer->user->email,
-                    'references' => $sale->address->references,
-                    'contents' => 'Calzado'
-                ]
-            ]);
 
-        $getShipments = $response->json();
+            /** @var ShippingInformation $shippingInfo */
+            $shippingInfo = ShippingInformation::find($sale->shipping_information->id);
 
-        $options = [];
+            $shippment = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Token token=' . env('SKYDROPX_API_TOKEN')
+            ])->get(env('SKYDROPX_URL').'/v1/shipments/'.$shipmentId);
 
-        foreach ($getShipments['included'] as $shipment){
-            if($shipment['type'] == 'rates'){
-                $options[] = $shipment;
+            $label = null;
+
+            foreach ($shippment['included'] as $rate){
+                if($rate['type'] == 'rates' && $rate['id'] == $rateId){
+                    $label = $rate;
+                }
             }
-        }
 
-        $shipmentInfo = [];
-        $amounts = [];
-
-        /** @var ShippingInformation $shipmentInformation */
-        $shippingInfo = new ShippingInformation();
-
-        foreach ($options as $option) {
-            $amounts []= $option['attributes']['total_pricing'];
-                $shipmentInfo[] = [
-                    'skydropx_id' => $option['id'],
-                    'shipping_price' => $option['attributes']['total_pricing'],
-                    'parcel_company' => $option['attributes']['provider'],
-                    'delivery_date' => $option['attributes']['days'],
-                ];
-                //dd($option['attributes']['total_pricing']);
-        }
-
-        $amountMin = min($amounts);
-
-        foreach ($shipmentInfo as $item){
-            //dd(array_keys($item));
-            if($amountMin == $item['shipping_price']){
-                $days = $item['delivery_date'];
-                $currentDate = date('Y-m-d');
-
-                $shippingInfo->skydropx_id = $item['skydropx_id'];
-                $shippingInfo->shipping_price = $item['shipping_price'];
-                $shippingInfo->parcel_company = $item['parcel_company'];
-                $shippingInfo->delivery_date = date('Y-m-d', strtotime($currentDate.'+'.$days.'days'));
-
+            if ($label != null){
+                $shippingInfo->parcel_company = $label['attributes']['provider'];
+                $shippingInfo->delivery_date = Carbon::now()->addDays($label['attributes']['days']);
+                $shippingInfo->saveOrFail();
 
                 $response = Http::withHeaders([
                     'Content-Type' => 'application/json',
                     'Authorization' => 'Token token=' . env('SKYDROPX_API_TOKEN')
                 ])
                     ->post(env('SKYDROPX_URL').'/v1/labels', [
-                        'rate_id' => (integer)$item['skydropx_id'],
+                        'rate_id' => (integer)$rateId,
                         'label_format' => 'pdf'
                     ]);
 
-                $label = $response->json();
-                $shippingInfo->guide_number = $label['data']['attributes']['tracking_number'];
-                $shippingInfo->save();
+                $resp = $response->json();
+                $shippingInfo->guide_number = $resp['data']['attributes']['tracking_number'];
+                $shippingInfo->saveOrFail();
 
-                $sale->fk_id_shipping_information = $shippingInfo->id;
-                $sale->save();
-
-                if (!$shippingInfo->save()) {
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'No se pudo guardar la categoría'
-                    ]);
-                }
-
+            } else{
                 return response()->json([
-                    'success' => true,
-                    'message' => 'Guardado correctamente'
-                ]);
+                    'success' => false,
+                    'message' => 'No existe el rate ID'
+                ],500);
             }
+
+            \DB::commit();
+            return response()->json([
+                'success' => true,
+                'message' => 'Guardado correctamente'
+            ]);
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        } catch (\Throwable $e) {
+            \DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
         }
 
     }

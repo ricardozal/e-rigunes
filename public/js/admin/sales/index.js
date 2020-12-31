@@ -9,29 +9,25 @@ $(document).ready(function () {
             {"data": "buyer.full_name"},
             {"data": "address.full_address"},
             {"data": "payment_method.name"},
-            {
-                "data": "discounts",
-                render: function (data) {
-                    return data > 0 ? 'tiene descuento' : 'No tiene descuento';
-                }
-            },
             {"data": "total_price"},
-            {
-                "data": "billing",
-                render: function (data) {
-                    return data ? 'Tiene factura' : 'No cuenta con factura';
-                }
-            },
-            {
-                "data": "promotion",
-                render: function (data) {
-                    return data ? data.coupon_code : 'No cuenta con promoción';
-                }
-            },
             {
                 "data": "shipping_information",
                 render: function (data) {
-                    return data ? data.skydropx_id : 'Aun no se ha realizado el envío'
+
+                    var text = '';
+
+                    if (data === null){
+                        text = 'Aun no se ha realizado el envío';
+                    } else {
+                        text = 'Cotización realizada: ' + '$'+data.shipping_price;
+
+                        if(data.guide_number !== null){
+                            text = 'Orden enviada con ' + data.parcel_company + ' con número de guía: ' + data.guide_number
+                        }
+
+                    }
+
+                    return text;
                 }
             },
             {
@@ -62,9 +58,24 @@ $(document).ready(function () {
                     var url = $inpUrlSkydropx.val();
                     url = url.replace('FAKE_ID', data.id);
 
-                    var ret = "<a href='" + url + "' title='Solicitar envío' data-toggle='tooltip' class='shipping-btn' style='color: #2a3d66'><span class='fas fa-shipping-fast'></span></a>";
+                    var ret = "<a href='" + url + "' title='Confirmar envío' data-toggle='tooltip' class='shipping-btn' style='color: #2a3d66'><span class='fas fa-shipping-fast'></span></a>";
                     var check = "<span title='Envío realizado' data-toggle='tooltip' style='color: #2a3d66'><i class='fas fa-check'></i></span>";
-                    return !data.fk_id_shipping_information ? ret:check;
+                    var error = "<span title='Sin cotización' data-toggle='tooltip' style='color: #2a3d66'><i class='fas fa-times'></i></span>";
+
+                    var icon = '';
+
+                    if (data.shipping_information === null){
+                        icon = error;
+                    } else {
+                        icon = ret;
+
+                        if(data.shipping_information.guide_number !== null){
+                            icon = check;
+                        }
+
+                    }
+
+                    return icon;
                 },
                 "targets": -1
             },
