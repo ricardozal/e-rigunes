@@ -1,6 +1,6 @@
 @extends('web.template.main')
 @push('scripts')
-    <script src="{{asset('js/web/search/index.js?v=1')}}"></script>
+    <script src="{{asset('js/web/search/index.js?v=2')}}"></script>
 @endpush
 @section('content')
     <div class="container-fluid">

@@ -10,7 +10,6 @@ $(window).on('hashchange', function() {
         }
     }
 });
-product-container
 $(document).ready(function() {
     $(document).on('click', '.pagination a', function (e) {
         getProducts($(this).attr('href').split('page=')[1],productName);

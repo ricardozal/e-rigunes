@@ -37,8 +37,6 @@ class HomeController extends Controller
         $productName = $request->get('productName', '');
         $products = Product::whereActive(true);
 
-        Log::info('product: '.$productName);
-
         if ($productName != '') {
             $products->where('name', 'like', '%' . $productName . '%');
         }
