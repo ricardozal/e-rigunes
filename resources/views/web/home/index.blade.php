@@ -195,6 +195,9 @@
                 </div>
             </div>
         @endforeach
+        <div class="col-12 text-center">
+            <a href="{{route('search_products')}}" class="btn btn-primary">Ver más</a>
+        </div>
     </div>
 
 
