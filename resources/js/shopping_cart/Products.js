@@ -9,6 +9,7 @@ class Products extends React.Component{
 
         const script = $("#js-shopping_cart");
         this.urlShop = script.data("urlShop");
+        this.isAuthenticate = script.data("isUser");
     }
 
     render(){
@@ -68,7 +69,7 @@ class Products extends React.Component{
                                 <div className="row">
                                     <div className="col-12 text-center">
                                         <button onClick={ () => {this.props.onBuy(2,0,0,0)} } className={'btn btn-primary mt-3 '}>COMPRAR</button>
-                                        <button onClick={ () => {this.props.onBuy(0,0,0,0)} } className={'btn btn-secondary mt-3'}>COMPRAR COMO INVITADO</button>
+                                        {!this.isAuthenticate ? <button onClick={ () => {this.props.onBuy(0,0,0,0)} } className={'btn btn-secondary mt-3'}>COMPRAR COMO INVITADO</button> : null}
                                     </div>
                                 </div>
                             </div>

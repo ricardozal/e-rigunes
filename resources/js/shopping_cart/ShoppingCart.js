@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import Products from './Products';
 import ConfirmOrder from './ConfirmOrder';
+import GuestOrder from './GuestOrder';
 import TextFormatter from "../../../public/js/web/services/TextFormatter";
 
 class ShoppingCart extends React.Component {
@@ -106,6 +107,12 @@ class ShoppingCart extends React.Component {
                 </React.Fragment>;
             } else {
                 switch(this.state.current_step){
+                    case 0:
+                        content = <GuestOrder onReturn={this.onReturn}
+                                              order={this.state.order}
+                                              onDisplayResume={this.onDisplayResume}
+                        />;
+                        break;
                     case 1:
                         content = <Products order={this.state.order}
                                             onBuy={this.onBuy}
@@ -299,7 +306,9 @@ class ShoppingCart extends React.Component {
     onBuy(step, addressId, cardId, paymentMethodId){
 
         if(!this.isAuthenticate && step === 0){
-            console.log("prueba");
+            this.setState({
+                current_step: 0,
+            });
         } else if(!this.isAuthenticate && step !== 0){
             location.replace(this.urlLogin)
         }else{
