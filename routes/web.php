@@ -141,6 +141,11 @@ Route::post(
     'Web\OrderController@updateCurrentStep'
 )->name('web_update_current_step');
 
+Route::post(
+    '/shopping-cart/get-shipping-price-guest',
+    'Web\OrderController@getShippingPriceGuest'
+)->name('web_get_shipping_price_guest');
+
 /****Payment Methods*/
 
 Route::get(

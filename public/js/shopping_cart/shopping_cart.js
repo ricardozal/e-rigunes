@@ -59273,8 +59273,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _public_js_web_services_TextFormatter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../public/js/web/services/TextFormatter */ "./public/js/web/services/TextFormatter.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59300,7 +59298,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var GuestOrder = /*#__PURE__*/function (_React$Component) {
   _inherits(GuestOrder, _React$Component);
 
@@ -59314,6 +59311,26 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     var script = $("#js-shopping_cart");
     _this.urlShop = script.data("urlShop");
+    _this.handleInputPersonalInfoChange = _this.handleInputPersonalInfoChange.bind(_assertThisInitialized(_this));
+    _this.handleInputAddressInfoChange = _this.handleInputAddressInfoChange.bind(_assertThisInitialized(_this));
+    _this.state = {
+      personalInfo: {
+        full_name: '',
+        email: '',
+        phone: ''
+      },
+      addressInfo: {
+        street: '',
+        zip_code: '',
+        ext_num: '',
+        int_num: '',
+        colony: '',
+        city: '',
+        state: 'Aguascalientes',
+        country: 'México',
+        references: ''
+      }
+    };
     return _this;
   }
 
@@ -59361,6 +59378,8 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         type: "text",
         className: "form-control",
         id: "full_name",
+        value: this.state.personalInfo.full_name,
+        onChange: this.handleInputPersonalInfoChange,
         name: "full_name"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-lg-6"
@@ -59372,6 +59391,8 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         type: "email",
         className: "form-control",
         id: "email",
+        value: this.state.personalInfo.email,
+        onChange: this.handleInputPersonalInfoChange,
         name: "email"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-lg-6"
@@ -59383,6 +59404,8 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         type: "text",
         className: "form-control",
         id: "phone",
+        value: this.state.personalInfo.phone,
+        onChange: this.handleInputPersonalInfoChange,
         name: "phone"
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row mt-3"
@@ -59398,6 +59421,8 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         type: "text",
         className: "form-control",
         id: "street",
+        value: this.state.addressInfo.street,
+        onChange: this.handleInputAddressInfoChange,
         name: "street"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-lg-6"
@@ -59409,6 +59434,8 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         type: "text",
         className: "form-control",
         id: "zip_code",
+        value: this.state.addressInfo.zip_code,
+        onChange: this.handleInputAddressInfoChange,
         name: "zip_code"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-lg-6"
@@ -59420,6 +59447,8 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         type: "number",
         className: "form-control",
         id: "ext_num",
+        value: this.state.addressInfo.ext_num,
+        onChange: this.handleInputAddressInfoChange,
         name: "ext_num"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-lg-6"
@@ -59431,6 +59460,8 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         type: "number",
         className: "form-control",
         id: "int_num",
+        value: this.state.addressInfo.int_num,
+        onChange: this.handleInputAddressInfoChange,
         name: "int_num"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-lg-6"
@@ -59442,6 +59473,8 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         type: "text",
         className: "form-control",
         id: "colony",
+        value: this.state.addressInfo.colony,
+        onChange: this.handleInputAddressInfoChange,
         name: "colony"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-lg-6"
@@ -59453,6 +59486,8 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         type: "text",
         className: "form-control",
         id: "city",
+        value: this.state.addressInfo.city,
+        onChange: this.handleInputAddressInfoChange,
         name: "city"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-lg-6"
@@ -59463,7 +59498,9 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
       }, "Estado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
         id: "state",
-        name: "state"
+        name: "state",
+        value: this.state.addressInfo.state,
+        onChange: this.handleInputAddressInfoChange
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "Aguascalientes"
       }, "Aguascalientes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -59537,7 +59574,9 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
       }, "Pa\xEDs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control",
         id: "country",
-        name: "country"
+        name: "country",
+        value: this.state.addressInfo.country,
+        onChange: this.handleInputAddressInfoChange
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "M\xE9xico"
       }, "M\xE9xico")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -59549,7 +59588,10 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
       }, "Referencias"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "form-control",
         id: "references",
-        rows: "3"
+        rows: "3",
+        value: this.state.addressInfo.references,
+        onChange: this.handleInputAddressInfoChange,
+        name: "references"
       }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-lg-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -59591,10 +59633,48 @@ var GuestOrder = /*#__PURE__*/function (_React$Component) {
         className: "col-12 text-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          _this2.props.onBuy(0, 0, 0, 0);
+          _this2.onContinueGuest();
         },
         className: 'btn btn-primary mt-3 '
-      }, "PAGAR"))))))));
+      }, "CONTINUAR"))))))));
+    }
+  }, {
+    key: "onContinueGuest",
+    value: function onContinueGuest() {
+      Swal.fire({
+        title: 'Por favor, espere...',
+        allowEscapeKey: false,
+        allowOutsideClick: false
+      });
+      Swal.showLoading();
+      this.props.getShippingPriceAsGuest(this.state.personalInfo, this.state.addressInfo, function () {
+        console.log('DONE');
+        Swal.close();
+      });
+    }
+  }, {
+    key: "handleInputPersonalInfoChange",
+    value: function handleInputPersonalInfoChange(event) {
+      var target = event.target;
+      var value = target.value;
+      var name = target.name;
+      var personalIn = this.state.personalInfo;
+      personalIn[name] = value;
+      this.setState({
+        personalInfo: personalIn
+      });
+    }
+  }, {
+    key: "handleInputAddressInfoChange",
+    value: function handleInputAddressInfoChange(event) {
+      var target = event.target;
+      var value = target.value;
+      var name = target.name;
+      var addressIn = this.state.addressInfo;
+      addressIn[name] = value;
+      this.setState({
+        addressInfo: addressIn
+      });
     }
   }]);
 
@@ -60090,6 +60170,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
     _this.urlUpdateCurrentStep = script.dataset.urlUpdateCurrentStep;
     _this.urlCompleteOrder = script.dataset.urlCompleteOrder;
     _this.urlGetShippingPrice = script.dataset.urlGetShippingPrice;
+    _this.urlGetShippingPriceGuest = script.dataset.urlGetShippingPriceGuest;
     _this.updateVariant = _this.updateVariant.bind(_assertThisInitialized(_this));
     _this.onBuy = _this.onBuy.bind(_assertThisInitialized(_this));
     _this.onReturn = _this.onReturn.bind(_assertThisInitialized(_this));
@@ -60097,6 +60178,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
     _this.attachDiscount = _this.attachDiscount.bind(_assertThisInitialized(_this));
     _this.deleteDiscount = _this.deleteDiscount.bind(_assertThisInitialized(_this));
     _this.getShippingPrice = _this.getShippingPrice.bind(_assertThisInitialized(_this));
+    _this.getShippingPriceAsGuest = _this.getShippingPriceAsGuest.bind(_assertThisInitialized(_this));
     _this.state = {
       isLoading: true,
       order: undefined,
@@ -60176,7 +60258,8 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
               content = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GuestOrder__WEBPACK_IMPORTED_MODULE_4__["default"], {
                 onReturn: this.onReturn,
                 order: this.state.order,
-                onDisplayResume: this.onDisplayResume
+                onDisplayResume: this.onDisplayResume,
+                getShippingPriceAsGuest: this.getShippingPriceAsGuest
               });
               break;
 
@@ -60282,16 +60365,81 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
       })["catch"](function (response) {});
     }
   }, {
+    key: "getShippingPriceAsGuest",
+    value: function getShippingPriceAsGuest(personalInformation, addressInformation, onSuccess) {
+      var _this6 = this;
+
+      var validated = true;
+
+      if (personalInformation.full_name === null || personalInformation.full_name.split(' ').join('') === "") {
+        validated = false;
+      } else if (personalInformation.email === null || personalInformation.email.split(' ').join('') === "") {
+        validated = false;
+      } else if (personalInformation.phone === null || personalInformation.phone.split(' ').join('') === "") {
+        validated = false;
+      } else if (addressInformation.street === null || addressInformation.street.split(' ').join('') === "") {
+        validated = false;
+      } else if (addressInformation.zip_code === null || addressInformation.zip_code.split(' ').join('') === "") {
+        validated = false;
+      } else if (addressInformation.ext_num === null || addressInformation.ext_num.split(' ').join('') === "") {
+        validated = false;
+      } else if (addressInformation.colony === null || addressInformation.colony.split(' ').join('') === "") {
+        validated = false;
+      } else if (addressInformation.city === null || addressInformation.city.split(' ').join('') === "") {
+        validated = false;
+      } else if (addressInformation.state === null || addressInformation.state.split(' ').join('') === "") {
+        validated = false;
+      } else if (addressInformation.country === null || addressInformation.country.split(' ').join('') === "") {
+        validated = false;
+      } else if (addressInformation.references === null || addressInformation.references.split(' ').join('') === "") {
+        validated = false;
+      }
+
+      if (validated) {
+        var data = {
+          addressInfo: addressInformation,
+          personalInfo: personalInformation
+        };
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlGetShippingPriceGuest, data).then(function (response) {
+          if (response.data.success) {
+            _this6.setState({
+              order: response.data.data
+            });
+
+            onSuccess();
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Atención',
+              text: 'Algo salió mal'
+            });
+          }
+        })["catch"](function (err) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Atención',
+            text: err
+          });
+        });
+      } else {
+        Swal.fire({
+          icon: 'info',
+          title: 'Atención',
+          text: 'Debes completar todos los campos'
+        });
+      }
+    }
+  }, {
     key: "getShippingPrice",
     value: function getShippingPrice(id, onSuccess) {
-      var _this6 = this;
+      var _this7 = this;
 
       var data = {
         address_id: id
       };
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlGetShippingPrice, data).then(function (response) {
         if (response.data.success) {
-          _this6.setState({
+          _this7.setState({
             order: response.data.data
           });
 
@@ -60362,7 +60510,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "onReturn",
     value: function onReturn() {
-      var _this7 = this;
+      var _this8 = this;
 
       var data = {
         step: 1
@@ -60372,7 +60520,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
       });
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlUpdateCurrentStep, data).then(function (response) {
         if (response.status === 200) {
-          _this7.setState({
+          _this8.setState({
             current_step: response.data.data.current_step,
             isLoading: false
           });
@@ -60384,7 +60532,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "onBuy",
     value: function onBuy(step, addressId, cardId, paymentMethodId) {
-      var _this8 = this;
+      var _this9 = this;
 
       if (!this.isAuthenticate && step === 0) {
         this.setState({
@@ -60403,7 +60551,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
             payment_method: paymentMethodId
           };
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlCompleteOrder, data).then(function (response) {
-            _this8.setState({
+            _this9.setState({
               isLoading: false
             });
 
@@ -60425,7 +60573,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
               });
             }
           })["catch"](function (err) {
-            _this8.setState({
+            _this9.setState({
               isLoading: false
             });
 
@@ -60444,7 +60592,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
           });
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlUpdateCurrentStep, _data).then(function (response) {
             if (response.status === 200) {
-              _this8.setState({
+              _this9.setState({
                 current_step: response.data.data.current_step,
                 isLoading: false
               });

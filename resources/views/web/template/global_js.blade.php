@@ -40,4 +40,5 @@
         data-sandbox-paypal-id="{{env('APP_DEBUG') ? env('PAYPAL_CLIENT_ID') : '--'}}"
         data-production-paypal-id="{{env('APP_DEBUG') ? '--' : env('PAYPAL_CLIENT_ID')}}"
         data-url-get-shipping-price="{{route('ecommerce_get_shipping_price')}}"
+        data-url-get-shipping-price-guest="{{route('web_get_shipping_price_guest')}}"
 ></script>

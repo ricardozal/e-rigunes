@@ -10,6 +10,7 @@ use App\Models\Promotion;
 use App\Models\Sale;
 use App\Models\Variant;
 use App\Services\OrderService;
+use App\Services\Skydropx;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 
@@ -182,6 +183,15 @@ class OrderController extends Controller
             'paymentMethods' => $paymentMethods
         ]);
 
+    }
+
+    public function getShippingPriceGuest(Request $request){
+        $order = Skydropx::getShipmentGuest($request->all());
+
+        return response()->json([
+            'success' => true,
+            "data" => $order
+        ]);
     }
 
 }

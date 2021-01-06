@@ -21,6 +21,7 @@ class ShoppingCart extends React.Component {
         this.urlUpdateCurrentStep = script.dataset.urlUpdateCurrentStep;
         this.urlCompleteOrder = script.dataset.urlCompleteOrder;
         this.urlGetShippingPrice = script.dataset.urlGetShippingPrice;
+        this.urlGetShippingPriceGuest = script.dataset.urlGetShippingPriceGuest;
 
         this.updateVariant = this.updateVariant.bind(this);
         this.onBuy = this.onBuy.bind(this);
@@ -29,6 +30,7 @@ class ShoppingCart extends React.Component {
         this.attachDiscount = this.attachDiscount.bind(this);
         this.deleteDiscount = this.deleteDiscount.bind(this);
         this.getShippingPrice = this.getShippingPrice.bind(this);
+        this.getShippingPriceAsGuest = this.getShippingPriceAsGuest.bind(this);
 
         this.state = {
             isLoading: true,
@@ -111,6 +113,7 @@ class ShoppingCart extends React.Component {
                         content = <GuestOrder onReturn={this.onReturn}
                                               order={this.state.order}
                                               onDisplayResume={this.onDisplayResume}
+                                              getShippingPriceAsGuest={this.getShippingPriceAsGuest}
                         />;
                         break;
                     case 1:
@@ -212,6 +215,69 @@ class ShoppingCart extends React.Component {
             }).catch(response => {
 
         })
+    }
+
+    getShippingPriceAsGuest(personalInformation, addressInformation, onSuccess){
+
+        let validated = true;
+
+        if(personalInformation.full_name === null || personalInformation.full_name.split(' ').join('') === ""){
+            validated = false;
+        } else if (personalInformation.email === null || personalInformation.email.split(' ').join('') === ""){
+            validated = false;
+        } else if (personalInformation.phone === null || personalInformation.phone.split(' ').join('') === ""){
+            validated = false;
+        } else if (addressInformation.street === null || addressInformation.street.split(' ').join('') === ""){
+            validated = false;
+        } else if (addressInformation.zip_code === null || addressInformation.zip_code.split(' ').join('') === ""){
+            validated = false;
+        } else if (addressInformation.ext_num === null || addressInformation.ext_num.split(' ').join('') === ""){
+            validated = false;
+        } else if (addressInformation.colony === null || addressInformation.colony.split(' ').join('') === ""){
+            validated = false;
+        } else if (addressInformation.city === null || addressInformation.city.split(' ').join('') === ""){
+            validated = false;
+        } else if (addressInformation.state === null || addressInformation.state.split(' ').join('') === ""){
+            validated = false;
+        } else if (addressInformation.country === null || addressInformation.country.split(' ').join('') === ""){
+            validated = false;
+        } else if (addressInformation.references === null || addressInformation.references.split(' ').join('') === ""){
+            validated = false;
+        }
+
+        if(validated){
+            let data = {addressInfo: addressInformation, personalInfo: personalInformation};
+            axios.post(this.urlGetShippingPriceGuest, data)
+                .then(response => {
+                    if (response.data.success) {
+                        this.setState({
+                            order: response.data.data
+                        });
+                        onSuccess();
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Atención',
+                            text: 'Algo salió mal',
+                        });
+                    }
+
+                })
+                .catch(err => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Atención',
+                        text: err,
+                    });
+                });
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Atención',
+                text: 'Debes completar todos los campos',
+            });
+        }
+
     }
 
     getShippingPrice(id, onSuccess) {
