@@ -14,20 +14,20 @@ class GuestOrder extends React.Component{
 
         this.state = {
             personalInfo: {
-                full_name: '',
-                email: '',
-                phone: '',
+                full_name: this.props.order.personal_info != null ? this.props.order.personal_info.full_name : '',
+                email: this.props.order.personal_info != null ? this.props.order.personal_info.email : '',
+                phone: this.props.order.personal_info != null ? this.props.order.personal_info.phone : '',
             },
             addressInfo: {
-                street: '',
-                zip_code: '',
-                ext_num: '',
-                int_num: '',
-                colony: '',
-                city: '',
+                street: this.props.order.address_info != null ? this.props.order.address_info.street : '',
+                zip_code: this.props.order.address_info != null ? this.props.order.address_info.zip_code : '',
+                ext_num: this.props.order.address_info != null ? this.props.order.address_info.ext_num : '',
+                int_num: this.props.order.address_info != null ? (this.props.order.address_info.int_num != null ? this.props.order.address_info.int_num : '') : '',
+                colony: this.props.order.address_info != null ? this.props.order.address_info.colony : '',
+                city: this.props.order.address_info != null ? this.props.order.address_info.city : '',
                 state: 'Aguascalientes',
                 country: 'México',
-                references: '',
+                references: this.props.order.address_info != null ? this.props.order.address_info.references : '',
             }
         }
     }
@@ -44,7 +44,7 @@ class GuestOrder extends React.Component{
                                         <h3 className="color-primary text-thin my-3"><i className="fas fa-info-circle"></i> &nbsp; Información de envío</h3>
                                     </div>
                                     <div className="col-12 col-lg-4">
-                                        <button onClick={ () => {this.props.onReturn()} } className="btn btn-primary my-3">REGRESAR</button>
+                                        <button onClick={ () => {this.props.onReturn(1)} } className="btn btn-primary my-3">REGRESAR</button>
                                     </div>
                                 </div>
                                 <div className="row mt-3">
@@ -218,7 +218,6 @@ class GuestOrder extends React.Component{
         });
         Swal.showLoading();
         this.props.getShippingPriceAsGuest(this.state.personalInfo, this.state.addressInfo, () => {
-            console.log('DONE');
             Swal.close();
         });
     }

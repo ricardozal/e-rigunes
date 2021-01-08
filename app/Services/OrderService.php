@@ -22,6 +22,9 @@ class OrderService
             $order["shipping_price"] = 0;
             $order["shipping_id"] = '';
             $order["rate_id"] = '';
+            $order["is_guest"] = false;
+            $order["address_info"] = null;
+            $order["personal_info"] = null;
             OrderService::saveOrder($order);
         }
 

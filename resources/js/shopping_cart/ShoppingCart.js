@@ -3,6 +3,7 @@ import axios from 'axios'
 import Products from './Products';
 import ConfirmOrder from './ConfirmOrder';
 import GuestOrder from './GuestOrder';
+import ConfirmOrderGuest from './ConfirmOrderGuest';
 import TextFormatter from "../../../public/js/web/services/TextFormatter";
 
 class ShoppingCart extends React.Component {
@@ -127,12 +128,20 @@ class ShoppingCart extends React.Component {
                         />;
                         break;
                     case 2:
-                        content = <ConfirmOrder order={this.state.order}
-                                                onBuy={this.onBuy}
-                                                onReturn={this.onReturn}
-                                                getShippingPrice={this.getShippingPrice}
-                                                onDisplayResume={this.onDisplayResume}
-                        />;
+                        if (this.state.order.is_guest){
+                            content = <ConfirmOrderGuest order={this.state.order}
+                                                    onReturn={this.onReturn}
+                                                    onDisplayResume={this.onDisplayResume}
+                            />;
+                        } else {
+                            content = <ConfirmOrder order={this.state.order}
+                                                    onBuy={this.onBuy}
+                                                    onReturn={this.onReturn}
+                                                    getShippingPrice={this.getShippingPrice}
+                                                    onDisplayResume={this.onDisplayResume}
+                            />;
+                        }
+
                         break;
                 }
             }
@@ -251,7 +260,8 @@ class ShoppingCart extends React.Component {
                 .then(response => {
                     if (response.data.success) {
                         this.setState({
-                            order: response.data.data
+                            order: response.data.data,
+                            current_step: 2
                         });
                         onSuccess();
                     } else {
@@ -344,10 +354,10 @@ class ShoppingCart extends React.Component {
 
     }
 
-    onReturn(){
+    onReturn(step){
 
         const data = {
-            step: 1
+            step: step
         };
 
         this.setState({

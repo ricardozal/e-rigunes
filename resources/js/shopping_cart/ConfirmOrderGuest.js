@@ -1,71 +1,38 @@
 import React from 'react';
 import TextFormatter from "../../../public/js/web/services/TextFormatter";
-import axios from 'axios'
-import PaypalCheckoutButton from './PaypalCheckoutButton';
+import PaypalCheckoutButton from "./PaypalCheckoutButton";
+import axios from "axios";
 
-class ConfirmOrder extends React.Component{
+class ConfirmOrderGuest extends React.Component{
 
     constructor(props) {
         super(props);
 
         const script = document.getElementById("js-shopping_cart");
-        this.urlAddressCreate = script.dataset.urlAddressCreate;
-        this.urlCardCreate = script.dataset.urlCardCreate;
-        this.urlAddresses = script.dataset.urlAddresses;
-        this.urlPaymentMethods = script.dataset.urlPaymentMethods;
-        this.urlCards = script.dataset.urlCards;
         this.envPaypal = script.dataset.envPaypal;
         this.sandboxPaypalId = script.dataset.sandboxPaypalId;
         this.productionPaypalId = script.dataset.productionPaypalId;
-
-        this.state = {
-            addressId: 0,
-            addresses: undefined,
-            isLoading: true,
-            paymentMethods: undefined,
-            paymentMethodSelected: 0,
-            cards: undefined,
-            cardSelected: 0,
-            orderForPaypal: undefined
-        };
-
-        this.nextStep = this.nextStep.bind(this);
-        this.selectAddress = this.selectAddress.bind(this);
-        this.selectPaymentMethod = this.selectPaymentMethod.bind(this);
+        this.urlPaymentMethods = script.dataset.urlPaymentMethods;
 
         this.setError = this.setError.bind(this);
         this.setCanceled = this.setCanceled.bind(this);
         this.setPaypalCompleted = this.setPaypalCompleted.bind(this);
         this.setLoading = this.setLoading.bind(this);
+
+        this.state = {
+            isLoading: true,
+            orderForPaypal: undefined,
+            paymentMethodSelected: 0,
+            paymentMethods: undefined,
+        };
     }
 
     componentDidMount() {
-
         axios
             .get(this.urlPaymentMethods)
             .then(response => {
                 this.setState({
-                    paymentMethods: response.data.paymentMethods
-                });
-            }).catch(response => {
-
-        });
-
-        axios
-            .get(this.urlCards)
-            .then(response => {
-                this.setState({
-                    cards: response.data.credit_cards,
-                });
-            }).catch(response => {
-
-        });
-
-        axios
-            .get(this.urlAddresses)
-            .then(response => {
-                this.setState({
-                    addresses: response.data.addresses,
+                    paymentMethods: response.data.paymentMethods,
                     isLoading: false,
                 });
             }).catch(response => {
@@ -108,36 +75,7 @@ class ConfirmOrder extends React.Component{
 
     }
 
-    setError(){
-        this.setState({ isLoading: false });
-        Swal.fire({
-            icon: 'error',
-            title: 'Atención',
-            text: 'Algo salió mal en el proceso de pago, intente más tarde.',
-        });
-
-    }
-
-    setCanceled(){
-        this.setState({ isLoading: false });
-        Swal.fire({
-            icon: 'info',
-            title: 'Atención',
-            text: 'El pago se ha cancelado.',
-        });
-    }
-
-    setLoading(){
-        this.setState({ isLoading: true });
-    }
-
-    setPaypalCompleted(){
-        this.setState({ isLoading: false });
-        this.props.onBuy(3,this.state.addressId,0, 1);
-    }
-
     render(){
-
         if (this.state.isLoading) {
             return (
                 <React.Fragment>
@@ -170,18 +108,33 @@ class ConfirmOrder extends React.Component{
                         <div className="card border-radius mb-3 mb-lg-0">
                             <div className="card-body">
                                 <div className="row">
-                                    <div className="col-12">
-                                        <h3 className="color-primary text-thin my-3"><i className="fas fa-shopping-cart"></i> &nbsp; Información de compra</h3>
+                                    <div className="col-12 col-lg-8">
+                                        <h3 className="color-primary text-thin my-3"><i className="fas fa-info-circle"></i> &nbsp; Información de envío</h3>
+                                    </div>
+                                    <div className="col-12 col-lg-4">
+                                        <button onClick={ () => {this.props.onReturn(0)} } className="btn btn-primary my-3">REGRESAR</button>
                                     </div>
                                 </div>
                                 <div className="row mt-3">
                                     <div className="col-12">
-                                        <span className="color-black bottom-border">Domicilios</span>&nbsp;&nbsp;&nbsp;
-                                        <a href={this.urlAddressCreate+"?cart=1"}
-                                           className="btn btn-primary-light btn-sm">Agregar</a>
+                                        <h3>Información personal</h3>
                                     </div>
                                     <div className="col-12">
-                                        {this.displayAddresses()}
+                                        <p><strong>Nombre completo: </strong> {this.props.order.personal_info.full_name}</p>
+                                        <p><strong>Correo electrónico: </strong> {this.props.order.personal_info.email}</p>
+                                        <p><strong>Teléfono: </strong> {this.props.order.personal_info.phone}</p>
+                                    </div>
+                                </div>
+                                <div className="row mt-3">
+                                    <div className="col-12">
+                                        <h3>Dirección</h3>
+                                        <p>{this.props.order.address_info.street}
+                                            , No. ext {this.props.order.address_info.ext_num}
+                                            , No. int {this.props.order.address_info.int_num != null ? this.props.order.address_info.int_num : 'Sin número interior'}
+                                            , Colonia {this.props.order.address_info.colony}
+                                            , Código postal {this.props.order.address_info.zip_code}
+                                            , {this.props.order.address_info.state}
+                                            , {this.props.order.address_info.country}</p>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -203,7 +156,7 @@ class ConfirmOrder extends React.Component{
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-12 mt-3">
-                                        <h4 className="color-primary text-thin"><i className="fas fa-shopping-cart"></i> &nbsp; Confirmación orden de compra</h4>
+                                        <h4 className="color-primary text-thin"><i className="fas fa-shopping-cart"></i> &nbsp; Orden de compra</h4>
                                         {this.props.onDisplayResume()}
                                     </div>
                                     <div className="col-12 mb-3">
@@ -219,41 +172,12 @@ class ConfirmOrder extends React.Component{
                                         <h4 className={'color-primary text-thin'}>Total: {TextFormatter.asMoney(parseFloat(this.props.order.total_price))}</h4>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <div className="col-12 text-center">
-                                        <button onClick={ () => {this.props.onReturn(1)} } className={'btn btn-primary mt-3 '}>EDITAR</button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         );
-    }
-
-    nextStep(){
-        if(this.state.addressId !== 0 && this.state.cardSelected !== 0){
-            this.props.onBuy(3,this.state.addressId,this.state.cardSelected, 2);
-        } else {
-            Swal.fire({
-                icon: 'info',
-                title: 'Atención',
-                text: 'Primero debes seleccionar una tarjeta como método de pago',
-            });
-        }
-    }
-
-    selectAddress(id){
-        this.setState({
-            addressId: id
-        });
-    }
-
-    selectCard(id){
-        this.setState({
-            cardSelected: id
-        });
     }
 
     paymentMethodSelected(){
@@ -276,14 +200,6 @@ class ConfirmOrder extends React.Component{
                 </div>;
             case 2:
                 return <div className="row">
-                    <div className="col-12">
-                        <span className="color-black bottom-border">Tarjetas guardadas</span>&nbsp;&nbsp;&nbsp;
-                        <a href={this.urlCardCreate+"?cart=1"}
-                           className="btn btn-primary-light btn-sm">Agregar</a>
-                    </div>
-                    <div className="col-12">
-                        {this.displayCards()}
-                    </div>
                     <div className="col-12 text-center">
                         <button onClick={ () => {this.nextStep()} } className={'btn btn-primary mt-3 '}>PAGAR</button>
                     </div>
@@ -291,93 +207,6 @@ class ConfirmOrder extends React.Component{
 
         }
 
-    }
-
-    selectPaymentMethod(id){
-        if(this.state.addressId !== 0){
-            this.setState({
-                paymentMethodSelected: id
-            });
-        } else {
-            Swal.fire({
-                icon: 'info',
-                title: 'Atención',
-                text: 'Primero debes seleccionar una dirección de envío',
-            });
-        }
-    }
-
-    displayCards(){
-
-        const cards = this.state.cards;
-        let content = [];
-        if(cards.length > 0) {
-            cards.forEach((card, index) => {
-
-                content.push(<div key={'card-' + index}
-                                  className={card.id === this.state.cardSelected ? 'row my-5 card-address card-selected' : 'row my-5 card-address'}
-                                  onClick={() => {
-                                      this.selectCard(card.id)
-                                  }}>
-                    <div className="col-8 mx-auto p-2">
-                        <strong>{card.cardholder}</strong>
-                        <p>Número de tarjeta: {card.card_number}</p>
-                        <p>Vencimiento: {card.expiration_month}/{card.expiration_year}</p>
-                    </div>
-                </div>);
-            });
-        } else{
-            content.push(
-                <div key={'card-Non'} className={'row'}>
-                    <div className="col-12 text-center">
-                        <h5 className={'d-block'}>Aún no has agregado tarjetas.</h5>
-                    </div>
-                </div>
-            );
-        }
-
-        return content;
-
-    }
-
-    displayAddresses() {
-        const addresses = this.state.addresses;
-        let content = [];
-        if(addresses.length > 0) {
-            addresses.forEach((address, index) => {
-
-                content.push(<div key={'address-' + index}
-                                  className={address.id === this.state.addressId ? 'row my-5 card-address card-selected' : 'row my-5 card-address'}
-                                  onClick={() => {
-
-                                      Swal.fire({
-                                          title: 'Por favor, espere...',
-                                          allowEscapeKey: false,
-                                          allowOutsideClick: false
-                                      });
-                                      Swal.showLoading();
-                                      this.props.getShippingPrice(address.id, () => {
-                                          this.selectAddress(address.id);
-                                          this.makeOrderForPaypal();
-                                          Swal.close();
-                                      });
-                                  }}>
-                    <div className="col-12 p-4">
-                        {address.full_address}
-                    </div>
-                </div>);
-            });
-        } else{
-            content.push(
-                <div key={'card-Non'} className={'row'}>
-                    <div className="col-12 text-center">
-                        <h5 className={'d-block'}>Aún no has agregado direcciones.</h5>
-                    </div>
-                </div>
-            );
-        }
-
-        return content;
     }
 
     displayPaymentMethods(){
@@ -407,10 +236,48 @@ class ConfirmOrder extends React.Component{
         return content;
     }
 
+    setError(){
+        this.setState({ isLoading: false });
+        Swal.fire({
+            icon: 'error',
+            title: 'Atención',
+            text: 'Algo salió mal en el proceso de pago, intente más tarde.',
+        });
+
+    }
+
+    setCanceled(){
+        this.setState({ isLoading: false });
+        Swal.fire({
+            icon: 'info',
+            title: 'Atención',
+            text: 'El pago se ha cancelado.',
+        });
+    }
+
+    setLoading(){
+        this.setState({ isLoading: true });
+    }
+
+    setPaypalCompleted(){
+        this.setState({ isLoading: false });
+        this.props.onBuy(3,-1,-1, 1);
+    }
+
     numberFormatPaypal( num ) {
         return num.toFixed(2)
     }
 
+    selectPaymentMethod(id){
+        this.setState({
+            paymentMethodSelected: id
+        });
+
+    }
+
+    nextStep(){
+        this.props.onBuy(3,-1,-1, 2);
+    }
 }
 
-export default ConfirmOrder;
+export default ConfirmOrderGuest;

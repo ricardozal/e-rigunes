@@ -92,6 +92,12 @@ class Skydropx
         $order["shipping_price"] = $cheapestOption['price'];
         $order["rate_id"] = $cheapestOption['id'];
 
+        // Save order information
+        $order["is_guest"] = true;
+        $order["address_info"] = $info['addressInfo'];
+        $order["personal_info"] = $info['personalInfo'];
+        $order["current_step"] = 2;
+
         OrderService::saveOrder(Sale::computeTotal($order));
 
         return $order;

@@ -166,6 +166,11 @@ class OrderController extends Controller
 
         $order = OrderService::getCurrentOrder();
         $order["current_step"] = $step;
+
+        if($step == 1){
+            $order["is_guest"] = false;
+        }
+
         OrderService::saveOrder(Sale::computeTotal($order));
 
         return response()->json([
