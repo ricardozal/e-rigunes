@@ -146,6 +146,11 @@ Route::post(
     'Web\OrderController@getShippingPriceGuest'
 )->name('web_get_shipping_price_guest');
 
+Route::get(
+    '/shopping-cart/create-payment-intent',
+    'Web\OrderController@createPaymentIntentStripe'
+)->name('web_create_payment_stripe');
+
 /****Payment Methods*/
 
 Route::get(

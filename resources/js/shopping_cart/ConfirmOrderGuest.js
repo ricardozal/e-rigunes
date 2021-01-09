@@ -1,4 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+import CheckoutForm from './CheckoutForm';
 import TextFormatter from "../../../public/js/web/services/TextFormatter";
 import PaypalCheckoutButton from "./PaypalCheckoutButton";
 import axios from "axios";
@@ -13,6 +18,8 @@ class ConfirmOrderGuest extends React.Component{
         this.sandboxPaypalId = script.dataset.sandboxPaypalId;
         this.productionPaypalId = script.dataset.productionPaypalId;
         this.urlPaymentMethods = script.dataset.urlPaymentMethods;
+
+        this.stripePromise = loadStripe(script.dataset.stripePublic);
 
         this.setError = this.setError.bind(this);
         this.setCanceled = this.setCanceled.bind(this);
@@ -200,8 +207,10 @@ class ConfirmOrderGuest extends React.Component{
                 </div>;
             case 2:
                 return <div className="row">
-                    <div className="col-12 text-center">
-                        <button onClick={ () => {this.nextStep()} } className={'btn btn-primary mt-3 '}>PAGAR</button>
+                    <div className="col-12">
+                        <Elements stripe={this.stripePromise}>
+                            <CheckoutForm />
+                        </Elements>
                     </div>
                 </div>;
 

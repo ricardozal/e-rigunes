@@ -1,4 +1,7 @@
 @extends('web.template.main')
+@push('css')
+    <link rel="stylesheet" href="{{asset('css/CardSectionStyles.css')}}">
+@endpush
 @section('title','Carrito de compras')
 @section('content')
     <div class="container-fluid p-0 bg-primary-light">

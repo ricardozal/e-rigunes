@@ -13,6 +13,9 @@ use App\Services\OrderService;
 use App\Services\Skydropx;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
+use Stripe\Exception\ApiErrorException;
+use Stripe\PaymentIntent;
+use Stripe\Stripe;
 
 class OrderController extends Controller
 {
@@ -197,6 +200,44 @@ class OrderController extends Controller
             'success' => true,
             "data" => $order
         ]);
+    }
+
+    public function createPaymentIntentStripe()
+    {
+        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+        $order = OrderService::getCurrentOrder();
+        $total = ($order->total_price) * 100;
+
+        try{
+            $intent = PaymentIntent::create([
+                'amount' => $total,
+                'currency' => 'mxn',
+            ]);
+
+            if($intent->status === 'succeeded'){
+                return response()->json([
+                    'success' => true,
+                    'message' => 'exito',
+                    'client_secret' => $intent->client_secret
+                ]);
+
+            }else{
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Algo salio mal',
+                    'client_secret' => null
+
+                ]);
+            }
+        } catch (ApiErrorException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+                'client_secret' => null
+
+            ]);
+        }
+
     }
 
 }
