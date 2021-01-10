@@ -166,7 +166,18 @@ class ShoppingCartController extends Controller
                 $sale->fk_id_shipping_address = $address == null ? null : $address->id;
 
                 if ($buyer == null && $address == null){
-                    $information =  'Calle: '. $order["address_info"]['street'];
+                    $information =  'Calle: '. $order["address_info"]['street'].
+                                    ', Código postal: '.$order["address_info"]['zip_code'].
+                                    ', Número exterior: '.$order["address_info"]['ext_num'].
+                                    ', Número interior: '.($order["address_info"]['int_num'] == null ? ' - ' : $order["address_info"]['int_num']).
+                                    ', Colonia: '.$order["address_info"]['colony'].
+                                    ', Ciudad: '.$order["address_info"]['city'].
+                                    ', Estado: '.$order["address_info"]['state'].
+                                    ', País: '.$order["address_info"]['country'].
+                                    ', Referecias: '.$order["address_info"]['references'].
+                                    ', Nombre del comprador: '.$order["personal_info"]['full_name'].
+                                    ', Correo electrónico: '.$order["personal_info"]['email'].
+                                    ', Teléfono: '.$order["personal_info"]['phone'];
                     $sale->comments = $information;
                 }
 

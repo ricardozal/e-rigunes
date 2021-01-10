@@ -6,8 +6,18 @@ $(document).ready(function () {
         "ajax": $('#inp-url-index-content').val(),
         "processing": true,
         "columns": [
-            {"data": "buyer.full_name"},
-            {"data": "address.full_address"},
+            {
+                "data": "buyer",
+                render: function (data) {
+                    return data === null ? 'Invitado' : data.full_name;
+                }
+            },
+            {
+                "data": null,
+                render: function (data, type, row){
+                    return data.address === null ? data.comments : data.address.full_address;
+                }
+            },
             {"data": "payment_method.name"},
             {"data": "total_price"},
             {

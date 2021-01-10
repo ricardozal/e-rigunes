@@ -24,6 +24,7 @@ class ShoppingCart extends React.Component {
         this.urlCompleteOrderGuest = script.dataset.urlCompleteOrderGuest;
         this.urlGetShippingPrice = script.dataset.urlGetShippingPrice;
         this.urlGetShippingPriceGuest = script.dataset.urlGetShippingPriceGuest;
+        this.urlShop = script.dataset.urlShop;
 
         this.updateVariant = this.updateVariant.bind(this);
         this.onBuy = this.onBuy.bind(this);
@@ -390,17 +391,21 @@ class ShoppingCart extends React.Component {
 
         axios.post(this.urlCompleteOrderGuest, data)
             .then(response => {
-                this.setState({
-                    isLoading: false,
-                });
                 if (response.status === 200) {
                     if (response.data.success) {
-                        Swal.fire(
-                            'Perfecto!',
-                            'Tu compra se ha realizado con exito, revisa tu correo para ver tu resumen!',
-                            'success'
-                        );
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Listo!',
+                            text: 'Tu compra se ha realizado con exito, revisa tu correo para ver tu resumen',
+                            allowEscapeKey: false,
+                            allowOutsideClick: false
+                        }).then(()=>{
+                            window.location.href = this.urlShop;
+                        });
                     } else {
+                        this.setState({
+                            isLoading: false,
+                        });
                         Swal.fire({
                             icon: 'error',
                             title: 'Atención',
@@ -408,6 +413,9 @@ class ShoppingCart extends React.Component {
                         });
                     }
                 } else {
+                    this.setState({
+                        isLoading: false,
+                    });
                     Swal.fire({
                         icon: 'error',
                         title: 'Atención',

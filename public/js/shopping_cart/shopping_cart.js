@@ -62317,6 +62317,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
     _this.urlCompleteOrderGuest = script.dataset.urlCompleteOrderGuest;
     _this.urlGetShippingPrice = script.dataset.urlGetShippingPrice;
     _this.urlGetShippingPriceGuest = script.dataset.urlGetShippingPriceGuest;
+    _this.urlShop = script.dataset.urlShop;
     _this.updateVariant = _this.updateVariant.bind(_assertThisInitialized(_this));
     _this.onBuy = _this.onBuy.bind(_assertThisInitialized(_this));
     _this.onBuyGuest = _this.onBuyGuest.bind(_assertThisInitialized(_this));
@@ -62699,14 +62700,22 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
         payment_method: paymentMethodId
       };
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlCompleteOrderGuest, data).then(function (response) {
-        _this9.setState({
-          isLoading: false
-        });
-
         if (response.status === 200) {
           if (response.data.success) {
-            Swal.fire('Perfecto!', 'Tu compra se ha realizado con exito, revisa tu correo para ver tu resumen!', 'success');
+            Swal.fire({
+              icon: 'success',
+              title: '¡Listo!',
+              text: 'Tu compra se ha realizado con exito, revisa tu correo para ver tu resumen',
+              allowEscapeKey: false,
+              allowOutsideClick: false
+            }).then(function () {
+              window.location.href = _this9.urlShop;
+            });
           } else {
+            _this9.setState({
+              isLoading: false
+            });
+
             Swal.fire({
               icon: 'error',
               title: 'Atención',
@@ -62714,6 +62723,10 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
             });
           }
         } else {
+          _this9.setState({
+            isLoading: false
+          });
+
           Swal.fire({
             icon: 'error',
             title: 'Atención',
