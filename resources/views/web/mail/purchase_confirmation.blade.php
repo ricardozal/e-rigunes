@@ -323,10 +323,10 @@
                                 <tr>
                                     <td>
                                         <p style="text-align: center"><img src="{{asset('img/logos/rigunes_logo_pink.png')}}" alt="logo" style="max-width: 100%; height: auto"></p>
-                                        <p>Hola, {{$order->buyer->user->name}}</p>
+                                        <p>Hola, {{$name_buyer}}</p>
                                         <p>Muchas gracias por tu compra, los detalles de la compra se
                                             listan a continuación: </p>
-                                        <p><b>Dirección de envío: </b>{{$order->address->full_address}}</p>
+                                        <p><b>Información de envío: </b>{{$order->fk_id_shipping_address == null ? $order->comments : $order->address->full_address}}</p>
                                         <p><b>Método de pago: </b>{{$order->payment_method->name}}</p>
 
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
@@ -354,7 +354,7 @@
                                             </tbody>
                                         </table>
 
-                                        <p><b>Envío:</b> {{'$'.number_format(100,2)}}</p>
+                                        <p><b>Envío:</b> {{'$'.number_format($order->shipping_information->shipping_price,2)}}</p>
                                         <h3>Total: {{'$'.number_format($order->total_price,2)}}</h3>
 
                                         <p style="text-align: center">Realmente esperemos que te gusten y continues comprando de nuestro sitio.</p>

@@ -42,6 +42,39 @@ class ShoppingCartController extends Controller
 
     }
 
+    public function completeOrderGuest(Request $request){
+
+        $paymentMethod = $request->get('payment_method');
+        $order = OrderService::getCurrentOrder();
+        $orderResume = null;
+
+        try {
+            if($paymentMethod == PaymentMethod::PAYPAL) {
+                $orderResume = $this->registerOrder($order, null, null, PaymentMethod::PAYPAL);
+            } elseif ($paymentMethod == PaymentMethod::CARD) {
+                $orderResume = $this->registerOrder($order, null, null, PaymentMethod::CARD);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Algo salio mal'
+            ]);
+        }
+
+        if($orderResume != null){
+            return response()->json([
+                'success' => true,
+                'order_resume' => $orderResume,
+                'message' => 'La compra se realizó con éxito'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'El pago se procesó con éxito, pero el registro de la compra no se pudo completar. Ponte en contacto con nosotros.'
+            ]);
+        }
+    }
+
     public function completeOrder(Request $request){
 
         $paymentMethod = $request->get('payment_method');
@@ -128,9 +161,14 @@ class ShoppingCartController extends Controller
             if (!($order["order_has_plan"] != null && $order["order_has_variant"] == null && $order["order_has_outfits"] == null)){
                 $sale = new Sale();
                 $sale->total_price = $order->total_price;
-                $sale->fk_id_buyer = $buyer->id;
+                $sale->fk_id_buyer = $buyer == null ? null : $buyer->id;
                 $sale->fk_id_payment_method = $paymentMethodId;
-                $sale->fk_id_shipping_address = $address->id;
+                $sale->fk_id_shipping_address = $address == null ? null : $address->id;
+
+                if ($buyer == null && $address == null){
+                    $information =  'Calle: '. $order["address_info"]['street'];
+                    $sale->comments = $information;
+                }
 
                 if ($order->discounts !== null && $order->discounts > 0) {
                     /* @var $coupon Promotion */
@@ -174,11 +212,13 @@ class ShoppingCartController extends Controller
 
             \DB::commit();
 
-            $email = $buyer->user->email;
+            $email = $buyer == null ? $order["personal_info"]['email'] : $buyer->user->email;
 
             Mail::send('web.mail.purchase_confirmation',
                 [
-                    'order' => $sale
+                    'order' => $sale,
+                    'name_buyer' => $sale->fk_id_buyer == null ? $order["personal_info"]['full_name'] : $sale->buyer->name,
+                    'comments' => $sale->comments
                 ],
                 function ($msj) use ($email){
                     $msj->subject('Rigunes | Confirmación de compra')

@@ -44,6 +44,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\ShippingInformation|null $shipping_information
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SaleStatus[] $saleStatus
  * @property-read int|null $sale_status_count
+ * @property string|null $comments
+ * @method static \Illuminate\Database\Eloquent\Builder|Sale whereComments($value)
  */
 class Sale extends Model
 {

@@ -60306,52 +60306,6 @@ var moneyFormatter = new Intl.NumberFormat('en-US', {
 
 /***/ }),
 
-/***/ "./resources/js/shopping_cart/CardSection.js":
-/*!***************************************************!*\
-  !*** ./resources/js/shopping_cart/CardSection.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stripe/react-stripe-js */ "./node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js");
-/* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_1__);
-/**
- * Use the CSS tab above to style your Element's container.
- */
-
-
-var CARD_ELEMENT_OPTIONS = {
-  style: {
-    base: {
-      color: "#32325d",
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSmoothing: "antialiased",
-      fontSize: "16px",
-      "::placeholder": {
-        color: "#6d6d70"
-      }
-    },
-    invalid: {
-      color: "#fa755a",
-      iconColor: "#fa755a"
-    }
-  }
-};
-
-function CardSection() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_1__["CardElement"], {
-    options: CARD_ELEMENT_OPTIONS
-  });
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (CardSection);
-
-/***/ }),
-
 /***/ "./resources/js/shopping_cart/CheckoutForm.js":
 /*!****************************************************!*\
   !*** ./resources/js/shopping_cart/CheckoutForm.js ***!
@@ -60361,155 +60315,215 @@ function CardSection() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InjectedCheckoutForm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CheckoutForm; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stripe/react-stripe-js */ "./node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js");
 /* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _CardSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CardSection */ "./resources/js/shopping_cart/CardSection.js");
 
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+function CheckoutForm(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      succeeded = _useState2[0],
+      setSucceeded = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      error = _useState4[0],
+      setError = _useState4[1];
 
-var CheckoutForm = /*#__PURE__*/function (_React$Component) {
-  _inherits(CheckoutForm, _React$Component);
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      processing = _useState6[0],
+      setProcessing = _useState6[1];
 
-  var _super = _createSuper(CheckoutForm);
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(true),
+      _useState8 = _slicedToArray(_useState7, 2),
+      disabled = _useState8[0],
+      setDisabled = _useState8[1];
 
-  function CheckoutForm(props) {
-    var _this;
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      clientSecret = _useState10[0],
+      setClientSecret = _useState10[1];
 
-    _classCallCheck(this, CheckoutForm);
-
-    _this = _super.call(this, props);
-    var script = document.getElementById("js-shopping_cart");
-    _this.stripeIntent = script.dataset.stripeIntent;
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(CheckoutForm, [{
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      var _this2 = this;
-
-      event.preventDefault();
-      var _this$props = this.props,
-          stripe = _this$props.stripe,
-          elements = _this$props.elements;
-
-      if (!stripe || !elements) {
-        return;
+  var stripe = Object(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__["useStripe"])();
+  var elements = Object(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__["useElements"])();
+  var script = document.getElementById("js-shopping_cart");
+  var urlIntent = script.dataset.stripeIntent;
+  var token = script.dataset.token;
+  var cardholderName = document.getElementById('holder-name');
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    // Create PaymentIntent as soon as the page loads
+    window.fetch(urlIntent, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        items: [{
+          id: "xl-tshirt"
+        }],
+        _token: token
+      })
+    }).then(function (res) {
+      return res.json();
+    }).then(function (data) {
+      setClientSecret(data.client_secret);
+    });
+  }, []);
+  var cardStyle = {
+    style: {
+      base: {
+        color: "#32325d",
+        fontFamily: 'Arial, sans-serif',
+        fontSmoothing: "antialiased",
+        fontSize: "16px",
+        "::placeholder": {
+          color: "#32325d"
+        }
+      },
+      invalid: {
+        color: "#fa755a",
+        iconColor: "#fa755a"
       }
+    }
+  };
 
-      _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response, _yield$response$json, clientSecret, result;
+  var handleChange = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              // Listen for changes in the CardElement
+              // and display any errors as the customer types their card details
+              setDisabled(event.empty);
+              setError(event.error ? event.error.message : "");
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return fetch(_this2.stripeIntent);
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
 
-              case 2:
-                response = _context.sent;
-                _context.next = 5;
-                return response.json();
+    return function handleChange(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
 
-              case 5:
-                _yield$response$json = _context.sent;
-                clientSecret = _yield$response$json.client_secret;
-                _context.next = 9;
-                return stripe.confirmCardPayment(clientSecret, {
-                  payment_method: {
-                    card: elements.getElement(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__["CardElement"]),
-                    billing_details: {
-                      name: 'Jenny Rosen'
-                    }
-                  }
-                });
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(ev) {
+      var payload;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              ev.preventDefault();
+              setError(null);
 
-              case 9:
-                result = _context.sent;
+              if (!(cardholderName.value === '')) {
+                _context2.next = 6;
+                break;
+              }
 
-                if (result.error) {
-                  // Show error to your customer (e.g., insufficient funds)
-                  console.log(result.error.message);
-                } else {
-                  // The payment has been processed!
-                  if (result.paymentIntent.status === 'succeeded') {// Show a success message to your customer
-                    // There's a risk of the customer closing the window before callback
-                    // execution. Set up a webhook or plugin to listen for the
-                    // payment_intent.succeeded event that handles any business critical
-                    // post-payment actions.
+              setError("Debes llenar todos los campos");
+              _context2.next = 11;
+              break;
+
+            case 6:
+              setProcessing(true);
+              _context2.next = 9;
+              return stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                  card: elements.getElement(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__["CardElement"]),
+                  billing_details: {
+                    name: cardholderName.value
                   }
                 }
+              });
 
-              case 11:
-              case "end":
-                return _context.stop();
-            }
+            case 9:
+              payload = _context2.sent;
+
+              if (payload.error) {
+                setError("El pago fall\xF3: ".concat(payload.error.message));
+                setProcessing(false);
+              } else {
+                setError(null);
+                setProcessing(false);
+                setSucceeded(true);
+                props.saveOrder();
+              }
+
+            case 11:
+            case "end":
+              return _context2.stop();
           }
-        }, _callee);
-      }))();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: 'text-center'
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_CardSection__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-        type: "submit",
-        disabled: !this.props.stripe,
-        className: 'btn btn-primary mt-3 '
-      }, "PAGAR"));
-    }
-  }]);
+        }
+      }, _callee2);
+    }));
 
-  return CheckoutForm;
-}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+    return function handleSubmit(_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
 
-function InjectedCheckoutForm() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__["ElementsConsumer"], null, function (_ref2) {
-    var stripe = _ref2.stripe,
-        elements = _ref2.elements;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(CheckoutForm, {
-      stripe: stripe,
-      elements: elements
-    });
-  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+    id: "payment-form",
+    onSubmit: handleSubmit,
+    className: 'text-center'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    id: "holder-name",
+    placeholder: "Nombre del propietario",
+    name: "holder-name"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__["CardElement"], {
+    id: "card-element",
+    options: cardStyle,
+    onChange: handleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+    disabled: processing || disabled || succeeded,
+    id: "submit",
+    className: 'btn btn-primary mt-3 '
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+    id: "button-text"
+  }, processing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+    className: "fas fa-spinner fa-spin spinner",
+    id: "spinner"
+  }) : "PAGAR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
+    id: "card-error",
+    style: {
+      color: 'red',
+      fontWeight: 'bold'
+    }
+  }, error));
 }
 
 /***/ }),
@@ -61067,6 +61081,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var script = document.getElementById("js-shopping_cart");
+var promise = Object(_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_3__["loadStripe"])(script.dataset.stripePublic);
 
 var ConfirmOrderGuest = /*#__PURE__*/function (_React$Component) {
   _inherits(ConfirmOrderGuest, _React$Component);
@@ -61079,12 +61095,11 @@ var ConfirmOrderGuest = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ConfirmOrderGuest);
 
     _this = _super.call(this, props);
-    var script = document.getElementById("js-shopping_cart");
     _this.envPaypal = script.dataset.envPaypal;
     _this.sandboxPaypalId = script.dataset.sandboxPaypalId;
     _this.productionPaypalId = script.dataset.productionPaypalId;
     _this.urlPaymentMethods = script.dataset.urlPaymentMethods;
-    _this.stripePromise = Object(_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_3__["loadStripe"])(script.dataset.stripePublic);
+    _this.nextStep = _this.nextStep.bind(_assertThisInitialized(_this));
     _this.setError = _this.setError.bind(_assertThisInitialized(_this));
     _this.setCanceled = _this.setCanceled.bind(_assertThisInitialized(_this));
     _this.setPaypalCompleted = _this.setPaypalCompleted.bind(_assertThisInitialized(_this));
@@ -61280,8 +61295,16 @@ var ConfirmOrderGuest = /*#__PURE__*/function (_React$Component) {
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "col-12"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__["Elements"], {
-            stripe: this.stripePromise
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CheckoutForm__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
+            stripe: promise
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CheckoutForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            saveOrder: this.nextStep
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            id: "card-errors",
+            style: {
+              color: 'red',
+              fontWeight: 'bold'
+            }
+          })));
       }
     }
   }, {
@@ -61354,7 +61377,7 @@ var ConfirmOrderGuest = /*#__PURE__*/function (_React$Component) {
       this.setState({
         isLoading: false
       });
-      this.props.onBuy(3, -1, -1, 1);
+      this.props.onBuy(1);
     }
   }, {
     key: "numberFormatPaypal",
@@ -61371,7 +61394,7 @@ var ConfirmOrderGuest = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "nextStep",
     value: function nextStep() {
-      this.props.onBuy(3, -1, -1, 2);
+      this.props.onBuy(2);
     }
   }]);
 
@@ -62291,10 +62314,12 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
     _this.urlDeleteCoupon = script.dataset.urlDeleteCoupon;
     _this.urlUpdateCurrentStep = script.dataset.urlUpdateCurrentStep;
     _this.urlCompleteOrder = script.dataset.urlCompleteOrder;
+    _this.urlCompleteOrderGuest = script.dataset.urlCompleteOrderGuest;
     _this.urlGetShippingPrice = script.dataset.urlGetShippingPrice;
     _this.urlGetShippingPriceGuest = script.dataset.urlGetShippingPriceGuest;
     _this.updateVariant = _this.updateVariant.bind(_assertThisInitialized(_this));
     _this.onBuy = _this.onBuy.bind(_assertThisInitialized(_this));
+    _this.onBuyGuest = _this.onBuyGuest.bind(_assertThisInitialized(_this));
     _this.onReturn = _this.onReturn.bind(_assertThisInitialized(_this));
     _this.onDisplayResume = _this.onDisplayResume.bind(_assertThisInitialized(_this));
     _this.attachDiscount = _this.attachDiscount.bind(_assertThisInitialized(_this));
@@ -62402,6 +62427,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
                 content = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConfirmOrderGuest__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   order: this.state.order,
                   onReturn: this.onReturn,
+                  onBuy: this.onBuyGuest,
                   onDisplayResume: this.onDisplayResume
                 });
               } else {
@@ -62662,9 +62688,54 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "onBuyGuest",
+    value: function onBuyGuest(paymentMethodId) {
+      var _this9 = this;
+
+      this.setState({
+        isLoading: true
+      });
+      var data = {
+        payment_method: paymentMethodId
+      };
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlCompleteOrderGuest, data).then(function (response) {
+        _this9.setState({
+          isLoading: false
+        });
+
+        if (response.status === 200) {
+          if (response.data.success) {
+            Swal.fire('Perfecto!', 'Tu compra se ha realizado con exito, revisa tu correo para ver tu resumen!', 'success');
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Atención',
+              text: response.data.message
+            });
+          }
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Atención',
+            text: response.data.message
+          });
+        }
+      })["catch"](function (err) {
+        _this9.setState({
+          isLoading: false
+        });
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Atención',
+          text: err
+        });
+      });
+    }
+  }, {
     key: "onBuy",
     value: function onBuy(step, addressId, cardId, paymentMethodId) {
-      var _this9 = this;
+      var _this10 = this;
 
       if (!this.isAuthenticate && step === 0) {
         this.setState({
@@ -62683,7 +62754,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
             payment_method: paymentMethodId
           };
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlCompleteOrder, data).then(function (response) {
-            _this9.setState({
+            _this10.setState({
               isLoading: false
             });
 
@@ -62705,7 +62776,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
               });
             }
           })["catch"](function (err) {
-            _this9.setState({
+            _this10.setState({
               isLoading: false
             });
 
@@ -62724,7 +62795,7 @@ var ShoppingCart = /*#__PURE__*/function (_React$Component) {
           });
           axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(this.urlUpdateCurrentStep, _data).then(function (response) {
             if (response.status === 200) {
-              _this9.setState({
+              _this10.setState({
                 current_step: response.data.data.current_step,
                 isLoading: false
               });

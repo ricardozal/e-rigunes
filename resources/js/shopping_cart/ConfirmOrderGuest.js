@@ -8,19 +8,20 @@ import TextFormatter from "../../../public/js/web/services/TextFormatter";
 import PaypalCheckoutButton from "./PaypalCheckoutButton";
 import axios from "axios";
 
+const script = document.getElementById("js-shopping_cart");
+const promise = loadStripe(script.dataset.stripePublic);
+
 class ConfirmOrderGuest extends React.Component{
 
     constructor(props) {
         super(props);
 
-        const script = document.getElementById("js-shopping_cart");
         this.envPaypal = script.dataset.envPaypal;
         this.sandboxPaypalId = script.dataset.sandboxPaypalId;
         this.productionPaypalId = script.dataset.productionPaypalId;
         this.urlPaymentMethods = script.dataset.urlPaymentMethods;
 
-        this.stripePromise = loadStripe(script.dataset.stripePublic);
-
+        this.nextStep = this.nextStep.bind(this);
         this.setError = this.setError.bind(this);
         this.setCanceled = this.setCanceled.bind(this);
         this.setPaypalCompleted = this.setPaypalCompleted.bind(this);
@@ -208,9 +209,10 @@ class ConfirmOrderGuest extends React.Component{
             case 2:
                 return <div className="row">
                     <div className="col-12">
-                        <Elements stripe={this.stripePromise}>
-                            <CheckoutForm />
+                        <Elements stripe={promise}>
+                            <CheckoutForm saveOrder={this.nextStep} />
                         </Elements>
+                        <span id="card-errors" style={{color: 'red', fontWeight: 'bold'}}/>
                     </div>
                 </div>;
 
@@ -270,7 +272,7 @@ class ConfirmOrderGuest extends React.Component{
 
     setPaypalCompleted(){
         this.setState({ isLoading: false });
-        this.props.onBuy(3,-1,-1, 1);
+        this.props.onBuy(1);
     }
 
     numberFormatPaypal( num ) {
@@ -285,7 +287,7 @@ class ConfirmOrderGuest extends React.Component{
     }
 
     nextStep(){
-        this.props.onBuy(3,-1,-1, 2);
+        this.props.onBuy(2);
     }
 }
 

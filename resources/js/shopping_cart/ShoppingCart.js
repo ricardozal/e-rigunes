@@ -21,11 +21,13 @@ class ShoppingCart extends React.Component {
         this.urlDeleteCoupon = script.dataset.urlDeleteCoupon;
         this.urlUpdateCurrentStep = script.dataset.urlUpdateCurrentStep;
         this.urlCompleteOrder = script.dataset.urlCompleteOrder;
+        this.urlCompleteOrderGuest = script.dataset.urlCompleteOrderGuest;
         this.urlGetShippingPrice = script.dataset.urlGetShippingPrice;
         this.urlGetShippingPriceGuest = script.dataset.urlGetShippingPriceGuest;
 
         this.updateVariant = this.updateVariant.bind(this);
         this.onBuy = this.onBuy.bind(this);
+        this.onBuyGuest = this.onBuyGuest.bind(this);
         this.onReturn = this.onReturn.bind(this);
         this.onDisplayResume = this.onDisplayResume.bind(this);
         this.attachDiscount = this.attachDiscount.bind(this);
@@ -131,6 +133,7 @@ class ShoppingCart extends React.Component {
                         if (this.state.order.is_guest){
                             content = <ConfirmOrderGuest order={this.state.order}
                                                     onReturn={this.onReturn}
+                                                    onBuy={this.onBuyGuest}
                                                     onDisplayResume={this.onDisplayResume}
                             />;
                         } else {
@@ -377,6 +380,51 @@ class ShoppingCart extends React.Component {
                 console.error(err);
             });
 
+    }
+
+    onBuyGuest(paymentMethodId){
+        this.setState({
+            isLoading: true,
+        });
+        let data ={payment_method: paymentMethodId};
+
+        axios.post(this.urlCompleteOrderGuest, data)
+            .then(response => {
+                this.setState({
+                    isLoading: false,
+                });
+                if (response.status === 200) {
+                    if (response.data.success) {
+                        Swal.fire(
+                            'Perfecto!',
+                            'Tu compra se ha realizado con exito, revisa tu correo para ver tu resumen!',
+                            'success'
+                        );
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Atención',
+                            text: response.data.message,
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Atención',
+                        text: response.data.message,
+                    });
+                }
+            })
+            .catch(err => {
+                this.setState({
+                    isLoading: false,
+                });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Atención',
+                    text: err,
+                });
+            });
     }
 
     onBuy(step, addressId, cardId, paymentMethodId){

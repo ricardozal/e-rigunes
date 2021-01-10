@@ -204,38 +204,40 @@ class OrderController extends Controller
 
     public function createPaymentIntentStripe()
     {
-        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
         $order = OrderService::getCurrentOrder();
         $total = ($order->total_price) * 100;
 
         try{
-            $intent = PaymentIntent::create([
+
+            $stripe = new \Stripe\StripeClient(
+                env('STRIPE_SECRET_KEY')
+            );
+
+            $intent = $stripe->paymentIntents->create([
                 'amount' => $total,
                 'currency' => 'mxn',
             ]);
 
-            if($intent->status === 'succeeded'){
+            if($intent->status === 'requires_payment_method'){
                 return response()->json([
                     'success' => true,
                     'message' => 'exito',
                     'client_secret' => $intent->client_secret
-                ]);
+                ],200);
 
             }else{
                 return response()->json([
                     'success' => false,
-                    'message' => 'Algo salio mal',
+                    'message' => $intent->status,
                     'client_secret' => null
-
-                ]);
+                ],500);
             }
         } catch (ApiErrorException $e) {
             return response()->json([
                 'success' => false,
                 'message' => $e->getMessage(),
                 'client_secret' => null
-
-            ]);
+            ],500);
         }
 
     }

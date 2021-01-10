@@ -19,7 +19,7 @@
 <script src="{{ asset('commons/modal_tools.js') }}"></script>
 
 <script id="js-shopping_cart"
-        src="{{asset("js/shopping_cart/shopping_cart.js?v=4")}}"
+        src="{{asset("js/shopping_cart/shopping_cart.js?v=5")}}"
         data-token="{{csrf_token()}}"
         data-is-user="{{Auth::user()}}"
         data-url-get-order="{{route('web_get_order')}}"
@@ -29,6 +29,7 @@
         data-url-delete-coupon="{{route("web_delete_coupon")}}"
         data-url-login="{{route("login")}}"
         data-url-complete-order="{{route('ecommerce_complete_order')}}"
+        data-url-complete-order-guest="{{route('web_complete_order_guest')}}"
         data-url-update-current-step="{{route("web_update_current_step")}}"
         data-url-shop="{{route('web_home')}}"
         data-url-address-create="{{route('ecommerce_account_address_create')}}"
