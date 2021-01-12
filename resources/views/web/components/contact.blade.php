@@ -5,8 +5,8 @@
 @endpush
 
 <div class="row justify-content-center mx-0">
-    <div class="col-md-10  mt-1  d-flex align-items-center justify-content-center" id="contact">
-        <div class="card w-75 mb-5 mt-2 border-0" style="border-radius: 30px">
+    <div class="col-md-8  mt-1  d-flex align-items-center justify-content-center" id="contact">
+        <div class="card w-100 mb-5 mt-2 border-0" style="border-radius: 30px">
             <div class="card-body">
                 <form id="form-contact" action="{{route('contact_web')}}" method="POST">
                     @csrf

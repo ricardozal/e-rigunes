@@ -57,11 +57,11 @@
                             <div class="car-body">
                                 <a href="{{route('category_products',['categoryId'=>$cat->id])}}">
                                     <img src="{{$cat->image_url}}" class="img-fluid" style="object-fit: cover">
-
+                                </a>
                                 <div class="col-12 text-center">
                                     <p>{{$cat->name}}</p>
                                 </div>
-                                </a>
+
                             </div>
                         </div>
                     </div>
@@ -100,17 +100,17 @@
         </div>
     </div>
     <div class="row mx-5 px-5 mx-0">
-        <div class="col-6col col-md-4 text-center">
+        <div class="col-12 col-md-4 text-center">
 
             <img src="{{asset('img/icons/family.png')}}" alt="integrated-marketing" data-aos="zoom-in">
             <h6 class="text-center pt-2">Variedad en modelos</h6>
         </div>
 
-        <div class="col-6 col-md-4 text-center">
+        <div class="col-12 col-md-4 text-center">
             <img src="{{asset('img/icons/distribuidor.png')}}" alt="integrated-marketing" data-aos="zoom-in">
             <h6 class="text-center pt-2">Precios accesibles </h6>
         </div>
-        <div class="col-6 col-md-4 text-center">
+        <div class="col-12 col-md-4 text-center">
             <img src="{{asset('img/icons/avion.png')}}" alt="integrated-marketing" data-aos="zoom-in">
             <h6 class="text-center pt-2">Enviós a toda la república</h6>
         </div>
@@ -157,7 +157,7 @@
     </div>
     <div class="row mx-0">
         @foreach($product as $prod)
-            <div class="col-12 col-sm-6 col-md-6 mb-4 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 mb-4 col-lg-3 ">
                 <div class="card border-0 card-category">
                     <a href="{{route('web_product_details',['productId'=>$prod->id])}}">
                         <div
