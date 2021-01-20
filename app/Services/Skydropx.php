@@ -24,16 +24,14 @@ class Skydropx
             $variant = $orderHasVariant["variant"];
             $quantity = $orderHasVariant["quantity"];
 
-            for($i = 0; $i < $quantity; $i++) {
-                $parcels[] = [
-                    'weight' => $variant->product->weight,
-                    'distance_unit' => 'CM',
-                    'mass_unit' => 'KG',
-                    'height' => $variant->product->height,
-                    'width' => $variant->product->width,
-                    'length' => $variant->product->length
-                ];
-            }
+            $parcels[] = [
+                'weight' => $quantity,
+                'distance_unit' => 'CM',
+                'mass_unit' => 'KG',
+                'height' => $variant->product->height,
+                'width' => $variant->product->width,
+                'length' => $variant->product->length
+            ];
         }
 
         $response = Http::withHeaders([
@@ -79,10 +77,14 @@ class Skydropx
             if($shipment['type'] == 'rates'){
                 $options[] = [
                     'id' => $shipment['id'],
+                    'provider' => $shipment['provider'],
+                    'days' => $shipment['days'],
                     'price' => $shipment['attributes']['total_pricing']
                 ];
             }
         }
+
+        dd($options);
 
         $temp = array_column($options, 'price');
         array_multisort($temp, SORT_ASC, $options);

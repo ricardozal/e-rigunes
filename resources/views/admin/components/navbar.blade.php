@@ -141,6 +141,16 @@
                     <span class="sidebar-text">Cambio de productos</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{{route('logout')}}">
+                    <span>
+                        <i class="fas fa-sign-out-alt"></i>
+                    </span>
+                    <span class="sidebar-text">Cerrar sesión</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
