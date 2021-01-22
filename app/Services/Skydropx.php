@@ -77,22 +77,37 @@ class Skydropx
             if($shipment['type'] == 'rates'){
                 $options[] = [
                     'id' => $shipment['id'],
-                    'provider' => $shipment['provider'],
-                    'days' => $shipment['days'],
+                    'provider' => strtolower($shipment['attributes']['provider']),
+                    'service_level_name' => strtolower($shipment['attributes']['service_level_name']),
                     'price' => $shipment['attributes']['total_pricing']
                 ];
             }
         }
 
-        dd($options);
+        $redpack = [];
 
-        $temp = array_column($options, 'price');
-        array_multisort($temp, SORT_ASC, $options);
+        foreach ($options as $option){
+            if(($option['provider'] == 'redpack') && $option['service_level_name'] == 'ecoexpress'){
+                $redpack = [
+                    'id' => $option['id'],
+                    'price' => $option['price']
+                ];
+            }
+        }
 
-        $cheapestOption = $options[0];
+        if(!$redpack){
+            $temp = array_column($options, 'price');
 
-        $order["shipping_price"] = $cheapestOption['price'];
-        $order["rate_id"] = $cheapestOption['id'];
+            array_multisort($temp, SORT_ASC, $options);
+
+            $cheapestOption = $options[0];
+
+            $order["shipping_price"] = $cheapestOption['price'];
+            $order["rate_id"] = $cheapestOption['id'];
+        }else{
+            $order["shipping_price"] = $redpack['price'];
+            $order["rate_id"] = $redpack['id'];
+        }
 
         // Save order information
         $order["is_guest"] = true;
