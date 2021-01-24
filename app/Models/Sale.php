@@ -136,6 +136,8 @@ class Sale extends Model
             $total += $orderHasVariant["price"];
         }
 
+        $total += $order["shipping_price"];
+
         if ($order->discounts !== null && $order->discounts > 0) {
             /* @var $coupon Promotion */
             $coupon = $order["coupon"];
@@ -150,8 +152,6 @@ class Sale extends Model
         } else {
             $order->discounts = 0;
         }
-
-        $total += $order["shipping_price"];
 
         $order->total_price = $total;
         return $order;
