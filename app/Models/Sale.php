@@ -46,6 +46,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $sale_status_count
  * @property string|null $comments
  * @method static \Illuminate\Database\Eloquent\Builder|Sale whereComments($value)
+ * @property string|null $email_guest
+ * @property string|null $name_guest
+ * @method static \Illuminate\Database\Eloquent\Builder|Sale whereEmailGuest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sale whereNameGuest($value)
  */
 class Sale extends Model
 {

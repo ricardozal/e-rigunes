@@ -158,68 +158,69 @@ class ShoppingCartController extends Controller
             $orderHasVariants = $order["order_has_variant"];
 
             $sale = null;
-            if (!($order["order_has_plan"] != null && $order["order_has_variant"] == null && $order["order_has_outfits"] == null)){
-                $sale = new Sale();
-                $sale->total_price = $order->total_price;
-                $sale->fk_id_buyer = $buyer == null ? null : $buyer->id;
-                $sale->fk_id_payment_method = $paymentMethodId;
-                $sale->fk_id_shipping_address = $address == null ? null : $address->id;
+            $sale = new Sale();
+            $sale->total_price = $order->total_price;
+            $sale->fk_id_buyer = $buyer == null ? null : $buyer->id;
+            $sale->fk_id_payment_method = $paymentMethodId;
+            $sale->fk_id_shipping_address = $address == null ? null : $address->id;
 
-                if ($buyer == null && $address == null){
-                    $information =  'Calle: '. $order["address_info"]['street'].
-                                    ', Código postal: '.$order["address_info"]['zip_code'].
-                                    ', Número exterior: '.$order["address_info"]['ext_num'].
-                                    ', Número interior: '.($order["address_info"]['int_num'] == null ? ' - ' : $order["address_info"]['int_num']).
-                                    ', Colonia: '.$order["address_info"]['colony'].
-                                    ', Ciudad: '.$order["address_info"]['city'].
-                                    ', Estado: '.$order["address_info"]['state'].
-                                    ', País: '.$order["address_info"]['country'].
-                                    ', Referecias: '.$order["address_info"]['references'].
-                                    ', Nombre del comprador: '.$order["personal_info"]['full_name'].
-                                    ', Correo electrónico: '.$order["personal_info"]['email'].
-                                    ', Teléfono: '.$order["personal_info"]['phone'];
-                    $sale->comments = $information;
-                }
+            if ($buyer == null && $address == null){
+                $information =  'Calle: '. $order["address_info"]['street'].
+                                ', Código postal: '.$order["address_info"]['zip_code'].
+                                ', Número exterior: '.$order["address_info"]['ext_num'].
+                                ', Número interior: '.($order["address_info"]['int_num'] == null ? ' - ' : $order["address_info"]['int_num']).
+                                ', Colonia: '.$order["address_info"]['colony'].
+                                ', Ciudad: '.$order["address_info"]['city'].
+                                ', Estado: '.$order["address_info"]['state'].
+                                ', País: '.$order["address_info"]['country'].
+                                ', Referecias: '.$order["address_info"]['references'].
+                                ', Nombre del comprador: '.$order["personal_info"]['full_name'].
+                                ', Correo electrónico: '.$order["personal_info"]['email'].
+                                ', Teléfono: '.$order["personal_info"]['phone'];
+                $sale->comments = $information;
+                $sale->email_guest = $order["personal_info"]['email'];
+                $sale->name_guest = $order["personal_info"]['full_name'];
+            }
 
-                if ($order->discounts !== null && $order->discounts > 0) {
-                    /* @var $coupon Promotion */
-                    $coupon = $order["coupon"];
+            if ($order->discounts !== null && $order->discounts > 0) {
+                /* @var $coupon Promotion */
+                $coupon = $order["coupon"];
 
-                    if ($coupon->is_percentage) {
-                        $sale->discounts = $order->total_price * ($coupon->value / 100);
-                    } else {
-                        $sale->discounts = $coupon->value;
-                    }
-
-                    if ($order["coupon"] !== null) Promotion::usePromo($coupon->coupon_code);
-                    $sale->fk_id_promotion = $coupon->id;
-
+                if ($coupon->is_percentage) {
+                    $sale->discounts = $order->total_price * ($coupon->value / 100);
                 } else {
-                    $sale->discounts = 0;
+                    $sale->discounts = $coupon->value;
                 }
 
-                $sale->saveOrFail();
-                $sale->saleStatus()->attach(SaleStatus::ORDERED);
-                $sale->saveOrFail();
+                if ($order["coupon"] !== null) Promotion::usePromo($coupon->coupon_code);
+                $sale->fk_id_promotion = $coupon->id;
 
-                $shippingInformation = new ShippingInformation();
-                $shippingInformation->skydropx_id = $order["shipping_id"];
-                $shippingInformation->rate_id = $order["rate_id"];
-                $shippingInformation->shipping_price = $order["shipping_price"];
-                $shippingInformation->saveOrFail();
+            } else {
+                $sale->discounts = 0;
+            }
 
-                $sale->fk_id_shipping_information = $shippingInformation->id;
-                $sale->saveOrFail();
+            $sale->saveOrFail();
+            $sale->saleStatus()->attach(SaleStatus::ORDERED);
+            $sale->saveOrFail();
 
-                if($orderHasVariants != null ){
-                    foreach ($orderHasVariants as $index => $orderHasVariant) {
-                        /** @var Variant $variant */
-                        $variant = Variant::find($orderHasVariant["variant"]->id);
-                        $quantity = $orderHasVariant["quantity"];
-                        if (!$this->registerMovement($variant, $quantity, $sale->id)) throw new Exception();
-                    }
+            $shippingInformation = new ShippingInformation();
+            $shippingInformation->skydropx_id = $order["shipping_id"];
+            $shippingInformation->rate_id = $order["rate_id"];
+            $shippingInformation->shipping_price = $order["shipping_price"];
+            $shippingInformation->saveOrFail();
+
+            $sale->fk_id_shipping_information = $shippingInformation->id;
+            $sale->saveOrFail();
+
+            if($orderHasVariants != null ){
+                foreach ($orderHasVariants as $index => $orderHasVariant) {
+                    /** @var Variant $variant */
+                    $variant = Variant::find($orderHasVariant["variant"]->id);
+                    $quantity = $orderHasVariant["quantity"];
+                    if (!$this->registerMovement($variant, $quantity, $sale->id)) throw new Exception();
                 }
             }
+
 
             \DB::commit();
 
