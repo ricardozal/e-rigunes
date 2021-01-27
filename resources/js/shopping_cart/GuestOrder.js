@@ -60,7 +60,7 @@ class GuestOrder extends React.Component{
                                     </div>
                                     <div className="col-12 col-lg-6">
                                         <div className="form-group">
-                                            <label htmlFor="email">Coreo electrónico</label>
+                                            <label htmlFor="email">Correo electrónico</label>
                                             <input type="email" className="form-control" id="email"
                                                    value={this.state.personalInfo.email} onChange={this.handleInputPersonalInfoChange} name="email"/>
                                         </div>

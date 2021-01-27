@@ -62,3 +62,9 @@
     <br>
     <h3 class="color-primary">Total: {{'$'.number_format($order->total_price,2)}}</h3>
 </div>
+@if($order->shipping_information->guide_number != null)
+    <div class="col-12 text-center">
+        <p><b>Número de guía: </b>{{$order->shipping_information->guide_number}}</p>
+        <p><b>Paquetería: </b>{{$order->shipping_information->parcel_company}}</p>
+    </div>
+@endif

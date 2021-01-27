@@ -46,6 +46,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $sale_status_count
  * @property string|null $comments
  * @method static \Illuminate\Database\Eloquent\Builder|Sale whereComments($value)
+ * @property string|null $email_guest
+ * @property string|null $name_guest
+ * @method static \Illuminate\Database\Eloquent\Builder|Sale whereEmailGuest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sale whereNameGuest($value)
  */
 class Sale extends Model
 {
@@ -132,6 +136,8 @@ class Sale extends Model
             $total += $orderHasVariant["price"];
         }
 
+        $total += $order["shipping_price"];
+
         if ($order->discounts !== null && $order->discounts > 0) {
             /* @var $coupon Promotion */
             $coupon = $order["coupon"];
@@ -146,8 +152,6 @@ class Sale extends Model
         } else {
             $order->discounts = 0;
         }
-
-        $total += $order["shipping_price"];
 
         $order->total_price = $total;
         return $order;

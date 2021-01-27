@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Mail;
 
 class SkydropxController extends Controller
 {
@@ -81,6 +82,20 @@ class SkydropxController extends Controller
             }
 
             \DB::commit();
+
+            $email = $sale->fk_id_buyer == null ? $sale->email_guest : $sale->buyer->user->email;
+            Mail::send('web.mail.delivery_confirmation',
+                [
+                    'order' => $sale,
+                    'name_buyer' => $sale->fk_id_buyer == null ? $sale->name_guest : $sale->buyer->name,
+                    'comments' => $sale->comments
+                ],
+                function ($msj) use ($email){
+                    $msj->subject('Rigunes | Tu orden se ha enviado')
+                        ->to($email);
+                }
+            );
+
             return response()->json([
                 'success' => true,
                 'message' => 'Guardado correctamente'
