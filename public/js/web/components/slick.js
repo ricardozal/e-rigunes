@@ -38,7 +38,7 @@ $('.responsive').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 infinite: false,
-                dots: true
+                dots: false
             }
         }
         // You can unslick at a given breakpoint now by adding:
