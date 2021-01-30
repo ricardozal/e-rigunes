@@ -3,7 +3,7 @@
 @push('scripts')
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="{{ asset('js/web/components/slick.js?v=1') }}"></script>
+    <script src="{{ asset('js/web/components/slick.js?v=2') }}"></script>
 
 @endpush
 @push('css')

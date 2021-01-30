@@ -12,4 +12,4 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
 
-<link rel="stylesheet" href="{{ asset('css/e-rigunes.css') }}">
+<link rel="stylesheet" href="{{ asset('css/e-rigunes.css?v=2') }}">
