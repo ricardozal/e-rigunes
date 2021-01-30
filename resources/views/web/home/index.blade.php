@@ -157,7 +157,7 @@
     </div>
     <div class="row mx-0">
         @foreach($product as $prod)
-            <div class="col-6 col-sm-6 col-md-6 mb-4 col-lg-3 ">
+            <div class="col-12 col-md-6 mb-4 col-lg-3 ">
                 <div class="card border-0 card-category">
                     <a href="{{route('web_product_details',['productId'=>$prod->id])}}">
                         <div
