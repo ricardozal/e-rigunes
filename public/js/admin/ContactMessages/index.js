@@ -9,7 +9,21 @@ $(document).ready(function () {
             {"data": "name"},
             {"data": "phone"},
             {"data": "email"},
-            {"data": "message"},
+            {
+                "data": null,
+                render:function(data, type, row )
+                {
+                    var $inpUrlShow = $('#inp-url-show');
+                    if ($inpUrlShow.length === 0) {
+                        return '';
+                    }
+
+                    var url = $inpUrlShow.val();
+                    url = url.replace('FAKE_ID', data.id);
+                    return "<a href='"+url+"' class='show-btn' style='color: #2a3d66'><span class='fas fa-envelope'/></a>";
+                },
+                "targets": -1
+            },
         ],
         "language": {
             "search": "Buscar: ",
@@ -27,5 +41,21 @@ $(document).ready(function () {
             "lengthMenu": "Mostrar _MENU_ mensajes"
         },
         "ordering": false
+    });
+});
+
+$(document).on('click', '.show-btn', function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+
+    modalTools.renderView('modal-upsert', url, true,function () {
+        formTools.useAjaxOnSubmit('form-upsert', function () {
+            $('#modal-upsert').modal('hide');
+            Swal.fire(
+                'Enviado!',
+                'Mensaje enviado!',
+                'success'
+            )
+        });
     });
 });

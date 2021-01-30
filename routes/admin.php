@@ -240,6 +240,16 @@ Route::get('/admin/contact-messages-content',
     'ContactMessagesController@indexContent')
     ->name('admin_contactMessages_index_content');
 
+Route::get('/admin/contact-messages/{messageId}/show',
+    'ContactMessagesController@show')
+    ->name('admin_contactMessages_show');
+
+Route::post('/admin/contact-messages/{messageId}/answer',
+    'ContactMessagesController@answerPost')
+    ->name('admin_contactMessages_answer');
+
+
+
 /***********************************
  * *******  Promotions *************
  **********************************/
