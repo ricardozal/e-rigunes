@@ -13,7 +13,7 @@
 </head>
 <body>
 @include('web.components.navbar')
-<div class="wrapper">
+<div class="wrapper" id="vue-app">
     @yield('content')
 </div>
 @include('web.components.footer')
