@@ -24,8 +24,8 @@ class ProductController extends Model
     public function details($productId)
     {
         $product = Product::find($productId);
-
-        return view('web.product.details',['product' => $product]);
+        $products = Product::whereActive(true)->whereHas('variants')->orderBy('created_at','DESC')->limit(16)->get();
+        return view('web.product.details',['product' => $product,'products'=>$products]);
     }
 
     public function loadSizes($productId, $colorId){
@@ -51,11 +51,13 @@ class ProductController extends Model
         $products = Product::whereActive(true)
             ->where('fk_id_category',$categoryId)
             ->paginate(8);
+        $productcat = Product::inRandomOrder()->whereHas('variants')->where('active', true)->limit(9)->get();
 
 
         return view('web.product.product_category',[
             'products' => $products,
-            'category'=>$category]);
+            'category'=>$category,
+            'productcat'=>$productcat]);
 
     }
 
