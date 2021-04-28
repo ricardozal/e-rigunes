@@ -6,7 +6,7 @@
 @endpush
 <div class="owl-carousel owl-products owl-theme ">
 @foreach($products as $product)
-    <div class="card border-0 card-category mb-3">
+    <div class="card border-0 card-category mb-3 ml-3 mr-3">
             <a href="{{route('web_product_details',['productId'=>$product->id])}}">
                 <img src="{{$product->variants[0]->featured_image}}" class="img-fluid"></a>
             <div class="card-body p-1 mb-2">

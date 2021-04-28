@@ -534,7 +534,7 @@ body {
   position: absolute;
   z-index: 10;
   display: inline-block;
-  left: 0;
+  left: 15px;
   cursor: pointer;
   font-size: 0.1px;
   top: 109px;
@@ -552,7 +552,7 @@ body {
   position: absolute;
   z-index: 10;
   display: inline-block;
-  right: 0;
+  right: 15px;
   cursor: pointer;
   font-size: 0.1px;
   top: 109px;
