@@ -39,8 +39,8 @@
            value="{{route('admin_category_index_content')}}">
     <input id="inp-url-active" type="hidden"
            value="{{route('admin_category_active',['categoryId' => 'FAKE_ID'])}}">
-    <input id="inp-url-update" type="hidden"
-           value="{{route('admin_category_update',['categoryId' => 'FAKE_ID'])}}">
+    <iput id="inp-url-update" type="hidden"
+          value="{{route('admin_category_update',['categoryId' => 'FAKE_ID'])}}">n
     <input id="inp-url-image" type="hidden"
            value="{{route('admin_category_image',['categoryId' => 'FAKE_ID'])}}">
 
