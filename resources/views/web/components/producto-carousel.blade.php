@@ -1,9 +1,12 @@
 @php
     /* @var $product Product*/use App\Models\Product;
 @endphp
+@push('scripts')
+    <script src="{{ asset('js/web/components/_product-carousel.js') }}"></script>
+@endpush
+<div class="owl-carousel owl-products owl-theme ">
 @foreach($products as $product)
-    <div class="col-12 col-sm-6 col-md-6 mb-4 col-lg-3 d-flex">
-        <div class="card border-0 card-category">
+    <div class="card border-0 card-category mb-3 ml-3 mr-3">
             <a href="{{route('web_product_details',['productId'=>$product->id])}}">
                 <img src="{{$product->variants[0]->featured_image}}" class="img-fluid"></a>
             <div class="card-body p-1 mb-2">
@@ -15,7 +18,5 @@
                 </div>
             </div>
         </div>
-    </div>
 @endforeach
-
-
+</div>

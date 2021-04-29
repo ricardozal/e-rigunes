@@ -115,12 +115,12 @@ function loadSizes(colorId) {
                     let sizeElement =
                         $('<div class="col-2 text-center">' +
                             '   <h4><span class="badge badge-primary" data-id="'+item.id+'">'+item.size.value+'</span></h4>' +
-                           '</div>');
+                            '</div>');
 
                     $sizeList.append(sizeElement);
                 });
 
-            const images = sizes[0].variant_images;
+                const images = sizes[0].variant_images;
 
                 images.forEach(function (item) {
 

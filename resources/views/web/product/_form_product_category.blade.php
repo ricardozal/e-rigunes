@@ -3,6 +3,8 @@
     @forelse($products as $prod)
         <div class="col-12 col-sm-6 col-md-6 mb-4 col-lg-3 ">
             <div class="card border-0 card-category">
+
+                <img src="url({{$prod->variants[0]->featured_image}})" >
                 <a href="{{route('web_product_details',['productId'=>$prod->id])}}">
                     <div
                         style="background-image: url('{{$prod->variants[0]->featured_image}}');

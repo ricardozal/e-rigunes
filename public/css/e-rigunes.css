@@ -16,7 +16,7 @@
   color: #6F6F6F;
 }
 .color-primary {
-  color: #B51F6B;
+  color: #5cb090;
 }
 .color-primary-light {
   color: #FBEFF5;
@@ -33,6 +33,9 @@
 .color-yellow {
   color: #FFC300;
 }
+.color-gray-card {
+  color: #797D7F;
+}
 .bg-black {
   background-color: #1a1a1a;
 }
@@ -46,7 +49,7 @@
   background-color: #F0F0F0;
 }
 .bg-primary {
-  background-color: #B51F6B !important;
+  background-color: #5cb090 !important;
 }
 .bg-primary-light {
   background-color: #FBEFF5;
@@ -84,25 +87,25 @@ body {
   padding-right: 25px;
 }
 .btn-primary {
-  background-color: #B51F6B;
-  border-color: #B51F6B;
+  background-color: #5cb090;
+  border-color: #5cb090;
   color: #FFFFFF;
 }
 .btn-primary.btn-primary:hover,
 .btn-primary.btn-primary:active {
-  border-color: #B51F6B;
-  box-shadow: 0 0 0 0.1rem #b51f52 !important;
-  background-color: #891851 !important;
+  border-color: #5cb090;
+  box-shadow: 0 0 0 0.1rem #5cb09e !important;
+  background-color: #479275 !important;
 }
 .btn-outline-primary {
-  border-color: #B51F6B;
+  border-color: #5cb090;
   color: #FFFFFF;
 }
 .btn-outline-primary.btn-outline-primary:hover,
 .btn-outline-primary.btn-outline-primary:active {
-  border-color: #B51F6B;
-  box-shadow: 0 0 0 0.1rem #b51f52 !important;
-  background-color: #891851 !important;
+  border-color: #5cb090;
+  box-shadow: 0 0 0 0.1rem #5cb09e !important;
+  background-color: #479275 !important;
 }
 .btn-primary-light {
   background-color: #FBEFF5;
@@ -165,10 +168,10 @@ body {
   border-radius: 40px;
 }
 .bottom-border {
-  border-bottom: 5px solid #B51F6B;
+  border-bottom: 5px solid #5cb090;
 }
 .bottom-border-thin {
-  border-bottom: 2px solid #B51F6B;
+  border-bottom: 2px solid #5cb090;
 }
 .border-radius {
   border-radius: 20px;
@@ -199,7 +202,7 @@ body {
 .footer {
   height: 3rem;
   text-align: center;
-  color: #B51F6B;
+  color: #5cb090;
   background-color: #FBEFF5;
   align-items: center;
 }
@@ -408,14 +411,11 @@ body {
   border: none;
   text-align: center;
 }
-.slick-prev:before {
-  background-color: black;
-}
-.slick-arrow:before {
-  background-color: black;
-}
 .card-category:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.card-details {
+  box-shadow: 0px 4px 5px 1px #d6cfd6;
 }
 .card-sale {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -429,11 +429,14 @@ body {
 .card-account {
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
+.color-black {
+  font-weight: 600;
+}
 .selected-color {
   border: 1px #6F6F6F solid;
 }
 .selected-size {
-  background-color: #B51F6B !important;
+  background-color: #5cb090 !important;
   color: #FFFFFF !important;
 }
 .div-spinner {
@@ -464,7 +467,7 @@ body {
   display: block;
   width: 25%;
   height: 25%;
-  background-color: #B51F6B;
+  background-color: #5cb090;
   border-radius: 100%;
   -webkit-animation: sk-chase-dot-before 2s infinite ease-in-out both;
           animation: sk-chase-dot-before 2s infinite ease-in-out both;
@@ -562,7 +565,7 @@ body {
   right: 1em;
   top: 6em;
   width: 400px;
-  background-color: #B51F6B;
+  background-color: #5cb090;
   z-index: 9999;
   border-radius: 10px;
   box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
@@ -614,7 +617,7 @@ body {
 .shopping-cart-popover .pop-cart-body .variant-row .variant-price {
   flex: 1;
   text-align: right;
-  color: #B51F6B;
+  color: #5cb090;
   font-size: 1.2rem;
 }
 .square-image {
@@ -651,6 +654,45 @@ body {
   padding: 8px;
 }
 .autocomplete-suggestions .autocomplete-suggestion:hover {
-  background: #B51F6B;
+  background: #5cb090;
   color: #FFFFFF;
+}
+.owl-dots {
+  display: none;
+}
+.owl-prev {
+  position: absolute;
+  z-index: 10;
+  display: inline-block;
+  left: 15px;
+  cursor: pointer;
+  font-size: 0.1px;
+  top: 109px;
+  height: 20%;
+  width: 32px;
+  background: #bababa url(/images/ic_arrow_left.png?3ab66a424b25c7953128d2141e4c879a) no-repeat center !important;
+  content: none !important;
+  margin: 0 !important;
+  opacity: 0.5;
+}
+.owl-prev i {
+  display: none;
+}
+.owl-next {
+  position: absolute;
+  z-index: 10;
+  display: inline-block;
+  right: 15px;
+  cursor: pointer;
+  font-size: 0.1px;
+  top: 109px;
+  height: 20%;
+  width: 32px;
+  background: #bababa url(/images/ic_arrow_right.png?b24d3202c3220688fde56f08a36f15cc) no-repeat center !important;
+  content: none !important;
+  margin: 0 !important;
+  opacity: 0.5;
+}
+.owl-next i {
+  display: none;
 }
