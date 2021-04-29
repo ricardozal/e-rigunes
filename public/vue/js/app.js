@@ -2201,7 +2201,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".v-card--reveal[data-v-f6278c60] {\n  align-items: center;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  justify-content: center;\n  opacity: 0.5;\n  position: absolute;\n  background-color: #80CBC4;\n}", ""]);
+exports.push([module.i, ".v-card--reveal[data-v-f6278c60] {\n  align-items: center;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  justify-content: center;\n  opacity: 0.5;\n  position: absolute;\n  background-color: white;\n}", ""]);
 
 // exports
 
@@ -20570,7 +20570,9 @@ var render = function() {
                                   _c(
                                     "v-btn",
                                     { attrs: { icon: "" } },
-                                    [_c("v-icon", [_vm._v("mdi-bookmark")])],
+                                    [
+                                      _c("v-icon", [_vm._v("mdi-cart-outline")])
+                                    ],
                                     1
                                   ),
                                   _vm._v(" "),
@@ -20604,7 +20606,7 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("v-card-title", [
-                  _c("span", { staticClass: "text-black-light" }, [
+                  _c("span", { staticClass: "text-gray-light text-sm" }, [
                     _vm._v("Botas Chelsea")
                   ])
                 ]),

@@ -12,7 +12,7 @@
                                 </v-btn>
 
                                 <v-btn icon>
-                                    <v-icon>mdi-bookmark</v-icon>
+                                    <v-icon>mdi-cart-outline</v-icon>
                                 </v-btn>
 
                                 <v-btn icon color="green darken-2">
@@ -23,7 +23,7 @@
                     </v-expand-transition>
                 </v-img>
             <v-card-title>
-                <span class="text-black-light">Botas Chelsea</span>
+                <span class="text-gray-light text-sm">Botas Chelsea</span>
             </v-card-title>
 
             <v-card-subtitle>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+
 export default {
     components: {
     },
@@ -70,6 +71,6 @@ export default {
     justify-content: center;
     opacity: .5;
     position: absolute;
-    background-color: #80CBC4;
+    background-color: white;
 }
 </style>

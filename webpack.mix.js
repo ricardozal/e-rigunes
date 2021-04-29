@@ -17,4 +17,4 @@ mix.less('resources/less/admin-rigunes.less', 'public/css/admin-rigunes.css');
 mix.react('resources/js/shopping_cart/resume.js',
     'public/js/shopping_cart/shopping_cart.js');
 
-mix.js('resources/js/app.js', 'public/vue/js');
+// mix.js('resources/js/app.js', 'public/vue/js');
