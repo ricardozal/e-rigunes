@@ -1,15 +1,24 @@
 $('.responsive').slick({
-    dots: false,
+    dots: true,
+    customPaging: function(slider, i) {
+        // this example would render "tabs" with titles
+        if (i === 0){
+            return '<button class="tab">' + 'Anterior' + '</button>';
+        }else{
+            return '<button class="tab">' + 'Siguente' + '</button>';
+        }
+    },
+    arrows: false,
     infinite: true,
     speed: 300,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     responsive: [
         {
             breakpoint: 1440,
             settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToShow: 1,
+                slidesToScroll: 1,
                 infinite: false,
                 dots: false
             }
@@ -17,8 +26,8 @@ $('.responsive').slick({
         {
             breakpoint: 1024,
             settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
+                slidesToShow: 1,
+                slidesToScroll: 1,
                 infinite: false,
                 dots: false
             }
@@ -26,8 +35,8 @@ $('.responsive').slick({
         {
             breakpoint: 600,
             settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
+                slidesToShow: 1,
+                slidesToScroll: 1,
                 infinite: false,
                 dots: false
             }

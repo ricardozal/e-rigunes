@@ -1,49 +1,219 @@
 //COLORS
 @gray-light-principal: #f6f6f6;
 @pistachio-green: #74ddb4;
-@pistachio-green-dark: #5cb090;
+@pistachio-green-light: #5cb090;
+@pistachio-green-dark: #407b64;
 @black-light: #343333;
+@gray-light-text: #a0a0a0;
+@gray-light-text-100: #808080;
+@gray-100: #e0e0e0;
+
+//GENERIC SHADOW
+.generic-shadow {
+    box-shadow: 4px 4px 13px -1px rgba(46, 46, 46, 0.81);
+}
 
 //TEXT COLORS
-.text-black-light{
+.text-black-light {
     color: @black-light;
 }
 
+.text-gray-light {
+    color: @gray-light-text;
+}
+
+.text-gray-light-100 {
+    color: @gray-light-text-100;
+}
+
+//Size Text
+
+.text-sm {
+    font-size: 0.9rem;
+}
+
+.text-medium{
+    font-size: 1.3rem;
+}
+
+.text-large{
+    font-size: 2rem;
+}
+
+.text-xl{
+    font-size: 3rem;
+}
+
 //NAVBAR
-.container-navbar-bg-gray{
+.container-navbar-bg-gray {
     background-color: @gray-light-principal;
 }
-.navbar-collapse-custom{
+
+.navbar-collapse-custom {
     flex-grow: 0 !important;
 }
 
-.color-search-pistachio-green{
+.color-search-pistachio-green {
     color: @pistachio-green-dark;
 }
 
-.text-font-bold-600{
+.text-font-bold-900 {
+    font-weight: 900;
+}
+
+.text-font-bold-800 {
+    font-weight: 800;
+}
+
+.text-font-bold-700 {
+    font-weight: 700;
+}
+
+.text-font-bold-600 {
     font-weight: 600;
 }
 
-.text-font-bold-500{
+.text-font-bold-500 {
     font-weight: 500;
 }
 
-.size-icon-search{
+.text-font-bold-400 {
+    font-weight: 400;
+}
+
+.text-font-bold-300 {
+    font-weight: 300;
+}
+
+.size-icon-search {
     font-size: 1.2rem;
 }
 
-.div-container-carousel-banner-principal{
+//Carousel
+
+.div-container-carousel-banner-principal {
     height: 60vh;
     background-color: #d2e9e3;
     z-index: 1;
+    box-shadow: 4px 4px 13px -1px rgba(46, 46, 46, 0.81);
 }
 
-.div-absolute-complement-navbar{
+.div-absolute-complement-navbar {
     background-color: @gray-light-principal;
     height: 6vh;
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 0;
+}
+
+.responsive .slick-dots {
+    position: absolute;
+    left: 0;
+    bottom: 16% !important;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 30% !important;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: 0 !important;
+}
+
+.responsive .slick-dots li {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-indent: -9999px;
+    white-space: nowrap;
+    border: 0;
+    width: 100px;
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: transparent;
+    box-shadow: 0 0 0 0 rgba(82, 156, 219, 0);
+}
+
+.responsive .slick-dots li button {
+    display: block;
+    height: 40px;
+    border: 0;
+    background-color: transparent;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    outline: none;
+    position: relative;
+}
+
+.responsive .slick-dots li.slick-active button {
+    color: white;
+}
+
+.div-absolute-btn-carousel {
+    position: absolute;
+    bottom: 15%;
+    right: 15%;
+    z-index: 1;
+
+    .bg-green-pistachio {
+        background-color: @pistachio-green-light;
+        color: white;
+        box-shadow: 4px 4px 13px -1px rgba(46, 46, 46, 0.81);
+        text-shadow: 2px 2px 0px rgba(56, 56, 56, 0.46);
+
+        &:hover {
+            background-color: @pistachio-green-dark !important;
+        }
+    }
+}
+
+.bg-green-pistachio-dark {
+    background-color: @pistachio-green-dark;
+    color: white;
+    box-shadow: 4px 4px 13px -1px rgba(46, 46, 46, 0.81);
+    text-shadow: 2px 2px 0px rgba(56, 56, 56, 0.46);
+
+    &:hover {
+        background-color: @pistachio-green-light !important;
+    }
+}
+
+//Primary cards
+.div-container-relative-primary-card {
+    background-color: @gray-100;
+    height: 30vh;
+    box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.3);
+}
+
+.div-absolute-content-primary-card {
+    position: absolute;
+    top: 18%;
+    right: 2%;
+}
+
+//BANER
+.bg-gray-100{
+    background-color: @gray-100;
+}
+
+.bg-gradient-pistachio{
+    background: rgb(148,211,172);
+    background: linear-gradient(172deg, rgba(148,211,172,1) 0%, rgba(204,237,210,1) 54%, rgba(239,252,239,1) 100%);
+}
+
+.div-absolute-img-banner{
+    position: absolute;
+    top: -38%;
+    right: 10%;
+}
+
+.div-absolute-contain-text-banner{
+    position: absolute;
+    top: 26%;
+    left: 6%;
 }

@@ -11,19 +11,15 @@
 @endpush
 @section('content')
 
-    <div class="container-fluid position-relative p-0">
-        <div class="d-flex justify-content-center">
-            <div class="col-10 div-container-carousel-banner-principal">
+@include('web.home.sections.carousel_banner_principal')
 
-            </div>
-        </div>
-        <div class="div-absolute-complement-navbar"></div>
-    </div>
+{{--    <vue-primary-card></vue-primary-card>--}}
+@include('web.home.sections.primary_cards')
 
-    <vue-primary-card></vue-primary-card>
+{{--    <vue-section-categories></vue-section-categories>--}}
+@include('web.home.sections.section_categories')
 
-    <vue-section-categories></vue-section-categories>
-
+@include('web.home.sections.banner')
 
 
     {{--    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">--}}
