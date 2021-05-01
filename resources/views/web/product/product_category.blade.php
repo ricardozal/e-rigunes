@@ -7,8 +7,8 @@
         <div class="row my-3">
             <div class="col-10 mx-auto text-center mt-3"><h2 style="color: #5cb090;">{{$category->name}}</h2></div>
         </div>
-        <div class="row">
-            <div class="col-10 mx-auto ">
+        <div class="row mt-3">
+            <div class="col-10 mx-auto  ">
                 @include('web.components.carousel_category', [
                   'categorys' => $categorys])
             </div>
@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-10 mx-auto my-3 mb-4">
                 <div class="row">

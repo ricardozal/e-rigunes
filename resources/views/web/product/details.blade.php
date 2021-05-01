@@ -98,7 +98,6 @@
     <div class="row my-5">
         <div class="col-12 text-center"><h4>PRODUCTOS SUGERIDOS</h4></div>
     </div>
-
     <div class="row mx-0 mt-4">
         <div class="col-10 mx-auto">
             @include('web.components.producto-carousel',['products' => $products])
