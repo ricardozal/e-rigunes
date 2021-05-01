@@ -7,6 +7,7 @@
 @gray-light-text: #a0a0a0;
 @gray-light-text-100: #808080;
 @gray-100: #e0e0e0;
+@red-sale: #ff3232;
 
 //GENERIC SHADOW
 .generic-shadow {
@@ -27,6 +28,9 @@
 }
 
 //Size Text
+.text-exsm {
+    font-size: 0.8rem;
+}
 
 .text-sm {
     font-size: 0.9rem;
@@ -195,6 +199,77 @@
     top: 18%;
     right: 2%;
 }
+
+//CARD PRODUCTS
+
+.img-fluid-card-products{
+    height: 34vh;
+    object-fit: cover;
+}
+
+.div-absolute-container-icons{
+    position: absolute;
+    bottom: 0;
+    left: 3%;
+    right: 3%;
+    background-color: white;
+    border-bottom: 3px solid @pistachio-green;
+    //
+    opacity: 0.0;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+
+    //&:hover{
+    //    opacity: 1;
+    //}
+}
+
+.div-absolute-container-sale{
+    position: absolute;
+    background-color: @red-sale;
+    top: 0;
+    right: 10%;
+    width: 55px;
+
+    opacity: 0;
+
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+
+.div-absolute-container-new{
+    position: absolute;
+    background-color: @pistachio-green-light;
+    top: 0;
+    left: 10%;
+    width: 55px;
+
+    opacity: 0;
+
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+
+.div-container-color--card{
+    width: 10px;
+    height: 10px;
+}
+
+//.show-div-sale:hover .div-absolute-container-sale{
+//    opacity: 1;
+//}
+//.show-div-new:hover .div-absolute-container-new{
+//    opacity: 1;
+//}
 
 //BANER
 .bg-gray-100{

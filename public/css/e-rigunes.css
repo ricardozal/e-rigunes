@@ -218,6 +218,9 @@ body {
 .text-gray-light-100 {
   color: #808080;
 }
+.text-exsm {
+  font-size: 0.8rem;
+}
 .text-sm {
   font-size: 0.9rem;
 }
@@ -353,6 +356,43 @@ body {
   top: 18%;
   right: 2%;
 }
+.img-fluid-card-products {
+  height: 34vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.div-absolute-container-icons {
+  position: absolute;
+  bottom: 0;
+  left: 3%;
+  right: 3%;
+  background-color: white;
+  border-bottom: 3px solid #74ddb4;
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}
+.div-absolute-container-sale {
+  position: absolute;
+  background-color: #ff3232;
+  top: 0;
+  right: 10%;
+  width: 55px;
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}
+.div-absolute-container-new {
+  position: absolute;
+  background-color: #5cb090;
+  top: 0;
+  left: 10%;
+  width: 55px;
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}
+.div-container-color--card {
+  width: 10px;
+  height: 10px;
+}
 .bg-gray-100 {
   background-color: #e0e0e0;
 }
@@ -411,7 +451,16 @@ body {
   border: none;
   text-align: center;
 }
-.card-category:hover {
+.card-category:hover .div-absolute-container-icons {
+  opacity: 1;
+}
+.show-div-sale:hover .div-absolute-container-sale {
+  opacity: 1;
+}
+.show-div-new:hover .div-absolute-container-new {
+  opacity: 1;
+}
+.card-category-shadow:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .card-details {
