@@ -1,9 +1,10 @@
 $(document).ready(function () {
-    $('.owl-carousel.owl-products').owlCarousel({
+    $('.owl-carousel.owl-catalogue').owlCarousel({
         loop: false,
         margin: 10,
         dots: true,
         nav: true,
+
         responsive:{
             0:{
                 items: 1
@@ -15,10 +16,10 @@ $(document).ready(function () {
                 items: 3
             },
             992:{
-                items: 4
+                items: 5
             },
             1200:{
-                items: 4
+                items: 5
             }
         }
     });

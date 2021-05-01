@@ -48,6 +48,7 @@ class ProductController extends Model
     public function categoryProduct($categoryId)
     {
         $category = Category::find($categoryId);
+        $categorys = Category::whereActive(true)->get();
         $products = Product::whereActive(true)
             ->where('fk_id_category',$categoryId)
             ->paginate(8);
@@ -57,7 +58,8 @@ class ProductController extends Model
         return view('web.product.product_category',[
             'products' => $products,
             'category'=>$category,
-            'productcat'=>$productcat]);
+            'productcat'=>$productcat,
+            'categorys'=>$categorys]);
 
     }
 

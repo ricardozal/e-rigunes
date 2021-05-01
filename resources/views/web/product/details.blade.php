@@ -4,15 +4,10 @@
 @extends('web.template.main')
 @push('scripts')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
     <script src="{{asset('/js/web/product/details.js?v=3')}}"></script>
 @endpush
-@push('css')
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
-@endpush
+
 @section('content')
     <div class="container-fluid p-0">
         <div class="row m-0">
@@ -103,6 +98,7 @@
     <div class="row my-5">
         <div class="col-12 text-center"><h4>PRODUCTOS SUGERIDOS</h4></div>
     </div>
+
     <div class="row mx-0 mt-4">
         <div class="col-10 mx-auto">
             @include('web.components.producto-carousel',['products' => $products])
