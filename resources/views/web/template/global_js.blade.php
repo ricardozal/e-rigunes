@@ -3,7 +3,7 @@
     src="https://code.jquery.com/jquery-3.6.0.js"
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/js-image-zoom@0.7.0/js-image-zoom.js" type="application/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>
@@ -51,3 +51,16 @@
         data-stripe-public="{{env('STRIPE_PUBLIC_KEY')}}"
         data-stripe-intent="{{route('web_create_payment_stripe')}}"
 ></script>
+
+<script>
+
+    var options1 = {
+        width: 400,
+        zoomWidth: 500,
+        offset: {vertical: 0, horizontal: 10}
+    };
+
+
+    new ImageZoom(document.getElementById("img-container"), options1);
+
+</script>

@@ -22,8 +22,12 @@
         </div>
         <div class="row mx-0">
             <div class="col-10 mx-auto">
-                <div class="row ">
-                    @include('web.components.card',['products' => $products])
+                <div class="row">
+                    @foreach($products as $product)
+                        <div class="col-12 col-sm-6 col-md-3 mb-4 ">
+                    @include('web.components.card')
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

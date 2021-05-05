@@ -91,7 +91,7 @@
 }
 
 .selected-color{
-    border: 1px @gray solid;
+    border: 1px @gray-card solid;
 }
 
 .selected-size{
@@ -332,7 +332,7 @@
     position: absolute;
     z-index: 10;
     display: inline-block;
-    left: 15px;
+    left: 0px;
     cursor: pointer;
     font-size: 0.1px;
     top: 109px;
@@ -342,7 +342,7 @@
     content: none !important;
     margin: 0 !important;
     opacity: 0.5;
-    i {
+    span{
         display: none;
     }
 
@@ -354,7 +354,7 @@
     position: absolute;
     z-index: 10;
     display: inline-block;
-    right: 15px;
+    right: 0px;
     cursor: pointer;
     font-size: 0.1px;
     top: 109px;
@@ -364,7 +364,7 @@
     content: none !important;
     margin: 0 !important;
     opacity: 0.5;
-    i {
+    span{
         display: none;
     }
 }
@@ -375,17 +375,18 @@
         position: absolute;
         z-index: 10;
         display: inline-block;
-        left: 0px;
+        left: -35px;
         cursor: pointer;
         font-size: 0.1px;
         top: 0px;
-        height: 100%;
-        width: 37px;
+        height: 94.5%;
+        width: 30px;
         background: #5cb090 url(../../public/img/icons/ic_arrow_left.png) no-repeat center !important;
         content: none !important;
         margin: 0 !important;
         opacity: 0.5;
-        i {
+
+        span{
             display: none;
         }
     }
@@ -394,17 +395,19 @@
         position: absolute;
         z-index: 10;
         display: inline-block;
-        right: 0px;
+        right: -35px;
         cursor: pointer;
         font-size: 0.1px;
         top: 0px;
-        height: 100%;
-        width: 37px;
+        height: 94.5%;
+        width: 30px;
         background:#5cb090 url(../../public/img/icons/ic_arrow_right.png) no-repeat center !important;
         content: none !important;
         margin: 0 !important;
         opacity: 0.5;
-        i {
+
+
+        span{
             display: none;
         }
     }

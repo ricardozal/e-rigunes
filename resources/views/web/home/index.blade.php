@@ -4,6 +4,7 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="{{ asset('js/web/components/slick.js?v=2') }}"></script>
+
 @endpush
 @push('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
@@ -20,6 +21,7 @@
 @include('web.home.sections.section_categories')
 
 @include('web.home.sections.banner')
+
 
 
     {{--    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">--}}

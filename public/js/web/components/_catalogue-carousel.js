@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('.owl-carousel.owl-catalogue').owlCarousel({
         loop: false,
         margin: 10,
-        dots: true,
+        dots: false,
         nav: true,
 
         responsive:{
