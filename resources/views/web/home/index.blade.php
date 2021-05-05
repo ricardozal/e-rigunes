@@ -21,6 +21,8 @@
 
 @include('web.home.sections.banner')
 
+@include('web.home.sections.grid_categories')
+
 
     {{--    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">--}}
     {{--        <ol class="carousel-indicators">--}}

@@ -1,4 +1,4 @@
-<div class="container-fluid mt-5 p-0">
+<div class="container-fluid my-5 p-0">
     <div class="row justify-content-center m-0">
         <div class="col-8 p-0">
             <div class="d-flex flex-wrap justify-content-between">

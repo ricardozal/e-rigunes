@@ -1,7 +1,7 @@
 <div class="container-fluid p-0 mt-3 mt-md-0">
     <div class="row justify-content-center m-0">
         <div
-            class="col-10 d-flex justify-content-start align-items-center p-0 bg-gradient-pistachio position-relative generic-shadow"
+            class="col-10 d-flex justify-content-start align-items-center p-0 gray-light-100 position-relative"
             style="height: 27vh">
             <div class="d-flex flex-column pl-3">
                 <div class="d-flex">
