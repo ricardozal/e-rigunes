@@ -133,8 +133,8 @@ function loadSizes(colorId) {
                             '   background-position: center center;' +
                             '   border: 1px solid lightgray;' +
                             '   border-radius: 16px;' +
-                            '   height: 128px;' +
-                            '   width: 128px;"></div>' +
+                            '   height: 80px;' +
+                            '   width: 80px;"></div>' +
                             '</div>');
 
                     $('.images-slider').append(element);
